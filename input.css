@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+    --color-nude-100: #Fdfbf7;
+    --color-nude-200: #FBF5F7;
+    --color-nude-300: #F4E8EA;
+    --color-nude-400: #E6D3D8;
+
+    --color-blush-100: #F9EAEF;
+    --color-blush-200: #F0D1DC;
+    --color-blush-300: #E0AEBE;
+    --color-blush-400: #C7889D;
+    --color-blush-500: #A9637B;
+
+    --color-sand-100: #FDFCFB;
+    --color-sand-200: #F5EFEF;
+    --color-sand-300: #E8DFDF;
+    --color-sand-400: #D5CACA;
+
+    --color-charcoal: #4A3B40;
+
+    --font-sans: "Lato", sans-serif;
+    --font-serif: "Playfair Display", serif;
+
+    --animate-float: float 6s ease-in-out infinite;
+
+    @keyframes float {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-20px);
+        }
+    }
+}
+
+@layer base {
+    .organic-blob-1 {
+        border-radius: 41% 59% 41% 59% / 54% 39% 61% 46%;
+    }
+
+    .organic-blob-2 {
+        border-radius: 54% 46% 70% 30% / 30% 64% 36% 70%;
+    }
+
+    .organic-blob-3 {
+        border-radius: 71% 29% 41% 59% / 54% 39% 61% 46%;
+    }
+}

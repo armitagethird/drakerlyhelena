@@ -1,0 +1,97 @@
+/* Organic Blobs using CSS Border Radius */
+.organic-blob-1 {
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    animation: morph 8s ease-in-out infinite alternate;
+}
+
+.organic-blob-2 {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    animation: morph2 10s ease-in-out infinite alternate;
+}
+
+.organic-blob-3 {
+    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+    animation: float 6s ease-in-out infinite, morph3 12s ease-in-out infinite alternate;
+}
+
+@keyframes morph {
+    0% {
+        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    }
+
+    100% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+}
+
+@keyframes morph2 {
+    0% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+
+    100% {
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    }
+}
+
+@keyframes morph3 {
+    0% {
+        border-radius: 50%;
+    }
+
+    50% {
+        border-radius: 55% 45% 40% 60% / 50% 60% 40% 50%;
+    }
+
+    100% {
+        border-radius: 45% 55% 60% 40% / 60% 40% 50% 50%;
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(2deg);
+    }
+
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Base custom styles to ensure aesthetics feeling premium */
+::selection {
+    background-color: #F0D1DC;
+    /* blush-200 */
+    color: #4A3B40;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Fluid Letter Hover Animation */
+@media (hover: hover) and (pointer: fine) {
+    .hover-char {
+        display: inline-block;
+        transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.25s ease, text-shadow 0.25s ease;
+        position: relative;
+    }
+
+    .hover-char:hover {
+        transform: translateY(-4px) scale(1.15) rotate(-3deg);
+        color: #A9637B;
+        /* blush-500 */
+        text-shadow: 0 4px 6px rgba(169, 99, 123, 0.25);
+        z-index: 10;
+        cursor: default;
+    }
+}

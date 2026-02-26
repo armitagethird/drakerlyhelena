@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dra. Kerly Helena - Ginecologia Integrativa</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/Favicon/Favicon%20Kerly.png">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <!-- SEO Meta Description -->
+    <meta name="description"
+        content="Dra. Kerly Helena é médica ginecologista com abordagem em medicina integrativa em São Luís – MA. Tratamento para menopausa, equilíbrio hormonal e saúde feminina com visão integrativa.">
+
+    <script src="https://unpkg.com/feather-icons" defer></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Tailwind CSS (compiled) -->
+    <link rel="stylesheet" href="output.css">
+</head>
+
+<body class="bg-sand-100 text-charcoal font-sans antialiased overflow-x-hidden">
+
+    <!-- Header / Nav (Minimalist) -->
+    <header class="fixed top-0 w-full z-50 bg-sand-100/80 backdrop-blur-md transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#hero" class="flex items-center space-x-3 group transition-all duration-300 hover:-translate-y-1">
+                <img src="assets/Favicon/Favicon%20Kerly.png" alt="Logo Dra. Kerly Helena"
+                    class="w-8 h-8 md:w-10 md:h-10 object-contain transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                <span
+                    class="text-2xl md:text-3xl font-serif text-charcoal font-semibold tracking-wide group-hover:text-blush-500 transition-colors duration-300">
+                    Dra. Kerly Helena
+                </span>
+            </a>
+            <nav class="hidden md:flex items-center space-x-8 text-sm uppercase tracking-widest text-charcoal/70">
+                <a href="#hero" class="hover:text-blush-500 transition-colors">Início</a>
+                <a href="#manifesto" class="hover:text-blush-500 transition-colors">Sobre Mim</a>
+                <a href="#integrative" class="hover:text-blush-500 transition-colors">A Abordagem</a>
+                <a href="#clinic" class="hover:text-blush-500 transition-colors">A Clínica</a>
+                <a href="#depoimentos" class="hover:text-blush-500 transition-colors">Depoimentos</a>
+                <a href="#location" class="hover:text-blush-500 transition-colors">Contato</a>
+                <a href="faq.html" class="hover:text-blush-500 transition-colors">FAQ</a>
+                <a href="https://wa.me/5598981532153" target="_blank" rel="noopener noreferrer"
+                    class="bg-blush-500 hover:bg-blush-400 text-white px-6 py-2.5 rounded-full transition-colors normal-case tracking-normal shadow-sm font-medium">Agende
+                    sua Consulta</a>
+            </nav>
+            <button class="md:hidden text-charcoal focus:outline-none" id="mobile-menu-btn"
+                aria-label="Abrir menu de navegação">
+                <i data-feather="menu"></i>
+            </button>
+        </div>
+        <!-- Mobile Dropdown -->
+        <div id="mobile-menu"
+            class="hidden md:hidden bg-sand-100/95 backdrop-blur-md border-t border-blush-200/50 shadow-lg absolute w-full left-0 top-full">
+            <nav
+                class="flex flex-col space-y-6 px-6 py-8 text-sm uppercase tracking-widest text-charcoal/80 text-center">
+                <a href="#hero" class="hover:text-blush-500 transition-colors">Início</a>
+                <a href="#manifesto" class="hover:text-blush-500 transition-colors">Sobre Mim</a>
+                <a href="#integrative" class="hover:text-blush-500 transition-colors">A Abordagem</a>
+                <a href="#clinic" class="hover:text-blush-500 transition-colors">A Clínica</a>
+                <a href="#depoimentos" class="hover:text-blush-500 transition-colors">Depoimentos</a>
+                <a href="#location" class="hover:text-blush-500 transition-colors">Contato</a>
+                <a href="faq.html" class="hover:text-blush-500 transition-colors">FAQ</a>
+                <div class="pt-4">
+                    <a href="https://wa.me/5598981532153" target="_blank" rel="noopener noreferrer"
+                        class="inline-block bg-blush-500 hover:bg-blush-400 text-white px-6 py-3 rounded-full transition-colors normal-case tracking-normal shadow-md font-medium w-full">Agende
+                        sua Consulta</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/5598981532153" target="_blank" rel="noopener noreferrer"
+        class="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-50 bg-blush-500 hover:bg-blush-400 text-white px-4 py-3 sm:px-5 sm:py-4 rounded-full shadow-xl flex items-center justify-center transition-transform hover:-translate-y-1">
+        <i data-feather="message-circle" class="w-6 h-6 sm:w-7 sm:h-7"></i>
+        <span class="ml-2 sm:ml-3 font-medium whitespace-nowrap text-sm sm:text-base">
+            Agende sua Consulta
+        </span>
+    </a>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="hero"
+            class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-sand-200">
+            <!-- Organic shape background -->
+            <div
+                class="absolute top-0 right-0 w-3/4 h-full bg-nude-200 rounded-l-full opacity-60 transform translate-x-1/4 -translate-y-10">
+            </div>
+
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="w-full md:w-1/2 gs-reveal">
+                        <h1
+                            class="font-serif text-5xl md:text-6xl lg:text-7xl font-bold leading-[0.9] mb-6 text-charcoal">
+                            Saúde da Mulher sob um <br />
+                            <span class="text-blush-500 italic font-light">Olhar Integrativo</span>
+                        </h1>
+                        <p class="text-lg md:text-xl text-charcoal/80 mb-10 font-light max-w-lg">
+                            Uma jornada de reconexão do corpo, mente e essência. Um cuidado que transcende o
+                            convencional.
+                        </p>
+                        <a href="#manifesto"
+                            class="inline-flex items-center space-x-2 text-blush-500 font-medium tracking-wide border-b border-blush-500 pb-1 hover:text-blush-400 hover:border-blush-400 transition-colors">
+                            <span>Conheça a abordagem</span>
+                            <i data-feather="arrow-down" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+
+                    <div class="w-full md:w-1/2 relative gs-reveal">
+                        <!-- Blob mask over image -->
+                        <div
+                            class="relative w-full aspect-[4/5] max-w-md mx-auto organic-blob-1 overflow-hidden shadow-2xl">
+                            <img src="assets/_DSC2884.webp" alt="Dra. Kerly Helena Médica Ginecologista Integrativa"
+                                fetchpriority="high" width="1920" height="2400"
+                                class="w-full h-full object-cover object-center scale-105 transition-transform duration-1000 hover:scale-100">
+                        </div>
+
+                        <!-- Floating element -->
+                        <div
+                            class="absolute -bottom-10 -left-10 bg-white/80 backdrop-blur p-6 rounded-2xl shadow-xl animate-float hidden md:block border border-nude-100">
+                            <p class="font-serif text-xl text-blush-500">"Pausa e <br> Reconexão"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Soft transition to next section -->
+            <div class="absolute bottom-0 w-full overflow-hidden leading-none rotate-180">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                    preserveAspectRatio="none" class="w-full h-24 fill-sand-100">
+                    <path
+                        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z">
+                    </path>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Manifesto / Sobre Mim Section -->
+        <section id="manifesto" class="py-32 bg-sand-100 relative">
+            <div class="container mx-auto px-6 max-w-5xl">
+                <div class="text-center mb-20 gs-reveal">
+                    <span class="text-sm tracking-[0.2em] text-blush-400 uppercase font-semibold">O Cuidado</span>
+                    <h2 class="text-4xl md:text-5xl font-serif mt-4 text-charcoal">Sobre Mim</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                    <div class="space-y-6 gs-reveal">
+                        <p class="text-lg text-charcoal/80 font-light leading-relaxed">
+                            <strong class="font-medium text-charcoal">Sou a Dra. Kerly Helena, médica
+                                ginecologista,</strong> e acredito que a medicina precisa ir além do sintoma.
+                        </p>
+                        <p class="text-lg text-charcoal/80 font-light leading-relaxed">
+                            Ao longo da minha trajetória, compreendi que muitas mulheres chegam ao consultório com
+                            exames “normais”, mas sentindo-se exaustas, desreguladas, ansiosas ou desconectadas do
+                            próprio corpo. Foi nesse cenário que encontrei na medicina integrativa uma forma mais
+                            profunda e humana de cuidar.
+                        </p>
+                        <p class="text-lg text-charcoal/80 font-light leading-relaxed">
+                            Vejo cada paciente como um organismo único — com sua história, seus ciclos, seus hormônios,
+                            suas emoções e seu ritmo de vida. Não trato apenas queixas isoladas; investigo causas,
+                            identifico desequilíbrios e construo estratégias individualizadas para restaurar o
+                            equilíbrio hormonal, metabólico e emocional.
+                        </p>
+                        <p class="text-lg text-charcoal/80 font-light leading-relaxed">
+                            Integro o conhecimento científico da ginecologia com práticas baseadas em evidência, como
+                            ajustes de estilo de vida, fitoterapia clínica, técnicas de respiração e princípios do yoga,
+                            sempre respeitando a individualidade e o momento de cada pessoa.
+                        </p>
+                        <div class="bg-blush-100/50 p-6 rounded-3xl mt-8 text-center border border-blush-200/50">
+                            <p class="text-lg text-charcoal/90 mb-1 italic font-serif text-xl">"Acredito que saúde não é
+                                pressa — é presença.</p>
+                            <p class="text-lg text-charcoal/90 mb-1 italic font-serif text-xl">É escuta atenta.</p>
+                            <p class="text-lg text-charcoal/90 italic font-serif text-xl">É compreender o corpo como um
+                                sistema inteligente que precisa de direção, não apenas de remédio."</p>
+                        </div>
+                        <p class="text-lg text-blush-500 font-medium leading-relaxed text-center mt-4">
+                            Meu propósito é oferecer um cuidado que transforme não apenas exames, mas qualidade de vida.
+                        </p>
+                    </div>
+
+                    <div class="relative gs-reveal">
+                        <div class="w-full aspect-square organic-blob-2 overflow-hidden bg-nude-300 relative">
+                            <!-- Placeholder for another photo of the doctor or a lifestyle image -->
+                            <div class="absolute inset-0 bg-blush-200/30 mix-blend-multiply"></div>
+                            <img src="assets/_DSC2944.webp" alt="Dra. Kerly Helena Cuidado Integrativo em São Luís"
+                                loading="lazy" width="1200" height="1200" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Integrative Approach Section (NEW) -->
+        <section id="integrative" class="py-32 bg-nude-200 relative">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <div class="text-center mb-16 gs-reveal">
+                    <span class="text-sm tracking-[0.2em] text-blush-500 uppercase font-semibold">Nossa Filosofia</span>
+                    <h2 class="text-4xl md:text-5xl font-serif mt-4 text-charcoal">A abordagem integrativa</h2>
+                </div>
+
+                <div class="space-y-8 gs-reveal">
+                    <p class="text-xl font-medium text-charcoal/90 text-center mb-10">
+                        A medicina integrativa é uma forma ampliada de cuidar da saúde.
+                    </p>
+
+                    <p class="text-lg text-charcoal/80 font-light leading-relaxed">
+                        Ela não olha apenas para o sintoma isolado — ela busca compreender a pessoa como um todo: corpo,
+                        mente, emoções, hormônios, metabolismo, estilo de vida e até o nível de estresse diário.
+                    </p>
+
+                    <div class="bg-white/50 backdrop-blur-sm p-8 rounded-3xl shadow-sm border border-blush-100 my-10">
+                        <p class="text-lg text-charcoal/80 font-light italic mb-4">
+                            "Muitas vezes os exames estão “normais”, mas o paciente não se sente bem. Cansaço constante,
+                            insônia, ganho de peso, ansiedade, alterações hormonais…"
+                        </p>
+                        <p class="text-lg text-charcoal/80 font-light">
+                            Esses sinais não surgem do nada — eles indicam desequilíbrios que precisam ser investigados
+                            com profundidade.
+                        </p>
+                    </div>
+
+                    <p class="text-lg text-charcoal/80 font-light leading-relaxed">
+                        Na abordagem integrativa, a consulta é mais detalhada, o tempo é maior e o olhar é
+                        individualizado. Avaliamos:
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-6 font-light">
+                        <!-- Saúde Hormonal -->
+                        <div tabindex="0"
+                            class="group relative cursor-pointer bg-white/40 backdrop-blur-md p-5 rounded-2xl shadow-sm border border-blush-100 hover:bg-white hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blush-200">
+                            <div class="flex items-center space-x-3">
+                                <i data-feather="heart" class="text-blush-500 w-5 h-5 flex-shrink-0"></i>
+                                <span class="text-charcoal font-medium text-lg">Saúde hormonal</span>
+                            </div>
+                            <div
+                                class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] group-focus:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-in-out">
+                                <div class="overflow-hidden">
+                                    <p
+                                        class="text-sm text-charcoal/80 pt-3 leading-relaxed border-t border-blush-100/50 mt-3 relative z-10">
+                                        Avaliação detalhada dos eixos feminino, tireoidiano e adrenal. Buscamos o
+                                        equilíbrio natural para vitalidade, libido e regulação do ciclo menstrual.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Qualidade do Sono -->
+                        <div tabindex="0"
+                            class="group relative cursor-pointer bg-white/40 backdrop-blur-md p-5 rounded-2xl shadow-sm border border-blush-100 hover:bg-white hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blush-200">
+                            <div class="flex items-center space-x-3">
+                                <i data-feather="moon" class="text-blush-500 w-5 h-5 flex-shrink-0"></i>
+                                <span class="text-charcoal font-medium text-lg">Qualidade do sono</span>
+                            </div>
+                            <div
+                                class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] group-focus:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-in-out">
+                                <div class="overflow-hidden">
+                                    <p
+                                        class="text-sm text-charcoal/80 pt-3 leading-relaxed border-t border-blush-100/50 mt-3 relative z-10">
+                                        O sono é o pilar da recuperação celular. Investigamos distúrbios e aplicamos
+                                        estratégias para um descanso profundo e restaurador.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Alimentação -->
+                        <div tabindex="0"
+                            class="group relative cursor-pointer bg-white/40 backdrop-blur-md p-5 rounded-2xl shadow-sm border border-blush-100 hover:bg-white hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blush-200">
+                            <div class="flex items-center space-x-3">
+                                <i data-feather="coffee" class="text-blush-500 w-5 h-5 flex-shrink-0"></i>
+                                <span class="text-charcoal font-medium text-lg">Alimentação</span>
+                            </div>
+                            <div
+                                class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] group-focus:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-in-out">
+                                <div class="overflow-hidden">
+                                    <p
+                                        class="text-sm text-charcoal/80 pt-3 leading-relaxed border-t border-blush-100/50 mt-3 relative z-10">
+                                        A nutrição funcional como aliada no tratamento ginecológico. Adequamos a dieta
+                                        para nutrir o corpo e reduzir inflamações de forma sustentável.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Inflamação Metabólica -->
+                        <div tabindex="0"
+                            class="group relative cursor-pointer bg-white/40 backdrop-blur-md p-5 rounded-2xl shadow-sm border border-blush-100 hover:bg-white hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blush-200">
+                            <div class="flex items-center space-x-3">
+                                <i data-feather="activity" class="text-blush-500 w-5 h-5 flex-shrink-0"></i>
+                                <span class="text-charcoal font-medium text-lg">Inflamação metabólica</span>
+                            </div>
+                            <div
+                                class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] group-focus:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-in-out">
+                                <div class="overflow-hidden">
+                                    <p
+                                        class="text-sm text-charcoal/80 pt-3 leading-relaxed border-t border-blush-100/50 mt-3 relative z-10">
+                                        Muitas vezes silenciosa, afeta todo o seu bem-estar. Tratamos a raiz de
+                                        processos inflamatórios, saúde intestinal e prevenção de doenças.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Saúde Emocional -->
+                        <div tabindex="0"
+                            class="group relative cursor-pointer bg-white/40 backdrop-blur-md p-5 rounded-2xl shadow-sm border border-blush-100 hover:bg-white hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blush-200">
+                            <div class="flex items-center space-x-3">
+                                <i data-feather="smile" class="text-blush-500 w-5 h-5 flex-shrink-0"></i>
+                                <span class="text-charcoal font-medium text-lg">Saúde emocional</span>
+                            </div>
+                            <div
+                                class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] group-focus:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-in-out">
+                                <div class="overflow-hidden">
+                                    <p
+                                        class="text-sm text-charcoal/80 pt-3 leading-relaxed border-t border-blush-100/50 mt-3 relative z-10">
+                                        Mente e corpo interligados. Consideramos o impacto do estresse crônico,
+                                        ansiedade e emoções na sua fisiologia corporal e ginecológica.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Hábitos e Rotina -->
+                        <div tabindex="0"
+                            class="group relative cursor-pointer bg-white/40 backdrop-blur-md p-5 rounded-2xl shadow-sm border border-blush-100 hover:bg-white hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blush-200">
+                            <div class="flex items-center space-x-3">
+                                <i data-feather="compass" class="text-blush-500 w-5 h-5 flex-shrink-0"></i>
+                                <span class="text-charcoal font-medium text-lg">Hábitos e rotina</span>
+                            </div>
+                            <div
+                                class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] group-focus:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-in-out">
+                                <div class="overflow-hidden">
+                                    <p
+                                        class="text-sm text-charcoal/80 pt-3 leading-relaxed border-t border-blush-100/50 mt-3 relative z-10">
+                                        Pequenas ações geram transformações sólidas. Ajudamos a construir uma rotina
+                                        prazerosa e equilibrada que respeita seu ritmo biológico.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-lg text-charcoal/80 font-light leading-relaxed">
+                        O objetivo não é apenas tratar uma queixa pontual, mas reorganizar o terreno biológico para que
+                        o corpo volte a funcionar com equilíbrio.
+                    </p>
+
+                    <p class="text-lg text-charcoal/80 font-light leading-relaxed">
+                        A medicina integrativa une o melhor da medicina convencional com estratégias complementares
+                        baseadas em evidência científica, como ajustes no estilo de vida, suplementação individualizada,
+                        fitoterapia clínica, práticas de respiração e técnicas de regulação do estresse.
+                    </p>
+
+                    <div class="text-center mt-12 bg-blush-100/50 p-10 rounded-3xl">
+                        <p class="text-xl font-serif text-charcoal/90">
+                            É um cuidado mais profundo, mais humano e mais estratégico.
+                        </p>
+                        <p class="text-lg text-blush-500 mt-4 italic font-medium">
+                            "Porque saúde não é apenas ausência de doença — é energia, clareza mental e qualidade de
+                            vida."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Clinic Space Section -->
+        <section id="clinic" class="py-32 bg-blush-100 relative overflow-hidden">
+            <!-- Organic Top Divider -->
+            <div class="absolute top-0 w-full overflow-hidden leading-none z-10">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                    preserveAspectRatio="none" class="w-full h-16 fill-nude-200">
+                    <path
+                        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z">
+                    </path>
+                </svg>
+            </div>
+
+            <div class="container mx-auto px-6 max-w-6xl relative z-20 pt-10">
+                <div class="text-center mb-16 gs-reveal">
+                    <span class="text-sm tracking-[0.2em] text-blush-500 uppercase font-semibold">Nosso Ambiente</span>
+                    <h2 class="text-4xl md:text-5xl font-serif mt-4 text-charcoal">O Espaço</h2>
+                    <p class="mt-4 text-charcoal/70 max-w-2xl mx-auto font-light leading-relaxed">
+                        Um ambiente pensado em cada detalhe para proporcionar paz, acolhimento e harmonia. Além do
+                        cuidado médico,
+                        oferecemos um espaço que inspira autocuidado, com aromas suaves, fitoterapia clínica e
+                        tranquilidade que convida à meditação e respiração (Yoga).
+                    </p>
+                </div>
+
+                <!-- Gallery Grid -->
+                <!-- Replacing with actual clinic photos (no text overlays) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="h-96 rounded-3xl overflow-hidden gs-reveal shadow-lg group">
+                        <img src="assets/_DSC4964.webp" alt="Fachada da Clínica Dra. Kerly Helena" loading="lazy"
+                            width="1200" height="800"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <div class="h-96 rounded-[3rem] overflow-hidden gs-reveal shadow-lg group bg-nude-200">
+                        <img src="assets/_DSC4966.webp" alt="Interior da Clínica Dra. Kerly Helena em São Luís"
+                            loading="lazy" width="1200" height="800"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <div
+                        class="h-96 rounded-bl-[4rem] rounded-tr-[4rem] overflow-hidden gs-reveal shadow-lg group bg-nude-300">
+                        <img src="assets/_DSC4972.webp" alt="Detalhe do Consultório de Medicina Integrativa"
+                            loading="lazy" width="1200" height="800"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <div class="h-96 rounded-3xl overflow-hidden gs-reveal shadow-lg group">
+                        <img src="assets/_DSC4968.webp" alt="Ambiente acolhedor Clínica Ginecologia" loading="lazy"
+                            width="1200" height="800"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Curve transition -->
+            <div class="absolute bottom-0 w-full overflow-hidden leading-none rotate-180">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                    preserveAspectRatio="none" class="w-full h-24 fill-nude-200">
+                    <path
+                        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z">
+                    </path>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Google Reviews / Testimonials Section -->
+        <section id="depoimentos" class="py-32 bg-nude-200 relative">
+            <div class="container mx-auto px-6 max-w-6xl">
+                <div class="text-center mb-16 gs-reveal">
+                    <span class="text-sm tracking-[0.2em] text-blush-500 uppercase font-semibold">Ouvindo você</span>
+                    <h2 class="text-4xl md:text-5xl font-serif mt-4 text-charcoal">Depoimentos</h2>
+                    <p class="mt-4 text-charcoal/70 max-w-2xl mx-auto font-light leading-relaxed">
+                        Experiências reais de mulheres que confiaram em nossa abordagem para transformar sua saúde e
+                        qualidade de vida.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Review 1 -->
+                    <div
+                        class="bg-white/60 backdrop-blur-sm p-8 rounded-3xl shadow-sm border border-blush-100 gs-reveal hover:shadow-md transition-shadow">
+                        <div class="flex items-center space-x-2 mb-4">
+                            <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
+                            <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
+                            <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
+                            <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
+                            <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
+                        </div>
+                        <p class="text-charcoal/80 font-light italic mb-6">
+                            "Excelente profissional! A abordagem da Dra. Kerly vai muito além do sintoma; ela olha para
+                            a saúde como um todo. A visão integrativa sobre estilo de vida e bem-estar fez toda a
+                            diferença no meu tratamento. Recomendo muito!"
+                        </p>
+                        <hr class="border-blush-200/50 mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div
+                                class="w-10 h-10 bg-blush-200 rounded-full flex items-center justify-center text-charcoal font-serif font-bold">
+                                M</div>
+                            <span class="text-charcoal font-medium">Maysa Pinheiro</span>
+                        </div>
+                    </div>
+
+                    <!-- Review 2 -->
+                    <div
+                        class="bg-white/60 backdrop-blur-sm p-8 rounded-3xl shadow-sm border border-blush-100 gs-reveal hover:shadow-md transition-shadow">
+                        <div class="flex items-center space-x-2 mb-4">
+                            <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
+                            <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
+                            <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
+                            <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
+                            <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
+                        </div>
+                        <p class="text-charcoal/80 font-light italic mb-6">
+                            "Excelente atendimento e local muito acolhedor. A Dra Kerly é uma médica diferenciada e
+                            atenciosa. Com uma escuta ativa, tem uma visão geral da nossa saúde e dicas de melhorar bons
+                            hábitos. Minuciosa nos detalhes e exames é minha médica de todos os momentos. Recomendo as
+                            minhas amigas e a todos!"
+                        </p>
+                        <hr class="border-blush-200/50 mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div
+                                class="w-10 h-10 bg-blush-200 rounded-full flex items-center justify-center text-charcoal font-serif font-bold">
+                                F</div>
+                            <span class="text-charcoal font-medium">Flavia Miranda</span>
+                        </div>
+                    </div>
+
+                    <!-- Review 3 -->
+                    <div
+                        class="bg-white/60 backdrop-blur-sm p-8 rounded-3xl shadow-sm border border-blush-100 gs-reveal hover:shadow-md transition-shadow">
+                        <div class="flex items-center space-x-2 mb-4">
+                            <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
+                            <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
+                            <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
+                            <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
+                            <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
+                        </div>
+                        <p class="text-charcoal/80 font-light italic mb-6">
+                            "Excelente profissional, dedicada e competente, sempre buscando soluções e novos
+                            conhecimentos. Parabéns Dra. Kerly você é inspiração para todas nós."
+                        </p>
+                        <hr class="border-blush-200/50 mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div
+                                class="w-10 h-10 bg-blush-200 rounded-full flex items-center justify-center text-charcoal font-serif font-bold">
+                                M</div>
+                            <span class="text-charcoal font-medium">Maria Inês Sousa</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-12">
+                    <a href="https://share.google/mytP6jGcdTPTe1DJ4" target="_blank" rel="noopener noreferrer"
+                        class="inline-flex items-center space-x-2 text-blush-500 font-medium tracking-wide border-b border-blush-500 pb-1 hover:text-blush-400 hover:border-blush-400 transition-colors">
+                        <span>Ver mais avaliações no Google</span>
+                        <i data-feather="external-link" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Bottom Curve transition -->
+            <div class="absolute bottom-0 w-full overflow-hidden leading-none rotate-180">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                    preserveAspectRatio="none" class="w-full h-24 fill-sand-200">
+                    <path
+                        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z">
+                    </path>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Location Section -->
+        <section id="location" class="py-24 bg-sand-200 relative">
+            <div class="container mx-auto px-6 max-w-5xl">
+                <div
+                    class="bg-white/60 backdrop-blur-lg rounded-3xl p-10 md:p-16 shadow-xl gs-reveal flex flex-col md:flex-row gap-12 items-center border border-white/50">
+                    <div class="w-full md:w-1/2 space-y-6">
+                        <h2 class="text-3xl font-serif text-charcoal">Venha nos Visitar</h2>
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-4">
+                                <i data-feather="map-pin" class="w-6 h-6 text-blush-500 mt-1 flex-shrink-0"></i>
+                                <p class="text-charcoal/80 font-light">
+                                    <strong class="font-medium text-charcoal block mb-1">Condomínio Edifício
+                                        Monumental</strong>
+                                    Av. Coronel Colares Moreira, Sala 310<br>
+                                    Jardim Renascença<br>
+                                    São Luís - MA
+                                </p>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <i data-feather="phone" class="w-6 h-6 text-blush-500 mt-1 flex-shrink-0"></i>
+                                <p class="text-charcoal/80 font-light">
+                                    <strong class="font-medium text-charcoal block mb-1">WhatsApp</strong>
+                                    +55 (98) 98153-2153
+                                </p>
+                            </div>
+                        </div>
+                        <div class="pt-4 flex flex-col sm:flex-row gap-4">
+                            <a href="https://wa.me/5598981532153" target="_blank" rel="noopener noreferrer"
+                                class="inline-flex items-center space-x-2 bg-blush-500 hover:bg-blush-400 text-white px-8 py-3 rounded-full transition-colors w-full sm:w-auto justify-center shadow-md">
+                                <span>Agendar Consulta</span>
+                            </a>
+                            <a href="https://share.google/mytP6jGcdTPTe1DJ4" target="_blank" rel="noopener noreferrer"
+                                class="inline-flex items-center space-x-2 bg-white hover:bg-nude-100 text-charcoal border border-blush-200 px-8 py-3 rounded-full transition-colors w-full sm:w-auto justify-center shadow-sm">
+                                <i data-feather="map" class="w-4 h-4"></i>
+                                <span>Ver no Google Maps</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div
+                        class="w-full md:w-1/2 h-64 md:h-80 rounded-2xl overflow-hidden shadow-inner border border-blush-200">
+                        <a href="https://share.google/mytP6jGcdTPTe1DJ4" target="_blank" rel="noopener noreferrer"
+                            class="block w-full h-full relative group">
+                            <div
+                                class="absolute inset-0 bg-charcoal/10 group-hover:bg-transparent transition-colors z-10">
+                            </div>
+                            <iframe
+                                src="https://maps.google.com/maps?q=Dra.+Kerly+Helena+Ginecologia+Integrativa+Maranhão&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                                title="Mapa do consultório Dra Kerly Helena em São Luís" width="100%" height="100%"
+                                style="border:0; pointer-events: none;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                class="grayscale opacity-90 contrast-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">
+                            </iframe>
+                            <div
+                                class="absolute bottom-4 right-4 z-20 bg-white/90 backdrop-blur px-4 py-2 rounded-lg text-sm font-medium text-charcoal shadow-lg shadow-black/10 flex items-center space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <span>Abrir mapa</span>
+                                <i data-feather="external-link" class="w-3 h-3"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-sand-200 py-12 border-t border-blush-200/50">
+        <div class="container mx-auto px-6 text-center space-y-8">
+            <!-- Social Links -->
+            <div class="flex flex-col items-center space-y-6">
+                <p class="text-2xl md:text-3xl font-serif text-charcoal">Me acompanhe nas minhas redes</p>
+                <div class="flex justify-center items-center space-x-8">
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/kerly.helena?igsh=MXM5N2lyZDFkYjNxZQ==" target="_blank"
+                        rel="noopener noreferrer" aria-label="Perfil da Dra. Kerly Helena no Instagram"
+                        class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center text-charcoal hover:text-white hover:bg-blush-500 transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-2 group">
+                        <i data-feather="instagram"
+                            class="w-8 h-8 md:w-10 md:h-10 transition-transform group-hover:scale-110"></i>
+                    </a>
+                    <!-- TikTok -->
+                    <a href="https://www.tiktok.com/@drakerlyhelena?_r=1&_t=ZS-946xywv1cAx" target="_blank"
+                        rel="noopener noreferrer" aria-label="Perfil da Dra. Kerly Helena no TikTok"
+                        class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center text-charcoal hover:text-white hover:bg-blush-500 transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-2 group">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="md:w-10 md:h-10 transition-transform group-hover:scale-110">
+                            <path
+                                d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <!-- Location Info -->
+            <div
+                class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-6 w-full max-w-4xl mx-auto pt-4 pb-6">
+                <div
+                    class="flex items-center space-x-4 bg-white/60 backdrop-blur-sm px-6 py-4 rounded-2xl border border-white/50 shadow-sm w-full md:w-auto transform hover:-translate-y-1 transition-transform duration-300">
+                    <div class="bg-blush-100 p-2.5 rounded-full text-blush-500 shadow-inner">
+                        <i data-feather="map-pin" class="w-5 h-5"></i>
+                    </div>
+                    <span class="text-charcoal font-medium text-left">Atendimento em São Luís – Maranhão</span>
+                </div>
+                <div
+                    class="flex items-center space-x-4 bg-white/60 backdrop-blur-sm px-6 py-4 rounded-2xl border border-white/50 shadow-sm w-full md:w-auto transform hover:-translate-y-1 transition-transform duration-300">
+                    <div class="bg-blush-100 p-2.5 rounded-full text-blush-500 shadow-inner">
+                        <i data-feather="navigation" class="w-5 h-5"></i>
+                    </div>
+                    <span class="text-charcoal font-medium text-left">Consultório no Monumental Shopping</span>
+                </div>
+            </div>
+
+            <div class="space-y-2">
+                <p class="text-charcoal/80 text-sm font-light">
+                    &copy; 2024 Dra. Kerly Helena - Ginecologia Integrativa. Todos os direitos reservados.
+                </p>
+                <p class="text-charcoal/70 text-xs mt-2">
+                    "Pausa e Reconexão"
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- GSAP for Smooth Scroll Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+
+    <!-- Setup Icons -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => { feather.replace(); });
+    </script>
+
+    <!-- Custom JS -->
+    <script src="script.js" defer></script>
+</body>
+
+</html>
