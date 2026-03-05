@@ -100,7 +100,7 @@
                 <div class="flex flex-col md:flex-row items-center gap-12">
                     <div class="w-full md:w-1/2 gs-reveal">
                         <h1
-                            class="font-serif text-5xl md:text-6xl lg:text-7xl font-bold leading-[0.9] mb-6 text-charcoal">
+                            class="font-serif text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] mb-6 text-charcoal">
                             Saúde da Mulher sob um <br />
                             <span class="text-blush-500 italic font-light">Olhar Integrativo</span>
                         </h1>
@@ -108,11 +108,20 @@
                             Uma jornada de reconexão do corpo, mente e essência. Um cuidado que transcende o
                             convencional.
                         </p>
-                        <a href="#manifesto"
-                            class="inline-flex items-center space-x-2 text-blush-500 font-medium tracking-wide border-b border-blush-500 pb-1 hover:text-blush-400 hover:border-blush-400 transition-colors">
-                            <span>Conheça a abordagem</span>
-                            <i data-feather="arrow-down" class="w-4 h-4"></i>
-                        </a>
+                        <div class="flex flex-col sm:flex-row items-center gap-6 sm:gap-8 mt-12 pb-6">
+                            <button onclick="openSymptomModal()"
+                                class="relative inline-flex items-center justify-center space-x-2 bg-blush-500 hover:bg-blush-400 text-white px-8 py-4 md:px-10 md:py-5 rounded-full transition-all duration-300 shadow-lg hover:shadow-2xl font-medium tracking-wide w-full sm:w-auto overflow-hidden group animate-breathe hover:animate-none hover:-translate-y-1">
+                                <span class="relative z-10 text-lg">Quero entender meus sintomas</span>
+                                <i data-feather="arrow-right"
+                                    class="w-5 h-5 relative z-10 transition-transform group-hover:translate-x-1"></i>
+                            </button>
+
+                            <a href="#manifesto"
+                                class="inline-flex items-center justify-center space-x-2 text-blush-500 font-medium tracking-wide border-b border-transparent hover:border-blush-400 pb-1 hover:text-blush-400 transition-colors w-full sm:w-auto opacity-80 hover:opacity-100">
+                                <span>Conheça a abordagem</span>
+                                <i data-feather="arrow-down" class="w-4 h-4"></i>
+                            </a>
+                        </div>
                     </div>
 
                     <div class="w-full md:w-1/2 relative gs-reveal">
@@ -661,6 +670,363 @@
             </div>
         </div>
     </footer>
+
+    <!-- Symptom Questionnaire Modal -->
+    <div id="symptom-modal"
+        class="fixed inset-0 z-[100] hidden items-center justify-center opacity-0 transition-opacity duration-300 p-4 sm:p-6">
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-charcoal/40 backdrop-blur-sm" onclick="closeSymptomModal()"></div>
+
+        <!-- Modal Content -->
+        <div class="relative bg-sand-100 w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl shadow-2xl p-6 md:p-8 transform scale-95 transition-transform duration-300 text-charcoal flex flex-col"
+            id="symptom-modal-content">
+            <!-- Close Button -->
+            <button onclick="closeSymptomModal()" type="button"
+                class="absolute top-4 right-4 z-[60] text-charcoal/50 hover:text-blush-500 transition-colors bg-white/80 backdrop-blur-md hover:bg-white rounded-full p-2 shadow-sm border border-blush-100/50">
+                <i data-feather="x" class="w-6 h-6"></i>
+            </button>
+
+            <!-- Step 1: Intro -->
+            <div id="modal-step-1" class="space-y-4 text-center sm:pt-2">
+                <!-- Decorative Icon -->
+                <div
+                    class="inline-flex items-center justify-center w-14 h-14 bg-nude-300/50 text-blush-500 rounded-full mb-1 mx-auto">
+                    <i data-feather="sun" class="w-8 h-8 stroke-[1.5]"></i>
+                </div>
+
+                <h1 class="text-2xl md:text-4xl font-serif text-charcoal leading-tight">
+                    Antes de falar sobre tratamento, <br class="hidden sm:block" /><span
+                        class="text-blush-500 italic">quero entender você.</span>
+                </h1>
+
+                <div class="max-w-xl mx-auto space-y-3 text-charcoal/80 font-light leading-relaxed text-base">
+                    <p class="text-lg font-medium text-charcoal">Cada mulher vive seus sintomas de forma única.</p>
+                    <p>Antes de explicar como funciona a consulta, gostaria de entender um pouco do que você está
+                        sentindo.</p>
+
+                    <div
+                        class="bg-white/60 backdrop-blur-sm rounded-3xl p-5 sm:p-6 shadow-sm border border-blush-100/50 mt-4 relative overflow-hidden group">
+                        <!-- subtle shine effect -->
+                        <div
+                            class="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/40 to-white/0 -translate-x-full group-hover:animate-[shimmer_2s_infinite]">
+                        </div>
+
+                        <p class="mb-1">Responda esse pequeno questionário. Leva cerca de <strong>2 minutos</strong> e
+                            me ajuda a te orientar de forma mais individualizada.</p>
+                        <p class="font-medium text-blush-500 text-lg font-serif italic mt-2">Você não precisa passar por
+                            isso sozinha.</p>
+                    </div>
+                </div>
+
+                <div class="pt-4">
+                    <p class="text-sm uppercase tracking-widest text-charcoal/50 font-medium mb-3">Conte um pouco sobre
+                        o que está acontecendo</p>
+                    <button onclick="nextStep(2)"
+                        class="w-full sm:w-auto inline-flex justify-center items-center space-x-3 bg-blush-500 hover:bg-blush-400 text-white px-10 py-3 sm:py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-2xl font-medium text-lg group hover:-translate-y-1">
+                        <span>Iniciar Questionário</span>
+                        <i data-feather="arrow-right"
+                            class="w-5 h-5 transition-transform group-hover:translate-x-1 stroke-[2.5]"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 2: Questionnaire -->
+            <div id="modal-step-2" class="space-y-10 hidden">
+                <div
+                    class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-blush-200/50 pb-6 mb-8 mt-2 pr-8 sm:pr-0">
+                    <h2 class="text-3xl font-serif text-charcoal">Suas informações</h2>
+                    <span
+                        class="text-xs sm:text-sm font-medium text-blush-500 bg-blush-100/50 px-4 py-1.5 rounded-full flex items-center gap-2 w-max">
+                        <i data-feather="lock" class="w-3 h-3"></i> Confidencial
+                    </span>
+                </div>
+
+                <form id="symptom-form" class="space-y-8">
+                    <!-- Q1 -->
+                    <div class="space-y-4">
+                        <label class="block text-lg font-medium text-charcoal">1. O que mais tem te incomodado
+                            atualmente?</label>
+                        <p class="text-sm text-charcoal/60 -mt-2">(pode marcar mais de uma opção)</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 font-light">
+                            <label
+                                class="flex items-start space-x-3 cursor-pointer group p-4 rounded-2xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
+                                <input type="checkbox" name="q1" value="Cansaço ou falta de energia"
+                                    class="form-checkbox text-blush-500 rounded border-blush-200 focus:ring-blush-500/50 cursor-pointer w-5 h-5 mt-0.5 transition-colors">
+                                <span class="group-hover:text-blush-500 transition-colors leading-snug">Cansaço ou falta
+                                    de
+                                    energia</span>
+                            </label>
+                            <label
+                                class="flex items-start space-x-3 cursor-pointer group p-4 rounded-2xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
+                                <input type="checkbox" name="q1" value="Dificuldade para dormir ou sono leve"
+                                    class="form-checkbox text-blush-500 rounded border-blush-200 focus:ring-blush-500/50 cursor-pointer w-5 h-5 mt-0.5 transition-colors">
+                                <span class="group-hover:text-blush-500 transition-colors leading-snug">Dificuldade para
+                                    dormir ou
+                                    sono leve</span>
+                            </label>
+                            <label
+                                class="flex items-start space-x-3 cursor-pointer group p-4 rounded-2xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
+                                <input type="checkbox" name="q1" value="Ansiedade, estresse ou irritabilidade"
+                                    class="form-checkbox text-blush-500 rounded border-blush-200 focus:ring-blush-500/50 cursor-pointer w-5 h-5 mt-0.5 transition-colors">
+                                <span class="group-hover:text-blush-500 transition-colors leading-snug">Ansiedade,
+                                    estresse ou
+                                    irritabilidade</span>
+                            </label>
+                            <label
+                                class="flex items-start space-x-3 cursor-pointer group p-4 rounded-2xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
+                                <input type="checkbox" name="q1" value="Ganho de peso ou dificuldade para emagrecer"
+                                    class="form-checkbox text-blush-500 rounded border-blush-200 focus:ring-blush-500/50 cursor-pointer w-5 h-5 mt-0.5 transition-colors">
+                                <span class="group-hover:text-blush-500 transition-colors leading-snug">Ganho de peso ou
+                                    dificuldade
+                                    para emagrecer</span>
+                            </label>
+                            <label
+                                class="flex items-start space-x-3 cursor-pointer group p-4 rounded-2xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
+                                <input type="checkbox" name="q1" value="Ondas de calor ou sintomas da menopausa"
+                                    class="form-checkbox text-blush-500 rounded border-blush-200 focus:ring-blush-500/50 cursor-pointer w-5 h-5 mt-0.5 transition-colors">
+                                <span class="group-hover:text-blush-500 transition-colors leading-snug">Ondas de calor
+                                    ou sintomas da
+                                    menopausa</span>
+                            </label>
+                            <label
+                                class="flex items-start space-x-3 cursor-pointer group p-4 rounded-2xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
+                                <input type="checkbox" name="q1" value="Baixa libido"
+                                    class="form-checkbox text-blush-500 rounded border-blush-200 focus:ring-blush-500/50 cursor-pointer w-5 h-5 mt-0.5 transition-colors">
+                                <span class="group-hover:text-blush-500 transition-colors leading-snug">Baixa
+                                    libido</span>
+                            </label>
+                            <label
+                                class="flex items-start space-x-3 cursor-pointer group p-4 rounded-2xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
+                                <input type="checkbox" name="q1" value="TPM intensa ou alterações de humor"
+                                    class="form-checkbox text-blush-500 rounded border-blush-200 focus:ring-blush-500/50 cursor-pointer w-5 h-5 mt-0.5 transition-colors">
+                                <span class="group-hover:text-blush-500 transition-colors leading-snug">TPM intensa ou
+                                    alterações de
+                                    humor</span>
+                            </label>
+                            <label
+                                class="flex items-start space-x-3 cursor-pointer group p-4 rounded-2xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
+                                <input type="checkbox" name="q1" value="Falta de concentração ou memória ruim"
+                                    class="form-checkbox text-blush-500 rounded border-blush-200 focus:ring-blush-500/50 cursor-pointer w-5 h-5 mt-0.5 transition-colors">
+                                <span class="group-hover:text-blush-500 transition-colors leading-snug">Falta de
+                                    concentração ou
+                                    memória ruim</span>
+                            </label>
+                        </div>
+                        <div class="mt-2">
+                            <input type="text" name="q1_other" placeholder="Outro..."
+                                class="w-full mt-2 border-b border-blush-200 bg-transparent py-3 focus:outline-none focus:border-blush-500 transition-colors placeholder-charcoal/40 font-light text-charcoal">
+                        </div>
+                        <div id="q1-error" class="hidden text-red-500 text-sm mt-1">Selecione pelo menos uma opção.
+                        </div>
+                    </div>
+
+                    <!-- Q2 -->
+                    <div class="space-y-4">
+                        <label class="block text-lg font-medium text-charcoal">2. Há quanto tempo você percebe esses
+                            sintomas?</label>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 font-light">
+                            <label
+                                class="flex items-center space-x-3 cursor-pointer group p-4 rounded-2xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
+                                <input type="radio" name="q2" value="Menos de 1 mês"
+                                    class="form-radio text-blush-500 border-blush-200 focus:ring-blush-500/50 cursor-pointer w-5 h-5 transition-colors"
+                                    required>
+                                <span class="group-hover:text-blush-500 transition-colors">Menos de 1 mês</span>
+                            </label>
+                            <label
+                                class="flex items-center space-x-3 cursor-pointer group p-4 rounded-2xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
+                                <input type="radio" name="q2" value="Entre 1 e 3 meses"
+                                    class="form-radio text-blush-500 border-blush-200 focus:ring-blush-500/50 cursor-pointer w-5 h-5 transition-colors">
+                                <span class="group-hover:text-blush-500 transition-colors">Entre 1 e 3 meses</span>
+                            </label>
+                            <label
+                                class="flex items-center space-x-3 cursor-pointer group p-4 rounded-2xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
+                                <input type="radio" name="q2" value="Entre 3 meses e 1 ano"
+                                    class="form-radio text-blush-500 border-blush-200 focus:ring-blush-500/50 cursor-pointer w-5 h-5 transition-colors">
+                                <span class="group-hover:text-blush-500 transition-colors">Entre 3 meses e 1 ano</span>
+                            </label>
+                            <label
+                                class="flex items-center space-x-3 cursor-pointer group p-4 rounded-2xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
+                                <input type="radio" name="q2" value="Mais de 1 ano"
+                                    class="form-radio text-blush-500 border-blush-200 focus:ring-blush-500/50 cursor-pointer w-5 h-5 transition-colors">
+                                <span class="group-hover:text-blush-500 transition-colors">Mais de 1 ano</span>
+                            </label>
+                        </div>
+                        <div id="q2-error" class="hidden text-red-500 text-sm mt-1">Obrigatório.</div>
+                    </div>
+
+                    <!-- Q3 -->
+                    <div class="space-y-4">
+                        <label class="block text-lg font-medium text-charcoal">3. De 0 a 10, quanto esses sintomas
+                            impactam sua qualidade de vida?</label>
+                        <div class="flex justify-between text-sm text-charcoal/60 font-light">
+                            <span>0 = quase não atrapalha</span>
+                            <span>10 = atrapalha muito</span>
+                        </div>
+                        <input type="range" name="q3" min="0" max="10" value="5"
+                            class="w-full accent-blush-500 h-2 bg-blush-200 rounded-lg appearance-none cursor-pointer"
+                            oninput="document.getElementById('q3-val').innerText = this.value">
+                        <div class="text-center font-bold text-blush-500 text-xl" id="q3-val">5</div>
+                    </div>
+
+                    <!-- Q4 -->
+                    <div class="space-y-4">
+                        <label class="block text-lg font-medium text-charcoal">4. O que você gostaria de melhorar
+                            primeiro?</label>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 font-light">
+                            <label
+                                class="flex items-start space-x-3 cursor-pointer group p-4 rounded-2xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
+                                <input type="radio" name="q4" value="Dormir melhor"
+                                    class="form-radio text-blush-500 border-blush-200 focus:ring-blush-500/50 cursor-pointer w-5 h-5 mt-0.5 transition-colors"
+                                    required>
+                                <span class="group-hover:text-blush-500 transition-colors leading-snug">Dormir
+                                    melhor</span>
+                            </label>
+                            <label
+                                class="flex items-start space-x-3 cursor-pointer group p-4 rounded-2xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
+                                <input type="radio" name="q4" value="Ter mais energia durante o dia"
+                                    class="form-radio text-blush-500 border-blush-200 focus:ring-blush-500/50 cursor-pointer w-5 h-5 mt-0.5 transition-colors">
+                                <span class="group-hover:text-blush-500 transition-colors leading-snug">Ter mais energia
+                                    durante o
+                                    dia</span>
+                            </label>
+                            <label
+                                class="flex items-start space-x-3 cursor-pointer group p-4 rounded-2xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
+                                <input type="radio" name="q4" value="Reduzir ansiedade ou estresse"
+                                    class="form-radio text-blush-500 border-blush-200 focus:ring-blush-500/50 cursor-pointer w-5 h-5 mt-0.5 transition-colors">
+                                <span class="group-hover:text-blush-500 transition-colors leading-snug">Reduzir
+                                    ansiedade ou
+                                    estresse</span>
+                            </label>
+                            <label
+                                class="flex items-start space-x-3 cursor-pointer group p-4 rounded-2xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
+                                <input type="radio" name="q4" value="Melhorar metabolismo ou peso"
+                                    class="form-radio text-blush-500 border-blush-200 focus:ring-blush-500/50 cursor-pointer w-5 h-5 mt-0.5 transition-colors">
+                                <span class="group-hover:text-blush-500 transition-colors leading-snug">Melhorar
+                                    metabolismo ou
+                                    peso</span>
+                            </label>
+                            <label
+                                class="flex items-start space-x-3 cursor-pointer group p-4 rounded-2xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
+                                <input type="radio" name="q4" value="Melhorar sintomas da menopausa"
+                                    class="form-radio text-blush-500 border-blush-200 focus:ring-blush-500/50 cursor-pointer w-5 h-5 mt-0.5 transition-colors">
+                                <span class="group-hover:text-blush-500 transition-colors leading-snug">Melhorar
+                                    sintomas da
+                                    menopausa</span>
+                            </label>
+                            <label
+                                class="flex items-start space-x-3 cursor-pointer group p-4 rounded-2xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
+                                <input type="radio" name="q4" value="Melhorar libido ou vida íntima"
+                                    class="form-radio text-blush-500 border-blush-200 focus:ring-blush-500/50 cursor-pointer w-5 h-5 mt-0.5 transition-colors">
+                                <span class="group-hover:text-blush-500 transition-colors leading-snug">Melhorar libido
+                                    ou vida
+                                    íntima</span>
+                            </label>
+                            <label
+                                class="flex items-start space-x-3 cursor-pointer group p-4 rounded-2xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
+                                <input type="radio" name="q4" value="Outro"
+                                    class="form-radio text-blush-500 border-blush-200 focus:ring-blush-500/50 cursor-pointer w-5 h-5 mt-0.5 transition-colors">
+                                <span class="group-hover:text-blush-500 transition-colors leading-snug">Outro</span>
+                            </label>
+                        </div>
+                        <div id="q4-error" class="hidden text-red-500 text-sm mt-1">Obrigatório.</div>
+                    </div>
+
+                    <!-- Q5 (Contact info) -->
+                    <div class="space-y-4 pt-4 border-t border-blush-200/50">
+                        <label class="block text-lg font-medium text-charcoal">5. Para que eu possa te orientar no
+                            próximo passo:</label>
+
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm text-charcoal/70 mb-1">Nome:</label>
+                                <input type="text" id="user-name" required
+                                    class="w-full border-b border-blush-200 bg-transparent py-2 focus:outline-none focus:border-blush-500 transition-colors placeholder-charcoal/40 font-light text-charcoal">
+                                <div id="name-error" class="hidden text-red-500 text-sm mt-1">Obrigatório.</div>
+                            </div>
+                            <div>
+                                <label class="block text-sm text-charcoal/70 mb-1">WhatsApp:</label>
+                                <input type="tel" id="user-phone" required
+                                    class="w-full border-b border-blush-200 bg-transparent py-2 focus:outline-none focus:border-blush-500 transition-colors placeholder-charcoal/40 font-light text-charcoal">
+                                <div id="phone-error" class="hidden text-red-500 text-sm mt-1">Obrigatório.</div>
+                            </div>
+                            <div>
+                                <label class="block text-sm text-charcoal/70 mb-2 mt-4">Melhor horário para
+                                    conversar:</label>
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 font-light">
+                                    <label
+                                        class="flex items-center justify-center space-x-2 cursor-pointer group p-3 rounded-xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
+                                        <input type="radio" name="q_time" value="Manhã"
+                                            class="form-radio text-blush-500 border-blush-200 focus:ring-blush-500/50 cursor-pointer w-4 h-4 transition-colors"
+                                            required>
+                                        <span
+                                            class="group-hover:text-blush-500 transition-colors font-medium">Manhã</span>
+                                    </label>
+                                    <label
+                                        class="flex items-center justify-center space-x-2 cursor-pointer group p-3 rounded-xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
+                                        <input type="radio" name="q_time" value="Tarde"
+                                            class="form-radio text-blush-500 border-blush-200 focus:ring-blush-500/50 cursor-pointer w-4 h-4 transition-colors">
+                                        <span
+                                            class="group-hover:text-blush-500 transition-colors font-medium">Tarde</span>
+                                    </label>
+                                    <label
+                                        class="flex items-center justify-center space-x-2 cursor-pointer group p-3 rounded-xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
+                                        <input type="radio" name="q_time" value="Noite"
+                                            class="form-radio text-blush-500 border-blush-200 focus:ring-blush-500/50 cursor-pointer w-4 h-4 transition-colors">
+                                        <span
+                                            class="group-hover:text-blush-500 transition-colors font-medium">Noite</span>
+                                    </label>
+                                </div>
+                                <div id="time-error" class="hidden text-red-500 text-sm mt-1">Obrigatório.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 flex justify-between items-center">
+                        <button type="button" onclick="nextStep(1)"
+                            class="text-charcoal/60 hover:text-blush-500 font-medium transition-colors">Voltar</button>
+                        <button type="button" onclick="submitForm()"
+                            class="bg-blush-500 hover:bg-blush-400 text-white px-8 py-3 rounded-full transition-colors shadow-md font-medium">Avançar</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Step 3: Conclusion -->
+            <div id="modal-step-3" class="space-y-8 hidden pt-6 sm:pt-10">
+                <div class="text-center space-y-6">
+                    <!-- Beating heart icon -->
+                    <div
+                        class="inline-flex items-center justify-center w-24 h-24 bg-blush-100/50 text-blush-500 rounded-full mb-2 mx-auto relative">
+                        <div class="absolute inset-0 rounded-full bg-blush-200/30 animate-ping opacity-75"></div>
+                        <i data-feather="heart" class="w-12 h-12 fill-current animate-pulse"></i>
+                    </div>
+
+                    <h2 class="text-3xl md:text-4xl font-serif text-charcoal leading-tight max-w-lg mx-auto">
+                        Obrigada por compartilhar um pouco de você.
+                    </h2>
+                </div>
+
+                <div
+                    class="space-y-5 text-charcoal/80 font-light leading-relaxed bg-white/60 backdrop-blur-sm p-8 rounded-3xl shadow-sm border border-blush-100/50 text-lg text-center max-w-xl mx-auto">
+                    <p>Muitas vezes esses sintomas são sinais de que o corpo precisa de atenção e equilíbrio.</p>
+                    <p>A medicina integrativa busca olhar para você de forma completa — <span
+                            class="font-medium text-charcoal">hormônios, metabolismo, emoções e estilo de vida</span>.
+                    </p>
+                    <p class="text-blush-500 font-medium pt-2">No próximo passo, vamos conversar com calma para entender
+                        seu caso.</p>
+                </div>
+
+                <div class="pt-8 pb-4 text-center">
+                    <button onclick="sendToWhatsApp()"
+                        class="w-full sm:w-auto inline-flex items-center justify-center space-x-3 bg-blush-500 hover:bg-blush-400 text-white px-10 py-5 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl font-medium text-lg group hover:-translate-y-1">
+                        <i data-feather="message-circle" class="w-6 h-6 stroke-[2]"></i>
+                        <span>Enviar respostas para a equipe</span>
+                    </button>
+                    <p class="text-sm text-charcoal/50 mt-4 font-light">Você será redirecionada para o nosso WhatsApp
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- GSAP for Smooth Scroll Animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>

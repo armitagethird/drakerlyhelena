@@ -139,3 +139,206 @@ document.addEventListener("DOMContentLoaded", (event) => {
         });
     }
 });
+
+// --- Modal Questionnaire Logic ---
+
+window.openSymptomModal = function () {
+    const modal = document.getElementById('symptom-modal');
+    const modalContent = document.getElementById('symptom-modal-content');
+    modal.classList.remove('hidden');
+    // small timeout to allow display:block to apply before animating opacity/transform
+    setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        modalContent.classList.remove('scale-95');
+    }, 10);
+    document.body.style.overflow = 'hidden'; // prevent background scrolling
+
+    // Reset to step 1
+    nextStep(1);
+
+    // Reset form errors and fields on open if desired, but 
+    // keeping previous answers might be nice too.
+};
+
+window.closeSymptomModal = function () {
+    const modal = document.getElementById('symptom-modal');
+    const modalContent = document.getElementById('symptom-modal-content');
+    modal.classList.add('opacity-0');
+    modalContent.classList.add('scale-95');
+    setTimeout(() => {
+        modal.classList.add('hidden');
+    }, 300); // match transition duration
+    document.body.style.overflow = '';
+};
+
+window.nextStep = function (step) {
+    const steps = [1, 2, 3];
+    const nextStepDiv = document.getElementById(`modal-step-${step}`);
+
+    // Find currently visible step
+    let currentStepDiv = null;
+    steps.forEach(s => {
+        const div = document.getElementById(`modal-step-${s}`);
+        if (div && !div.classList.contains('hidden') && s !== step) {
+            currentStepDiv = div;
+        }
+    });
+
+    if (currentStepDiv) {
+        // Animate out current step
+        gsap.to(currentStepDiv, {
+            opacity: 0,
+            y: -20,
+            duration: 0.3,
+            ease: "power2.in",
+            onComplete: () => {
+                currentStepDiv.classList.add('hidden');
+                showNext();
+            }
+        });
+    } else {
+        showNext();
+    }
+
+    function showNext() {
+        // Reset properties before showing
+        gsap.set(nextStepDiv, { opacity: 0, y: 20 });
+        nextStepDiv.classList.remove('hidden');
+
+        gsap.to(nextStepDiv, {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            ease: "power2.out"
+        });
+
+        // Scroll modal to top smoothly
+        if (step === 2 || step === 3) {
+            const modalContent = document.getElementById('symptom-modal-content');
+            modalContent.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    }
+};
+
+window.submitForm = function () {
+    // Validate form
+    let isValid = true;
+    let firstErrorElement = null;
+
+    // Q1
+    const q1Checked = document.querySelectorAll('input[name="q1"]:checked');
+    const q1Other = document.querySelector('input[name="q1_other"]').value;
+    if (q1Checked.length === 0 && q1Other.trim() === '') {
+        document.getElementById('q1-error').classList.remove('hidden');
+        isValid = false;
+        if (!firstErrorElement) firstErrorElement = document.getElementById('q1-error');
+    } else {
+        document.getElementById('q1-error').classList.add('hidden');
+    }
+
+    // Q2
+    const q2Checked = document.querySelector('input[name="q2"]:checked');
+    if (!q2Checked) {
+        document.getElementById('q2-error').classList.remove('hidden');
+        isValid = false;
+        if (!firstErrorElement) firstErrorElement = document.getElementById('q2-error');
+    } else {
+        document.getElementById('q2-error').classList.add('hidden');
+    }
+
+    // Q4
+    const q4Checked = document.querySelector('input[name="q4"]:checked');
+    if (!q4Checked) {
+        document.getElementById('q4-error').classList.remove('hidden');
+        isValid = false;
+        if (!firstErrorElement) firstErrorElement = document.getElementById('q4-error');
+    } else {
+        document.getElementById('q4-error').classList.add('hidden');
+    }
+
+    // Name
+    const name = document.getElementById('user-name').value;
+    if (name.trim() === '') {
+        document.getElementById('name-error').classList.remove('hidden');
+        isValid = false;
+        if (!firstErrorElement) firstErrorElement = document.getElementById('name-error');
+    } else {
+        document.getElementById('name-error').classList.add('hidden');
+    }
+
+    // Phone
+    const phone = document.getElementById('user-phone').value;
+    if (phone.trim() === '') {
+        document.getElementById('phone-error').classList.remove('hidden');
+        isValid = false;
+        if (!firstErrorElement) firstErrorElement = document.getElementById('phone-error');
+    } else {
+        document.getElementById('phone-error').classList.add('hidden');
+    }
+
+    // Time
+    const timeChecked = document.querySelector('input[name="q_time"]:checked');
+    if (!timeChecked) {
+        document.getElementById('time-error').classList.remove('hidden');
+        isValid = false;
+        if (!firstErrorElement) firstErrorElement = document.getElementById('time-error');
+    } else {
+        document.getElementById('time-error').classList.add('hidden');
+    }
+
+    if (isValid) {
+        nextStep(3);
+    } else {
+        // Scroll to the first error
+        if (firstErrorElement) {
+            firstErrorElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }
+};
+
+window.sendToWhatsApp = function () {
+    // Collect data
+    let q1Answers = Array.from(document.querySelectorAll('input[name="q1"]:checked')).map(el => el.value);
+    const q1Other = document.querySelector('input[name="q1_other"]').value;
+    if (q1Other.trim() !== '') {
+        q1Answers.push(q1Other.trim());
+    }
+    const q1String = q1Answers.join(', ');
+
+    const q2 = document.querySelector('input[name="q2"]:checked').value;
+    const q3 = document.querySelector('input[name="q3"]').value;
+    const q4 = document.querySelector('input[name="q4"]:checked').value;
+
+    const name = document.getElementById('user-name').value.trim();
+    // Use the contact phone as info for Dra Kerly if needed, but we don't strictly print it in the requested message. We will just send to Dra Kerly's number.
+    const time = document.querySelector('input[name="q_time"]:checked').value;
+
+    const message = `Olá, Dra. Kerly.
+Acabei de responder o questionário do site.
+
+Meu nome: ${name}
+
+Principais sintomas:
+${q1String}
+
+Tempo dos sintomas:
+${q2}
+
+Impacto na qualidade de vida:
+${q3}/10
+
+O que gostaria de melhorar primeiro:
+${q4}
+
+Melhor horário para conversar:
+${time}
+
+Gostaria de entender melhor como a consulta pode me ajudar.`;
+
+    const encodedMessage = encodeURIComponent(message);
+    const targetPhone = "5598981532153"; // Dra. Kerly's phone number as provided in existing links
+    const whatsappUrl = `https://wa.me/${targetPhone}?text=${encodedMessage}`;
+
+    window.open(whatsappUrl, '_blank');
+    closeSymptomModal();
+};
