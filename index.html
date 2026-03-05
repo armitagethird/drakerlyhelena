@@ -735,7 +735,7 @@
                 <!-- Scroll hint for very short screens (like in-app browsers) -->
                 <div
                     class="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex flex-col items-center justify-center text-blush-400/70 sm:hidden animate-bounce mt-4">
-                    <span class="text-[10px] uppercase font-medium tracking-wider mb-1">Deslize</span>
+                    <span class="text-[10px] uppercase font-medium tracking-wider mb-1"></span>
                     <i data-feather="chevron-down" class="w-4 h-4"></i>
                 </div>
             </div>
@@ -1001,38 +1001,39 @@
             </div>
 
             <!-- Step 3: Conclusion -->
-            <div id="modal-step-3" class="space-y-8 hidden pt-6 sm:pt-10">
-                <div class="text-center space-y-6">
+            <div id="modal-step-3" class="space-y-4 sm:space-y-8 hidden pt-2 sm:pt-6">
+                <div class="text-center space-y-3 sm:space-y-6">
                     <!-- Beating heart icon -->
                     <div
-                        class="inline-flex items-center justify-center w-24 h-24 bg-blush-100/50 text-blush-500 rounded-full mb-2 mx-auto relative">
+                        class="inline-flex items-center justify-center w-16 h-16 sm:w-24 sm:h-24 bg-blush-100/50 text-blush-500 rounded-full mb-1 sm:mb-2 mx-auto relative">
                         <div class="absolute inset-0 rounded-full bg-blush-200/30 animate-ping opacity-75"></div>
-                        <i data-feather="heart" class="w-12 h-12 fill-current animate-pulse"></i>
+                        <i data-feather="heart" class="w-8 h-8 sm:w-12 sm:h-12 fill-current animate-pulse"></i>
                     </div>
 
-                    <h2 class="text-3xl md:text-4xl font-serif text-charcoal leading-tight max-w-lg mx-auto">
+                    <h2
+                        class="text-2xl sm:text-3xl md:text-4xl font-serif text-charcoal leading-tight max-w-lg mx-auto px-2">
                         Obrigada por compartilhar um pouco de você.
                     </h2>
                 </div>
 
                 <div
-                    class="space-y-5 text-charcoal/80 font-light leading-relaxed bg-white/60 backdrop-blur-sm p-8 rounded-3xl shadow-sm border border-blush-100/50 text-lg text-center max-w-xl mx-auto">
-                    <p>Muitas vezes esses sintomas são sinais de que o corpo precisa de atenção e equilíbrio.</p>
-                    <p>A medicina integrativa busca olhar para você de forma completa — <span
-                            class="font-medium text-charcoal">hormônios, metabolismo, emoções e estilo de vida</span>.
+                    class="space-y-3 sm:space-y-5 text-charcoal/80 font-light leading-relaxed bg-white/60 backdrop-blur-sm p-5 sm:p-8 rounded-2xl sm:rounded-3xl shadow-sm border border-blush-100/50 text-sm sm:text-lg text-center max-w-xl mx-auto">
+                    <p>Esses sintomas são sinais fisiológicos de que o corpo precisa de um novo equilíbrio.</p>
+                    <p>A medicina integrativa foca em você de forma completa — <span
+                            class="font-medium text-charcoal">hormônios, metabolismo e estilo de vida</span>.
                     </p>
-                    <p class="text-blush-500 font-medium pt-2">No próximo passo, vamos conversar com calma para entender
-                        seu caso.</p>
+                    <p class="text-blush-500 font-medium pt-1 sm:pt-2">A seguir, vamos conversar para entender o seu
+                        caso.</p>
                 </div>
 
-                <div class="pt-8 pb-4 text-center">
+                <div class="pt-4 sm:pt-8 pb-2 sm:pb-4 text-center">
                     <button onclick="sendToWhatsApp()"
-                        class="w-full sm:w-auto inline-flex items-center justify-center space-x-3 bg-blush-500 hover:bg-blush-400 text-white px-10 py-5 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl font-medium text-lg group hover:-translate-y-1">
-                        <i data-feather="message-circle" class="w-6 h-6 stroke-[2]"></i>
+                        class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 sm:space-x-3 bg-blush-500 hover:bg-blush-400 text-white px-8 py-4 sm:px-10 sm:py-5 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl font-medium text-base sm:text-lg group hover:-translate-y-1">
+                        <i data-feather="message-circle" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2]"></i>
                         <span>Enviar respostas para a equipe</span>
                     </button>
-                    <p class="text-sm text-charcoal/50 mt-4 font-light">Você será redirecionada para o nosso WhatsApp
-                    </p>
+                    <p class="text-[11px] sm:text-sm text-charcoal/50 mt-3 sm:mt-4 font-light">Você será redirecionada
+                        para o nosso WhatsApp</p>
                 </div>
             </div>
         </div>
