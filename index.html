@@ -77,14 +77,33 @@
         </div>
     </header>
 
-    <!-- Floating WhatsApp Button -->
-    <button onclick="openSymptomModal()"
-        class="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-50 bg-blush-500 hover:bg-blush-400 text-white px-4 py-3 sm:px-5 sm:py-4 rounded-full shadow-xl flex items-center justify-center transition-transform hover:-translate-y-1">
-        <i data-feather="message-circle" class="w-6 h-6 sm:w-7 sm:h-7"></i>
-        <span class="ml-2 sm:ml-3 font-medium whitespace-nowrap text-sm sm:text-base">
-            Agende sua Consulta
-        </span>
-    </button>
+    <!-- Floating Menu Container -->
+    <div class="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-50 flex flex-col items-end group">
+        <!-- Dropdown Menu -->
+        <div id="floating-menu"
+            class="hidden flex flex-col items-end space-y-3 mb-4 opacity-0 transition-opacity duration-300">
+            <button onclick="openSymptomModal(); toggleFloatingMenu()"
+                class="bg-white hover:bg-blush-50 text-charcoal px-5 py-3 rounded-full shadow-lg flex items-center space-x-3 transition-transform hover:-translate-y-1 border border-blush-200 font-medium">
+                <i data-feather="file-text" class="w-5 h-5 text-blush-500"></i>
+                <span class="whitespace-nowrap text-sm sm:text-base">Quero entender meus sintomas</span>
+            </button>
+            <a href="https://wa.me/5598981532153" target="_blank" rel="noopener noreferrer"
+                class="bg-white hover:bg-blush-50 text-charcoal px-5 py-3 rounded-full shadow-lg flex items-center space-x-3 transition-transform hover:-translate-y-1 border border-blush-200 font-medium">
+                <i data-feather="message-circle" class="w-5 h-5 text-blush-500"></i>
+                <span class="whitespace-nowrap text-sm sm:text-base">WhatsApp</span>
+            </a>
+        </div>
+
+        <!-- Main Toggle Button -->
+        <button id="floating-main-btn" onclick="toggleFloatingMenu()"
+            class="bg-blush-500 hover:bg-blush-400 text-white px-4 py-3 sm:px-5 sm:py-4 rounded-full shadow-xl flex items-center justify-center transition-transform hover:-translate-y-1">
+            <i id="floating-btn-icon" data-feather="message-circle"
+                class="w-6 h-6 sm:w-7 sm:h-7 transition-all duration-300"></i>
+            <span class="ml-2 sm:ml-3 font-medium whitespace-nowrap text-sm sm:text-base">
+                Agende sua Consulta
+            </span>
+        </button>
+    </div>
 
     <!-- Main Content -->
     <main>
