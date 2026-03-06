@@ -172,7 +172,7 @@ window.closeSymptomModal = function () {
 };
 
 window.nextStep = function (step) {
-    const steps = [1, 2, 3];
+    const steps = [1, 2, 3, 4, 5, 6, 7];
     const nextStepDiv = document.getElementById(`modal-step-${step}`);
 
     // Find currently visible step
@@ -213,15 +213,51 @@ window.nextStep = function (step) {
         });
 
         // Scroll modal to top smoothly
-        if (step === 2 || step === 3) {
+        if (step > 1) {
             const modalContent = document.getElementById('symptom-modal-content');
             modalContent.scrollTo({ top: 0, behavior: 'smooth' });
         }
     }
 };
 
+window.validateStep2 = function () {
+    const q1Checked = document.querySelectorAll('input[name="q1"]:checked');
+    const q1Other = document.querySelector('input[name="q1_other"]').value;
+    if (q1Checked.length === 0 && q1Other.trim() === '') {
+        document.getElementById('q1-error').classList.remove('hidden');
+    } else {
+        document.getElementById('q1-error').classList.add('hidden');
+        nextStep(3);
+    }
+};
+
+window.validateStep3 = function () {
+    const q2Checked = document.querySelector('input[name="q2"]:checked');
+    if (!q2Checked) {
+        document.getElementById('q2-error').classList.remove('hidden');
+    } else {
+        document.getElementById('q2-error').classList.add('hidden');
+        nextStep(4);
+    }
+};
+
+window.validateStep4 = function () {
+    // Slider always has a value, proceed
+    nextStep(5);
+};
+
+window.validateStep5 = function () {
+    const q4Checked = document.querySelector('input[name="q4"]:checked');
+    if (!q4Checked) {
+        document.getElementById('q4-error').classList.remove('hidden');
+    } else {
+        document.getElementById('q4-error').classList.add('hidden');
+        nextStep(6);
+    }
+};
+
 window.submitForm = function () {
-    // Validate form
+    // Validate final contact info step
     let isValid = true;
     let firstErrorElement = null;
 
@@ -287,7 +323,7 @@ window.submitForm = function () {
     }
 
     if (isValid) {
-        nextStep(3);
+        nextStep(7);
     } else {
         // Scroll to the first error
         if (firstErrorElement) {
