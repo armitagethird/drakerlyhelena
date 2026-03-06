@@ -378,3 +378,37 @@ Gostaria de entender melhor como a consulta pode me ajudar.`;
     window.open(whatsappUrl, '_blank');
     closeSymptomModal();
 };
+
+window.toggleFloatingMenu = function () {
+    const menu = document.getElementById('floating-menu');
+    const icon = document.getElementById('floating-btn-icon');
+
+    if (menu.classList.contains('hidden')) {
+        menu.classList.remove('hidden');
+        setTimeout(() => {
+            menu.classList.remove('opacity-0');
+            menu.classList.add('opacity-100');
+        }, 10);
+        icon.setAttribute('data-feather', 'x');
+        feather.replace();
+    } else {
+        menu.classList.remove('opacity-100');
+        menu.classList.add('opacity-0');
+        setTimeout(() => {
+            menu.classList.add('hidden');
+        }, 300);
+        icon.setAttribute('data-feather', 'message-circle');
+        feather.replace();
+    }
+};
+
+// Close floating menu when clicking outside
+document.addEventListener('click', (event) => {
+    const menu = document.getElementById('floating-menu');
+    const btn = document.getElementById('floating-main-btn');
+    if (menu && btn && !menu.classList.contains('hidden')) {
+        if (!menu.contains(event.target) && !btn.contains(event.target)) {
+            window.toggleFloatingMenu();
+        }
+    }
+});
