@@ -1060,7 +1060,12 @@
 
             <!-- Step 7: Conclusion -->
             <div id="modal-step-7" class="space-y-3 sm:space-y-4 hidden pt-0 sm:pt-2">
-                <div class="text-center space-y-2 sm:space-y-4">
+                <div id="conclusion-loading" class="hidden flex flex-col items-center py-10">
+                    <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blush-500"></div>
+                    <p class="mt-4 text-charcoal/60 font-medium">Enviando suas respostas...</p>
+                </div>
+
+                <div id="conclusion-content" class="text-center space-y-2 sm:space-y-4">
                     <!-- Beating heart icon -->
                     <div
                         class="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-blush-100/50 text-blush-500 rounded-full mb-1 sm:mb-2 mx-auto relative">
@@ -1068,30 +1073,49 @@
                         <i data-feather="heart" class="w-6 h-6 sm:w-8 sm:h-8 fill-current animate-pulse"></i>
                     </div>
 
-                    <h2
+                    <h2 id="conclusion-title"
                         class="text-xl sm:text-2xl md:text-3xl font-serif text-charcoal leading-tight max-w-lg mx-auto px-2">
                         Obrigada por compartilhar um pouco de você.
                     </h2>
+
+                    <div id="conclusion-description"
+                        class="space-y-2 sm:space-y-3 text-charcoal/80 font-light leading-relaxed bg-white/60 backdrop-blur-sm p-4 sm:p-5 rounded-2xl sm:rounded-3xl shadow-sm border border-blush-100/50 text-sm sm:text-base text-center max-w-xl mx-auto">
+                        <p>Esses sintomas são sinais fisiológicos de que o corpo precisa de um novo equilíbrio.</p>
+                        <p>A medicina integrativa foca em você de forma completa — <span
+                                class="font-medium text-charcoal">hormônios, metabolismo e estilo de vida</span>.
+                        </p>
+                        <p class="text-blush-500 font-medium pt-1">Suas respostas foram salvas com sucesso e em breve
+                            entraremos em contato!</p>
+                    </div>
+
+                    <div class="pt-3 sm:pt-4 pb-2 text-center flex flex-col items-center gap-3">
+                        <button onclick="closeSymptomModal()"
+                            class="w-full sm:w-auto inline-flex items-center justify-center bg-white hover:bg-blush-50 text-charcoal border border-blush-200 px-6 py-2.5 rounded-full transition-all duration-300 shadow-sm font-medium text-sm">
+                            Fechar
+                        </button>
+                        <hr class="w-1/2 border-blush-100">
+                        <p class="text-[10px] sm:text-xs text-charcoal/50 font-light">Se preferir, você também pode
+                            falar conosco agora:</p>
+                        <button onclick="sendToWhatsApp()"
+                            class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 sm:space-x-3 bg-blush-500 hover:bg-blush-400 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl font-medium text-sm sm:text-base group hover:-translate-y-1">
+                            <i data-feather="message-circle" class="w-4 h-4 sm:w-5 sm:h-5 stroke-[2]"></i>
+                            <span>Falar com a equipe no WhatsApp</span>
+                        </button>
+                    </div>
                 </div>
 
-                <div
-                    class="space-y-2 sm:space-y-3 text-charcoal/80 font-light leading-relaxed bg-white/60 backdrop-blur-sm p-4 sm:p-5 rounded-2xl sm:rounded-3xl shadow-sm border border-blush-100/50 text-sm sm:text-base text-center max-w-xl mx-auto">
-                    <p>Esses sintomas são sinais fisiológicos de que o corpo precisa de um novo equilíbrio.</p>
-                    <p>A medicina integrativa foca em você de forma completa — <span
-                            class="font-medium text-charcoal">hormônios, metabolismo e estilo de vida</span>.
-                    </p>
-                    <p class="text-blush-500 font-medium pt-1">A seguir, vamos conversar para entender o seu
-                        caso.</p>
-                </div>
-
-                <div class="pt-3 sm:pt-4 pb-2 text-center">
-                    <button onclick="sendToWhatsApp()"
-                        class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 sm:space-x-3 bg-blush-500 hover:bg-blush-400 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl font-medium text-sm sm:text-base group hover:-translate-y-1">
-                        <i data-feather="message-circle" class="w-4 h-4 sm:w-5 sm:h-5 stroke-[2]"></i>
-                        <span>Enviar respostas para a equipe</span>
+                <div id="conclusion-error" class="hidden text-center space-y-4 py-6">
+                    <i data-feather="alert-circle" class="w-12 h-12 text-red-400 mx-auto"></i>
+                    <h2 class="text-xl font-serif text-charcoal">Ops! Algo deu errado.</h2>
+                    <p class="text-charcoal/60">Não conseguimos salvar suas respostas automaticamente.</p>
+                    <button onclick="submitForm()"
+                        class="bg-blush-500 hover:bg-blush-400 text-white px-6 py-2 rounded-full transition-colors shadow-md font-medium text-sm">
+                        Tentar novamente
                     </button>
-                    <p class="text-[10px] sm:text-xs text-charcoal/50 mt-2 sm:mt-3 font-light">Você será redirecionada
-                        para o nosso WhatsApp</p>
+                    <p class="text-xs text-charcoal/40">Ou envie diretamente pelo WhatsApp:</p>
+                    <button onclick="sendToWhatsApp()"
+                        class="text-blush-500 font-medium text-sm border-b border-blush-500">Enviar via
+                        WhatsApp</button>
                 </div>
             </div>
         </div>

@@ -256,6 +256,8 @@ window.validateStep5 = function () {
     }
 };
 
+const GOOGLE_SHEETS_URL = "https://script.google.com/macros/s/AKfycbxhJ1Qwjyt0ad-1tB_HUghdxHalQhgx26DTHtDzgV4GhquXYbTPvuUHd9oUvlDPZccI9Q/exec";
+
 window.submitForm = function () {
     // Validate final contact info step
     let isValid = true;
@@ -323,12 +325,76 @@ window.submitForm = function () {
     }
 
     if (isValid) {
-        nextStep(7);
+        saveToGoogleSheets();
     } else {
         // Scroll to the first error
         if (firstErrorElement) {
             firstErrorElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
+    }
+};
+
+window.saveToGoogleSheets = async function () {
+    // Collect data
+    let q1Answers = Array.from(document.querySelectorAll('input[name="q1"]:checked')).map(el => el.value);
+    const q1Other = document.querySelector('input[name="q1_other"]').value;
+    if (q1Other.trim() !== '') {
+        q1Answers.push(q1Other.trim());
+    }
+    const q1String = q1Answers.join(', ');
+
+    const q2 = document.querySelector('input[name="q2"]:checked').value;
+    const q3 = document.querySelector('input[name="q3"]').value;
+    const q4 = document.querySelector('input[name="q4"]:checked').value;
+
+    const name = document.getElementById('user-name').value.trim();
+    const phone = document.getElementById('user-phone').value.trim();
+    const time = document.querySelector('input[name="q_time"]:checked').value;
+
+    const data = {
+        name: name,
+        phone: phone,
+        symptoms: q1String,
+        duration: q2,
+        impact: q3,
+        priority: q4,
+        bestTime: time
+    };
+
+    // Show step 7 and loading state
+    nextStep(7);
+    document.getElementById('conclusion-loading').classList.remove('hidden');
+    document.getElementById('conclusion-content').classList.add('hidden');
+    document.getElementById('conclusion-error').classList.add('hidden');
+
+    try {
+        // Use URLSearchParams for form data encoding (most reliable with Google Apps Script)
+        const formData = new URLSearchParams();
+        for (const key in data) {
+            formData.append(key, data[key]);
+        }
+
+        // We use mode: 'no-cors' so the browser doesn't block the request 
+        // to Google despite the missing CORS headers in their response.
+        await fetch(GOOGLE_SHEETS_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            cache: 'no-cache',
+            body: formData
+        });
+
+        // Wait a bit to simulate a real request and show success
+        setTimeout(() => {
+            document.getElementById('conclusion-loading').classList.add('hidden');
+            document.getElementById('conclusion-content').classList.remove('hidden');
+            feather.replace();
+        }, 1500);
+
+    } catch (error) {
+        console.error('Error saving to Google Sheets:', error);
+        document.getElementById('conclusion-loading').classList.add('hidden');
+        document.getElementById('conclusion-error').classList.remove('hidden');
+        feather.replace();
     }
 };
 
