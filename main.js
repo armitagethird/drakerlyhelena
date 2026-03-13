@@ -478,3 +478,21 @@ document.addEventListener('click', (event) => {
         }
     }
 });
+
+// Floating button visibility on scroll
+const floatingContainer = document.getElementById('floating-container');
+if (floatingContainer) {
+    window.addEventListener('scroll', () => {
+        // Show after scrolling past half the viewport height
+        if (window.scrollY > window.innerHeight * 0.5) {
+            floatingContainer.classList.remove('translate-y-32', 'opacity-0', 'pointer-events-none');
+        } else {
+            floatingContainer.classList.add('translate-y-32', 'opacity-0', 'pointer-events-none');
+            // Close menu if open when hiding
+            const menu = document.getElementById('floating-menu');
+            if (menu && !menu.classList.contains('hidden')) {
+                window.toggleFloatingMenu();
+            }
+        }
+    });
+}

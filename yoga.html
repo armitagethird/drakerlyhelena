@@ -423,7 +423,7 @@
     </main>
 
     <!-- Floating Menu Container -->
-    <div class="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-50 flex flex-col items-end group">
+    <div id="floating-container" class="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-50 flex flex-col items-end group transition-all duration-500 translate-y-32 opacity-0 pointer-events-none">
         <!-- Main Toggle Button -->
         <button id="floating-main-btn" onclick="openYogaModal()"
             class="bg-yoga-gold hover:bg-yellow-600 text-white px-5 py-4 rounded-full shadow-xl flex items-center justify-center transition-transform hover:-translate-y-1">
@@ -583,6 +583,19 @@
                 yogaModal.classList.add('hidden');
                 yogaModal.classList.remove('flex');
             }, 300);
+        }
+
+        // Floating button visibility on scroll
+        const floatingContainer = document.getElementById('floating-container');
+        if (floatingContainer) {
+            window.addEventListener('scroll', () => {
+                // Show after scrolling past half the viewport height
+                if (window.scrollY > window.innerHeight * 0.5) {
+                    floatingContainer.classList.remove('translate-y-32', 'opacity-0', 'pointer-events-none');
+                } else {
+                    floatingContainer.classList.add('translate-y-32', 'opacity-0', 'pointer-events-none');
+                }
+            });
         }
     </script>
 </body>
