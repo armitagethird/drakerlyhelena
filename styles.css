@@ -95,3 +95,44 @@ body {
         cursor: default;
     }
 }
+
+/* Marquee Animation */
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+    display: flex;
+    white-space: nowrap;
+    animation: marquee 10s linear infinite;
+    will-change: transform;
+}
+
+/* Fast Pulse Animation */
+@keyframes pulse-fast {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.1; }
+}
+
+.animate-pulse-fast {
+    animation: pulse-fast 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Golden Glow Text */
+.text-golden-glow {
+    background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 15px rgba(252, 246, 186, 0.6), 0 0 30px rgba(252, 246, 186, 0.3);
+    animation: shine 4s linear infinite;
+    display: inline-block;
+}
+
+@keyframes shine {
+    to {
+      background-position: 200% center;
+    }
+}

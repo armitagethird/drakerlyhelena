@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoga para Vitalidade Íntima - Dra. Kerly Helena</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/Favicon/Favicon%20Kerly.png">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+    
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Tailwind CSS (compiled) -->
+    <link rel="stylesheet" href="output.css">
+
+    <style>
+        .bg-yoga-light { background-color: #FDFBF7; }
+        .bg-yoga-dark { background-color: #F4EBE1; }
+        .text-yoga-gold { color: #C5A028; }
+        .text-yoga-gold-dark { color: #A6851C; }
+        .bg-yoga-gold { background-color: #C5A028; }
+        .bg-yoga-gold:hover { background-color: #A6851C; }
+        .text-yoga-dark { color: #4A3F35; }
+        .border-yoga-gold { border-color: #D4AF37; }
+        .shadow-gold { --tw-shadow-color: rgba(197, 160, 40, 0.2); }
+
+        /* Golden Glow Animation for Slider */
+        @keyframes goldenPulse {
+            0% { box-shadow: 0 0 15px rgba(197, 160, 40, 0.1); border-color: rgba(197, 160, 40, 0.2); }
+            50% { box-shadow: 0 0 35px rgba(212, 175, 55, 0.4); border-color: rgba(212, 175, 55, 0.5); }
+            100% { box-shadow: 0 0 15px rgba(197, 160, 40, 0.1); border-color: rgba(197, 160, 40, 0.2); }
+        }
+
+        /* Glassmorphism Title Animation */
+        .glass-title {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 1rem;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .swiper-slide-active .glass-title {
+            transform: translateY(0);
+            opacity: 1;
+            transition-delay: 0.3s;
+        }
+
+        .swiper-pagination-bullet-active {
+            background-color: #D4AF37 !important;
+            box-shadow: 0 0 10px #D4AF37;
+        }
+        
+        .swiper-button-next:after, .swiper-button-prev:after {
+            font-size: 28px !important;
+            font-weight: bold;
+        }
+        .swiper-button-next, .swiper-button-prev {
+            color: #D4AF37 !important;
+            filter: drop-shadow(0px 0px 8px rgba(212, 175, 55, 0.8));
+            background-color: rgba(253, 251, 247, 0.5);
+            backdrop-filter: blur(4px);
+            width: 50px !important;
+            height: 50px !important;
+            border-radius: 50%;
+        }
+        .swiper-button-next:hover, .swiper-button-prev:hover {
+            background-color: rgba(253, 251, 247, 0.9);
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+
+<body class="bg-yoga-light text-yoga-dark font-sans antialiased overflow-x-hidden">
+
+    <!-- Header / Nav -->
+    <header class="fixed top-0 w-full z-50 bg-yoga-light/80 backdrop-blur-md transition-all duration-300 border-b border-yellow-600/10" id="navbar">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-3 group transition-all duration-300 hover:-translate-y-1">
+                <img src="assets/Favicon/Favicon%20Kerly.png" alt="Logo Dra. Kerly Helena"
+                    class="w-8 h-8 md:w-10 md:h-10 object-contain transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                <span
+                    class="text-2xl md:text-3xl font-serif text-yoga-dark font-semibold tracking-wide group-hover:text-yoga-gold transition-colors duration-300">
+                    Dra. Kerly Helena
+                </span>
+            </a>
+            <nav class="hidden md:flex items-center space-x-8 text-sm uppercase tracking-widest text-yoga-dark/70">
+                <a href="index.html" class="hover:text-yoga-gold transition-colors">Voltar ao Início</a>
+                <a href="#detalhes" class="hover:text-yoga-gold transition-colors">O Curso</a>
+                <a href="#professoras" class="hover:text-yoga-gold transition-colors">Professoras</a>
+                <button onclick="openYogaModal()"
+                    class="bg-yoga-gold hover:bg-yellow-600 text-white px-6 py-2.5 rounded-full transition-colors normal-case tracking-normal shadow-sm font-medium">Garantir Vaga</button>
+            </nav>
+            <button class="md:hidden text-yoga-dark focus:outline-none" id="mobile-menu-btn"
+                aria-label="Abrir menu de navegação">
+                <i data-feather="menu"></i>
+            </button>
+        </div>
+        <!-- Mobile Dropdown -->
+        <div id="mobile-menu"
+            class="hidden md:hidden bg-yoga-light border-t border-yellow-200/50 shadow-lg absolute w-full left-0 top-full">
+            <nav
+                class="flex flex-col space-y-6 px-6 py-8 text-sm uppercase tracking-widest text-yoga-dark/80 text-center">
+                <a href="index.html" class="hover:text-yoga-gold transition-colors">Voltar ao Início</a>
+                <a href="#detalhes" class="hover:text-yoga-gold transition-colors">O Curso</a>
+                <a href="#professoras" class="hover:text-yoga-gold transition-colors">Professoras</a>
+                <div class="pt-4">
+                    <button onclick="openYogaModal()" class="inline-block bg-yoga-gold hover:bg-yellow-600 text-white px-6 py-3 rounded-full transition-colors normal-case tracking-normal shadow-md font-medium w-full">Garantir Vaga</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden bg-yoga-light">
+            <!-- Organic shape background -->
+            <div class="absolute top-0 right-0 w-full h-full bg-yoga-dark rounded-bl-full opacity-40 transform translate-x-1/3 -translate-y-20"></div>
+            
+            <!-- Soft mandala / sun pattern placeholder -->
+            <div class="absolute top-1/4 left-10 opacity-20 text-yoga-gold animate-spin-slow" style="animation: spin 30s linear infinite;">
+                <i data-feather="sun" class="w-64 h-64"></i>
+            </div>
+
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="flex flex-col items-center text-center max-w-4xl mx-auto gs-reveal">
+                    
+                    <span class="text-yoga-gold tracking-[0.2em] uppercase font-semibold text-sm md:text-base mb-4 inline-flex items-center gap-2">
+                        <i data-feather="wind" class="w-4 h-4"></i>
+                        Curso Presencial
+                        <i data-feather="wind" class="w-4 h-4"></i>
+                    </span>
+                    
+                    <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6 text-yoga-dark">
+                        Yoga para a Vitalidade <br />
+                        <span class="text-yoga-gold italic font-light">Íntima Feminina</span>
+                    </h1>
+                    
+                    <p class="text-xl md:text-2xl text-yoga-dark/80 mb-12 font-light">
+                        Consciência e fortalecimento do assoalho pélvico.
+                    </p>
+
+                    <div class="flex flex-wrap items-center justify-center gap-6 md:gap-12 mb-12 bg-white/60 backdrop-blur-sm p-6 rounded-3xl border border-yellow-600/20 shadow-lg">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-full bg-yoga-gold/20 flex items-center justify-center text-yoga-gold">
+                                <i data-feather="calendar"></i>
+                            </div>
+                            <div class="text-left">
+                                <p class="text-xs uppercase tracking-wider text-yoga-dark/60 font-semibold mb-1">Data</p>
+                                <p class="text-lg font-medium text-yoga-dark">04/04</p>
+                            </div>
+                        </div>
+                        <div class="hidden md:block w-px h-12 bg-yellow-600/20"></div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-full bg-yoga-gold/20 flex items-center justify-center text-yoga-gold">
+                                <i data-feather="clock"></i>
+                            </div>
+                            <div class="text-left">
+                                <p class="text-xs uppercase tracking-wider text-yoga-dark/60 font-semibold mb-1">Horário</p>
+                                <p class="text-lg font-medium text-yoga-dark">08h30</p>
+                            </div>
+                        </div>
+                        <div class="hidden md:block w-px h-12 bg-yellow-600/20"></div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-full bg-yoga-gold/20 flex items-center justify-center text-yoga-gold">
+                                <i data-feather="map-pin"></i>
+                            </div>
+                            <div class="text-left">
+                                <p class="text-xs uppercase tracking-wider text-yoga-dark/60 font-semibold mb-1">Local</p>
+                                <p class="text-lg font-medium text-yoga-dark">Clínica Dra. Kerly Helena</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row items-center gap-4 md:gap-6 mb-12 w-full justify-center">
+                        <button onclick="openYogaModal()"
+                            class="relative inline-flex items-center justify-center space-x-3 bg-yoga-gold hover:bg-yellow-600 text-white px-10 py-5 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl font-medium tracking-wide w-full sm:w-auto overflow-hidden group hover:-translate-y-1">
+                            <span class="relative z-10 text-lg">Garantir Minha Vaga</span>
+                            <i data-feather="arrow-right" class="w-5 h-5 relative z-10 transition-transform group-hover:translate-x-1"></i>
+                        </button>
+                        
+                        <a href="#detalhes"
+                            class="inline-flex items-center justify-center space-x-2 text-yoga-gold font-medium tracking-wide border-b border-transparent hover:border-yellow-600 pb-1 hover:text-yellow-600 transition-colors w-full sm:w-auto opacity-80 hover:opacity-100">
+                            <span>Mais Informações</span>
+                            <i data-feather="arrow-down" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Soft transition to next section -->
+            <div class="absolute bottom-0 w-full overflow-hidden leading-none rotate-180">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                    preserveAspectRatio="none" class="w-full h-16 fill-yoga-dark">
+                    <path
+                        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z">
+                    </path>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Course Details -->
+        <section id="detalhes" class="py-24 bg-yoga-dark relative">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <div class="text-center mb-16 gs-reveal">
+                    <span class="text-sm tracking-[0.2em] text-yoga-gold uppercase font-semibold">O Propósito</span>
+                    <h2 class="text-4xl md:text-5xl font-serif mt-4 text-yoga-dark">Reconecte-se com sua essência</h2>
+                </div>
+
+                <div class="space-y-8 text-center md:text-left text-lg text-yoga-dark/80 font-light leading-relaxed gs-reveal">
+                    <p>
+                        Um encontro único focado em promover o despertar e o <strong class="text-yoga-dark font-medium">fortalecimento do asoalho pélvico</strong> através das técnicas milenares do Yoga. A vitalidade íntima está intrinsecamente ligada à nossa saúde emocional e física como mulheres.
+                    </p>
+                    <p>
+                        Aprenda a ouvir o seu corpo com suavidade e a nutrir a sua energia de forma profunda. O asoalho pélvico é nosso centro de base, nossa sustentação.
+                    </p>
+
+                    <div class="bg-white/40 border border-yellow-600/20 p-8 rounded-3xl mt-10 md:mt-16 text-center transform hover:scale-[1.02] transition-transform duration-500 shadow-sm">
+                        <i data-feather="heart" class="w-10 h-10 text-yoga-gold mx-auto mb-4"></i>
+                        <p class="text-xl md:text-2xl font-serif italic text-yoga-dark/90">
+                            "Um assoalho pélvico saudável não é apenas um corpo forte,<br class="hidden md:block"/> é um espírito presente e ancorado."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Teachers Section -->
+        <section id="professoras" class="py-24 bg-yoga-light relative">
+            <div class="container mx-auto px-6 max-w-5xl">
+                <div class="text-center mb-20 gs-reveal">
+                    <span class="text-sm tracking-[0.2em] text-yoga-gold uppercase font-semibold">Quem vai guiar você</span>
+                    <h2 class="text-4xl md:text-5xl font-serif mt-4 text-yoga-dark">Professoras</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
+                    <!-- Professora 1 -->
+                    <div class="bg-white rounded-[2.5rem] p-8 shadow-xl border border-yellow-600/10 text-center gs-reveal hover:-translate-y-2 transition-transform duration-300">
+                        <div class="w-32 h-32 mx-auto rounded-full mb-6 overflow-hidden border-4 border-yoga-gold shadow-md flex items-center justify-center bg-yoga-dark object-cover group">
+                            <img src="assets/Kerly.jpg" alt="Kerly Santos" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        </div>
+                        <h3 class="text-2xl font-serif font-semibold text-yoga-dark mb-2">Kerly Santos</h3>
+                        <p class="text-yoga-gold font-medium mb-4">Médica Ginecologista <br> Instrutora de Yoga Sivananda</p>
+                        <p class="text-yoga-dark/70 font-light text-sm leading-relaxed">
+                            Unindo a precisão médica ao conhecimento milenar do Yoga para tratar e entender as emoções e sintomas femininos com sutileza.
+                        </p>
+                    </div>
+
+                    <!-- Professora 2 -->
+                    <div class="bg-white rounded-[2.5rem] p-8 shadow-xl border border-yellow-600/10 text-center gs-reveal hover:-translate-y-2 transition-transform duration-300">
+                        <div class="w-32 h-32 mx-auto rounded-full mb-6 overflow-hidden border-4 border-yoga-gold shadow-md flex items-center justify-center bg-yoga-dark object-cover group">
+                            <img src="assets/Marina.jpg" alt="Marina Corrêa" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        </div>
+                        <h3 class="text-2xl font-serif font-semibold text-yoga-dark mb-2">Marina Corrêa</h3>
+                        <p class="text-yoga-gold font-medium mb-4">Terapeuta Ocupacional <br> Instrutora de Yoga Sivananda</p>
+                        <p class="text-yoga-dark/70 font-light text-sm leading-relaxed">
+                            Ajudando você a habitar seu corpo e suas rotinas com qualidade, através da ocupação e da filosofia do Yoga.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ambiente Section -->
+        <section id="ambiente" class="py-32 bg-yoga-light relative overflow-hidden">
+            <!-- Light flares in background -->
+            <div class="absolute top-1/3 left-0 w-[500px] h-[500px] bg-yoga-gold/20 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 pointer-events-none mix-blend-multiply"></div>
+            <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-yoga-gold/20 rounded-full blur-[120px] translate-x-1/3 translate-y-1/3 pointer-events-none mix-blend-multiply"></div>
+
+            <div class="container mx-auto px-6 max-w-7xl relative z-10 w-full overflow-hidden">
+                <div class="text-center mb-16 gs-reveal">
+                    <span class="text-sm tracking-[0.2em] text-yoga-gold uppercase font-semibold flex items-center justify-center gap-2 mb-2">
+                        <i data-feather="star" class="w-4 h-4"></i>
+                        O Espaço
+                        <i data-feather="star" class="w-4 h-4"></i>
+                    </span>
+                    <h2 class="text-4xl md:text-5xl font-serif text-yoga-dark">Nosso Ambiente</h2>
+                    <p class="mt-4 text-yoga-dark/70 max-w-2xl mx-auto font-light leading-relaxed">
+                        Um refúgio banhado em luz dourada. Deslize para explorar os detalhes pensados para trazer acolhimento, paz e profunda reconexão.
+                    </p>
+                </div>
+
+                <div class="relative w-full gs-reveal h-[500px] md:h-[650px] flex justify-center items-center">
+                    <!-- Swiper Container -->
+                    <div class="swiper ambiente-swiper pb-16 w-full max-w-5xl group">
+                        <div class="swiper-wrapper">
+                            <!-- Slide 1 -->
+                            <div class="swiper-slide w-4/5 md:w-[600px]">
+                                <div class="relative h-[400px] md:h-[550px] rounded-[2.5rem] overflow-hidden border border-yoga-gold/30 transition-all duration-500 shadow-xl" style="animation: goldenPulse 5s infinite;">
+                                    <img src="assets/ambiente/_DSC4966.jpg" alt="Ambiente acolhedor" loading="lazy" class="w-full h-full object-cover transition-transform duration-1000 filter saturate-110 contrast-105 sepia-[.1]">
+                                    <div class="absolute bottom-5 left-0 right-0 px-6 flex justify-center z-20">
+                                        <div class="glass-title px-8 py-4 shadow-lg flex flex-col items-center">
+                                            <p class="text-white font-serif text-2xl md:text-3xl tracking-wide uppercase drop-shadow-md">Acolhimento</p>
+                                            <div class="w-12 h-0.5 bg-yoga-gold mt-2 opacity-80"></div>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-yoga-dark/70 via-transparent to-transparent z-10 opacity-70"></div>
+                                </div>
+                            </div>
+                            <!-- Slide 2 -->
+                            <div class="swiper-slide w-4/5 md:w-[600px]">
+                                <div class="relative h-[400px] md:h-[550px] rounded-[2.5rem] overflow-hidden border border-yoga-gold/30 transition-all duration-500 shadow-xl" style="animation: goldenPulse 5s infinite; animation-delay: 1s;">
+                                    <img src="assets/ambiente/_DSC4972.jpg" alt="Toque dourado" loading="lazy" class="w-full h-full object-cover transition-transform duration-1000 filter saturate-110 contrast-105 sepia-[.1]">
+                                    <div class="absolute bottom-5 left-0 right-0 px-6 flex justify-center z-20">
+                                        <div class="glass-title px-8 py-4 shadow-lg flex flex-col items-center">
+                                            <p class="text-white font-serif text-2xl md:text-3xl tracking-wide uppercase drop-shadow-md">Luz e Paz</p>
+                                            <div class="w-12 h-0.5 bg-yoga-gold mt-2 opacity-80"></div>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-yoga-dark/70 via-transparent to-transparent z-10 opacity-70"></div>
+                                </div>
+                            </div>
+                            <!-- Slide 3 -->
+                            <div class="swiper-slide w-4/5 md:w-[600px]">
+                                <div class="relative h-[400px] md:h-[550px] rounded-[2.5rem] overflow-hidden border border-yoga-gold/30 transition-all duration-500 shadow-xl" style="animation: goldenPulse 5s infinite; animation-delay: 2s;">
+                                    <img src="assets/ambiente/_DSC4976.jpg" alt="Detalhes" loading="lazy" class="w-full h-full object-cover transition-transform duration-1000 filter saturate-110 contrast-105 sepia-[.1]">
+                                    <div class="absolute bottom-5 left-0 right-0 px-6 flex justify-center z-20">
+                                        <div class="glass-title px-8 py-4 shadow-lg flex flex-col items-center">
+                                            <p class="text-white font-serif text-2xl md:text-3xl tracking-wide uppercase drop-shadow-md">Detalhes</p>
+                                            <div class="w-12 h-0.5 bg-yoga-gold mt-2 opacity-80"></div>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-yoga-dark/70 via-transparent to-transparent z-10 opacity-70"></div>
+                                </div>
+                            </div>
+                            <!-- Slide 4 -->
+                            <div class="swiper-slide w-4/5 md:w-[600px]">
+                                <div class="relative h-[400px] md:h-[550px] rounded-[2.5rem] overflow-hidden border border-yoga-gold/30 transition-all duration-500 shadow-xl" style="animation: goldenPulse 5s infinite; animation-delay: 3s;">
+                                    <img src="assets/ambiente/_DSC4981.jpg" alt="Conforto" loading="lazy" class="w-full h-full object-cover transition-transform duration-1000 filter saturate-110 contrast-105 sepia-[.1]">
+                                    <div class="absolute bottom-5 left-0 right-0 px-6 flex justify-center z-20">
+                                        <div class="glass-title px-8 py-4 shadow-lg flex flex-col items-center">
+                                            <p class="text-white font-serif text-2xl md:text-3xl tracking-wide uppercase drop-shadow-md">Conforto</p>
+                                            <div class="w-12 h-0.5 bg-yoga-gold mt-2 opacity-80"></div>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-yoga-dark/70 via-transparent to-transparent z-10 opacity-70"></div>
+                                </div>
+                            </div>
+                            <!-- Slide 5 -->
+                            <div class="swiper-slide w-4/5 md:w-[600px]">
+                                <div class="relative h-[400px] md:h-[550px] rounded-[2.5rem] overflow-hidden border border-yoga-gold/30 transition-all duration-500 shadow-xl" style="animation: goldenPulse 5s infinite; animation-delay: 0.5s;">
+                                    <img src="assets/ambiente/_DSC4982.jpg" alt="Luz dourada" loading="lazy" class="w-full h-full object-cover transition-transform duration-1000 filter saturate-110 contrast-105 sepia-[.1]">
+                                    <div class="absolute bottom-5 left-0 right-0 px-6 flex justify-center z-20">
+                                        <div class="glass-title px-8 py-4 shadow-lg flex flex-col items-center">
+                                            <p class="text-white font-serif text-2xl md:text-3xl tracking-wide uppercase drop-shadow-md">Harmonia</p>
+                                            <div class="w-12 h-0.5 bg-yoga-gold mt-2 opacity-80"></div>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-yoga-dark/70 via-transparent to-transparent z-10 opacity-70"></div>
+                                </div>
+                            </div>
+                            <!-- Slide 6 -->
+                            <div class="swiper-slide w-4/5 md:w-[600px]">
+                                <div class="relative h-[400px] md:h-[550px] rounded-[2.5rem] overflow-hidden border border-yoga-gold/30 transition-all duration-500 shadow-xl" style="animation: goldenPulse 5s infinite; animation-delay: 1.5s;">
+                                    <img src="assets/ambiente/_DSC4970.jpg" alt="Presença" loading="lazy" class="w-full h-full object-cover transition-transform duration-1000 filter saturate-110 contrast-105 sepia-[.1]">
+                                    <div class="absolute bottom-5 left-0 right-0 px-6 flex justify-center z-20">
+                                        <div class="glass-title px-8 py-4 shadow-lg flex flex-col items-center">
+                                            <p class="text-white font-serif text-2xl md:text-3xl tracking-wide uppercase drop-shadow-md">Presença</p>
+                                            <div class="w-12 h-0.5 bg-yoga-gold mt-2 opacity-80"></div>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-yoga-dark/70 via-transparent to-transparent z-10 opacity-70"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Custom Golden Pagination -->
+                        <div class="swiper-pagination"></div>
+                        
+                        <!-- Custom Golden Navigation -->
+                        <div class="swiper-button-prev md:ml-2 select-none"></div>
+                        <div class="swiper-button-next md:mr-2 select-none"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Location Section (Mirrored from index) -->
+        <section class="py-24 bg-yoga-dark relative border-t border-yellow-600/10">
+            <div class="container mx-auto px-6 max-w-5xl text-center">
+                <h2 class="text-3xl lg:text-4xl font-serif text-yoga-dark mb-8">Local do Encontro</h2>
+                
+                <div class="bg-white/60 p-8 md:p-12 rounded-3xl shadow-lg border border-yellow-600/20 max-w-3xl mx-auto flex flex-col md:flex-row items-center gap-8 justify-between text-left gs-reveal">
+                    <div>
+                        <div class="flex items-start space-x-4 mb-4">
+                            <i data-feather="map-pin" class="w-6 h-6 text-yoga-gold mt-1 flex-shrink-0"></i>
+                            <p class="text-yoga-dark/80 font-light text-lg">
+                                <strong class="font-medium text-yoga-dark block mb-1">Clínica Dra. Kerly Helena</strong>
+                                Condomínio Edifício Monumental<br>
+                                Av. Coronel Colares Moreira, Sala 310<br>
+                                Jardim Renascença<br>
+                                São Luís - MA
+                            </p>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-auto">
+                        <a href="https://share.google/mytP6jGcdTPTe1DJ4" target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center space-x-2 bg-white hover:bg-yoga-light text-yoga-dark border border-yellow-600/30 px-8 py-4 rounded-full transition-colors w-full justify-center shadow-sm font-medium">
+                            <i data-feather="map" class="w-4 h-4 text-yoga-gold"></i>
+                            <span>Ver no mapa</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Floating Menu Container -->
+    <div class="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-50 flex flex-col items-end group">
+        <!-- Main Toggle Button -->
+        <button id="floating-main-btn" onclick="openYogaModal()"
+            class="bg-yoga-gold hover:bg-yellow-600 text-white px-5 py-4 rounded-full shadow-xl flex items-center justify-center transition-transform hover:-translate-y-1">
+            <i id="floating-btn-icon" data-feather="heart"
+                class="w-6 h-6 sm:w-7 sm:h-7 transition-all duration-300"></i>
+            <span class="ml-2 sm:ml-3 font-medium whitespace-nowrap text-sm sm:text-base">
+                Garantir Minha Vaga
+            </span>
+        </button>
+    </div>
+
+    <!-- Yoga Modal -->
+    <div id="yoga-modal"
+        class="fixed inset-0 z-[100] hidden items-center justify-center opacity-0 transition-opacity duration-300 p-4 sm:p-6">
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-yoga-dark/80 backdrop-blur-sm" onclick="closeYogaModal()"></div>
+
+        <!-- Modal Content -->
+        <div class="relative bg-yoga-light w-full max-w-xl max-h-[90vh] overflow-y-auto rounded-[2.5rem] shadow-2xl p-8 md:p-12 transform scale-95 transition-transform duration-300 text-yoga-dark flex flex-col items-center text-center border border-yellow-600/20"
+            id="yoga-modal-content">
+            <!-- Close Button -->
+            <button onclick="closeYogaModal()" type="button"
+                class="absolute top-6 right-6 z-[60] text-yoga-dark/50 hover:text-yoga-gold transition-colors bg-white/80 backdrop-blur-md hover:bg-white rounded-full p-2 shadow-sm border border-yellow-600/10">
+                <i data-feather="x" class="w-6 h-6"></i>
+            </button>
+
+            <!-- Decorative Icon -->
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-yoga-gold/10 text-yoga-gold rounded-full mb-6">
+                <i data-feather="sun" class="w-8 h-8 stroke-[1.5]"></i>
+            </div>
+
+            <h2 class="text-3xl md:text-4xl font-serif text-yoga-dark mb-4 leading-tight">
+                Um passo para sua <br/><span class="text-yoga-gold italic">vitalidade e reconexão</span>
+            </h2>
+
+            <div class="bg-white/60 p-6 rounded-2xl border border-yellow-600/10 mb-8 shadow-sm text-left">
+                <p class="text-lg text-yoga-dark/80 font-light leading-relaxed mb-4 italic">
+                    "Decidir cuidar de si mesma não é um luxo, é a base para sustentar a mulher forte e incrível que você já é."
+                </p>
+                <p class="text-base text-yoga-dark/70 font-light leading-relaxed">
+                    Você está prestes a reservar um momento sagrado de pausa, onde o seu corpo e o seu assoalho pélvico receberão o cuidado e a escuta que merecem. Respire fundo, esse momento é todo seu e fará total diferença na sua vitalidade, saúde íntima e emocional.
+                </p>
+            </div>
+
+            <a href="https://wa.me/5598981532153?text=Olá, quero confirmar minha inscrição e garantir minha vaga no Curso de Yoga para Vitalidade Íntima!" target="_blank" rel="noopener noreferrer"
+                class="w-full sm:w-auto inline-flex justify-center items-center space-x-3 bg-yoga-gold hover:bg-yellow-600 text-white px-10 py-4 rounded-full transition-all duration-300 shadow-xl font-medium text-lg group hover:-translate-y-1">
+                <span>Continuar para o WhatsApp</span>
+                <i data-feather="external-link" class="w-5 h-5 transition-transform group-hover:translate-x-1 stroke-[2.5]"></i>
+            </a>
+            <button onclick="closeYogaModal()" class="mt-4 text-yoga-dark/50 hover:text-yoga-gold text-sm underline transition-colors">Voltar</button>
+        </div>
+    </div>
+
+    <footer class="bg-yoga-light py-12 border-t border-yellow-600/20">
+        <div class="container mx-auto px-6 text-center space-y-6">
+            <p class="text-2xl font-serif text-yoga-dark mb-4">"Pausa, Presença e Reconexão"</p>
+            
+            <a href="https://wa.me/5598981532153" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center space-x-3 text-yoga-gold hover:text-yellow-600 font-medium transition-colors">
+                <i data-feather="message-circle"></i>
+                <span>Tirar dúvidas pelo WhatsApp</span>
+            </a>
+
+            <div class="pt-8">
+                <p class="text-yoga-dark/60 text-sm font-light">
+                    &copy; 2024 Dra. Kerly Helena - Ginecologia Integrativa. Todos os direitos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        // Initialize Swiper for Ambiente
+        const ambienteSwiper = new Swiper('.ambiente-swiper', {
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            coverflowEffect: {
+                rotate: 15,
+                stretch: 0,
+                depth: 250,
+                modifier: 1,
+                slideShadows: true,
+            },
+            speed: 800,
+            loop: true,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+
+        // Initialize Feather Icons
+        feather.replace();
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navbar = document.getElementById('navbar');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            
+            if (mobileMenu.classList.contains('hidden')) {
+                // Menu closed: restore original header styling
+                navbar.classList.add('bg-yoga-light/80', 'backdrop-blur-md');
+                navbar.classList.remove('bg-yoga-light');
+            } else {
+                // Menu open: make header fully solid
+                navbar.classList.remove('bg-yoga-light/80', 'backdrop-blur-md');
+                navbar.classList.add('bg-yoga-light');
+            }
+        });
+
+        // Close menu on link click
+        const mobileLinks = mobileMenu.querySelectorAll('a, button');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if(!link.id || link.id !== 'mobile-menu-btn') {
+                    mobileMenu.classList.add('hidden');
+                    navbar.classList.add('bg-yoga-light/80', 'backdrop-blur-md');
+                    navbar.classList.remove('bg-yoga-light');
+                }
+            });
+        });
+
+        // Modal functionality
+        const yogaModal = document.getElementById('yoga-modal');
+        const yogaModalContent = document.getElementById('yoga-modal-content');
+
+        function openYogaModal() {
+            yogaModal.classList.remove('hidden');
+            yogaModal.classList.add('flex');
+            // small delay for transition
+            setTimeout(() => {
+                yogaModal.classList.remove('opacity-0');
+                yogaModalContent.classList.remove('scale-95');
+            }, 10);
+        }
+
+        function closeYogaModal() {
+            yogaModal.classList.add('opacity-0');
+            yogaModalContent.classList.add('scale-95');
+            setTimeout(() => {
+                yogaModal.classList.add('hidden');
+                yogaModal.classList.remove('flex');
+            }, 300);
+        }
+    </script>
+</body>
+
+</html>
