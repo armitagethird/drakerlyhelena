@@ -4,6 +4,9 @@
   "description": "",
   "main": "script.js",
   "scripts": {
+    "build:css": "tailwindcss -i ./input.css -o ./output.css --minify",
+    "watch:css": "tailwindcss -i ./input.css -o ./output.css --watch",
+    "build": "npm run build:css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -14,6 +17,7 @@
     "@tailwindcss/cli": "^4.2.1",
     "autoprefixer": "^10.4.27",
     "postcss": "^8.5.6",
+    "puppeteer-core": "^24.42.0",
     "tailwindcss": "^4.2.1"
   },
   "dependencies": {

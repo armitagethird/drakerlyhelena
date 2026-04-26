@@ -4,6 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- =========================================================
+         ANALYTICS — ATIVAR QUANDO TIVER AS IDs
+         1) Google Analytics 4: criar property em https://analytics.google.com/
+            -> pegar G-XXXXXXXXXX e substituir abaixo
+         2) Microsoft Clarity (heatmap + gravações): https://clarity.microsoft.com/
+            -> pegar tag e substituir TAG_ID abaixo
+         Eventos custom (whatsapp_click, quiz_open, quiz_start, quiz_complete,
+         book_consultation, scroll_depth) já são enviados pelo main.js — basta
+         descomentar os blocos abaixo depois de pegar as IDs.
+         ========================================================= -->
+    <!--
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "TAG_ID");
+    </script>
+    -->
+
     <title>Dra. Kerly Helena - Ginecologia Integrativa</title>
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/Favicon/Favicon%20Kerly.png">
@@ -16,6 +44,98 @@
     <!-- SEO Meta Description -->
     <meta name="description"
         content="Dra. Kerly Helena é médica ginecologista com abordagem em medicina integrativa em São Luís – MA. Tratamento para menopausa, equilíbrio hormonal e saúde feminina com visão integrativa.">
+    <meta name="author" content="Dra. Kerly Helena">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://drakerlyhelena.com.br/">
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="Dra. Kerly Helena - Ginecologia Integrativa">
+    <meta property="og:url" content="https://drakerlyhelena.com.br/">
+    <meta property="og:title" content="Dra. Kerly Helena - Ginecologia Integrativa em São Luís - MA">
+    <meta property="og:description" content="Cuidado integrativo para a saúde da mulher: menopausa, equilíbrio hormonal e bem-estar com escuta atenta. Atendimento em São Luís - MA.">
+    <!-- TODO: criar imagem OG dedicada 1200x630 em assets/og-image.jpg -->
+    <meta property="og:image" content="https://drakerlyhelena.com.br/assets/_DSC2884.webp">
+    <meta property="og:image:alt" content="Dra. Kerly Helena - Médica Ginecologista Integrativa">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Dra. Kerly Helena - Ginecologia Integrativa em São Luís - MA">
+    <meta name="twitter:description" content="Cuidado integrativo para a saúde da mulher: menopausa, equilíbrio hormonal e bem-estar com escuta atenta.">
+    <meta name="twitter:image" content="https://drakerlyhelena.com.br/assets/_DSC2884.webp">
+
+    <!-- Preload do LCP (imagem do hero) -->
+    <link rel="preload" as="image" href="assets/_DSC2884.webp" fetchpriority="high">
+
+    <!-- Structured Data: Physician + MedicalClinic -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Physician",
+      "@id": "https://drakerlyhelena.com.br/#physician",
+      "name": "Dra. Kerly Helena",
+      "alternateName": "Kerly Helena",
+      "url": "https://drakerlyhelena.com.br/",
+      "image": "https://drakerlyhelena.com.br/assets/_DSC2884.webp",
+      "description": "Médica ginecologista com abordagem em medicina integrativa em São Luís - MA. Foco em menopausa, equilíbrio hormonal e saúde feminina integrativa.",
+      "medicalSpecialty": ["Gynecologic", "Obstetric"],
+      "availableService": [
+        { "@type": "MedicalTherapy", "name": "Consulta Ginecológica Integrativa" },
+        { "@type": "MedicalTherapy", "name": "Tratamento de Menopausa e Climatério" },
+        { "@type": "MedicalTherapy", "name": "Equilíbrio Hormonal Feminino" },
+        { "@type": "MedicalTherapy", "name": "Medicina Ortomolecular" }
+      ],
+      "identifier": [
+        { "@type": "PropertyValue", "propertyID": "CRM", "value": "CRM/MA 3130" },
+        { "@type": "PropertyValue", "propertyID": "RQE", "value": "RQE 5232" }
+      ],
+      "telephone": "+55-98-98153-2153",
+      "sameAs": [
+        "https://www.instagram.com/kerly.helena",
+        "https://www.tiktok.com/@drakerlyhelena"
+      ],
+      "worksFor": { "@id": "https://drakerlyhelena.com.br/#clinic" }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalClinic",
+      "@id": "https://drakerlyhelena.com.br/#clinic",
+      "name": "Clínica Dra. Kerly Helena - Ginecologia Integrativa",
+      "url": "https://drakerlyhelena.com.br/",
+      "image": "https://drakerlyhelena.com.br/assets/_DSC4964.webp",
+      "telephone": "+55-98-98153-2153",
+      "priceRange": "$$$",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Serviços",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "MedicalProcedure", "name": "Consulta Ginecológica Integrativa" },
+            "price": "600.00",
+            "priceCurrency": "BRL"
+          }
+        ]
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Av. Coronel Colares Moreira, Sala 310 - Condomínio Edifício Monumental",
+        "addressLocality": "São Luís",
+        "addressRegion": "MA",
+        "postalCode": "65065-720",
+        "addressCountry": "BR"
+      },
+      "areaServed": { "@type": "City", "name": "São Luís" },
+      "medicalSpecialty": "Gynecologic",
+      "description": "Atendimento particular, somente com hora marcada. Agendamento via WhatsApp.",
+      "physician": { "@id": "https://drakerlyhelena.com.br/#physician" }
+    }
+    </script>
+
 
     <script src="https://unpkg.com/feather-icons" defer></script>
 
@@ -85,7 +205,7 @@
             <button onclick="openSymptomModal(); toggleFloatingMenu()"
                 class="bg-white hover:bg-blush-50 text-charcoal px-5 py-3 rounded-full shadow-lg flex items-center space-x-3 transition-transform hover:-translate-y-1 border border-blush-200 font-medium">
                 <i data-feather="file-text" class="w-5 h-5 text-blush-500"></i>
-                <span class="whitespace-nowrap text-sm sm:text-base">Quero entender meus sintomas</span>
+                <span class="whitespace-nowrap text-sm sm:text-base">Quero entender o que sinto</span>
             </button>
             <a href="https://wa.me/5598981532153" target="_blank" rel="noopener noreferrer"
                 class="bg-white hover:bg-blush-50 text-charcoal px-5 py-3 rounded-full shadow-lg flex items-center space-x-3 transition-transform hover:-translate-y-1 border border-blush-200 font-medium">
@@ -126,17 +246,17 @@
                 <div class="flex flex-col md:flex-row items-center gap-12">
                     <div class="w-full md:w-1/2 gs-reveal">
                         <h1
-                            class="font-serif text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] mb-6 text-charcoal">
-                            Saúde da Mulher sob um <br />
+                            class="font-serif text-[2.25rem] sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] md:leading-[1.05] mb-6 text-charcoal">
+                            Saúde da Mulher <br class="hidden sm:inline" />sob um <br />
                             <span class="text-blush-500 italic font-light">Olhar Integrativo</span>
                         </h1>
                         <p class="text-lg md:text-xl text-charcoal/80 mb-10 font-light max-w-lg">
-                            Reconexão de corpo e mente. Um cuidado além do convencional.
+                            Para mulheres que querem se sentir revitalizadas, leves e em paz com o próprio corpo. Um cuidado além do convencional.
                         </p>
                         <div class="flex flex-col sm:flex-row items-center gap-6 sm:gap-8 mt-12 pb-6">
                             <button onclick="openSymptomModal()"
                                 class="relative inline-flex items-center justify-center space-x-2 bg-blush-500 hover:bg-blush-400 text-white px-8 py-4 md:px-10 md:py-5 rounded-full transition-all duration-300 shadow-lg hover:shadow-2xl font-medium tracking-wide w-full sm:w-auto overflow-hidden group animate-breathe hover:animate-none hover:-translate-y-1">
-                                <span class="relative z-10 text-lg">Quero entender meus sintomas</span>
+                                <span class="relative z-10 text-lg">Quero entender o que sinto</span>
                                 <i data-feather="arrow-right"
                                     class="w-5 h-5 relative z-10 transition-transform group-hover:translate-x-1"></i>
                             </button>
@@ -190,7 +310,7 @@
                     <div class="space-y-6 gs-reveal">
                         <p class="text-lg text-charcoal/80 font-light leading-relaxed">
                             <strong class="font-medium text-charcoal">Sou a Dra. Kerly Helena, médica
-                                ginecologista.</strong>
+                                ginecologista <span class="whitespace-nowrap text-charcoal/60 text-sm font-normal">(CRM/MA 3130 &middot; RQE 5232)</span>.</strong>
                             Acredito em ir muito além do sintoma.
                         </p>
                         <p class="text-lg text-charcoal/80 font-light leading-relaxed">
@@ -219,6 +339,57 @@
                                 loading="lazy" width="1200" height="1200" class="w-full h-full object-cover">
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Para quem é este cuidado Section (desire-based) -->
+        <section id="para-voce" class="py-28 bg-sand-200 relative">
+            <div class="container mx-auto px-6 max-w-5xl">
+                <div class="text-center mb-16 gs-reveal">
+                    <span class="text-sm tracking-[0.2em] text-blush-400 uppercase font-semibold">Para quem é este cuidado</span>
+                    <h2 class="text-4xl md:text-5xl font-serif mt-4 text-charcoal">Talvez você esteja aqui porque...</h2>
+                    <p class="mt-4 text-charcoal/70 max-w-2xl mx-auto font-light leading-relaxed">
+                        Cada uma dessas frases pode ser um caminho. Veja qual ressoa em você hoje.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 gs-reveal">
+                    <div class="bg-white/60 backdrop-blur-sm p-6 rounded-3xl border border-blush-100/60 shadow-sm hover:bg-white hover:-translate-y-1 transition-all duration-300">
+                        <i data-feather="sun" class="text-blush-500 w-6 h-6 mb-4"></i>
+                        <p class="text-lg text-charcoal/90 font-serif italic leading-snug">"Quero acordar com energia e disposição."</p>
+                    </div>
+                    <div class="bg-white/60 backdrop-blur-sm p-6 rounded-3xl border border-blush-100/60 shadow-sm hover:bg-white hover:-translate-y-1 transition-all duration-300">
+                        <i data-feather="feather" class="text-blush-500 w-6 h-6 mb-4"></i>
+                        <p class="text-lg text-charcoal/90 font-serif italic leading-snug">"Quero me sentir leve no meu corpo."</p>
+                    </div>
+                    <div class="bg-white/60 backdrop-blur-sm p-6 rounded-3xl border border-blush-100/60 shadow-sm hover:bg-white hover:-translate-y-1 transition-all duration-300">
+                        <i data-feather="moon" class="text-blush-500 w-6 h-6 mb-4"></i>
+                        <p class="text-lg text-charcoal/90 font-serif italic leading-snug">"Quero dormir profundamente e acordar descansada."</p>
+                    </div>
+                    <div class="bg-white/60 backdrop-blur-sm p-6 rounded-3xl border border-blush-100/60 shadow-sm hover:bg-white hover:-translate-y-1 transition-all duration-300">
+                        <i data-feather="heart" class="text-blush-500 w-6 h-6 mb-4"></i>
+                        <p class="text-lg text-charcoal/90 font-serif italic leading-snug">"Quero me sentir bonita e em paz com meu corpo."</p>
+                    </div>
+                    <div class="bg-white/60 backdrop-blur-sm p-6 rounded-3xl border border-blush-100/60 shadow-sm hover:bg-white hover:-translate-y-1 transition-all duration-300">
+                        <i data-feather="compass" class="text-blush-500 w-6 h-6 mb-4"></i>
+                        <p class="text-lg text-charcoal/90 font-serif italic leading-snug">"Quero estar presente comigo mesma e nas pequenas coisas."</p>
+                    </div>
+                    <div class="bg-white/60 backdrop-blur-sm p-6 rounded-3xl border border-blush-100/60 shadow-sm hover:bg-white hover:-translate-y-1 transition-all duration-300">
+                        <i data-feather="zap" class="text-blush-500 w-6 h-6 mb-4"></i>
+                        <p class="text-lg text-charcoal/90 font-serif italic leading-snug">"Quero redescobrir meu prazer, libido e vitalidade."</p>
+                    </div>
+                </div>
+
+                <div class="text-center mt-14 gs-reveal">
+                    <p class="text-charcoal/70 font-light max-w-xl mx-auto mb-6 leading-relaxed">
+                        Se ao menos uma dessas frases ressoou — você está no lugar certo.
+                    </p>
+                    <button onclick="openSymptomModal()"
+                        class="inline-flex items-center justify-center space-x-2 bg-blush-500 hover:bg-blush-400 text-white px-10 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-2xl font-medium tracking-wide hover:-translate-y-1">
+                        <span class="text-lg">Quero entender o que sinto</span>
+                        <i data-feather="arrow-right" class="w-5 h-5"></i>
+                    </button>
                 </div>
             </div>
         </section>
@@ -379,6 +550,15 @@
                         <p class="text-lg text-blush-500 mt-4 italic font-medium">
                             Saúde é energia e qualidade de vida.
                         </p>
+                    </div>
+
+                    <div class="text-center mt-10">
+                        <a href="yoga.html"
+                            class="inline-flex items-center gap-2 text-blush-500 font-medium tracking-wide border-b border-blush-300 hover:border-blush-500 pb-1 transition-colors">
+                            <i data-feather="sun" class="w-4 h-4"></i>
+                            <span>Conheça também os encontros de Yoga para a Vitalidade Feminina</span>
+                            <i data-feather="arrow-right" class="w-4 h-4"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -660,11 +840,17 @@
             </div>
 
             <div class="space-y-2">
+                <p class="text-charcoal text-sm font-medium">
+                    Dra. Kerly Helena &middot; CRM/MA 3130 &middot; RQE 5232 &middot; Ginecologia e Obstetrícia
+                </p>
                 <p class="text-charcoal/80 text-sm font-light">
                     &copy; 2024 Dra. Kerly Helena - Ginecologia Integrativa. Todos os direitos reservados.
                 </p>
                 <p class="text-charcoal/70 text-xs mt-2">
                     "Pausa e Reconexão"
+                </p>
+                <p class="text-charcoal/50 text-xs pt-4">
+                    Site desenvolvido por <span class="font-medium text-charcoal/70">Vibe Surf Dev</span>
                 </p>
             </div>
         </div>
@@ -677,7 +863,8 @@
         <div class="absolute inset-0 bg-charcoal/40 backdrop-blur-sm" onclick="closeSymptomModal()"></div>
 
         <!-- Modal Content -->
-        <div class="relative bg-sand-100 w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl shadow-2xl p-6 md:p-8 transform scale-95 transition-transform duration-300 text-charcoal flex flex-col"
+        <div class="relative bg-sand-100 w-full max-w-2xl overflow-y-auto rounded-3xl shadow-2xl p-6 md:p-8 transform scale-95 transition-transform duration-300 text-charcoal flex flex-col"
+            style="max-height: 90vh;"
             id="symptom-modal-content">
             <!-- Close Button -->
             <button onclick="closeSymptomModal()" type="button"
@@ -685,444 +872,205 @@
                 <i data-feather="x" class="w-6 h-6"></i>
             </button>
 
-            <!-- Step 1: Intro -->
-            <div id="modal-step-1" class="space-y-3 sm:space-y-4 text-center sm:pt-2 relative pb-8 sm:pb-0">
-                <!-- Decorative Icon -->
-                <div
-                    class="inline-flex items-center justify-center w-10 h-10 sm:w-14 sm:h-14 bg-nude-300/50 text-blush-500 rounded-full mx-auto">
-                    <i data-feather="sun" class="w-6 h-6 sm:w-8 sm:h-8 stroke-[1.5]"></i>
+            <!-- Stage 1: Intro -->
+            <div id="quiz-intro" class="space-y-6 text-center pb-modal-safe">
+                <div class="inline-flex items-center justify-center w-16 h-16 bg-nude-300/50 text-blush-500 rounded-full mx-auto">
+                    <i data-feather="sun" class="w-8 h-8 stroke-[1.5]"></i>
                 </div>
-
-                <h1 class="text-xl sm:text-2xl md:text-4xl font-serif text-charcoal leading-tight px-2">
-                    Antes de falar sobre tratamento, <br class="hidden sm:block" /><span
-                        class="text-blush-500 italic">quero entender você.</span>
-                </h1>
-
-                <div
-                    class="max-w-xl mx-auto space-y-2 sm:space-y-3 text-charcoal/80 font-light leading-relaxed text-sm sm:text-base px-2">
-                    <p class="text-base sm:text-lg font-medium text-charcoal">Cada mulher vive seus sintomas de forma
-                        única.</p>
-                    <p class="leading-snug">Antes de explicar como funciona a consulta, gostaria de entender um pouco do
-                        que você está sentindo.</p>
-
-                    <div
-                        class="bg-white/60 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-4 sm:p-5 shadow-sm border border-blush-100/50 mt-3 sm:mt-4 relative overflow-hidden group text-left sm:text-center">
-                        <!-- subtle shine effect -->
-                        <div
-                            class="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/40 to-white/0 -translate-x-full group-hover:animate-[shimmer_2s_infinite]">
-                        </div>
-
-                        <p class="mb-1 text-sm sm:text-base">Responda esse pequeno questionário. Leva cerca de <strong>2
-                                minutos</strong> e me ajuda a te orientar de forma mais individualizada.</p>
-                        <p class="font-medium text-blush-500 text-base sm:text-lg font-serif italic mt-2 text-center">
-                            Você não precisa passar por isso sozinha.</p>
+                <h2 class="text-3xl md:text-4xl font-serif text-charcoal leading-tight">
+                    Vamos começar <br><span class="text-blush-500 italic">por você.</span>
+                </h2>
+                <p class="text-charcoal/80 font-light max-w-md mx-auto">Em poucos minutos vamos mapear o que pode te ajudar a se sentir mais leve, presente e vital. Sem julgamento, só escuta.</p>
+                
+                <div class="space-y-4 max-w-sm mx-auto pt-4">
+                    <div class="text-left">
+                        <label class="block text-sm text-charcoal/70 mb-1 ml-4">Como quer ser chamada?</label>
+                        <input type="text" id="quiz-name" placeholder="Seu nome" class="w-full bg-white/60 border border-blush-100 rounded-full px-6 py-3 focus:outline-none focus:border-blush-400 transition-colors">
                     </div>
-                </div>
-
-                <div class="pt-3 sm:pt-4">
-                    <p
-                        class="text-[10px] sm:text-sm uppercase tracking-widest text-charcoal/50 font-medium mb-2 sm:mb-3">
-                        Conte um pouco sobre o que está acontecendo</p>
-                    <button onclick="nextStep(2)"
-                        class="w-full sm:w-auto inline-flex justify-center items-center space-x-2 sm:space-x-3 bg-blush-500 hover:bg-blush-400 text-white px-8 py-3 sm:px-10 sm:py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-2xl font-medium text-base sm:text-lg group hover:-translate-y-1">
-                        <span>Iniciar Questionário</span>
-                        <i data-feather="arrow-right"
-                            class="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:translate-x-1 stroke-[2.5]"></i>
+                    <div class="text-left">
+                        <label class="block text-sm text-charcoal/70 mb-1 ml-4">WhatsApp para contato</label>
+                        <input type="tel" id="quiz-phone" placeholder="(00) 00000-0000" class="w-full bg-white/60 border border-blush-100 rounded-full px-6 py-3 focus:outline-none focus:border-blush-400 transition-colors">
+                    </div>
+                    <button onclick="startQuiz()" class="w-full bg-blush-500 hover:bg-blush-400 text-white px-8 py-4 rounded-full transition-all duration-300 shadow-lg font-medium text-lg mt-4">
+                        Começar
                     </button>
                 </div>
+            </div>
 
-                <!-- Scroll hint for very short screens (like in-app browsers) -->
-                <div
-                    class="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex flex-col items-center justify-center text-blush-400/70 sm:hidden animate-bounce mt-4">
-                    <span class="text-[10px] uppercase font-medium tracking-wider mb-1"></span>
-                    <i data-feather="chevron-down" class="w-4 h-4"></i>
+            <!-- Stage 2: Questionnaire -->
+            <div id="quiz-questions" class="hidden space-y-8">
+                <div class="flex items-center justify-between border-b border-blush-200/50 pb-4">
+                    <h3 class="text-xl font-serif text-charcoal" id="quiz-question-title">Pergunta</h3>
+                    <div class="flex flex-col items-end">
+                        <span id="quiz-progress-text" class="text-xs font-medium text-blush-500 mb-1">Passo 1 de 9</span>
+                        <div class="w-24 h-1.5 bg-blush-100 rounded-full overflow-hidden">
+                            <div id="quiz-progress-bar" class="h-full bg-blush-500 w-0 transition-all duration-500"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="question-container" class="flex flex-col justify-center" style="min-height: 250px;">
+                    <!-- Dynamic Question Content -->
                 </div>
             </div>
 
-            <!-- Step 2: Questionnaire -->
-            <div id="modal-step-2" class="space-y-10 hidden">
-                <div
-                    class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-blush-200/50 pb-6 mb-8 mt-2 pr-8 sm:pr-0">
-                    <h2 class="text-3xl font-serif text-charcoal">Suas informações</h2>
-                    <span
-                        class="text-xs sm:text-sm font-medium text-blush-500 bg-blush-100/50 px-4 py-1.5 rounded-full flex items-center gap-2 w-max">
-                        <i data-feather="lock" class="w-3 h-3"></i> Confidencial
-                    </span>
+            <!-- Stage 3: Animation (Interpretation) — blooming rose on warm off-white -->
+            <div id="quiz-animation" class="hidden relative w-full z-[70] flex flex-col items-center justify-center p-6 md:p-10 overflow-hidden rounded-3xl min-h-[500px]"
+                 style="background: radial-gradient(ellipse at 50% 45%, #FDFCFB 0%, #F5EFEF 75%, #F0D1DC 100%);">
+                <div class="relative flex items-center justify-center w-full" style="max-width: 400px; aspect-ratio: 1 / 1;">
+                    <svg viewBox="0 0 320 320" preserveAspectRatio="xMidYMid meet" class="w-full h-full" aria-hidden="true">
+                        <defs>
+                            <radialGradient id="anim-aura-gradient" cx="50%" cy="50%" r="55%">
+                                <stop offset="0%" stop-color="#fff5ec" stop-opacity="0.85" />
+                                <stop offset="40%" stop-color="#fce4d4" stop-opacity="0.45" />
+                                <stop offset="80%" stop-color="#d4a395" stop-opacity="0.15" />
+                                <stop offset="100%" stop-color="#A9637B" stop-opacity="0" />
+                            </radialGradient>
+                            <linearGradient id="petal-grad-outer" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#fce8d8" stop-opacity="0.98" />
+                                <stop offset="55%" stop-color="#e0aebe" stop-opacity="0.95" />
+                                <stop offset="100%" stop-color="#A9637B" stop-opacity="0.92" />
+                            </linearGradient>
+                            <linearGradient id="petal-grad-inner" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#fff5ec" stop-opacity="1" />
+                                <stop offset="100%" stop-color="#C7889D" stop-opacity="0.98" />
+                            </linearGradient>
+                            <radialGradient id="rose-center-grad" cx="40%" cy="40%" r="60%">
+                                <stop offset="0%" stop-color="#fff5ec" stop-opacity="1" />
+                                <stop offset="55%" stop-color="#d4a395" stop-opacity="1" />
+                                <stop offset="100%" stop-color="#A9637B" stop-opacity="1" />
+                            </radialGradient>
+                            <filter id="anim-soft-glow" x="-100%" y="-100%" width="300%" height="300%">
+                                <feGaussianBlur stdDeviation="2.6" result="blur" />
+                                <feMerge>
+                                    <feMergeNode in="blur" />
+                                    <feMergeNode in="SourceGraphic" />
+                                </feMerge>
+                            </filter>
+                        </defs>
+
+                        <!-- Aura: soft warm halo behind the rose -->
+                        <circle class="anim-aura" cx="160" cy="160" r="140" fill="url(#anim-aura-gradient)" />
+
+                        <!-- Rose blooming, centered + scaled up 1.8x -->
+                        <g class="anim-rose" transform="translate(160 160) scale(1.8)" filter="url(#anim-soft-glow)">
+                            <!-- Outer petals (8, every 45 deg) -->
+                            <g class="anim-petal-outer" transform="rotate(0)"><path d="M 0,0 C -10,-7 -10,-26 0,-34 C 10,-26 10,-7 0,0 Z" fill="url(#petal-grad-outer)" /></g>
+                            <g class="anim-petal-outer" transform="rotate(45)"><path d="M 0,0 C -10,-7 -10,-26 0,-34 C 10,-26 10,-7 0,0 Z" fill="url(#petal-grad-outer)" /></g>
+                            <g class="anim-petal-outer" transform="rotate(90)"><path d="M 0,0 C -10,-7 -10,-26 0,-34 C 10,-26 10,-7 0,0 Z" fill="url(#petal-grad-outer)" /></g>
+                            <g class="anim-petal-outer" transform="rotate(135)"><path d="M 0,0 C -10,-7 -10,-26 0,-34 C 10,-26 10,-7 0,0 Z" fill="url(#petal-grad-outer)" /></g>
+                            <g class="anim-petal-outer" transform="rotate(180)"><path d="M 0,0 C -10,-7 -10,-26 0,-34 C 10,-26 10,-7 0,0 Z" fill="url(#petal-grad-outer)" /></g>
+                            <g class="anim-petal-outer" transform="rotate(225)"><path d="M 0,0 C -10,-7 -10,-26 0,-34 C 10,-26 10,-7 0,0 Z" fill="url(#petal-grad-outer)" /></g>
+                            <g class="anim-petal-outer" transform="rotate(270)"><path d="M 0,0 C -10,-7 -10,-26 0,-34 C 10,-26 10,-7 0,0 Z" fill="url(#petal-grad-outer)" /></g>
+                            <g class="anim-petal-outer" transform="rotate(315)"><path d="M 0,0 C -10,-7 -10,-26 0,-34 C 10,-26 10,-7 0,0 Z" fill="url(#petal-grad-outer)" /></g>
+
+                            <!-- Inner petals (8, offset 22.5 deg, smaller) -->
+                            <g class="anim-petal-inner" transform="rotate(22.5)"><path d="M 0,0 C -7,-5 -7,-19 0,-23 C 7,-19 7,-5 0,0 Z" fill="url(#petal-grad-inner)" /></g>
+                            <g class="anim-petal-inner" transform="rotate(67.5)"><path d="M 0,0 C -7,-5 -7,-19 0,-23 C 7,-19 7,-5 0,0 Z" fill="url(#petal-grad-inner)" /></g>
+                            <g class="anim-petal-inner" transform="rotate(112.5)"><path d="M 0,0 C -7,-5 -7,-19 0,-23 C 7,-19 7,-5 0,0 Z" fill="url(#petal-grad-inner)" /></g>
+                            <g class="anim-petal-inner" transform="rotate(157.5)"><path d="M 0,0 C -7,-5 -7,-19 0,-23 C 7,-19 7,-5 0,0 Z" fill="url(#petal-grad-inner)" /></g>
+                            <g class="anim-petal-inner" transform="rotate(202.5)"><path d="M 0,0 C -7,-5 -7,-19 0,-23 C 7,-19 7,-5 0,0 Z" fill="url(#petal-grad-inner)" /></g>
+                            <g class="anim-petal-inner" transform="rotate(247.5)"><path d="M 0,0 C -7,-5 -7,-19 0,-23 C 7,-19 7,-5 0,0 Z" fill="url(#petal-grad-inner)" /></g>
+                            <g class="anim-petal-inner" transform="rotate(292.5)"><path d="M 0,0 C -7,-5 -7,-19 0,-23 C 7,-19 7,-5 0,0 Z" fill="url(#petal-grad-inner)" /></g>
+                            <g class="anim-petal-inner" transform="rotate(337.5)"><path d="M 0,0 C -7,-5 -7,-19 0,-23 C 7,-19 7,-5 0,0 Z" fill="url(#petal-grad-inner)" /></g>
+
+                            <!-- Central pistil -->
+                            <circle class="anim-rose-pistil" r="5.5" fill="url(#rose-center-grad)" />
+                        </g>
+
+                        <!-- Rising particles in blush tones (visible on light bg) -->
+                        <g class="anim-particles">
+                            <circle class="anim-particle" cx="100" cy="180" r="2.0" fill="#A9637B" fill-opacity="0.6" />
+                            <circle class="anim-particle" cx="220" cy="180" r="1.7" fill="#C7889D" fill-opacity="0.55" />
+                            <circle class="anim-particle" cx="130" cy="140" r="1.3" fill="#d4a395" fill-opacity="0.7" />
+                            <circle class="anim-particle" cx="190" cy="140" r="1.5" fill="#A9637B" fill-opacity="0.55" />
+                            <circle class="anim-particle" cx="160" cy="80" r="1.8" fill="#C7889D" fill-opacity="0.65" />
+                            <circle class="anim-particle" cx="125" cy="220" r="1.0" fill="#d4a395" fill-opacity="0.5" />
+                            <circle class="anim-particle" cx="195" cy="220" r="1.4" fill="#A9637B" fill-opacity="0.55" />
+                            <circle class="anim-particle" cx="75" cy="150" r="1.1" fill="#C7889D" fill-opacity="0.5" />
+                            <circle class="anim-particle" cx="245" cy="150" r="1.2" fill="#d4a395" fill-opacity="0.6" />
+                        </g>
+                    </svg>
                 </div>
 
-                <form id="symptom-form" class="space-y-8">
-                    <!-- Q1 -->
-                    <div class="space-y-4">
-                        <label class="block text-lg font-medium text-charcoal">1. O que mais tem te incomodado
-                            atualmente?</label>
-                        <p class="text-sm text-charcoal/60 -mt-2">(pode marcar mais de uma opção)</p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 font-light">
-                            <label
-                                class="flex items-start space-x-3 cursor-pointer group p-4 rounded-2xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
-                                <input type="checkbox" name="q1" value="Cansaço ou falta de energia"
-                                    class="form-checkbox text-blush-500 rounded border-blush-200 focus:ring-blush-500/50 cursor-pointer w-5 h-5 mt-0.5 transition-colors">
-                                <span class="group-hover:text-blush-500 transition-colors leading-snug">Cansaço ou falta
-                                    de
-                                    energia</span>
-                            </label>
-                            <label
-                                class="flex items-start space-x-3 cursor-pointer group p-4 rounded-2xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
-                                <input type="checkbox" name="q1" value="Dificuldade para dormir ou sono leve"
-                                    class="form-checkbox text-blush-500 rounded border-blush-200 focus:ring-blush-500/50 cursor-pointer w-5 h-5 mt-0.5 transition-colors">
-                                <span class="group-hover:text-blush-500 transition-colors leading-snug">Dificuldade para
-                                    dormir ou
-                                    sono leve</span>
-                            </label>
-                            <label
-                                class="flex items-start space-x-3 cursor-pointer group p-4 rounded-2xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
-                                <input type="checkbox" name="q1" value="Ansiedade, estresse ou irritabilidade"
-                                    class="form-checkbox text-blush-500 rounded border-blush-200 focus:ring-blush-500/50 cursor-pointer w-5 h-5 mt-0.5 transition-colors">
-                                <span class="group-hover:text-blush-500 transition-colors leading-snug">Ansiedade,
-                                    estresse ou
-                                    irritabilidade</span>
-                            </label>
-                            <label
-                                class="flex items-start space-x-3 cursor-pointer group p-4 rounded-2xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
-                                <input type="checkbox" name="q1" value="Ganho de peso ou dificuldade para emagrecer"
-                                    class="form-checkbox text-blush-500 rounded border-blush-200 focus:ring-blush-500/50 cursor-pointer w-5 h-5 mt-0.5 transition-colors">
-                                <span class="group-hover:text-blush-500 transition-colors leading-snug">Ganho de peso ou
-                                    dificuldade
-                                    para emagrecer</span>
-                            </label>
-                            <label
-                                class="flex items-start space-x-3 cursor-pointer group p-4 rounded-2xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
-                                <input type="checkbox" name="q1" value="Ondas de calor ou sintomas da menopausa"
-                                    class="form-checkbox text-blush-500 rounded border-blush-200 focus:ring-blush-500/50 cursor-pointer w-5 h-5 mt-0.5 transition-colors">
-                                <span class="group-hover:text-blush-500 transition-colors leading-snug">Ondas de calor
-                                    ou sintomas da
-                                    menopausa</span>
-                            </label>
-                            <label
-                                class="flex items-start space-x-3 cursor-pointer group p-4 rounded-2xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
-                                <input type="checkbox" name="q1" value="Baixa libido"
-                                    class="form-checkbox text-blush-500 rounded border-blush-200 focus:ring-blush-500/50 cursor-pointer w-5 h-5 mt-0.5 transition-colors">
-                                <span class="group-hover:text-blush-500 transition-colors leading-snug">Baixa
-                                    libido</span>
-                            </label>
-                            <label
-                                class="flex items-start space-x-3 cursor-pointer group p-4 rounded-2xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
-                                <input type="checkbox" name="q1" value="TPM intensa ou alterações de humor"
-                                    class="form-checkbox text-blush-500 rounded border-blush-200 focus:ring-blush-500/50 cursor-pointer w-5 h-5 mt-0.5 transition-colors">
-                                <span class="group-hover:text-blush-500 transition-colors leading-snug">TPM intensa ou
-                                    alterações de
-                                    humor</span>
-                            </label>
-                            <label
-                                class="flex items-start space-x-3 cursor-pointer group p-3 rounded-2xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
-                                <input type="checkbox" name="q1" value="Falta de concentração ou memória ruim"
-                                    class="form-checkbox text-blush-500 rounded border-blush-200 focus:ring-blush-500/50 cursor-pointer w-5 h-5 mt-0.5 transition-colors">
-                                <span class="group-hover:text-blush-500 transition-colors leading-snug">Falta de
-                                    concentração ou
-                                    memória ruim</span>
-                            </label>
-                        </div>
-                        <div class="mt-2">
-                            <input type="text" name="q1_other" placeholder="Outro..."
-                                class="w-full mt-1 border-b border-blush-200 bg-transparent py-2 focus:outline-none focus:border-blush-500 transition-colors placeholder-charcoal/40 font-light text-charcoal text-sm">
-                        </div>
-                        <div id="q1-error" class="hidden text-red-500 text-sm mt-1">Selecione pelo menos uma opção.
-                        </div>
-                    </div>
-                    <div class="pt-4 flex justify-between items-center">
-                        <button type="button" onclick="nextStep(1)"
-                            class="text-charcoal/60 hover:text-blush-500 font-medium transition-colors text-sm">Voltar</button>
-                        <button type="button" onclick="validateStep2()"
-                            class="bg-blush-500 hover:bg-blush-400 text-white px-6 py-2 rounded-full transition-colors shadow-md font-medium text-sm">Avançar</button>
-                    </div>
-                </form>
+                <div class="mt-6 text-center space-y-2 max-w-xs">
+                    <p id="animation-text" class="text-charcoal/80 font-serif text-lg italic transition-opacity duration-500">Cada resposta sua revela algo...</p>
+                </div>
             </div>
 
-            <!-- Step 3: Q2 -->
-            <div id="modal-step-3" class="space-y-6 hidden">
-                <div class="flex items-center justify-between border-b border-blush-200/50 pb-4 mb-4 mt-2 pr-8 sm:pr-0">
-                    <h2 class="text-2xl font-serif text-charcoal">Tempo dos Sintomas</h2>
-                    <span
-                        class="text-xs font-medium text-blush-500 bg-blush-100/50 px-3 py-1 rounded-full flex items-center gap-1">
-                        <i data-feather="clock" class="w-3 h-3"></i> 2/6
-                    </span>
-                </div>
-                <form class="space-y-6">
-
-                    <!-- Q2 -->
-                    <div class="space-y-4">
-                        <label class="block text-lg font-medium text-charcoal">2. Há quanto tempo você percebe esses
-                            sintomas?</label>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 font-light">
-                            <label
-                                class="flex items-center space-x-3 cursor-pointer group p-4 rounded-2xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
-                                <input type="radio" name="q2" value="Menos de 1 mês"
-                                    class="form-radio text-blush-500 border-blush-200 focus:ring-blush-500/50 cursor-pointer w-5 h-5 transition-colors"
-                                    required>
-                                <span class="group-hover:text-blush-500 transition-colors">Menos de 1 mês</span>
-                            </label>
-                            <label
-                                class="flex items-center space-x-3 cursor-pointer group p-4 rounded-2xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
-                                <input type="radio" name="q2" value="Entre 1 e 3 meses"
-                                    class="form-radio text-blush-500 border-blush-200 focus:ring-blush-500/50 cursor-pointer w-5 h-5 transition-colors">
-                                <span class="group-hover:text-blush-500 transition-colors">Entre 1 e 3 meses</span>
-                            </label>
-                            <label
-                                class="flex items-center space-x-3 cursor-pointer group p-4 rounded-2xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
-                                <input type="radio" name="q2" value="Entre 3 meses e 1 ano"
-                                    class="form-radio text-blush-500 border-blush-200 focus:ring-blush-500/50 cursor-pointer w-5 h-5 transition-colors">
-                                <span class="group-hover:text-blush-500 transition-colors">Entre 3 meses e 1 ano</span>
-                            </label>
-                            <label
-                                class="flex items-center space-x-3 cursor-pointer group p-3 rounded-2xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
-                                <input type="radio" name="q2" value="Mais de 1 ano"
-                                    class="form-radio text-blush-500 border-blush-200 focus:ring-blush-500/50 cursor-pointer w-5 h-5 transition-colors">
-                                <span class="group-hover:text-blush-500 transition-colors">Mais de 1 ano</span>
-                            </label>
-                        </div>
-                        <div id="q2-error" class="hidden text-red-500 text-sm mt-1">Obrigatório.</div>
+            <!-- Stage 4: Result -->
+            <div id="quiz-results" class="hidden space-y-7 py-2 pb-modal-safe">
+                <!-- Header: visual continuity with the rose -->
+                <div class="text-center space-y-3">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-blush-100/60 rounded-full border border-blush-200/60">
+                        <span class="w-1.5 h-1.5 rounded-full bg-blush-500"></span>
+                        <span class="text-[10px] uppercase tracking-[0.2em] text-blush-500 font-bold">Seu mapa de bem-estar</span>
                     </div>
-                    <div class="pt-4 flex justify-between items-center">
-                        <button type="button" onclick="nextStep(2)"
-                            class="text-charcoal/60 hover:text-blush-500 font-medium transition-colors text-sm">Voltar</button>
-                        <button type="button" onclick="validateStep3()"
-                            class="bg-blush-500 hover:bg-blush-400 text-white px-6 py-2 rounded-full transition-colors shadow-md font-medium text-sm">Avançar</button>
+                    <h2 class="text-3xl md:text-4xl font-serif text-charcoal leading-tight" id="result-greeting">Olá, Nome.</h2>
+                    <div class="space-y-1 pt-1">
+                        <p class="text-charcoal/45 text-xs uppercase tracking-[0.2em] font-semibold">Você quer mais</p>
+                        <p class="text-2xl md:text-3xl font-serif italic text-blush-500 leading-tight" id="result-dimension">vitalidade</p>
                     </div>
-                </form>
-            </div>
-
-            <!-- Step 4: Q3 -->
-            <div id="modal-step-4" class="space-y-6 hidden">
-                <div class="flex items-center justify-between border-b border-blush-200/50 pb-4 mb-4 mt-2 pr-8 sm:pr-0">
-                    <h2 class="text-2xl font-serif text-charcoal">Impacto</h2>
-                    <span
-                        class="text-xs font-medium text-blush-500 bg-blush-100/50 px-3 py-1 rounded-full flex items-center gap-1">
-                        <i data-feather="activity" class="w-3 h-3"></i> 3/6
-                    </span>
-                </div>
-                <form class="space-y-6">
-                    <div class="space-y-4">
-                        <label class="block text-lg font-medium text-charcoal">3. De 0 a 10, quanto esses sintomas
-                            impactam sua qualidade de vida?</label>
-                        <div class="flex justify-between text-sm text-charcoal/60 font-light">
-                            <span>0 = quase não atrapalha</span>
-                            <span>10 = atrapalha muito</span>
-                        </div>
-                        <input type="range" name="q3" min="0" max="10" value="5"
-                            class="w-full accent-blush-500 h-2 bg-blush-200 rounded-lg appearance-none cursor-pointer mt-4"
-                            oninput="document.getElementById('q3-val').innerText = this.value">
-                        <div class="text-center font-bold text-blush-500 text-3xl mt-4" id="q3-val">5</div>
-                    </div>
-                    <div class="pt-4 flex justify-between items-center">
-                        <button type="button" onclick="nextStep(3)"
-                            class="text-charcoal/60 hover:text-blush-500 font-medium transition-colors text-sm">Voltar</button>
-                        <button type="button" onclick="validateStep4()"
-                            class="bg-blush-500 hover:bg-blush-400 text-white px-6 py-2 rounded-full transition-colors shadow-md font-medium text-sm">Avançar</button>
-                    </div>
-                </form>
-            </div>
-
-            <!-- Step 5: Q4 -->
-            <div id="modal-step-5" class="space-y-6 hidden">
-                <div class="flex items-center justify-between border-b border-blush-200/50 pb-4 mb-4 mt-2 pr-8 sm:pr-0">
-                    <h2 class="text-2xl font-serif text-charcoal">Prioridade</h2>
-                    <span
-                        class="text-xs font-medium text-blush-500 bg-blush-100/50 px-3 py-1 rounded-full flex items-center gap-1">
-                        <i data-feather="target" class="w-3 h-3"></i> 4/6
-                    </span>
-                </div>
-                <form class="space-y-6">
-                    <div class="space-y-4">
-                        <label class="block text-lg font-medium text-charcoal">4. O que você gostaria de melhorar
-                            primeiro?</label>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 font-light">
-                            <label
-                                class="flex items-start space-x-3 cursor-pointer group p-4 rounded-2xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
-                                <input type="radio" name="q4" value="Dormir melhor"
-                                    class="form-radio text-blush-500 border-blush-200 focus:ring-blush-500/50 cursor-pointer w-5 h-5 mt-0.5 transition-colors"
-                                    required>
-                                <span class="group-hover:text-blush-500 transition-colors leading-snug">Dormir
-                                    melhor</span>
-                            </label>
-                            <label
-                                class="flex items-start space-x-3 cursor-pointer group p-4 rounded-2xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
-                                <input type="radio" name="q4" value="Ter mais energia durante o dia"
-                                    class="form-radio text-blush-500 border-blush-200 focus:ring-blush-500/50 cursor-pointer w-5 h-5 mt-0.5 transition-colors">
-                                <span class="group-hover:text-blush-500 transition-colors leading-snug">Ter mais energia
-                                    durante o
-                                    dia</span>
-                            </label>
-                            <label
-                                class="flex items-start space-x-3 cursor-pointer group p-4 rounded-2xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
-                                <input type="radio" name="q4" value="Reduzir ansiedade ou estresse"
-                                    class="form-radio text-blush-500 border-blush-200 focus:ring-blush-500/50 cursor-pointer w-5 h-5 mt-0.5 transition-colors">
-                                <span class="group-hover:text-blush-500 transition-colors leading-snug">Reduzir
-                                    ansiedade ou
-                                    estresse</span>
-                            </label>
-                            <label
-                                class="flex items-start space-x-3 cursor-pointer group p-4 rounded-2xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
-                                <input type="radio" name="q4" value="Melhorar metabolismo ou peso"
-                                    class="form-radio text-blush-500 border-blush-200 focus:ring-blush-500/50 cursor-pointer w-5 h-5 mt-0.5 transition-colors">
-                                <span class="group-hover:text-blush-500 transition-colors leading-snug">Melhorar
-                                    metabolismo ou
-                                    peso</span>
-                            </label>
-                            <label
-                                class="flex items-start space-x-3 cursor-pointer group p-4 rounded-2xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
-                                <input type="radio" name="q4" value="Melhorar sintomas da menopausa"
-                                    class="form-radio text-blush-500 border-blush-200 focus:ring-blush-500/50 cursor-pointer w-5 h-5 mt-0.5 transition-colors">
-                                <span class="group-hover:text-blush-500 transition-colors leading-snug">Melhorar
-                                    sintomas da
-                                    menopausa</span>
-                            </label>
-                            <label
-                                class="flex items-start space-x-3 cursor-pointer group p-4 rounded-2xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
-                                <input type="radio" name="q4" value="Melhorar libido ou vida íntima"
-                                    class="form-radio text-blush-500 border-blush-200 focus:ring-blush-500/50 cursor-pointer w-5 h-5 mt-0.5 transition-colors">
-                                <span class="group-hover:text-blush-500 transition-colors leading-snug">Melhorar libido
-                                    ou vida
-                                    íntima</span>
-                            </label>
-                            <label
-                                class="flex items-start space-x-3 cursor-pointer group p-3 rounded-2xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
-                                <input type="radio" name="q4" value="Outro"
-                                    class="form-radio text-blush-500 border-blush-200 focus:ring-blush-500/50 cursor-pointer w-5 h-5 mt-0.5 transition-colors">
-                                <span class="group-hover:text-blush-500 transition-colors leading-snug">Outro</span>
-                            </label>
-                        </div>
-                        <div id="q4-error" class="hidden text-red-500 text-sm mt-1">Obrigatório.</div>
-                    </div>
-                    <div class="pt-4 flex justify-between items-center">
-                        <button type="button" onclick="nextStep(4)"
-                            class="text-charcoal/60 hover:text-blush-500 font-medium transition-colors text-sm">Voltar</button>
-                        <button type="button" onclick="validateStep5()"
-                            class="bg-blush-500 hover:bg-blush-400 text-white px-6 py-2 rounded-full transition-colors shadow-md font-medium text-sm">Avançar</button>
-                    </div>
-                </form>
-            </div>
-
-            <!-- Step 6: Contact Info -->
-            <div id="modal-step-6" class="space-y-6 hidden">
-                <div class="flex items-center justify-between border-b border-blush-200/50 pb-4 mb-4 mt-2 pr-8 sm:pr-0">
-                    <h2 class="text-2xl font-serif text-charcoal">Contato</h2>
-                    <span
-                        class="text-xs font-medium text-blush-500 bg-blush-100/50 px-3 py-1 rounded-full flex items-center gap-1">
-                        <i data-feather="user" class="w-3 h-3"></i> 5/6
-                    </span>
-                </div>
-                <form class="space-y-6">
-                    <label class="block text-lg font-medium text-charcoal">5. Para que eu possa te orientar no
-                        próximo passo:</label>
-
-                    <div class="space-y-4">
-                        <div>
-                            <label class="block text-sm text-charcoal/70 mb-1">Nome:</label>
-                            <input type="text" id="user-name" required
-                                class="w-full border-b border-blush-200 bg-transparent py-2 focus:outline-none focus:border-blush-500 transition-colors placeholder-charcoal/40 font-light text-charcoal">
-                            <div id="name-error" class="hidden text-red-500 text-sm mt-1">Obrigatório.</div>
-                        </div>
-                        <div>
-                            <label class="block text-sm text-charcoal/70 mb-1">WhatsApp:</label>
-                            <input type="tel" id="user-phone" required
-                                class="w-full border-b border-blush-200 bg-transparent py-2 focus:outline-none focus:border-blush-500 transition-colors placeholder-charcoal/40 font-light text-charcoal">
-                            <div id="phone-error" class="hidden text-red-500 text-sm mt-1">Obrigatório.</div>
-                        </div>
-                        <div>
-                            <label class="block text-sm text-charcoal/70 mb-2 mt-4">Melhor horário para
-                                conversar:</label>
-                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 font-light">
-                                <label
-                                    class="flex items-center justify-center space-x-2 cursor-pointer group p-3 rounded-xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
-                                    <input type="radio" name="q_time" value="Manhã"
-                                        class="form-radio text-blush-500 border-blush-200 focus:ring-blush-500/50 cursor-pointer w-4 h-4 transition-colors"
-                                        required>
-                                    <span class="group-hover:text-blush-500 transition-colors font-medium">Manhã</span>
-                                </label>
-                                <label
-                                    class="flex items-center justify-center space-x-2 cursor-pointer group p-3 rounded-xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
-                                    <input type="radio" name="q_time" value="Tarde"
-                                        class="form-radio text-blush-500 border-blush-200 focus:ring-blush-500/50 cursor-pointer w-4 h-4 transition-colors">
-                                    <span class="group-hover:text-blush-500 transition-colors font-medium">Tarde</span>
-                                </label>
-                                <label
-                                    class="flex items-center justify-center space-x-2 cursor-pointer group p-3 rounded-xl border border-transparent bg-white/40 hover:bg-white/80 transition-all duration-300 has-[:checked]:bg-blush-100/50 has-[:checked]:border-blush-300 has-[:checked]:shadow-sm">
-                                    <input type="radio" name="q_time" value="Noite"
-                                        class="form-radio text-blush-500 border-blush-200 focus:ring-blush-500/50 cursor-pointer w-4 h-4 transition-colors">
-                                    <span class="group-hover:text-blush-500 transition-colors font-medium">Noite</span>
-                                </label>
-                            </div>
-                        </div>
-                        <div id="time-error" class="hidden text-red-500 text-sm mt-1">Obrigatório.</div>
-                    </div>
-
-                    <div class="pt-6 flex justify-between items-center">
-                        <button type="button" onclick="nextStep(5)"
-                            class="text-charcoal/60 hover:text-blush-500 font-medium transition-colors">Voltar</button>
-                        <button type="button" onclick="submitForm()"
-                            class="bg-blush-500 hover:bg-blush-400 text-white px-8 py-3 rounded-full transition-colors shadow-md font-medium flex items-center gap-2">Finalizar
-                            <i data-feather="check" class="w-4 h-4"></i></button>
-                    </div>
-                </form>
-            </div>
-
-            <!-- Step 7: Conclusion -->
-            <div id="modal-step-7" class="space-y-3 sm:space-y-4 hidden pt-0 sm:pt-2">
-                <div id="conclusion-loading" class="hidden flex flex-col items-center py-10">
-                    <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blush-500"></div>
-                    <p class="mt-4 text-charcoal/60 font-medium">Enviando suas respostas...</p>
                 </div>
 
-                <div id="conclusion-content" class="text-center space-y-2 sm:space-y-4">
-                    <!-- Beating heart icon -->
-                    <div
-                        class="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-blush-100/50 text-blush-500 rounded-full mb-1 sm:mb-2 mx-auto relative">
-                        <div class="absolute inset-0 rounded-full bg-blush-200/30 animate-ping opacity-75"></div>
-                        <i data-feather="heart" class="w-6 h-6 sm:w-8 sm:h-8 fill-current animate-pulse"></i>
-                    </div>
+                <!-- Insight paragraph -->
+                <p id="result-paragraph" class="text-charcoal/75 font-light leading-relaxed text-base text-center max-w-md mx-auto px-2">Parágrafo empático baseado nos seus resultados...</p>
 
-                    <h2 id="conclusion-title"
-                        class="text-xl sm:text-2xl md:text-3xl font-serif text-charcoal leading-tight max-w-lg mx-auto px-2">
-                        Obrigada por compartilhar um pouco de você.
-                    </h2>
-
-                    <div id="conclusion-description"
-                        class="space-y-2 sm:space-y-3 text-charcoal/80 font-light leading-relaxed bg-white/60 backdrop-blur-sm p-4 sm:p-5 rounded-2xl sm:rounded-3xl shadow-sm border border-blush-100/50 text-sm sm:text-base text-center max-w-xl mx-auto">
-                        <p>Esses sintomas são sinais fisiológicos de que o corpo precisa de um novo equilíbrio.</p>
-                        <p>A medicina integrativa foca em você de forma completa — <span
-                                class="font-medium text-charcoal">hormônios, metabolismo e estilo de vida</span>.
+                <!-- Primary recommendation card -->
+                <div class="relative rounded-[2rem] p-7 md:p-8 border border-blush-200/50 shadow-lg overflow-hidden"
+                     style="background: linear-gradient(135deg, #F9EAEF 0%, #FBF5F7 50%, #FDFCFB 100%);">
+                    <div class="absolute -top-12 -right-12 w-44 h-44 bg-blush-300/25 rounded-full blur-3xl pointer-events-none"></div>
+                    <div class="absolute -bottom-16 -left-16 w-44 h-44 bg-nude-300/30 rounded-full blur-3xl pointer-events-none"></div>
+                    <div class="relative">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-[10px] uppercase tracking-[0.2em] text-blush-500 font-bold">O ponto de partida</span>
+                            <span class="text-xs text-charcoal/55 font-medium bg-white/70 px-3 py-1 rounded-full border border-blush-100">R$ 600 &middot; consulta</span>
+                        </div>
+                        <h3 class="text-2xl md:text-3xl font-serif text-charcoal mb-4 leading-tight">
+                            Consulta integrativa<br/>
+                            <span class="text-blush-500 italic font-light">com a Dra. Kerly Helena</span>
+                        </h3>
+                        <p class="text-charcoal/75 text-sm md:text-base font-light leading-relaxed mb-5">
+                            Uma escuta longa e atenta. A Dra. Kerly entende seu corpo, sua história e seu ritmo — e traça com você um caminho real para o bem-estar que você quer sentir.
                         </p>
-                        <p class="text-blush-500 font-medium pt-1">Suas respostas foram salvas com sucesso e em breve
-                            entraremos em contato!</p>
-                    </div>
-
-                    <div class="pt-3 sm:pt-4 pb-2 text-center flex flex-col items-center gap-3">
-                        <button onclick="closeSymptomModal()"
-                            class="w-full sm:w-auto inline-flex items-center justify-center bg-white hover:bg-blush-50 text-charcoal border border-blush-200 px-6 py-2.5 rounded-full transition-all duration-300 shadow-sm font-medium text-sm">
-                            Fechar
-                        </button>
-                        <hr class="w-1/2 border-blush-100">
-                        <p class="text-[10px] sm:text-xs text-charcoal/50 font-light">Se preferir, você também pode
-                            falar conosco agora:</p>
-                        <button onclick="sendToWhatsApp()"
-                            class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 sm:space-x-3 bg-blush-500 hover:bg-blush-400 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl font-medium text-sm sm:text-base group hover:-translate-y-1">
-                            <i data-feather="message-circle" class="w-4 h-4 sm:w-5 sm:h-5 stroke-[2]"></i>
-                            <span>Falar com a equipe no WhatsApp</span>
+                        <ul class="space-y-2.5 mb-7">
+                            <li class="flex items-start gap-3 text-charcoal/75 text-sm">
+                                <span class="w-5 h-5 rounded-full bg-blush-500/15 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-feather="check" class="w-3 h-3 text-blush-500"></i></span>
+                                <span>Avaliação ginecológica integrativa completa</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-charcoal/75 text-sm">
+                                <span class="w-5 h-5 rounded-full bg-blush-500/15 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-feather="check" class="w-3 h-3 text-blush-500"></i></span>
+                                <span>Investigação hormonal, metabólica e emocional</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-charcoal/75 text-sm">
+                                <span class="w-5 h-5 rounded-full bg-blush-500/15 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-feather="check" class="w-3 h-3 text-blush-500"></i></span>
+                                <span>Plano terapêutico individualizado</span>
+                            </li>
+                        </ul>
+                        <button onclick="bookConsultation()" class="group w-full bg-blush-500 hover:bg-blush-400 text-white px-6 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 font-medium text-base flex items-center justify-center gap-2.5">
+                            <i data-feather="message-circle" class="w-5 h-5"></i>
+                            <span>Agendar pelo WhatsApp</span>
+                            <i data-feather="arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-0.5"></i>
                         </button>
                     </div>
                 </div>
 
-                <div id="conclusion-error" class="hidden text-center space-y-4 py-6">
-                    <i data-feather="alert-circle" class="w-12 h-12 text-red-400 mx-auto"></i>
-                    <h2 class="text-xl font-serif text-charcoal">Ops! Algo deu errado.</h2>
-                    <p class="text-charcoal/60">Não conseguimos salvar suas respostas automaticamente.</p>
-                    <button onclick="submitForm()"
-                        class="bg-blush-500 hover:bg-blush-400 text-white px-6 py-2 rounded-full transition-colors shadow-md font-medium text-sm">
-                        Tentar novamente
-                    </button>
-                    <p class="text-xs text-charcoal/40">Ou envie diretamente pelo WhatsApp:</p>
-                    <button onclick="sendToWhatsApp()"
-                        class="text-blush-500 font-medium text-sm border-b border-blush-500">Enviar via
-                        WhatsApp</button>
+                <!-- Complementary paths -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3 px-2">
+                        <div class="h-px bg-blush-200/60 flex-1"></div>
+                        <span class="text-[10px] uppercase tracking-[0.2em] text-charcoal/50 font-bold">Caminhos complementares</span>
+                        <div class="h-px bg-blush-200/60 flex-1"></div>
+                    </div>
+                    <div id="secondary-services" class="grid grid-cols-1 gap-3">
+                        <!-- Dynamic Services -->
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="text-center pt-2 space-y-3">
+                    <p class="text-charcoal/50 italic text-sm">Tudo isso você encontra na clínica em São Luís &mdash; MA.</p>
+                    <button onclick="closeSymptomModal()" class="text-charcoal/40 hover:text-charcoal/70 text-[11px] font-medium uppercase tracking-[0.2em] transition-colors">Fechar</button>
                 </div>
             </div>
         </div>

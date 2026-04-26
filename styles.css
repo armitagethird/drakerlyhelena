@@ -135,4 +135,121 @@ body {
     to {
       background-position: 200% center;
     }
-}
+}
+
+/* --- Global Variables --- */
+:root {
+    --sage: #8ca693;
+    --terracotta: #c67d64;
+    --blush-500: #A9637B;
+    --blush-400: #d4a395;
+    --blush-100: #f5ebe7;
+    --charcoal: #3d3330;
+    --sand-100: #fdfaf8;
+}
+
+/* Background soft variants for result cards */
+.bg-sage-soft { background-color: rgba(140, 166, 147, 0.1); color: var(--sage); }
+.bg-terracotta-soft { background-color: rgba(198, 125, 100, 0.1); color: var(--terracotta); }
+.bg-blush-soft { background-color: rgba(212, 163, 149, 0.1); color: var(--blush-500); }
+
+/* --- Health Quiz & Animation Styles --- */
+
+/* Initial states for the blooming-rose animation. GSAP drives the actual
+   animation in main.js. We only set "frame zero" here so there's no flicker. */
+.anim-aura { opacity: 0; }
+.anim-ring { opacity: 0; }
+.anim-line { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.anim-petal-outer path,
+.anim-petal-inner path {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+    transform: scale(0);
+    opacity: 0;
+}
+.anim-rose-pistil { opacity: 0; }
+.anim-particle { opacity: 0; }
+
+/* Steady-state breathing for the figure once everything is drawn */
+.anim-figure {
+    transform-origin: 160px 235px;
+    transform-box: view-box;
+}
+
+#quiz-questions .option-btn {
+    width: 100%;
+    text-align: left;
+    padding: 1rem 1.5rem;
+    border-radius: 1rem;
+    border: 1px solid var(--blush-100);
+    background-color: rgba(255, 255, 255, 0.4);
+    transition: all 0.3s ease;
+    color: rgba(61, 51, 48, 0.8); /* charcoal 80% */
+    cursor: pointer;
+    font-size: 1rem;
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+#quiz-questions .option-btn:hover {
+    background-color: #ffffff;
+    border-color: var(--blush-400);
+    color: var(--charcoal);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+}
+
+#quiz-questions .option-btn.selected {
+    background-color: rgba(245, 235, 231, 0.5);
+    border-color: var(--blush-400);
+    color: var(--charcoal);
+    box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+}
+
+.slide-up {
+    animation: slideUp 0.5s ease-out forwards;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Result Dimension Badge */
+.dimension-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Extra padding for modal content to avoid cut-off */
+.pb-modal-safe {
+    padding-bottom: 4rem !important;
+}
+
+/* Custom colors for animation */
+.text-terracotta { color: var(--terracotta); }
+
+/* --- Acessibilidade --- */
+
+/* Foco visível para navegação por teclado */
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+    outline: 2px solid #A9637B;
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* Respeita preferência do usuário por menos movimento */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+

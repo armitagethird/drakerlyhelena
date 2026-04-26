@@ -1,4 +1,50 @@
+// --- Analytics helper ---------------------------------------------------
+// Fires events to GA4 (gtag) and Microsoft Clarity if loaded.
+// No-ops if neither is configured. Keeps tracking decoupled from features.
+window.trackEvent = function (name, params) {
+    params = params || {};
+    try {
+        if (typeof window.gtag === 'function') {
+            window.gtag('event', name, params);
+        }
+        if (typeof window.clarity === 'function') {
+            window.clarity('event', name);
+            Object.entries(params).forEach(function (kv) {
+                window.clarity('set', kv[0], String(kv[1]));
+            });
+        }
+    } catch (e) { /* analytics never breaks the page */ }
+};
+
+// Auto-track WhatsApp link clicks + quiz CTAs across the site.
+function wireAnalytics() {
+    document.querySelectorAll('a[href*="wa.me"]').forEach(function (a) {
+        a.addEventListener('click', function () {
+            var section = a.closest('section, header, footer');
+            window.trackEvent('whatsapp_click', {
+                source: (section && section.id) || (section && section.tagName.toLowerCase()) || 'unknown',
+                href: a.getAttribute('href')
+            });
+        });
+    });
+
+    // Scroll depth (fires once per threshold)
+    var fired = {};
+    window.addEventListener('scroll', function () {
+        var doc = document.documentElement;
+        var pct = Math.round(((window.scrollY + window.innerHeight) / doc.scrollHeight) * 100);
+        [50, 75, 90].forEach(function (mark) {
+            if (pct >= mark && !fired[mark]) {
+                fired[mark] = true;
+                window.trackEvent('scroll_depth', { percent: mark });
+            }
+        });
+    }, { passive: true });
+}
+
 document.addEventListener("DOMContentLoaded", (event) => {
+    wireAnalytics();
+
     // Register ScrollTrigger
     gsap.registerPlugin(ScrollTrigger);
 
@@ -140,24 +186,56 @@ document.addEventListener("DOMContentLoaded", (event) => {
     }
 });
 
-// --- Modal Questionnaire Logic ---
+// --- New Modal Questionnaire Logic (4 Stages) ---
+
+let currentQuestionIndex = 0;
+let quizAnswers = [];
+let userData = { name: '', phone: '', phase: '' };
+
+// 8 desire-based scale questions + 1 phase-of-life multiple-choice = 9 total.
+// Scale weights: Muito = 3, Um pouco = 1, Nada = 0.
+// Higher score in a dimension = stronger desire to improve there.
+const quizQuestions = [
+    { type: "scale", text: "Quero ter mais energia e disposição no meu dia.", dimension: "ENERGIA" },
+    { type: "scale", text: "Quero me sentir leve no meu corpo, sem dores ou tensão.", dimension: "ENERGIA" },
+    { type: "scale", text: "Quero dormir profundamente e acordar descansada.", dimension: "DESCANSO" },
+    { type: "scale", text: "Quero conseguir desacelerar minha mente quando preciso.", dimension: "DESCANSO" },
+    { type: "scale", text: "Quero estar mais presente comigo mesma e nas pequenas coisas do dia.", dimension: "PRESENCA" },
+    { type: "scale", text: "Quero me sentir bonita e em paz com meu corpo.", dimension: "PRESENCA" },
+    { type: "scale", text: "Quero perceber meu corpo em equilíbrio (ciclo, libido, humor).", dimension: "VITALIDADE" },
+    { type: "scale", text: "Quero redescobrir prazer e desejo no meu dia a dia.", dimension: "VITALIDADE" },
+    { type: "choice", text: "Em qual momento da sua vida você está agora?", dimension: "FASE", choices: [
+        { label: "Fase fértil, sem grandes mudanças", value: "fertil" },
+        { label: "Tentando engravidar", value: "tentando" },
+        { label: "Pós-parto / amamentando", value: "pos_parto" },
+        { label: "Perimenopausa (sintomas começando)", value: "perimenopausa" },
+        { label: "Menopausa ou pós-menopausa", value: "menopausa" },
+        { label: "Prefiro não dizer", value: "indefinido" }
+    ] }
+];
 
 window.openSymptomModal = function () {
     const modal = document.getElementById('symptom-modal');
     const modalContent = document.getElementById('symptom-modal-content');
     modal.classList.remove('hidden');
-    // small timeout to allow display:block to apply before animating opacity/transform
     setTimeout(() => {
         modal.classList.remove('opacity-0');
         modalContent.classList.remove('scale-95');
     }, 10);
-    document.body.style.overflow = 'hidden'; // prevent background scrolling
+    document.body.style.overflow = 'hidden';
 
-    // Reset to step 1
-    nextStep(1);
+    currentQuestionIndex = 0;
+    quizAnswers = [];
 
-    // Reset form errors and fields on open if desired, but 
-    // keeping previous answers might be nice too.
+    document.getElementById('quiz-intro').classList.remove('hidden');
+    document.getElementById('quiz-questions').classList.add('hidden');
+    document.getElementById('quiz-animation').classList.add('hidden');
+    document.getElementById('quiz-results').classList.add('hidden');
+
+    document.getElementById('quiz-name').value = '';
+    document.getElementById('quiz-phone').value = '';
+
+    window.trackEvent('quiz_open');
 };
 
 window.closeSymptomModal = function () {
@@ -167,283 +245,323 @@ window.closeSymptomModal = function () {
     modalContent.classList.add('scale-95');
     setTimeout(() => {
         modal.classList.add('hidden');
-    }, 300); // match transition duration
+    }, 300);
     document.body.style.overflow = '';
+    stopAnimationTweens();
 };
 
-window.nextStep = function (step) {
-    const steps = [1, 2, 3, 4, 5, 6, 7];
-    const nextStepDiv = document.getElementById(`modal-step-${step}`);
+window.startQuiz = function () {
+    const nameInput = document.getElementById('quiz-name');
+    const phoneInput = document.getElementById('quiz-phone');
+    if (!nameInput.value.trim() || !phoneInput.value.trim()) {
+        alert("Por favor, preencha seu nome e WhatsApp para continuarmos.");
+        return;
+    }
+    userData.name = nameInput.value.trim();
+    userData.phone = phoneInput.value.trim();
+    window.trackEvent('quiz_start');
+    transitionQuizStage('quiz-intro', 'quiz-questions', () => {
+        renderQuestion();
+    });
+};
 
-    // Find currently visible step
-    let currentStepDiv = null;
-    steps.forEach(s => {
-        const div = document.getElementById(`modal-step-${s}`);
-        if (div && !div.classList.contains('hidden') && s !== step) {
-            currentStepDiv = div;
-        }
+function renderQuestion() {
+    const question = quizQuestions[currentQuestionIndex];
+    const container = document.getElementById('question-container');
+    const progressText = document.getElementById('quiz-progress-text');
+    const progressBar = document.getElementById('quiz-progress-bar');
+    const progress = ((currentQuestionIndex + 1) / quizQuestions.length) * 100;
+    progressBar.style.width = `${progress}%`;
+    progressText.innerText = `Passo ${currentQuestionIndex + 1} de ${quizQuestions.length}`;
+
+    if (question.type === 'choice') {
+        const options = question.choices.map(c =>
+            `<button onclick="handlePhase('${c.value}')" class="option-btn"><span class="font-medium">${c.label}</span></button>`
+        ).join('');
+        container.innerHTML = `
+            <div class="space-y-6 slide-up">
+                <h4 class="text-xl md:text-2xl font-medium text-charcoal leading-tight">${question.text}</h4>
+                <div class="space-y-3 pt-4">
+                    ${options}
+                </div>
+            </div>
+        `;
+    } else {
+        container.innerHTML = `
+            <div class="space-y-6 slide-up">
+                <p class="text-xs uppercase tracking-widest text-blush-400 font-semibold">Marque o quanto isso ressoa com você hoje</p>
+                <h4 class="text-xl md:text-2xl font-medium text-charcoal leading-tight">${question.text}</h4>
+                <div class="space-y-3 pt-4">
+                    <button onclick="handleAnswer(3)" class="option-btn"><span class="font-medium">Muito — é exatamente o que eu quero</span></button>
+                    <button onclick="handleAnswer(1)" class="option-btn"><span class="font-medium">Um pouco — está no meu radar</span></button>
+                    <button onclick="handleAnswer(0)" class="option-btn"><span class="font-medium">Nada — já estou bem nessa</span></button>
+                </div>
+            </div>
+        `;
+    }
+}
+
+window.handleAnswer = function (weight) {
+    quizAnswers.push({ dimension: quizQuestions[currentQuestionIndex].dimension, weight: weight });
+    advanceQuiz();
+};
+
+window.handlePhase = function (value) {
+    userData.phase = value;
+    advanceQuiz();
+};
+
+function advanceQuiz() {
+    if (currentQuestionIndex < quizQuestions.length - 1) {
+        currentQuestionIndex++;
+        renderQuestion();
+    } else {
+        window.trackEvent('quiz_complete', { phase: userData.phase || 'unspecified' });
+        transitionQuizStage('quiz-questions', 'quiz-animation', () => {
+            runHealthFingerprint();
+        });
+    }
+}
+
+// Holds infinite tweens (particles, breathing) so we can kill them on modal close
+let animationTweens = [];
+
+function stopAnimationTweens() {
+    animationTweens.forEach(tw => { try { tw.kill(); } catch (e) {} });
+    animationTweens = [];
+}
+
+function runHealthFingerprint() {
+    const textEl = document.getElementById('animation-text');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    stopAnimationTweens();
+
+    // Reset elements to initial state
+    gsap.set('.anim-aura', { opacity: 0 });
+    gsap.set('.anim-petal-outer path, .anim-petal-inner path', {
+        scale: 0, opacity: 0, transformOrigin: '50% 100%'
+    });
+    gsap.set('.anim-rose-pistil', { opacity: 0, scale: 0.4, transformOrigin: 'center center' });
+    gsap.set('.anim-particle', { opacity: 0, y: 0 });
+    gsap.set(textEl, { opacity: 1 });
+
+    const phrases = {
+        opening: 'Cada resposta sua revela algo...',
+        middle:  'Lendo seu padrão de vitalidade...',
+        closing: 'Seu mapa de bem-estar está pronto.'
+    };
+    textEl.innerText = phrases.opening;
+
+    if (reduceMotion) {
+        // Static, accessible version
+        gsap.set('.anim-aura', { opacity: 0.95 });
+        gsap.set('.anim-petal-outer path, .anim-petal-inner path', { scale: 1, opacity: 1 });
+        gsap.set('.anim-rose-pistil', { opacity: 1, scale: 1 });
+        gsap.delayedCall(2.0, () => {
+            textEl.innerText = phrases.closing;
+            gsap.delayedCall(1.5, showResults);
+        });
+        return;
+    }
+
+    const tl = gsap.timeline({
+        defaults: { ease: 'power2.out' },
+        onComplete: () => { showResults(); }
     });
 
-    if (currentStepDiv) {
-        // Animate out current step
-        gsap.to(currentStepDiv, {
-            opacity: 0,
-            y: -20,
-            duration: 0.3,
-            ease: "power2.in",
-            onComplete: () => {
-                currentStepDiv.classList.add('hidden');
-                showNext();
-            }
-        });
-    } else {
-        showNext();
+    // 1. Aura fades in
+    tl.to('.anim-aura', { opacity: 1, duration: 1.6 }, 0)
+      // Mid-animation phrase swap
+      .to(textEl, { opacity: 0, duration: 0.4 }, 1.2)
+      .add(() => { textEl.innerText = phrases.middle; })
+      .to(textEl, { opacity: 1, duration: 0.4 })
+      // 2. Rose center glows on
+      .to('.anim-rose-pistil', {
+          opacity: 1, scale: 1, duration: 0.8, ease: 'back.out(2)'
+      }, 1.8)
+      // 3. Outer petals bloom in sequence
+      .to('.anim-petal-outer path', {
+          scale: 1, opacity: 1,
+          duration: 1.0, stagger: 0.08, ease: 'back.out(1.7)'
+      }, 2.0)
+      // 4. Inner petals bloom (faster, slightly delayed)
+      .to('.anim-petal-inner path', {
+          scale: 1, opacity: 1,
+          duration: 0.8, stagger: 0.06, ease: 'back.out(2)'
+      }, 2.7)
+      // 5. Closing phrase
+      .to(textEl, { opacity: 0, duration: 0.4 }, 4.0)
+      .add(() => { textEl.innerText = phrases.closing; })
+      .to(textEl, { opacity: 1, duration: 0.4 })
+      .to({}, { duration: 1.5 });
+
+    // Continuous loops: rose center pulse + aura breathing
+    animationTweens.push(
+        gsap.to('.anim-rose-pistil', {
+            scale: 1.18, duration: 1.6, repeat: -1, yoyo: true,
+            ease: 'sine.inOut', delay: 4
+        }),
+        gsap.to('.anim-aura', {
+            scale: 1.06, transformOrigin: '160px 160px',
+            duration: 4, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 2
+        })
+    );
+
+    // Rising particles loop
+    document.querySelectorAll('.anim-particle').forEach((p, i) => {
+        const tween = gsap.timeline({ repeat: -1, delay: 3.0 + i * 0.4 })
+            .fromTo(p,
+                { opacity: 0, y: 0 },
+                { opacity: 0.7, duration: 0.7 })
+            .to(p, {
+                y: -130 - Math.random() * 60,
+                opacity: 0,
+                duration: 3 + Math.random() * 1.5,
+                ease: 'power1.out'
+            }, 0.7);
+        animationTweens.push(tween);
+    });
+}
+
+function showResults() {
+    const scores = { ENERGIA: 0, DESCANSO: 0, PRESENCA: 0, VITALIDADE: 0 };
+    quizAnswers.forEach(a => {
+        if (scores[a.dimension] !== undefined) scores[a.dimension] += a.weight;
+    });
+    const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+    const topDimensions = [sorted[0][0], sorted[1][0]];
+
+    document.getElementById('result-greeting').innerText = `Olá, ${userData.name}.`;
+
+    const dimensionLabels = {
+        ENERGIA:    'energia e leveza',
+        DESCANSO:   'descanso e silêncio',
+        PRESENCA:   'presença e paz com seu corpo',
+        VITALIDADE: 'vitalidade e prazer'
+    };
+    const dimensionEl = document.getElementById('result-dimension');
+    if (dimensionEl) {
+        dimensionEl.innerText = dimensionLabels[topDimensions[0]] || 'bem-estar';
     }
 
-    function showNext() {
-        // Reset properties before showing
-        gsap.set(nextStepDiv, { opacity: 0, y: 20 });
-        nextStepDiv.classList.remove('hidden');
-
-        gsap.to(nextStepDiv, {
-            opacity: 1,
-            y: 0,
-            duration: 0.5,
-            ease: "power2.out"
-        });
-
-        // Scroll modal to top smoothly
-        if (step > 1) {
-            const modalContent = document.getElementById('symptom-modal-content');
-            modalContent.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    }
-};
-
-window.validateStep2 = function () {
-    const q1Checked = document.querySelectorAll('input[name="q1"]:checked');
-    const q1Other = document.querySelector('input[name="q1_other"]').value;
-    if (q1Checked.length === 0 && q1Other.trim() === '') {
-        document.getElementById('q1-error').classList.remove('hidden');
-    } else {
-        document.getElementById('q1-error').classList.add('hidden');
-        nextStep(3);
-    }
-};
-
-window.validateStep3 = function () {
-    const q2Checked = document.querySelector('input[name="q2"]:checked');
-    if (!q2Checked) {
-        document.getElementById('q2-error').classList.remove('hidden');
-    } else {
-        document.getElementById('q2-error').classList.add('hidden');
-        nextStep(4);
-    }
-};
-
-window.validateStep4 = function () {
-    // Slider always has a value, proceed
-    nextStep(5);
-};
-
-window.validateStep5 = function () {
-    const q4Checked = document.querySelector('input[name="q4"]:checked');
-    if (!q4Checked) {
-        document.getElementById('q4-error').classList.remove('hidden');
-    } else {
-        document.getElementById('q4-error').classList.add('hidden');
-        nextStep(6);
-    }
-};
-
-const GOOGLE_SHEETS_URL = "https://script.google.com/macros/s/AKfycbxhJ1Qwjyt0ad-1tB_HUghdxHalQhgx26DTHtDzgV4GhquXYbTPvuUHd9oUvlDPZccI9Q/exec";
-
-window.submitForm = function () {
-    // Validate final contact info step
-    let isValid = true;
-    let firstErrorElement = null;
-
-    // Q1
-    const q1Checked = document.querySelectorAll('input[name="q1"]:checked');
-    const q1Other = document.querySelector('input[name="q1_other"]').value;
-    if (q1Checked.length === 0 && q1Other.trim() === '') {
-        document.getElementById('q1-error').classList.remove('hidden');
-        isValid = false;
-        if (!firstErrorElement) firstErrorElement = document.getElementById('q1-error');
-    } else {
-        document.getElementById('q1-error').classList.add('hidden');
-    }
-
-    // Q2
-    const q2Checked = document.querySelector('input[name="q2"]:checked');
-    if (!q2Checked) {
-        document.getElementById('q2-error').classList.remove('hidden');
-        isValid = false;
-        if (!firstErrorElement) firstErrorElement = document.getElementById('q2-error');
-    } else {
-        document.getElementById('q2-error').classList.add('hidden');
-    }
-
-    // Q4
-    const q4Checked = document.querySelector('input[name="q4"]:checked');
-    if (!q4Checked) {
-        document.getElementById('q4-error').classList.remove('hidden');
-        isValid = false;
-        if (!firstErrorElement) firstErrorElement = document.getElementById('q4-error');
-    } else {
-        document.getElementById('q4-error').classList.add('hidden');
-    }
-
-    // Name
-    const name = document.getElementById('user-name').value;
-    if (name.trim() === '') {
-        document.getElementById('name-error').classList.remove('hidden');
-        isValid = false;
-        if (!firstErrorElement) firstErrorElement = document.getElementById('name-error');
-    } else {
-        document.getElementById('name-error').classList.add('hidden');
-    }
-
-    // Phone
-    const phone = document.getElementById('user-phone').value;
-    if (phone.trim() === '') {
-        document.getElementById('phone-error').classList.remove('hidden');
-        isValid = false;
-        if (!firstErrorElement) firstErrorElement = document.getElementById('phone-error');
-    } else {
-        document.getElementById('phone-error').classList.add('hidden');
-    }
-
-    // Time
-    const timeChecked = document.querySelector('input[name="q_time"]:checked');
-    if (!timeChecked) {
-        document.getElementById('time-error').classList.remove('hidden');
-        isValid = false;
-        if (!firstErrorElement) firstErrorElement = document.getElementById('time-error');
-    } else {
-        document.getElementById('time-error').classList.add('hidden');
-    }
-
-    if (isValid) {
-        saveToGoogleSheets();
-    } else {
-        // Scroll to the first error
-        if (firstErrorElement) {
-            firstErrorElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-    }
-};
-
-window.saveToGoogleSheets = async function () {
-    // Collect data
-    let q1Answers = Array.from(document.querySelectorAll('input[name="q1"]:checked')).map(el => el.value);
-    const q1Other = document.querySelector('input[name="q1_other"]').value;
-    if (q1Other.trim() !== '') {
-        q1Answers.push(q1Other.trim());
-    }
-    const q1String = q1Answers.join(', ');
-
-    const q2 = document.querySelector('input[name="q2"]:checked').value;
-    const q3 = document.querySelector('input[name="q3"]').value;
-    const q4 = document.querySelector('input[name="q4"]:checked').value;
-
-    const name = document.getElementById('user-name').value.trim();
-    const phone = document.getElementById('user-phone').value.trim();
-    const time = document.querySelector('input[name="q_time"]:checked').value;
-
-    const data = {
-        name: name,
-        phone: phone,
-        symptoms: q1String,
-        duration: q2,
-        impact: q3,
-        priority: q4,
-        bestTime: time
+    const paragraphs = {
+        ENERGIA:    "Você quer mais energia e leveza no corpo. Esse é um dos primeiros sinais de que algo no seu equilíbrio interno pede atenção e cuidado.",
+        DESCANSO:   "Você quer mais descanso real — sono profundo e mente que sabe pausar. Seu sistema nervoso está pedindo um cuidado mais consciente.",
+        PRESENCA:   "Você quer voltar a habitar seu corpo com leveza, presença e aceitação. Esse é o coração do cuidado integrativo.",
+        VITALIDADE: "Você quer reencontrar sua vitalidade — ciclo, libido, prazer, humor — em equilíbrio. É exatamente nesse território que a abordagem integrativa atua."
     };
 
-    // Show step 7 and loading state
-    nextStep(7);
-    document.getElementById('conclusion-loading').classList.remove('hidden');
-    document.getElementById('conclusion-content').classList.add('hidden');
-    document.getElementById('conclusion-error').classList.add('hidden');
+    const phaseAdjustment = {
+        fertil:        "",
+        tentando:      " A jornada de fertilidade pede um olhar atento — também caminhamos com você nessa fase.",
+        pos_parto:     " O pós-parto é uma travessia. Aqui, você é cuidada por inteiro.",
+        perimenopausa: " A perimenopausa é uma fase de transformação — não de resignação. Há muito que pode ser feito.",
+        menopausa:     " A menopausa é uma nova fase, não um fim. O cuidado integrativo te acompanha de perto.",
+        indefinido:    "",
+        '':            ''
+    };
 
-    try {
-        // Use URLSearchParams for form data encoding (most reliable with Google Apps Script)
-        const formData = new URLSearchParams();
-        for (const key in data) {
-            formData.append(key, data[key]);
-        }
+    const paraEl = document.getElementById('result-paragraph');
+    paraEl.innerText = paragraphs[topDimensions[0]] + (phaseAdjustment[userData.phase] || '');
 
-        // We use mode: 'no-cors' so the browser doesn't block the request 
-        // to Google despite the missing CORS headers in their response.
-        await fetch(GOOGLE_SHEETS_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            cache: 'no-cache',
-            body: formData
-        });
+    const serviceTemplates = {
+        ENERGIA:    { title: "Yoga",                               desc: "Movimento consciente para devolver leveza e energia ao corpo.",          icon: "🧘" },
+        DESCANSO:   { title: "Respiração & Meditação",             desc: "Práticas para acalmar o sistema nervoso e melhorar o sono.",             icon: "🌬️" },
+        PRESENCA:   { title: "Meditação",                          desc: "Para voltar a habitar o presente, com mais conexão e silêncio interno.", icon: "🪷" },
+        VITALIDADE: { title: "Fitoterapia & ajustes integrativos", desc: "Plantas medicinais e ajustes de estilo de vida para equilíbrio hormonal.", icon: "🌿" }
+    };
 
-        // Wait a bit to simulate a real request and show success
-        setTimeout(() => {
-            document.getElementById('conclusion-loading').classList.add('hidden');
-            document.getElementById('conclusion-content').classList.remove('hidden');
-            feather.replace();
-        }, 1500);
+    const servicesContainer = document.getElementById('secondary-services');
+    servicesContainer.innerHTML = topDimensions.map(dim => {
+        const s = serviceTemplates[dim];
+        return `
+            <div class="flex items-start gap-4 p-5 bg-white/85 backdrop-blur-sm rounded-2xl border border-blush-100/60 hover:bg-white hover:-translate-y-0.5 transition-all duration-300 shadow-sm hover:shadow-md">
+                <div class="w-11 h-11 bg-blush-100/70 rounded-2xl flex items-center justify-center text-xl shrink-0">${s.icon}</div>
+                <div class="flex-1 min-w-0">
+                    <h5 class="font-serif text-charcoal text-base font-semibold mb-1 leading-tight">${s.title}</h5>
+                    <p class="text-sm text-charcoal/65 font-light leading-relaxed">${s.desc}</p>
+                </div>
+            </div>
+        `;
+    }).join('');
 
-    } catch (error) {
-        console.error('Error saving to Google Sheets:', error);
-        document.getElementById('conclusion-loading').classList.add('hidden');
-        document.getElementById('conclusion-error').classList.remove('hidden');
-        feather.replace();
-    }
-};
+    submitLead({ scores: scores, top: topDimensions });
+    transitionQuizStage('quiz-animation', 'quiz-results', () => {
+        // Re-render any feather icons defensively (in case the result card was first-time-rendered)
+        if (typeof feather !== 'undefined' && feather.replace) feather.replace();
+    });
+}
 
-window.sendToWhatsApp = function () {
-    // Collect data
-    let q1Answers = Array.from(document.querySelectorAll('input[name="q1"]:checked')).map(el => el.value);
-    const q1Other = document.querySelector('input[name="q1_other"]').value;
-    if (q1Other.trim() !== '') {
-        q1Answers.push(q1Other.trim());
-    }
-    const q1String = q1Answers.join(', ');
-
-    const q2 = document.querySelector('input[name="q2"]:checked').value;
-    const q3 = document.querySelector('input[name="q3"]').value;
-    const q4 = document.querySelector('input[name="q4"]:checked').value;
-
-    const name = document.getElementById('user-name').value.trim();
-    // Use the contact phone as info for Dra Kerly if needed, but we don't strictly print it in the requested message. We will just send to Dra Kerly's number.
-    const time = document.querySelector('input[name="q_time"]:checked').value;
-
-    const message = `Olá, Dra. Kerly.
-Acabei de responder o questionário do site.
-
-Meu nome: ${name}
-
-Principais sintomas:
-${q1String}
-
-Tempo dos sintomas:
-${q2}
-
-Impacto na qualidade de vida:
-${q3}/10
-
-O que gostaria de melhorar primeiro:
-${q4}
-
-Melhor horário para conversar:
-${time}
-
-Gostaria de entender melhor como a consulta pode me ajudar.`;
-
+window.bookConsultation = function() {
+    window.trackEvent('book_consultation', { source: 'quiz_result', phase: userData.phase || 'unspecified' });
+    const message = `Olá! Fiz o questionário de bem-estar e gostaria de agendar uma Consulta Integrativa. Meu nome é ${userData.name}.`;
     const encodedMessage = encodeURIComponent(message);
-    const targetPhone = "5598981532153"; // Dra. Kerly's phone number as provided in existing links
-    const whatsappUrl = `https://wa.me/${targetPhone}?text=${encodedMessage}`;
-
-    window.open(whatsappUrl, '_blank');
-    closeSymptomModal();
+    const targetPhone = "5598981532153";
+    window.open(`https://wa.me/${targetPhone}?text=${encodedMessage}`, '_blank');
 };
+
+// --- Lead capture --------------------------------------------------------
+// TODO (Dra. Kerly): para receber leads por email, criar uma conta gratuita
+// em https://formspree.io/ ou https://web3forms.com/ e colar a URL abaixo.
+// Enquanto não estiver configurado, o lead fica salvo no localStorage
+// como backup (acessível em DevTools > Application > Local Storage).
+const LEAD_ENDPOINT = ""; // Ex: "https://formspree.io/f/abcdwxyz"
+
+function submitLead(extra) {
+    const payload = {
+        name: userData.name,
+        phone: userData.phone,
+        phase: userData.phase || '',
+        topDimensions: (extra && extra.top) || [],
+        scores: (extra && extra.scores) || {},
+        timestamp: new Date().toISOString(),
+        page: window.location.href
+    };
+
+    // Always backup to localStorage so nada se perde
+    try {
+        const existing = JSON.parse(localStorage.getItem('drakerly_leads') || '[]');
+        existing.push(payload);
+        localStorage.setItem('drakerly_leads', JSON.stringify(existing.slice(-50)));
+    } catch (e) { /* ignore quota errors */ }
+
+    // POST to endpoint if configured
+    if (LEAD_ENDPOINT) {
+        fetch(LEAD_ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify(payload)
+        }).catch(function () { /* offline / failed — backup já está no localStorage */ });
+    }
+}
+
+function transitionQuizStage(fromId, toId, callback) {
+    const fromEl = document.getElementById(fromId);
+    const toEl = document.getElementById(toId);
+    const modalContent = document.getElementById('symptom-modal-content');
+    
+    gsap.to(fromEl, {
+        opacity: 0, y: -20, duration: 0.4, ease: "power2.in",
+        onComplete: () => {
+            fromEl.classList.add('hidden');
+            toEl.classList.remove('hidden');
+            
+            // Critical: Reset scroll to top
+            if (modalContent) {
+                modalContent.scrollTop = 0;
+                
+                // Animation stage now has its own light radial-gradient background;
+                // no need to flip the modal container.
+            }
+            
+            gsap.fromTo(toEl, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" });
+            if (callback) callback();
+        }
+    });
+}
+
+
 
 window.toggleFloatingMenu = function () {
     const menu = document.getElementById('floating-menu');
@@ -479,20 +597,34 @@ document.addEventListener('click', (event) => {
     }
 });
 
-// Floating button visibility on scroll
+// Floating button visibility on scroll.
+// Show after scrolling past half the viewport, but HIDE again when the
+// contact / footer section is on screen (those areas already have their own
+// CTAs and the floating button was overlapping content).
 const floatingContainer = document.getElementById('floating-container');
 if (floatingContainer) {
-    window.addEventListener('scroll', () => {
-        // Show after scrolling past half the viewport height
-        if (window.scrollY > window.innerHeight * 0.5) {
+    const hideZoneSelectors = ['#location', 'footer'];
+    const isNearHideZone = () => {
+        return hideZoneSelectors.some(sel => {
+            const el = document.querySelector(sel);
+            if (!el) return false;
+            const rect = el.getBoundingClientRect();
+            // Hide once the section's top reaches 70% of viewport
+            return rect.top < window.innerHeight * 0.7;
+        });
+    };
+    const updateFloating = () => {
+        const pastHero = window.scrollY > window.innerHeight * 0.5;
+        if (pastHero && !isNearHideZone()) {
             floatingContainer.classList.remove('translate-y-32', 'opacity-0', 'pointer-events-none');
         } else {
             floatingContainer.classList.add('translate-y-32', 'opacity-0', 'pointer-events-none');
-            // Close menu if open when hiding
             const menu = document.getElementById('floating-menu');
             if (menu && !menu.classList.contains('hidden')) {
                 window.toggleFloatingMenu();
             }
         }
-    });
+    };
+    window.addEventListener('scroll', updateFloating, { passive: true });
+    window.addEventListener('resize', updateFloating);
 }

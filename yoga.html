@@ -4,9 +4,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ANALYTICS: ver instruções em index.html. Descomentar quando tiver as IDs. -->
+    <!--
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "TAG_ID");
+    </script>
+    -->
+
     <title>Yoga para Vitalidade Íntima - Dra. Kerly Helena</title>
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/Favicon/Favicon%20Kerly.png">
+
+    <!-- SEO Meta Description -->
+    <meta name="description" content="Curso presencial de Yoga para a Vitalidade Íntima Feminina em São Luís - MA. Consciência e fortalecimento do assoalho pélvico com a Dra. Kerly Helena.">
+    <meta name="author" content="Dra. Kerly Helena">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://drakerlyhelena.com.br/yoga.html">
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="Dra. Kerly Helena - Ginecologia Integrativa">
+    <meta property="og:url" content="https://drakerlyhelena.com.br/yoga.html">
+    <meta property="og:title" content="Yoga para Vitalidade Íntima Feminina | Dra. Kerly Helena">
+    <meta property="og:description" content="Curso presencial em São Luís - MA. Consciência e fortalecimento do assoalho pélvico com a Dra. Kerly Helena.">
+    <meta property="og:image" content="https://drakerlyhelena.com.br/assets/ambiente/_DSC4982.webp">
+    <meta property="og:image:alt" content="Curso de Yoga para Vitalidade Íntima Feminina">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Yoga para Vitalidade Íntima Feminina | Dra. Kerly Helena">
+    <meta name="twitter:description" content="Curso presencial em São Luís - MA. Consciência e fortalecimento do assoalho pélvico.">
+    <meta name="twitter:image" content="https://drakerlyhelena.com.br/assets/ambiente/_DSC4982.webp">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,6 +77,10 @@
         .text-yoga-dark { color: #4A3F35; }
         .border-yoga-gold { border-color: #D4AF37; }
         .shadow-gold { --tw-shadow-color: rgba(197, 160, 40, 0.2); }
+
+        /* SVG fills for the wave dividers */
+        .fill-yoga-light { fill: #FDFBF7; }
+        .fill-yoga-dark  { fill: #F4EBE1; }
 
         /* Golden Glow Animation for Slider */
         @keyframes goldenPulse {
@@ -105,7 +151,7 @@
                 <a href="#detalhes" class="hover:text-yoga-gold transition-colors">O Curso</a>
                 <a href="#professoras" class="hover:text-yoga-gold transition-colors">Professoras</a>
                 <button onclick="openYogaModal()"
-                    class="bg-yoga-gold hover:bg-yellow-600 text-white px-6 py-2.5 rounded-full transition-colors normal-case tracking-normal shadow-sm font-medium">Garantir Vaga</button>
+                    class="bg-yoga-gold hover:bg-yellow-600 text-white px-6 py-2.5 rounded-full transition-colors normal-case tracking-normal shadow-sm font-medium">Quero ser avisada</button>
             </nav>
             <button class="md:hidden text-yoga-dark focus:outline-none" id="mobile-menu-btn"
                 aria-label="Abrir menu de navegação">
@@ -121,7 +167,7 @@
                 <a href="#detalhes" class="hover:text-yoga-gold transition-colors">O Curso</a>
                 <a href="#professoras" class="hover:text-yoga-gold transition-colors">Professoras</a>
                 <div class="pt-4">
-                    <button onclick="openYogaModal()" class="inline-block bg-yoga-gold hover:bg-yellow-600 text-white px-6 py-3 rounded-full transition-colors normal-case tracking-normal shadow-md font-medium w-full">Garantir Vaga</button>
+                    <button onclick="openYogaModal()" class="inline-block bg-yoga-gold hover:bg-yellow-600 text-white px-6 py-3 rounded-full transition-colors normal-case tracking-normal shadow-md font-medium w-full">Quero ser avisada</button>
                 </div>
             </nav>
         </div>
@@ -156,24 +202,14 @@
                         Consciência e fortalecimento do assoalho pélvico.
                     </p>
 
-                    <div class="flex flex-wrap items-center justify-center gap-6 md:gap-12 mb-12 bg-white/60 backdrop-blur-sm p-6 rounded-3xl border border-yellow-600/20 shadow-lg">
+                    <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 mb-12 bg-white/60 backdrop-blur-sm p-6 rounded-3xl border border-yellow-600/20 shadow-lg">
                         <div class="flex items-center gap-3">
                             <div class="w-12 h-12 rounded-full bg-yoga-gold/20 flex items-center justify-center text-yoga-gold">
                                 <i data-feather="calendar"></i>
                             </div>
                             <div class="text-left">
-                                <p class="text-xs uppercase tracking-wider text-yoga-dark/60 font-semibold mb-1">Data</p>
-                                <p class="text-lg font-medium text-yoga-dark">04/04</p>
-                            </div>
-                        </div>
-                        <div class="hidden md:block w-px h-12 bg-yellow-600/20"></div>
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 rounded-full bg-yoga-gold/20 flex items-center justify-center text-yoga-gold">
-                                <i data-feather="clock"></i>
-                            </div>
-                            <div class="text-left">
-                                <p class="text-xs uppercase tracking-wider text-yoga-dark/60 font-semibold mb-1">Horário</p>
-                                <p class="text-lg font-medium text-yoga-dark">08h30</p>
+                                <p class="text-xs uppercase tracking-wider text-yoga-dark/60 font-semibold mb-1">Próximas turmas</p>
+                                <p class="text-lg font-medium text-yoga-dark">Em breve</p>
                             </div>
                         </div>
                         <div class="hidden md:block w-px h-12 bg-yellow-600/20"></div>
@@ -191,7 +227,7 @@
                     <div class="flex flex-col sm:flex-row items-center gap-4 md:gap-6 mb-12 w-full justify-center">
                         <button onclick="openYogaModal()"
                             class="relative inline-flex items-center justify-center space-x-3 bg-yoga-gold hover:bg-yellow-600 text-white px-10 py-5 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl font-medium tracking-wide w-full sm:w-auto overflow-hidden group hover:-translate-y-1">
-                            <span class="relative z-10 text-lg">Garantir Minha Vaga</span>
+                            <span class="relative z-10 text-lg">Quero ser avisada</span>
                             <i data-feather="arrow-right" class="w-5 h-5 relative z-10 transition-transform group-hover:translate-x-1"></i>
                         </button>
                         
@@ -225,10 +261,10 @@
 
                 <div class="space-y-8 text-center md:text-left text-lg text-yoga-dark/80 font-light leading-relaxed gs-reveal">
                     <p>
-                        Um encontro único focado em promover o despertar e o <strong class="text-yoga-dark font-medium">fortalecimento do asoalho pélvico</strong> através das técnicas milenares do Yoga. A vitalidade íntima está intrinsecamente ligada à nossa saúde emocional e física como mulheres.
+                        Um encontro único focado em promover o despertar e o <strong class="text-yoga-dark font-medium">fortalecimento do assoalho pélvico</strong> através das técnicas milenares do Yoga. A vitalidade íntima está intrinsecamente ligada à nossa saúde emocional e física como mulheres.
                     </p>
                     <p>
-                        Aprenda a ouvir o seu corpo com suavidade e a nutrir a sua energia de forma profunda. O asoalho pélvico é nosso centro de base, nossa sustentação.
+                        Aprenda a ouvir o seu corpo com suavidade e a nutrir a sua energia de forma profunda. O assoalho pélvico é nosso centro de base, nossa sustentação.
                     </p>
 
                     <div class="bg-white/40 border border-yellow-600/20 p-8 rounded-3xl mt-10 md:mt-16 text-center transform hover:scale-[1.02] transition-transform duration-500 shadow-sm">
@@ -253,7 +289,7 @@
                     <!-- Professora 1 -->
                     <div class="bg-white rounded-[2.5rem] p-8 shadow-xl border border-yellow-600/10 text-center gs-reveal hover:-translate-y-2 transition-transform duration-300">
                         <div class="w-32 h-32 mx-auto rounded-full mb-6 overflow-hidden border-4 border-yoga-gold shadow-md flex items-center justify-center bg-yoga-dark object-cover group">
-                            <img src="assets/Kerly.jpg" alt="Kerly Santos" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <img src="assets/Kerly.webp" alt="Kerly Santos" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                         </div>
                         <h3 class="text-2xl font-serif font-semibold text-yoga-dark mb-2">Kerly Santos</h3>
                         <p class="text-yoga-gold font-medium mb-4">Médica Ginecologista <br> Instrutora de Yoga Sivananda</p>
@@ -265,7 +301,7 @@
                     <!-- Professora 2 -->
                     <div class="bg-white rounded-[2.5rem] p-8 shadow-xl border border-yellow-600/10 text-center gs-reveal hover:-translate-y-2 transition-transform duration-300">
                         <div class="w-32 h-32 mx-auto rounded-full mb-6 overflow-hidden border-4 border-yoga-gold shadow-md flex items-center justify-center bg-yoga-dark object-cover group">
-                            <img src="assets/Marina.jpg" alt="Marina Corrêa" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <img src="assets/Marina.webp" alt="Marina Corrêa" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                         </div>
                         <h3 class="text-2xl font-serif font-semibold text-yoga-dark mb-2">Marina Corrêa</h3>
                         <p class="text-yoga-gold font-medium mb-4">Terapeuta Ocupacional <br> Instrutora de Yoga Sivananda</p>
@@ -303,7 +339,7 @@
                             <!-- Slide 1 -->
                             <div class="swiper-slide w-4/5 md:w-[600px]">
                                 <div class="relative h-[400px] md:h-[550px] rounded-[2.5rem] overflow-hidden border border-yoga-gold/30 transition-all duration-500 shadow-xl" style="animation: goldenPulse 5s infinite;">
-                                    <img src="assets/ambiente/_DSC4966.jpg" alt="Ambiente acolhedor" loading="lazy" class="w-full h-full object-cover transition-transform duration-1000 filter saturate-110 contrast-105 sepia-[.1]">
+                                    <img src="assets/ambiente/_DSC4966.webp" alt="Ambiente acolhedor" loading="lazy" class="w-full h-full object-cover transition-transform duration-1000 filter saturate-110 contrast-105 sepia-[.1]">
                                     <div class="absolute bottom-5 left-0 right-0 px-6 flex justify-center z-20">
                                         <div class="glass-title px-8 py-4 shadow-lg flex flex-col items-center">
                                             <p class="text-white font-serif text-2xl md:text-3xl tracking-wide uppercase drop-shadow-md">Acolhimento</p>
@@ -316,7 +352,7 @@
                             <!-- Slide 2 -->
                             <div class="swiper-slide w-4/5 md:w-[600px]">
                                 <div class="relative h-[400px] md:h-[550px] rounded-[2.5rem] overflow-hidden border border-yoga-gold/30 transition-all duration-500 shadow-xl" style="animation: goldenPulse 5s infinite; animation-delay: 1s;">
-                                    <img src="assets/ambiente/_DSC4972.jpg" alt="Toque dourado" loading="lazy" class="w-full h-full object-cover transition-transform duration-1000 filter saturate-110 contrast-105 sepia-[.1]">
+                                    <img src="assets/ambiente/_DSC4972.webp" alt="Toque dourado" loading="lazy" class="w-full h-full object-cover transition-transform duration-1000 filter saturate-110 contrast-105 sepia-[.1]">
                                     <div class="absolute bottom-5 left-0 right-0 px-6 flex justify-center z-20">
                                         <div class="glass-title px-8 py-4 shadow-lg flex flex-col items-center">
                                             <p class="text-white font-serif text-2xl md:text-3xl tracking-wide uppercase drop-shadow-md">Luz e Paz</p>
@@ -329,7 +365,7 @@
                             <!-- Slide 3 -->
                             <div class="swiper-slide w-4/5 md:w-[600px]">
                                 <div class="relative h-[400px] md:h-[550px] rounded-[2.5rem] overflow-hidden border border-yoga-gold/30 transition-all duration-500 shadow-xl" style="animation: goldenPulse 5s infinite; animation-delay: 2s;">
-                                    <img src="assets/ambiente/_DSC4976.jpg" alt="Detalhes" loading="lazy" class="w-full h-full object-cover transition-transform duration-1000 filter saturate-110 contrast-105 sepia-[.1]">
+                                    <img src="assets/ambiente/_DSC4976.webp" alt="Detalhes" loading="lazy" class="w-full h-full object-cover transition-transform duration-1000 filter saturate-110 contrast-105 sepia-[.1]">
                                     <div class="absolute bottom-5 left-0 right-0 px-6 flex justify-center z-20">
                                         <div class="glass-title px-8 py-4 shadow-lg flex flex-col items-center">
                                             <p class="text-white font-serif text-2xl md:text-3xl tracking-wide uppercase drop-shadow-md">Detalhes</p>
@@ -342,7 +378,7 @@
                             <!-- Slide 4 -->
                             <div class="swiper-slide w-4/5 md:w-[600px]">
                                 <div class="relative h-[400px] md:h-[550px] rounded-[2.5rem] overflow-hidden border border-yoga-gold/30 transition-all duration-500 shadow-xl" style="animation: goldenPulse 5s infinite; animation-delay: 3s;">
-                                    <img src="assets/ambiente/_DSC4981.jpg" alt="Conforto" loading="lazy" class="w-full h-full object-cover transition-transform duration-1000 filter saturate-110 contrast-105 sepia-[.1]">
+                                    <img src="assets/ambiente/_DSC4981.webp" alt="Conforto" loading="lazy" class="w-full h-full object-cover transition-transform duration-1000 filter saturate-110 contrast-105 sepia-[.1]">
                                     <div class="absolute bottom-5 left-0 right-0 px-6 flex justify-center z-20">
                                         <div class="glass-title px-8 py-4 shadow-lg flex flex-col items-center">
                                             <p class="text-white font-serif text-2xl md:text-3xl tracking-wide uppercase drop-shadow-md">Conforto</p>
@@ -355,7 +391,7 @@
                             <!-- Slide 5 -->
                             <div class="swiper-slide w-4/5 md:w-[600px]">
                                 <div class="relative h-[400px] md:h-[550px] rounded-[2.5rem] overflow-hidden border border-yoga-gold/30 transition-all duration-500 shadow-xl" style="animation: goldenPulse 5s infinite; animation-delay: 0.5s;">
-                                    <img src="assets/ambiente/_DSC4982.jpg" alt="Luz dourada" loading="lazy" class="w-full h-full object-cover transition-transform duration-1000 filter saturate-110 contrast-105 sepia-[.1]">
+                                    <img src="assets/ambiente/_DSC4982.webp" alt="Luz dourada" loading="lazy" class="w-full h-full object-cover transition-transform duration-1000 filter saturate-110 contrast-105 sepia-[.1]">
                                     <div class="absolute bottom-5 left-0 right-0 px-6 flex justify-center z-20">
                                         <div class="glass-title px-8 py-4 shadow-lg flex flex-col items-center">
                                             <p class="text-white font-serif text-2xl md:text-3xl tracking-wide uppercase drop-shadow-md">Harmonia</p>
@@ -368,7 +404,7 @@
                             <!-- Slide 6 -->
                             <div class="swiper-slide w-4/5 md:w-[600px]">
                                 <div class="relative h-[400px] md:h-[550px] rounded-[2.5rem] overflow-hidden border border-yoga-gold/30 transition-all duration-500 shadow-xl" style="animation: goldenPulse 5s infinite; animation-delay: 1.5s;">
-                                    <img src="assets/ambiente/_DSC4970.jpg" alt="Presença" loading="lazy" class="w-full h-full object-cover transition-transform duration-1000 filter saturate-110 contrast-105 sepia-[.1]">
+                                    <img src="assets/ambiente/_DSC4970.webp" alt="Presença" loading="lazy" class="w-full h-full object-cover transition-transform duration-1000 filter saturate-110 contrast-105 sepia-[.1]">
                                     <div class="absolute bottom-5 left-0 right-0 px-6 flex justify-center z-20">
                                         <div class="glass-title px-8 py-4 shadow-lg flex flex-col items-center">
                                             <p class="text-white font-serif text-2xl md:text-3xl tracking-wide uppercase drop-shadow-md">Presença</p>
@@ -388,6 +424,22 @@
                         <div class="swiper-button-next md:mr-2 select-none"></div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Bridge: yoga course as part of the clinic's integrative care -->
+        <section class="py-20 bg-yoga-light relative border-t border-yellow-600/10">
+            <div class="container mx-auto px-6 max-w-3xl text-center">
+                <span class="text-sm tracking-[0.2em] text-yoga-gold uppercase font-semibold">Por trás do curso</span>
+                <h2 class="text-3xl md:text-4xl font-serif text-yoga-dark mt-4 mb-6">Uma médica que cuida de você por inteiro</h2>
+                <p class="text-yoga-dark/70 font-light leading-relaxed text-lg mb-8">
+                    O Yoga é uma das frentes do cuidado integrativo oferecido pela Dra. Kerly Helena. Para mulheres que buscam tratamento ginecológico com foco em menopausa, equilíbrio hormonal e bem-estar feminino, a consulta integrativa é o ponto de partida.
+                </p>
+                <a href="index.html#manifesto"
+                    class="inline-flex items-center gap-2 bg-white hover:bg-yoga-light text-yoga-dark border border-yoga-gold/40 px-8 py-3 rounded-full transition-all shadow-sm font-medium hover:-translate-y-1 duration-300">
+                    <span>Conhecer a abordagem da Dra. Kerly Helena</span>
+                    <i data-feather="arrow-right" class="w-4 h-4 text-yoga-gold"></i>
+                </a>
             </div>
         </section>
 
@@ -430,7 +482,7 @@
             <i id="floating-btn-icon" data-feather="heart"
                 class="w-6 h-6 sm:w-7 sm:h-7 transition-all duration-300"></i>
             <span class="ml-2 sm:ml-3 font-medium whitespace-nowrap text-sm sm:text-base">
-                Garantir Minha Vaga
+                Quero ser avisada
             </span>
         </button>
     </div>
@@ -456,7 +508,7 @@
             </div>
 
             <h2 class="text-3xl md:text-4xl font-serif text-yoga-dark mb-4 leading-tight">
-                Um passo para sua <br/><span class="text-yoga-gold italic">vitalidade e reconexão</span>
+                Entre na <br/><span class="text-yoga-gold italic">lista de espera</span>
             </h2>
 
             <div class="bg-white/60 p-6 rounded-2xl border border-yellow-600/10 mb-8 shadow-sm text-left">
@@ -464,11 +516,11 @@
                     "Decidir cuidar de si mesma não é um luxo, é a base para sustentar a mulher forte e incrível que você já é."
                 </p>
                 <p class="text-base text-yoga-dark/70 font-light leading-relaxed">
-                    Você está prestes a reservar um momento sagrado de pausa, onde o seu corpo e o seu assoalho pélvico receberão o cuidado e a escuta que merecem. Respire fundo, esse momento é todo seu e fará total diferença na sua vitalidade, saúde íntima e emocional.
+                    Em breve abriremos novas turmas. Deixe seu contato pelo WhatsApp e te avisaremos assim que a próxima agenda for confirmada — você estará entre as primeiras a saber.
                 </p>
             </div>
 
-            <a href="https://wa.me/5598981532153?text=Olá, quero confirmar minha inscrição e garantir minha vaga no Curso de Yoga para Vitalidade Íntima!" target="_blank" rel="noopener noreferrer"
+            <a href="https://wa.me/5598981532153?text=Olá, gostaria de entrar na lista de espera do Yoga para Vitalidade Íntima Feminina." target="_blank" rel="noopener noreferrer"
                 class="w-full sm:w-auto inline-flex justify-center items-center space-x-3 bg-yoga-gold hover:bg-yellow-600 text-white px-10 py-4 rounded-full transition-all duration-300 shadow-xl font-medium text-lg group hover:-translate-y-1">
                 <span>Continuar para o WhatsApp</span>
                 <i data-feather="external-link" class="w-5 h-5 transition-transform group-hover:translate-x-1 stroke-[2.5]"></i>
@@ -487,7 +539,10 @@
                 <span>Tirar dúvidas pelo WhatsApp</span>
             </a>
 
-            <div class="pt-8">
+            <div class="pt-8 space-y-2">
+                <p class="text-yoga-dark text-sm font-medium">
+                    Dra. Kerly Helena &middot; CRM/MA 3130 &middot; RQE 5232 &middot; Ginecologia e Obstetrícia
+                </p>
                 <p class="text-yoga-dark/60 text-sm font-light">
                     &copy; 2024 Dra. Kerly Helena - Ginecologia Integrativa. Todos os direitos reservados.
                 </p>
@@ -585,17 +640,25 @@
             }, 300);
         }
 
-        // Floating button visibility on scroll
+        // Floating button visibility on scroll — hide near the location/footer
+        // sections so it doesn't overlap their content.
         const floatingContainer = document.getElementById('floating-container');
         if (floatingContainer) {
-            window.addEventListener('scroll', () => {
-                // Show after scrolling past half the viewport height
-                if (window.scrollY > window.innerHeight * 0.5) {
+            const isNearHideZone = () => {
+                const f = document.querySelector('footer');
+                if (!f) return false;
+                return f.getBoundingClientRect().top < window.innerHeight * 0.7;
+            };
+            const updateFloating = () => {
+                const pastHero = window.scrollY > window.innerHeight * 0.5;
+                if (pastHero && !isNearHideZone()) {
                     floatingContainer.classList.remove('translate-y-32', 'opacity-0', 'pointer-events-none');
                 } else {
                     floatingContainer.classList.add('translate-y-32', 'opacity-0', 'pointer-events-none');
                 }
-            });
+            };
+            window.addEventListener('scroll', updateFloating, { passive: true });
+            window.addEventListener('resize', updateFloating);
         }
     </script>
 </body>
