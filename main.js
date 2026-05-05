@@ -190,7 +190,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 let currentQuestionIndex = 0;
 let quizAnswers = [];
-let userData = { name: '', phone: '', phase: '' };
+let userData = { name: '', phone: '', age: '', phase: '' };
 
 // 8 desire-based scale questions + 1 phase-of-life multiple-choice = 9 total.
 // Scale weights: Muito = 3, Um pouco = 1, Nada = 0.
@@ -223,6 +223,7 @@ window.openSymptomModal = function () {
         modalContent.classList.remove('scale-95');
     }, 10);
     document.body.style.overflow = 'hidden';
+    document.getElementById('quiz-sticky-cta').classList.add('hidden');
 
     currentQuestionIndex = 0;
     quizAnswers = [];
@@ -234,6 +235,7 @@ window.openSymptomModal = function () {
 
     document.getElementById('quiz-name').value = '';
     document.getElementById('quiz-phone').value = '';
+    document.getElementById('quiz-age').value = '';
 
     window.trackEvent('quiz_open');
 };
@@ -248,17 +250,20 @@ window.closeSymptomModal = function () {
     }, 300);
     document.body.style.overflow = '';
     stopAnimationTweens();
+    document.getElementById('quiz-sticky-cta').classList.add('hidden');
 };
 
 window.startQuiz = function () {
     const nameInput = document.getElementById('quiz-name');
     const phoneInput = document.getElementById('quiz-phone');
-    if (!nameInput.value.trim() || !phoneInput.value.trim()) {
-        alert("Por favor, preencha seu nome e WhatsApp para continuarmos.");
+    const ageInput = document.getElementById('quiz-age');
+    if (!nameInput.value.trim() || !phoneInput.value.trim() || !ageInput.value.trim()) {
+        alert("Por favor, preencha seu nome, WhatsApp e idade para continuarmos.");
         return;
     }
     userData.name = nameInput.value.trim();
     userData.phone = phoneInput.value.trim();
+    userData.age = ageInput.value.trim();
     window.trackEvent('quiz_start');
     transitionQuizStage('quiz-intro', 'quiz-questions', () => {
         renderQuestion();
@@ -488,13 +493,15 @@ function showResults() {
 
     submitLead({ scores: scores, top: topDimensions });
     transitionQuizStage('quiz-animation', 'quiz-results', () => {
-        // Re-render any feather icons defensively (in case the result card was first-time-rendered)
+        const stickyCta = document.getElementById('quiz-sticky-cta');
+        stickyCta.classList.remove('hidden');
         if (typeof feather !== 'undefined' && feather.replace) feather.replace();
     });
 }
 
 window.bookConsultation = function() {
     window.trackEvent('book_consultation', { source: 'quiz_result', phase: userData.phase || 'unspecified' });
+    notifyWhatsappClick();
     const message = `Olá! Fiz o questionário de bem-estar e gostaria de agendar uma Consulta Integrativa. Meu nome é ${userData.name}.`;
     const encodedMessage = encodeURIComponent(message);
     const targetPhone = "5598981532153";
@@ -502,16 +509,35 @@ window.bookConsultation = function() {
 };
 
 // --- Lead capture --------------------------------------------------------
-// TODO (Dra. Kerly): para receber leads por email, criar uma conta gratuita
-// em https://formspree.io/ ou https://web3forms.com/ e colar a URL abaixo.
-// Enquanto não estiver configurado, o lead fica salvo no localStorage
-// como backup (acessível em DevTools > Application > Local Storage).
-const LEAD_ENDPOINT = ""; // Ex: "https://formspree.io/f/abcdwxyz"
+// Google Sheets via Apps Script Web App.
+// Cole aqui a URL /exec gerada após publicar o Apps Script como Web App.
+const LEAD_ENDPOINT = "https://script.google.com/macros/s/AKfycbwjNqyQvQbX8Q0q6hdCCM7u8Kwx4Igs1P-KSHTrV8cudcY60Xo2d2aRwmf8tjISs8YZjg/exec";
+
+function postToEndpoint(payload) {
+    if (!LEAD_ENDPOINT) return;
+    const body = JSON.stringify(payload);
+    // sendBeacon sobrevive navegação (window.open p/ WhatsApp). Fallback fetch keepalive.
+    if (navigator.sendBeacon) {
+        try {
+            const blob = new Blob([body], { type: 'text/plain' });
+            if (navigator.sendBeacon(LEAD_ENDPOINT, blob)) return;
+        } catch (e) { /* fallback */ }
+    }
+    fetch(LEAD_ENDPOINT, {
+        method: 'POST',
+        mode: 'no-cors',
+        keepalive: true,
+        headers: { 'Content-Type': 'text/plain' },
+        body: body
+    }).catch(function () { /* offline / failed — backup no localStorage */ });
+}
 
 function submitLead(extra) {
     const payload = {
+        event: 'lead',
         name: userData.name,
         phone: userData.phone,
+        age: userData.age || '',
         phase: userData.phase || '',
         topDimensions: (extra && extra.top) || [],
         scores: (extra && extra.scores) || {},
@@ -519,21 +545,23 @@ function submitLead(extra) {
         page: window.location.href
     };
 
-    // Always backup to localStorage so nada se perde
+    // Backup no localStorage
     try {
         const existing = JSON.parse(localStorage.getItem('drakerly_leads') || '[]');
         existing.push(payload);
         localStorage.setItem('drakerly_leads', JSON.stringify(existing.slice(-50)));
     } catch (e) { /* ignore quota errors */ }
 
-    // POST to endpoint if configured
-    if (LEAD_ENDPOINT) {
-        fetch(LEAD_ENDPOINT, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            body: JSON.stringify(payload)
-        }).catch(function () { /* offline / failed — backup já está no localStorage */ });
-    }
+    postToEndpoint(payload);
+}
+
+function notifyWhatsappClick() {
+    postToEndpoint({
+        event: 'whatsapp_click',
+        name: userData.name,
+        phone: userData.phone,
+        timestamp: new Date().toISOString()
+    });
 }
 
 function transitionQuizStage(fromId, toId, callback) {
