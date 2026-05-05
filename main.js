@@ -13,6 +13,16 @@ window.trackEvent = function (name, params) {
                 window.clarity('set', kv[0], String(kv[1]));
             });
         }
+        if (typeof window.fbq === 'function') {
+            const pixelMap = {
+                quiz_start: 'InitiateCheckout',
+                quiz_complete: 'Lead',
+                book_consultation: 'Schedule',
+                whatsapp_click: 'Contact'
+            };
+            const pixelEvent = pixelMap[name];
+            if (pixelEvent) window.fbq('track', pixelEvent, params);
+        }
     } catch (e) { /* analytics never breaks the page */ }
 };
 
@@ -44,6 +54,9 @@ function wireAnalytics() {
 
 document.addEventListener("DOMContentLoaded", (event) => {
     wireAnalytics();
+
+    const yearEl = document.getElementById('footer-year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 
     // Register ScrollTrigger
     gsap.registerPlugin(ScrollTrigger);
@@ -190,7 +203,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 let currentQuestionIndex = 0;
 let quizAnswers = [];
-let userData = { name: '', phone: '', age: '', phase: '' };
+let userData = { name: '', phone: '', email: '', age: '', phase: '' };
 
 // 8 desire-based scale questions + 1 phase-of-life multiple-choice = 9 total.
 // Scale weights: Muito = 3, Um pouco = 1, Nada = 0.
@@ -235,7 +248,9 @@ window.openSymptomModal = function () {
 
     document.getElementById('quiz-name').value = '';
     document.getElementById('quiz-phone').value = '';
+    document.getElementById('quiz-email').value = '';
     document.getElementById('quiz-age').value = '';
+    document.getElementById('quiz-consent').checked = false;
 
     window.trackEvent('quiz_open');
 };
@@ -256,13 +271,25 @@ window.closeSymptomModal = function () {
 window.startQuiz = function () {
     const nameInput = document.getElementById('quiz-name');
     const phoneInput = document.getElementById('quiz-phone');
+    const emailInput = document.getElementById('quiz-email');
     const ageInput = document.getElementById('quiz-age');
-    if (!nameInput.value.trim() || !phoneInput.value.trim() || !ageInput.value.trim()) {
-        alert("Por favor, preencha seu nome, WhatsApp e idade para continuarmos.");
+    const consentInput = document.getElementById('quiz-consent');
+    const email = emailInput.value.trim();
+    if (!nameInput.value.trim() || !phoneInput.value.trim() || !email || !ageInput.value.trim()) {
+        alert("Por favor, preencha nome, WhatsApp, e-mail e idade para continuarmos.");
+        return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        alert("Por favor, insira um e-mail válido.");
+        return;
+    }
+    if (!consentInput.checked) {
+        alert("Para continuar, é necessário concordar com o tratamento dos seus dados (LGPD).");
         return;
     }
     userData.name = nameInput.value.trim();
     userData.phone = phoneInput.value.trim();
+    userData.email = email;
     userData.age = ageInput.value.trim();
     window.trackEvent('quiz_start');
     transitionQuizStage('quiz-intro', 'quiz-questions', () => {
@@ -537,6 +564,7 @@ function submitLead(extra) {
         event: 'lead',
         name: userData.name,
         phone: userData.phone,
+        email: userData.email || '',
         age: userData.age || '',
         phase: userData.phase || '',
         topDimensions: (extra && extra.top) || [],

@@ -6,31 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- =========================================================
-         ANALYTICS — ATIVAR QUANDO TIVER AS IDs
-         1) Google Analytics 4: criar property em https://analytics.google.com/
-            -> pegar G-XXXXXXXXXX e substituir abaixo
-         2) Microsoft Clarity (heatmap + gravações): https://clarity.microsoft.com/
-            -> pegar tag e substituir TAG_ID abaixo
+         ANALYTICS — SUBSTITUIR IDs ABAIXO
+         1) GA4: https://analytics.google.com/ -> property -> ID G-XXXXXXXXXX
+         2) Microsoft Clarity: https://clarity.microsoft.com/ -> projeto -> tag ID
+         3) Meta Pixel: https://business.facebook.com/ -> Eventos -> Pixel ID
          Eventos custom (whatsapp_click, quiz_open, quiz_start, quiz_complete,
-         book_consultation, scroll_depth) já são enviados pelo main.js — basta
-         descomentar os blocos abaixo depois de pegar as IDs.
+         book_consultation, scroll_depth, lead) já enviados pelo main.js.
          ========================================================= -->
-    <!--
+    <!-- TODO: substituir G-XXXXXXXXXX pela GA4 ID real -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX');
+      gtag('config', 'G-XXXXXXXXXX', { anonymize_ip: true });
     </script>
+    <!-- TODO: substituir CLARITY_TAG_ID pela tag real do Clarity -->
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
             t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "TAG_ID");
+        })(window, document, "clarity", "script", "CLARITY_TAG_ID");
     </script>
-    -->
+    <!-- TODO: substituir META_PIXEL_ID pelo Pixel ID real (15-16 dígitos) -->
+    <script>
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+      document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', 'META_PIXEL_ID');
+      fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=META_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
 
     <title>Dra. Kerly Helena - Ginecologia Integrativa</title>
     <!-- Favicon -->
@@ -751,7 +761,7 @@
                                 <i data-feather="phone" class="w-6 h-6 text-blush-500 mt-1 flex-shrink-0"></i>
                                 <p class="text-charcoal/80 font-light">
                                     <strong class="font-medium text-charcoal block mb-1">WhatsApp</strong>
-                                    +55 (98) 98153-2153
+                                    <a href="tel:+5598981532153" class="hover:text-blush-500 transition-colors">+55 (98) 98153-2153</a>
                                 </p>
                             </div>
                         </div>
@@ -844,10 +854,13 @@
                     Dra. Kerly Helena &middot; CRM/MA 3130 &middot; RQE 5232 &middot; Ginecologia e Obstetrícia
                 </p>
                 <p class="text-charcoal/80 text-sm font-light">
-                    &copy; 2024 Dra. Kerly Helena - Ginecologia Integrativa. Todos os direitos reservados.
+                    &copy; <span id="footer-year">2026</span> Dra. Kerly Helena - Ginecologia Integrativa. Todos os direitos reservados.
                 </p>
                 <p class="text-charcoal/70 text-xs mt-2">
                     "Pausa e Reconexão"
+                </p>
+                <p class="text-charcoal/60 text-xs pt-3">
+                    <a href="/privacy.html" class="hover:text-blush-500 underline underline-offset-2 transition-colors">Política de Privacidade</a>
                 </p>
                 <p class="text-charcoal/50 text-xs pt-4">
                     Site desenvolvido por <span class="font-medium text-charcoal/70">Vibe Surf Dev</span>
@@ -895,9 +908,17 @@
                         <input type="tel" id="quiz-phone" placeholder="(00) 00000-0000" class="w-full bg-white/60 border border-blush-100 rounded-full px-6 py-3 focus:outline-none focus:border-blush-400 transition-colors">
                     </div>
                     <div class="text-left">
+                        <label class="block text-sm text-charcoal/70 mb-1 ml-4">Seu melhor e-mail</label>
+                        <input type="email" id="quiz-email" placeholder="seu@email.com" autocomplete="email" class="w-full bg-white/60 border border-blush-100 rounded-full px-6 py-3 focus:outline-none focus:border-blush-400 transition-colors">
+                    </div>
+                    <div class="text-left">
                         <label class="block text-sm text-charcoal/70 mb-1 ml-4">Sua idade</label>
                         <input type="number" id="quiz-age" placeholder="Ex: 34" min="18" max="99" class="w-full bg-white/60 border border-blush-100 rounded-full px-6 py-3 focus:outline-none focus:border-blush-400 transition-colors">
                     </div>
+                    <label class="flex items-start gap-3 text-left text-xs text-charcoal/70 leading-relaxed px-2 cursor-pointer">
+                        <input type="checkbox" id="quiz-consent" class="mt-1 w-4 h-4 accent-blush-500 flex-shrink-0">
+                        <span>Concordo em receber contato sobre o resultado e novidades. Seus dados são tratados conforme nossa <a href="/privacy.html" target="_blank" class="text-blush-500 underline hover:text-blush-400">Política de Privacidade</a> (LGPD).</span>
+                    </label>
                     <button onclick="startQuiz()" class="w-full bg-blush-500 hover:bg-blush-400 text-white px-8 py-4 rounded-full transition-all duration-300 shadow-lg font-medium text-lg mt-4">
                         Começar
                     </button>

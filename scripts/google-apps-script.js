@@ -9,16 +9,17 @@ const COL = {
   TIMESTAMP:   1,
   NOME:        2,
   WHATSAPP:    3,
-  IDADE:       4,
-  FASE:        5,
-  DIM_PRINC:   6,
-  DIM_SEC:     7,
-  SC_ENERGIA:  8,
-  SC_DESCANSO: 9,
-  SC_PRESENCA: 10,
-  SC_VITALID:  11,
-  ORIGEM:      12,
-  AGENDOU_WA:  13,
+  EMAIL:       4,
+  IDADE:       5,
+  FASE:        6,
+  DIM_PRINC:   7,
+  DIM_SEC:     8,
+  SC_ENERGIA:  9,
+  SC_DESCANSO: 10,
+  SC_PRESENCA: 11,
+  SC_VITALID:  12,
+  ORIGEM:      13,
+  AGENDOU_WA:  14,
 };
 
 function doPost(e) {
@@ -29,7 +30,7 @@ function doPost(e) {
     // Garante cabeçalho
     if (sheet.getLastRow() === 0) {
       sheet.appendRow([
-        "Timestamp", "Nome", "WhatsApp", "Idade", "Fase de vida",
+        "Timestamp", "Nome", "WhatsApp", "E-mail", "Idade", "Fase de vida",
         "Dimensão principal", "Dimensão secundária",
         "Score ENERGIA", "Score DESCANSO", "Score PRESENÇA", "Score VITALIDADE",
         "Origem", "Clicou no botão WhatsApp"
@@ -55,6 +56,7 @@ function doPost(e) {
         data.timestamp || new Date().toISOString(),
         data.name || "",
         data.phone || "",
+        data.email || "",
         data.age || "",
         data.phase || "",
         (data.topDimensions && data.topDimensions[0]) || "",
