@@ -6,20 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- =========================================================
-         ANALYTICS — SUBSTITUIR IDs ABAIXO
-         1) GA4: https://analytics.google.com/ -> property -> ID G-XXXXXXXXXX
-         2) Microsoft Clarity: https://clarity.microsoft.com/ -> projeto -> tag ID
-         3) Meta Pixel: https://business.facebook.com/ -> Eventos -> Pixel ID
-         Eventos custom (whatsapp_click, quiz_open, quiz_start, quiz_complete,
-         book_consultation, scroll_depth, lead) já enviados pelo main.js.
+         ANALYTICS — Eventos custom (whatsapp_click, quiz_open, quiz_start,
+         quiz_complete, book_consultation, scroll_depth, lead) já enviados
+         pelo main.js.
+         TODO: substituir CLARITY_TAG_ID e META_PIXEL_ID pelos IDs reais.
          ========================================================= -->
-    <!-- TODO: substituir G-XXXXXXXXXX pela GA4 ID real -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GSWCEYS7QB"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX', { anonymize_ip: true });
+      gtag('config', 'G-GSWCEYS7QB', { anonymize_ip: true });
     </script>
     <!-- TODO: substituir CLARITY_TAG_ID pela tag real do Clarity -->
     <script type="text/javascript">
