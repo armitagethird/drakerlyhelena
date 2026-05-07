@@ -6,13 +6,18 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://drakerlyhelena.com.br/faq.html</loc>
+    <loc>https://drakerlyhelena.com.br/faq/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://drakerlyhelena.com.br/yoga.html</loc>
+    <loc>https://drakerlyhelena.com.br/yoga/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://drakerlyhelena.com.br/privacy/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>

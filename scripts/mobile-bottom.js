@@ -48,7 +48,7 @@ const OUT = path.resolve(__dirname, '..', 'audit-screenshots');
   }
 
   // Yoga page sections
-  await page.goto('http://127.0.0.1:8765/yoga.html', { waitUntil: 'networkidle0' });
+  await page.goto('http://127.0.0.1:8765/yoga/', { waitUntil: 'networkidle0' });
   await page.evaluate(() => {
     if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.getAll().forEach(t => t.kill());
     document.querySelectorAll('.gs-reveal').forEach(el => {

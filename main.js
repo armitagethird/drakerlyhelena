@@ -52,6 +52,31 @@ function wireAnalytics() {
     }, { passive: true });
 }
 
+function initHeroStagger() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (typeof gsap === 'undefined') return;
+
+    const tl = gsap.timeline({ defaults: { ease: 'power2.out', duration: 0.7 } });
+    tl.from('#hero [data-stagger="0"]', { opacity: 0, y: 12 })
+        .from('#hero [data-stagger="1"]', { opacity: 0, y: 12 }, '-=0.6')
+        .from('#hero [data-stagger="2"]', { opacity: 0, y: 12 }, '-=0.6')
+        .from('#hero [data-stagger="3"]', { opacity: 0, y: 12 }, '-=0.55')
+        .from('#hero [data-stagger="4"]', { opacity: 0, y: 12 }, '-=0.55')
+        .from('#hero [data-stagger="5"]', { opacity: 0, y: 12 }, '-=0.55')
+        .from('.gs-hero-photo img', { scale: 1.02, duration: 1.4 }, 0)
+        .from('.hero-rail-line', { scaleY: 0, transformOrigin: 'top center', duration: 1 }, 0.2)
+        .from('.gs-hero-card', { opacity: 0, y: 16, duration: 0.8 }, 0.9)
+        .from('.gs-hero-scrollhint', { opacity: 0, duration: 0.6 }, 1.1);
+
+    const hint = document.querySelector('.gs-hero-scrollhint');
+    if (hint) {
+        hint.style.transition = 'opacity 400ms ease';
+        window.addEventListener('scroll', () => {
+            hint.style.opacity = window.scrollY > 200 ? '0' : '1';
+        }, { passive: true });
+    }
+}
+
 document.addEventListener("DOMContentLoaded", (event) => {
     wireAnalytics();
 
@@ -72,6 +97,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
             navbar.classList.add('bg-sand-100/80');
         }
     });
+
+    // Hero stagger (above-the-fold; runs once on load, not via ScrollTrigger)
+    initHeroStagger();
 
     // Reveal Elements on Scroll with advanced, satisfying physics
     const revealElements = document.querySelectorAll('.gs-reveal');
@@ -205,6 +233,10 @@ let currentQuestionIndex = 0;
 let quizAnswers = [];
 let userData = { name: '', phone: '', email: '', age: '', phase: '' };
 
+// Intro substep state (5 substeps: name, phone, email, age, consent)
+let introSubstep = 0;
+const INTRO_TOTAL_SUBSTEPS = 5;
+
 // 8 desire-based scale questions + 1 phase-of-life multiple-choice = 9 total.
 // Scale weights: Muito = 3, Um pouco = 1, Nada = 0.
 // Higher score in a dimension = stronger desire to improve there.
@@ -252,6 +284,10 @@ window.openSymptomModal = function () {
     document.getElementById('quiz-age').value = '';
     document.getElementById('quiz-consent').checked = false;
 
+    introSubstep = 0;
+    showIntroSubstep(0);
+    clearAllIntroErrors();
+
     window.trackEvent('quiz_open');
 };
 
@@ -268,29 +304,132 @@ window.closeSymptomModal = function () {
     document.getElementById('quiz-sticky-cta').classList.add('hidden');
 };
 
+// --- Intro Substep Controls ---
+
+const INTRO_FIELD_BY_SUBSTEP = {
+    0: 'quiz-name',
+    1: 'quiz-phone',
+    2: 'quiz-email',
+    3: 'quiz-age',
+    4: 'quiz-consent'
+};
+
+window.formatPhoneInput = function (input) {
+    let digits = input.value.replace(/\D/g, '').slice(0, 11);
+    let out = digits;
+    if (digits.length > 0) out = '(' + digits.slice(0, 2);
+    if (digits.length >= 2) out += ') ' + digits.slice(2, digits.length === 11 ? 7 : 6);
+    if (digits.length > (digits.length === 11 ? 7 : 6)) out += '-' + digits.slice(digits.length === 11 ? 7 : 6);
+    input.value = out;
+};
+
+function showIntroError(substep, message) {
+    const el = document.querySelector(`[data-error-for="${substep}"]`);
+    if (!el) return;
+    el.textContent = message;
+    el.classList.remove('hidden');
+    const fieldId = INTRO_FIELD_BY_SUBSTEP[substep];
+    const field = document.getElementById(fieldId);
+    if (field && field.type !== 'checkbox') field.classList.add('!border-red-400');
+}
+
+function clearIntroError(substep) {
+    const el = document.querySelector(`[data-error-for="${substep}"]`);
+    if (el) { el.textContent = ''; el.classList.add('hidden'); }
+    const fieldId = INTRO_FIELD_BY_SUBSTEP[substep];
+    const field = document.getElementById(fieldId);
+    if (field) field.classList.remove('!border-red-400');
+}
+
+function clearAllIntroErrors() {
+    for (let i = 0; i < INTRO_TOTAL_SUBSTEPS; i++) clearIntroError(i);
+}
+
+function validateIntroSubstep(i) {
+    if (i === 0) {
+        const v = document.getElementById('quiz-name').value.trim();
+        if (v.length < 2) { showIntroError(0, 'Conta pra mim como você quer ser chamada.'); return false; }
+    } else if (i === 1) {
+        const v = document.getElementById('quiz-phone').value.trim();
+        const digits = v.replace(/\D/g, '');
+        if (digits.length < 10 || digits.length > 11) { showIntroError(1, 'WhatsApp precisa ter DDD + número (10 ou 11 dígitos).'); return false; }
+    } else if (i === 2) {
+        const v = document.getElementById('quiz-email').value.trim();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { showIntroError(2, 'Esse e-mail não parece válido. Confere?'); return false; }
+    } else if (i === 3) {
+        const v = parseInt(document.getElementById('quiz-age').value, 10);
+        if (!v || v < 18 || v > 99) { showIntroError(3, 'Coloque uma idade entre 18 e 99.'); return false; }
+    } else if (i === 4) {
+        if (!document.getElementById('quiz-consent').checked) { showIntroError(4, 'Precisamos do seu aceite (LGPD) para seguir.'); return false; }
+    }
+    clearIntroError(i);
+    return true;
+}
+
+function showIntroSubstep(i) {
+    document.querySelectorAll('.intro-substep').forEach(el => el.classList.add('hidden'));
+    const target = document.querySelector(`.intro-substep[data-substep="${i}"]`);
+    if (!target) return;
+    target.classList.remove('hidden');
+
+    const progressText = document.getElementById('intro-progress-text');
+    const progressBar = document.getElementById('intro-progress-bar');
+    if (progressText) progressText.textContent = `Etapa ${i + 1} de ${INTRO_TOTAL_SUBSTEPS}`;
+    if (progressBar) progressBar.style.width = `${((i + 1) / INTRO_TOTAL_SUBSTEPS) * 100}%`;
+
+    const backBtn = document.getElementById('intro-back-btn');
+    const nextBtn = document.getElementById('intro-next-btn');
+    if (backBtn) backBtn.classList.toggle('hidden', i === 0);
+    if (nextBtn) nextBtn.textContent = i === INTRO_TOTAL_SUBSTEPS - 1 ? 'Começar quiz' : 'Próximo';
+
+    if (typeof gsap !== 'undefined') {
+        gsap.fromTo(target, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' });
+    }
+
+    const scrollArea = document.getElementById('quiz-scroll-area');
+    if (scrollArea) scrollArea.scrollTop = 0;
+
+    requestAnimationFrame(() => {
+        const fieldId = INTRO_FIELD_BY_SUBSTEP[i];
+        const field = document.getElementById(fieldId);
+        if (field && field.type !== 'checkbox') {
+            try { field.focus({ preventScroll: true }); } catch (e) { field.focus(); }
+        }
+    });
+}
+
+window.nextIntroSubstep = function () {
+    if (!validateIntroSubstep(introSubstep)) return;
+    window.trackEvent('quiz_intro_step', { step_index: introSubstep, field: INTRO_FIELD_BY_SUBSTEP[introSubstep] });
+    if (introSubstep < INTRO_TOTAL_SUBSTEPS - 1) {
+        introSubstep++;
+        showIntroSubstep(introSubstep);
+    } else {
+        startQuiz();
+    }
+};
+
+window.prevIntroSubstep = function () {
+    if (introSubstep > 0) {
+        clearIntroError(introSubstep);
+        introSubstep--;
+        showIntroSubstep(introSubstep);
+    }
+};
+
 window.startQuiz = function () {
-    const nameInput = document.getElementById('quiz-name');
-    const phoneInput = document.getElementById('quiz-phone');
-    const emailInput = document.getElementById('quiz-email');
-    const ageInput = document.getElementById('quiz-age');
-    const consentInput = document.getElementById('quiz-consent');
-    const email = emailInput.value.trim();
-    if (!nameInput.value.trim() || !phoneInput.value.trim() || !email || !ageInput.value.trim()) {
-        alert("Por favor, preencha nome, WhatsApp, e-mail e idade para continuarmos.");
-        return;
+    // Defensive: re-validate all substeps; jump to first failing one if any.
+    for (let i = 0; i < INTRO_TOTAL_SUBSTEPS; i++) {
+        if (!validateIntroSubstep(i)) {
+            introSubstep = i;
+            showIntroSubstep(i);
+            return;
+        }
     }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        alert("Por favor, insira um e-mail válido.");
-        return;
-    }
-    if (!consentInput.checked) {
-        alert("Para continuar, é necessário concordar com o tratamento dos seus dados (LGPD).");
-        return;
-    }
-    userData.name = nameInput.value.trim();
-    userData.phone = phoneInput.value.trim();
-    userData.email = email;
-    userData.age = ageInput.value.trim();
+    userData.name = document.getElementById('quiz-name').value.trim();
+    userData.phone = document.getElementById('quiz-phone').value.trim();
+    userData.email = document.getElementById('quiz-email').value.trim();
+    userData.age = document.getElementById('quiz-age').value.trim();
     window.trackEvent('quiz_start');
     transitionQuizStage('quiz-intro', 'quiz-questions', () => {
         renderQuestion();

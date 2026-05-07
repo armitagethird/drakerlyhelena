@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+html {
+    scroll-padding-top: 88px;
+}
+
+@media (min-width: 768px) {
+    html {
+        scroll-padding-top: 104px;
+    }
+}
+
+
 @theme {
     --color-nude-100: #Fdfbf7;
     --color-nude-200: #FBF5F7;
@@ -62,5 +73,45 @@
 
     .organic-blob-3 {
         border-radius: 71% 29% 41% 59% / 54% 39% 61% 46%;
+    }
+}
+
+@layer components {
+    .hairline-vertical {
+        width: 1px;
+        background: var(--color-blush-300);
+        opacity: 0.4;
+        display: inline-block;
+    }
+
+    .hairline-horizontal {
+        height: 1px;
+        width: 100%;
+        background: var(--color-blush-300);
+        opacity: 0.4;
+    }
+
+    .headline-editorial {
+        transition: letter-spacing 400ms ease;
+    }
+
+    .headline-editorial:hover {
+        letter-spacing: -0.01em;
+    }
+
+    .headline-editorial em {
+        font-style: italic;
+        font-weight: 300;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    [data-stagger],
+    .gs-hero-photo img,
+    .hero-rail-line,
+    .gs-hero-scrollhint {
+        opacity: 1 !important;
+        transform: none !important;
     }
 }

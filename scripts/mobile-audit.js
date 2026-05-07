@@ -10,8 +10,8 @@ if (!fs.existsSync(OUT_DIR)) fs.mkdirSync(OUT_DIR, { recursive: true });
 
 const targets = [
   { url: '/index.html', name: 'index' },
-  { url: '/faq.html',   name: 'faq' },
-  { url: '/yoga.html',  name: 'yoga' }
+  { url: '/faq/',   name: 'faq' },
+  { url: '/yoga/',  name: 'yoga' }
 ];
 
 const viewports = [
