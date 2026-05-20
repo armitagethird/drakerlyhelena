@@ -83,6 +83,14 @@ document.addEventListener("DOMContentLoaded", (event) => {
     const yearEl = document.getElementById('footer-year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+    // Auto-open quiz when arriving from another page with ?quiz=1
+    try {
+        if (new URLSearchParams(window.location.search).get('quiz') === '1'
+            && typeof window.openSymptomModal === 'function') {
+            setTimeout(() => window.openSymptomModal(), 450);
+        }
+    } catch (e) { /* ignore */ }
+
     // Register ScrollTrigger
     gsap.registerPlugin(ScrollTrigger);
 
@@ -273,7 +281,8 @@ window.openSymptomModal = function () {
     currentQuestionIndex = 0;
     quizAnswers = [];
 
-    document.getElementById('quiz-intro').classList.remove('hidden');
+    document.getElementById('quiz-welcome').classList.remove('hidden');
+    document.getElementById('quiz-intro').classList.add('hidden');
     document.getElementById('quiz-questions').classList.add('hidden');
     document.getElementById('quiz-animation').classList.add('hidden');
     document.getElementById('quiz-results').classList.add('hidden');
@@ -374,13 +383,16 @@ function showIntroSubstep(i) {
 
     const progressText = document.getElementById('intro-progress-text');
     const progressBar = document.getElementById('intro-progress-bar');
-    if (progressText) progressText.textContent = `Etapa ${i + 1} de ${INTRO_TOTAL_SUBSTEPS}`;
+    if (progressText) progressText.textContent = `Passo ${i + 1} de ${INTRO_TOTAL_SUBSTEPS}`;
     if (progressBar) progressBar.style.width = `${((i + 1) / INTRO_TOTAL_SUBSTEPS) * 100}%`;
 
     const backBtn = document.getElementById('intro-back-btn');
     const nextBtn = document.getElementById('intro-next-btn');
-    if (backBtn) backBtn.classList.toggle('hidden', i === 0);
-    if (nextBtn) nextBtn.textContent = i === INTRO_TOTAL_SUBSTEPS - 1 ? 'Começar quiz' : 'Próximo';
+    if (backBtn) {
+        backBtn.classList.remove('hidden');
+        backBtn.textContent = i === 0 ? '← Voltar às perguntas' : '← Voltar';
+    }
+    if (nextBtn) nextBtn.textContent = i === INTRO_TOTAL_SUBSTEPS - 1 ? 'Ver meu resultado' : 'Próximo';
 
     if (typeof gsap !== 'undefined') {
         gsap.fromTo(target, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' });
@@ -405,7 +417,7 @@ window.nextIntroSubstep = function () {
         introSubstep++;
         showIntroSubstep(introSubstep);
     } else {
-        startQuiz();
+        finalizeLeadCapture();
     }
 };
 
@@ -414,10 +426,24 @@ window.prevIntroSubstep = function () {
         clearIntroError(introSubstep);
         introSubstep--;
         showIntroSubstep(introSubstep);
+    } else {
+        // From first data-capture step, go back to last question (phase).
+        clearIntroError(0);
+        transitionQuizStage('quiz-intro', 'quiz-questions', () => {
+            currentQuestionIndex = quizQuestions.length - 1;
+            renderQuestion();
+        });
     }
 };
 
-window.startQuiz = function () {
+window.startQuestions = function () {
+    window.trackEvent('quiz_start');
+    transitionQuizStage('quiz-welcome', 'quiz-questions', () => {
+        renderQuestion();
+    });
+};
+
+function finalizeLeadCapture() {
     // Defensive: re-validate all substeps; jump to first failing one if any.
     for (let i = 0; i < INTRO_TOTAL_SUBSTEPS; i++) {
         if (!validateIntroSubstep(i)) {
@@ -430,11 +456,11 @@ window.startQuiz = function () {
     userData.phone = document.getElementById('quiz-phone').value.trim();
     userData.email = document.getElementById('quiz-email').value.trim();
     userData.age = document.getElementById('quiz-age').value.trim();
-    window.trackEvent('quiz_start');
-    transitionQuizStage('quiz-intro', 'quiz-questions', () => {
-        renderQuestion();
+    window.trackEvent('quiz_complete', { phase: userData.phase || 'unspecified' });
+    transitionQuizStage('quiz-intro', 'quiz-animation', () => {
+        runHealthFingerprint();
     });
-};
+}
 
 function renderQuestion() {
     const question = quizQuestions[currentQuestionIndex];
@@ -487,9 +513,11 @@ function advanceQuiz() {
         currentQuestionIndex++;
         renderQuestion();
     } else {
-        window.trackEvent('quiz_complete', { phase: userData.phase || 'unspecified' });
-        transitionQuizStage('quiz-questions', 'quiz-animation', () => {
-            runHealthFingerprint();
+        window.trackEvent('quiz_questions_complete', { phase: userData.phase || 'unspecified' });
+        introSubstep = 0;
+        transitionQuizStage('quiz-questions', 'quiz-intro', () => {
+            clearAllIntroErrors();
+            showIntroSubstep(0);
         });
     }
 }

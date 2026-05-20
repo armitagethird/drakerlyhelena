@@ -167,13 +167,14 @@
                     Dra. Kerly Helena
                 </span>
             </a>
-            <nav class="hidden md:flex items-center space-x-8 text-sm uppercase tracking-widest text-charcoal/70">
+            <nav class="hidden md:flex items-center space-x-7 lg:space-x-9 text-sm uppercase tracking-widest text-charcoal/70">
                 <a href="#hero" class="hover:text-blush-500 transition-colors">Início</a>
-                <a href="#manifesto" class="hover:text-blush-500 transition-colors">Sobre Mim</a>
+                <a href="#manifesto" class="hover:text-blush-500 transition-colors">Sobre</a>
                 <a href="#integrative" class="hover:text-blush-500 transition-colors">A Abordagem</a>
-                <a href="#clinic" class="hover:text-blush-500 transition-colors">A Clínica</a>
-                <a href="#depoimentos" class="hover:text-blush-500 transition-colors">Depoimentos</a>
-                <a href="#location" class="hover:text-blush-500 transition-colors">Contato</a>
+                <a href="/pacotes/" class="group inline-flex items-center gap-2 hover:text-blush-500 transition-colors">
+                    <span class="w-1.5 h-1.5 rounded-full bg-blush-500 transition-transform duration-300 group-hover:scale-125"></span>
+                    <span>Pacotes</span>
+                </a>
                 <a href="/faq/" class="hover:text-blush-500 transition-colors">FAQ</a>
                 <a href="https://wa.me/5598981532153" target="_blank" rel="noopener noreferrer"
                     class="bg-blush-500 hover:bg-blush-400 text-white px-6 py-2.5 rounded-full transition-colors normal-case tracking-normal shadow-sm font-medium">Agende
@@ -190,11 +191,12 @@
             <nav
                 class="flex flex-col space-y-6 px-6 py-8 text-sm uppercase tracking-widest text-charcoal/80 text-center">
                 <a href="#hero" class="hover:text-blush-500 transition-colors">Início</a>
-                <a href="#manifesto" class="hover:text-blush-500 transition-colors">Sobre Mim</a>
+                <a href="#manifesto" class="hover:text-blush-500 transition-colors">Sobre</a>
                 <a href="#integrative" class="hover:text-blush-500 transition-colors">A Abordagem</a>
-                <a href="#clinic" class="hover:text-blush-500 transition-colors">A Clínica</a>
-                <a href="#depoimentos" class="hover:text-blush-500 transition-colors">Depoimentos</a>
-                <a href="#location" class="hover:text-blush-500 transition-colors">Contato</a>
+                <a href="/pacotes/" class="inline-flex items-center justify-center gap-2 hover:text-blush-500 transition-colors">
+                    <span class="w-1.5 h-1.5 rounded-full bg-blush-500"></span>
+                    <span>Pacotes</span>
+                </a>
                 <a href="/faq/" class="hover:text-blush-500 transition-colors">FAQ</a>
                 <div class="pt-4">
                     <a href="https://wa.me/5598981532153" target="_blank" rel="noopener noreferrer"
@@ -274,7 +276,7 @@
                             class="w-full h-full object-cover object-[center_25%]">
                     </div>
                     <!-- Card flutuante refinado (desktop only) -->
-                    <div class="hidden lg:block absolute -bottom-6 -left-6 bg-white/85 backdrop-blur-sm px-5 py-4 rounded-2xl border border-blush-200/40 shadow-lg max-w-[180px] gs-hero-card">
+                    <div class="hidden lg:block absolute bottom-8 -left-6 bg-white/85 backdrop-blur-sm px-5 py-4 rounded-2xl border border-blush-200/40 shadow-lg max-w-[180px] gs-hero-card">
                         <p class="font-serif italic text-base text-blush-500 leading-snug">
                             Pausa e<br>Reconexão.
                         </p>
@@ -302,6 +304,13 @@
                             <span>Quero entender o que sinto</span>
                             <i data-feather="arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-1"></i>
                         </button>
+                        <a href="https://wa.me/5598981532153?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20conversar%20com%20a%20Dra.%20Kerly."
+                            data-cta-source="hero_whatsapp"
+                            target="_blank" rel="noopener noreferrer"
+                            class="border border-blush-500 text-blush-500 bg-white hover:bg-blush-100 px-8 py-4 rounded-full font-medium tracking-wide transition-colors focus:outline-none focus:ring-2 focus:ring-blush-300 focus:ring-offset-2 inline-flex items-center justify-center gap-2 group">
+                            <i data-feather="message-circle" class="w-4 h-4"></i>
+                            <span>Falar no WhatsApp</span>
+                        </a>
                         <a href="#manifesto"
                             class="text-charcoal/80 hover:text-blush-500 font-sans underline underline-offset-4 decoration-1 decoration-charcoal/30 hover:decoration-blush-500 transition-colors inline-flex items-center justify-center sm:justify-start gap-2">
                             <span>Conheça a Dra. Kerly</span>
@@ -325,6 +334,112 @@
             <div class="hidden lg:flex absolute bottom-8 right-10 items-center gap-3 gs-hero-scrollhint">
                 <span class="hairline-vertical h-12"></span>
                 <span class="text-[10px] tracking-[0.25em] uppercase text-charcoal/50 [writing-mode:vertical-rl]">Role para explorar</span>
+            </div>
+        </section>
+
+        <!-- Jornada Integrativa — Editorial Spread (Act 2) -->
+        <section id="jornada" class="relative bg-sand-100 overflow-hidden pt-20 md:pt-28 pb-24 md:pb-32 border-t border-blush-100/60">
+
+            <!-- Soft halo (echo do hero) -->
+            <div class="absolute -top-24 -right-24 w-96 h-96 bg-blush-300/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute bottom-20 -left-20 w-72 h-72 bg-nude-300/15 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="container mx-auto px-6 md:px-10 grid grid-cols-12 gap-x-6 relative z-10">
+
+                <!-- Rail editorial vertical (desktop only) — espelha "№ 01" do hero -->
+                <aside class="hidden lg:flex col-span-1 flex-col items-start gap-6 pt-2 metadata-rail">
+                    <span class="text-blush-500 font-serif text-sm tracking-wide">№ 02</span>
+                    <span class="hairline-vertical h-24"></span>
+                    <span class="text-[11px] tracking-[0.15em] uppercase text-charcoal/60 [writing-mode:vertical-rl] rotate-180">Acompanhamento Integrativo</span>
+                    <span class="text-[11px] tracking-[0.15em] uppercase text-charcoal/60 [writing-mode:vertical-rl] rotate-180">3 meses</span>
+                </aside>
+
+                <!-- Hairline divisor entre rail e copy (desktop) -->
+                <div class="hidden lg:block col-span-1 col-start-2 -ml-3 hairline-vertical"></div>
+
+                <!-- Conteúdo principal -->
+                <div class="col-span-12 lg:col-span-10 lg:col-start-3 gs-reveal">
+
+                    <!-- Eyebrow + headline editorial -->
+                    <p class="text-[11px] tracking-[0.2em] uppercase text-charcoal/60 font-sans mb-3">
+                        Quando uma consulta não basta
+                    </p>
+                    <h2 class="text-4xl md:text-6xl font-serif text-charcoal leading-[1.05] mb-14 md:mb-20 max-w-3xl">
+                        Três meses<br>
+                        <em class="italic text-blush-500 font-normal">ao seu lado.</em>
+                    </h2>
+
+                    <!-- Spread editorial: foto + copy -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-12 items-center">
+
+                        <!-- Foto orgânica -->
+                        <figure class="lg:col-span-5 relative max-w-sm mx-auto lg:mx-0 w-full">
+                            <div class="relative aspect-[4/5] w-full overflow-hidden organic-blob-1 shadow-xl">
+                                <img src="assets/_DSC4964.webp" alt="Clínica Dra. Kerly Helena — espaço integrativo"
+                                    width="800" height="1000" loading="lazy"
+                                    class="w-full h-full object-cover">
+                            </div>
+                            <!-- Caption editorial (desktop only) — espelha "Pausa e Reconexão" do hero -->
+                            <figcaption class="hidden lg:block absolute -bottom-3 -right-3 bg-white/85 backdrop-blur-sm px-5 py-3 rounded-2xl border border-blush-200/40 shadow-lg max-w-[170px]">
+                                <p class="text-[10px] uppercase tracking-[0.18em] text-blush-400 font-bold">A jornada</p>
+                                <p class="font-serif italic text-blush-500 text-base leading-snug">por inteiro</p>
+                            </figcaption>
+                        </figure>
+
+                        <!-- Copy + bullets + CTAs -->
+                        <div class="lg:col-span-7 lg:col-start-7">
+                            <span class="text-[10px] uppercase tracking-[0.25em] text-blush-500 font-bold mb-4 inline-block">Jornada Integrativa</span>
+
+                            <p class="text-charcoal/80 font-light leading-relaxed text-base md:text-lg mb-8 max-w-lg">
+                                Para quem quer transformação real, não só uma consulta pontual. Médica, nutricionista parceira e yoga para a vitalidade feminina — caminhando junto com você por três meses.
+                            </p>
+
+                            <!-- Bullets editoriais (em-dash + hairline divider) -->
+                            <ul class="space-y-0 mb-10 max-w-lg">
+                                <li class="flex gap-4 py-4 border-t border-blush-100">
+                                    <span class="text-blush-500 font-serif text-xl leading-none mt-0.5 select-none">—</span>
+                                    <span class="text-charcoal/85 text-[15px] leading-relaxed">Acompanhamento direto via WhatsApp com a Dra. Kerly</span>
+                                </li>
+                                <li class="flex gap-4 py-4 border-t border-blush-100">
+                                    <span class="text-blush-500 font-serif text-xl leading-none mt-0.5 select-none">—</span>
+                                    <span class="text-charcoal/85 text-[15px] leading-relaxed">Plano terapêutico que evolui em dois retornos</span>
+                                </li>
+                                <li class="flex gap-4 py-4 border-t border-b border-blush-100">
+                                    <span class="text-blush-500 font-serif text-xl leading-none mt-0.5 select-none">—</span>
+                                    <span class="text-charcoal/85 text-[15px] leading-relaxed">Nutricionista parceira + 4 aulas de yoga inclusas</span>
+                                </li>
+                            </ul>
+
+                            <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5 mb-6">
+                                <a href="/pacotes/#jornada"
+                                    onclick="window.trackEvent && trackEvent('jornada_card_click', { source: 'home_section' })"
+                                    class="group inline-flex items-center justify-center gap-2 bg-blush-500 hover:bg-blush-400 text-white px-7 py-3.5 rounded-full transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5 font-medium text-sm">
+                                    <span>Conheça a Jornada</span>
+                                    <i data-feather="arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-0.5"></i>
+                                </a>
+                                <a href="https://wa.me/5598981532153?text=Ol%C3%A1!%20Tenho%20interesse%20na%20Jornada%20Integrativa%20de%203%20meses.%20Pode%20me%20contar%20mais%3F"
+                                    target="_blank" rel="noopener noreferrer"
+                                    onclick="window.trackEvent && trackEvent('jornada_whatsapp_click', { source: 'home_section' })"
+                                    class="inline-flex items-center justify-center gap-1.5 text-charcoal/60 hover:text-blush-500 transition-colors font-medium text-sm">
+                                    <span>Falar no WhatsApp</span>
+                                    <i data-feather="arrow-up-right" class="w-3.5 h-3.5"></i>
+                                </a>
+                            </div>
+
+                            <p class="text-charcoal/55 text-sm italic max-w-lg">
+                                Prefere começar com uma consulta única? <a href="/pacotes/" class="text-blush-500 hover:text-blush-400 underline underline-offset-4 font-medium not-italic">Conheça a Consulta Avulsa →</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Curve transition para o manifesto -->
+            <div class="absolute bottom-0 w-full overflow-hidden leading-none rotate-180 pointer-events-none">
+                <svg data-name="curve" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                    preserveAspectRatio="none" class="w-full h-16 fill-sand-100">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+                </svg>
             </div>
         </section>
 
@@ -683,9 +798,12 @@
                         </p>
                         <hr class="border-blush-200/50 mb-4">
                         <div class="flex items-center space-x-3">
-                            <div
-                                class="w-10 h-10 bg-blush-200 rounded-full flex items-center justify-center text-charcoal font-serif font-bold">
-                                M</div>
+                            <div class="w-10 h-10 bg-blush-200 rounded-full flex items-center justify-center text-charcoal font-serif font-bold relative overflow-hidden shrink-0">
+                                <span aria-hidden="true">M</span>
+                                <img src="assets/depoimentos/maysa.webp" alt="" loading="lazy"
+                                    onerror="this.remove()"
+                                    class="absolute inset-0 w-full h-full object-cover">
+                            </div>
                             <span class="text-charcoal font-medium">Maysa Pinheiro</span>
                         </div>
                     </div>
@@ -708,9 +826,12 @@
                         </p>
                         <hr class="border-blush-200/50 mb-4">
                         <div class="flex items-center space-x-3">
-                            <div
-                                class="w-10 h-10 bg-blush-200 rounded-full flex items-center justify-center text-charcoal font-serif font-bold">
-                                F</div>
+                            <div class="w-10 h-10 bg-blush-200 rounded-full flex items-center justify-center text-charcoal font-serif font-bold relative overflow-hidden shrink-0">
+                                <span aria-hidden="true">F</span>
+                                <img src="assets/depoimentos/flavia.webp" alt="" loading="lazy"
+                                    onerror="this.remove()"
+                                    class="absolute inset-0 w-full h-full object-cover">
+                            </div>
                             <span class="text-charcoal font-medium">Flavia Miranda</span>
                         </div>
                     </div>
@@ -731,9 +852,12 @@
                         </p>
                         <hr class="border-blush-200/50 mb-4">
                         <div class="flex items-center space-x-3">
-                            <div
-                                class="w-10 h-10 bg-blush-200 rounded-full flex items-center justify-center text-charcoal font-serif font-bold">
-                                M</div>
+                            <div class="w-10 h-10 bg-blush-200 rounded-full flex items-center justify-center text-charcoal font-serif font-bold relative overflow-hidden shrink-0">
+                                <span aria-hidden="true">M</span>
+                                <img src="assets/depoimentos/maria.webp" alt="" loading="lazy"
+                                    onerror="this.remove()"
+                                    class="absolute inset-0 w-full h-full object-cover">
+                            </div>
                             <span class="text-charcoal font-medium">Maria Inês Sousa</span>
                         </div>
                     </div>
@@ -908,28 +1032,49 @@
             <!-- Scrollable stages area -->
             <div id="quiz-scroll-area" class="flex-1 overflow-y-auto p-6 md:p-8">
 
-            <!-- Stage 1: Intro (5 substeps) -->
-            <div id="quiz-intro" class="space-y-5 text-center pb-modal-safe">
+            <!-- Stage 0: Welcome (no friction, no fields) -->
+            <div id="quiz-welcome" class="space-y-5 text-center pb-modal-safe">
+                <div class="inline-flex items-center justify-center w-16 h-16 bg-nude-300/50 text-blush-500 rounded-full mx-auto mb-4">
+                    <i data-feather="sun" class="w-8 h-8 stroke-[1.5]"></i>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-serif text-charcoal leading-tight mb-3">
+                    Vamos descobrir<br><span class="text-blush-500 italic">o que seu corpo está pedindo.</span>
+                </h2>
+                <p class="text-charcoal/80 font-light max-w-md mx-auto mb-2">
+                    9 perguntas rápidas. Em menos de 2 minutos você recebe um mapa personalizado do que pode te ajudar a se sentir mais leve, presente e vital.
+                </p>
+                <p class="text-charcoal/55 font-light max-w-md mx-auto text-xs uppercase tracking-[0.18em] mb-7">
+                    Sem cadastro pra começar
+                </p>
+                <button onclick="startQuestions()" type="button"
+                    class="bg-blush-500 hover:bg-blush-400 text-white px-10 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 font-medium text-base inline-flex items-center gap-2">
+                    <span>Começar agora</span>
+                    <i data-feather="arrow-right" class="w-4 h-4"></i>
+                </button>
+            </div>
+
+            <!-- Stage 1: Lead capture (after 9 questions; 5 substeps) -->
+            <div id="quiz-intro" class="hidden space-y-5 text-center pb-modal-safe">
 
                 <!-- Intro progress -->
                 <div class="flex items-center max-w-sm mx-auto gap-3">
-                    <span id="intro-progress-text" class="text-xs font-medium text-blush-500 whitespace-nowrap">Etapa 1 de 5</span>
+                    <span id="intro-progress-text" class="text-xs font-medium text-blush-500 whitespace-nowrap">Passo 1 de 5</span>
                     <div class="flex-1 h-1 bg-blush-100 rounded-full overflow-hidden">
                         <div id="intro-progress-bar" class="h-full bg-blush-500 w-[20%] transition-all duration-500"></div>
                     </div>
                 </div>
 
-                <!-- Substep 0: Welcome + Name -->
+                <!-- Substep 0: Name (post-questions, lead capture begins) -->
                 <div class="intro-substep" data-substep="0">
-                    <div class="inline-flex items-center justify-center w-16 h-16 bg-nude-300/50 text-blush-500 rounded-full mx-auto mb-4">
-                        <i data-feather="sun" class="w-8 h-8 stroke-[1.5]"></i>
+                    <div class="inline-flex items-center justify-center w-14 h-14 bg-nude-300/50 text-blush-500 rounded-full mx-auto mb-4">
+                        <i data-feather="check" class="w-7 h-7 stroke-[1.5]"></i>
                     </div>
-                    <h2 class="text-3xl md:text-4xl font-serif text-charcoal leading-tight mb-3">
-                        Vamos começar <br><span class="text-blush-500 italic">por você.</span>
+                    <h2 class="text-2xl md:text-3xl font-serif text-charcoal leading-tight mb-2">
+                        Seu mapa está <span class="text-blush-500 italic">quase pronto.</span>
                     </h2>
-                    <p class="text-charcoal/80 font-light max-w-md mx-auto mb-6">Em poucos minutos vamos mapear o que pode te ajudar a se sentir mais leve, presente e vital.</p>
+                    <p class="text-charcoal/70 font-light max-w-md mx-auto mb-6 text-sm">Falta pouco. Como quer ser chamada?</p>
                     <div class="max-w-sm mx-auto text-left">
-                        <label class="block text-sm text-charcoal/70 mb-2 ml-4" for="quiz-name">Como quer ser chamada?</label>
+                        <label class="block text-sm text-charcoal/70 mb-2 ml-4" for="quiz-name">Seu nome</label>
                         <input type="text" id="quiz-name" placeholder="Seu nome" autocomplete="given-name"
                             onkeydown="if(event.key==='Enter'){event.preventDefault();nextIntroSubstep();}"
                             class="w-full bg-white/60 border border-blush-100 rounded-full px-6 py-3 focus:outline-none focus:border-blush-400 transition-colors">

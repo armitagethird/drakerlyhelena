@@ -173,13 +173,14 @@
                     Dra. Kerly Helena
                 </span>
             </a>
-            <nav class="hidden md:flex items-center space-x-8 text-sm uppercase tracking-widest text-charcoal/70">
+            <nav class="hidden md:flex items-center space-x-7 lg:space-x-9 text-sm uppercase tracking-widest text-charcoal/70">
                 <a href="/#hero" class="hover:text-blush-500 transition-colors">Início</a>
-                <a href="/#manifesto" class="hover:text-blush-500 transition-colors">Sobre Mim</a>
+                <a href="/#manifesto" class="hover:text-blush-500 transition-colors">Sobre</a>
                 <a href="/#integrative" class="hover:text-blush-500 transition-colors">A Abordagem</a>
-                <a href="/#clinic" class="hover:text-blush-500 transition-colors">A Clínica</a>
-                <a href="/#depoimentos" class="hover:text-blush-500 transition-colors">Depoimentos</a>
-                <a href="/#location" class="hover:text-blush-500 transition-colors">Contato</a>
+                <a href="/pacotes/" class="group inline-flex items-center gap-2 hover:text-blush-500 transition-colors">
+                    <span class="w-1.5 h-1.5 rounded-full bg-blush-500 transition-transform duration-300 group-hover:scale-125"></span>
+                    <span>Pacotes</span>
+                </a>
                 <a href="/faq/" class="text-blush-500 font-medium transition-colors">FAQ</a>
                 <a href="https://wa.me/5598981532153" target="_blank" rel="noopener noreferrer"
                     class="bg-blush-500 hover:bg-blush-400 text-white px-6 py-2.5 rounded-full transition-colors normal-case tracking-normal shadow-sm font-medium">Agende
@@ -196,11 +197,12 @@
             <nav
                 class="flex flex-col space-y-6 px-6 py-8 text-sm uppercase tracking-widest text-charcoal/80 text-center">
                 <a href="/#hero" class="hover:text-blush-500 transition-colors">Início</a>
-                <a href="/#manifesto" class="hover:text-blush-500 transition-colors">Sobre Mim</a>
+                <a href="/#manifesto" class="hover:text-blush-500 transition-colors">Sobre</a>
                 <a href="/#integrative" class="hover:text-blush-500 transition-colors">A Abordagem</a>
-                <a href="/#clinic" class="hover:text-blush-500 transition-colors">A Clínica</a>
-                <a href="/#depoimentos" class="hover:text-blush-500 transition-colors">Depoimentos</a>
-                <a href="/#location" class="hover:text-blush-500 transition-colors">Contato</a>
+                <a href="/pacotes/" class="inline-flex items-center justify-center gap-2 hover:text-blush-500 transition-colors">
+                    <span class="w-1.5 h-1.5 rounded-full bg-blush-500"></span>
+                    <span>Pacotes</span>
+                </a>
                 <a href="/faq/" class="text-blush-500 font-medium transition-colors">FAQ</a>
                 <div class="pt-4">
                     <a href="https://wa.me/5598981532153" target="_blank" rel="noopener noreferrer"
@@ -211,14 +213,33 @@
         </div>
     </header>
 
-    <!-- Floating WhatsApp Button -->
-    <a id="faq-floating-cta" href="https://wa.me/5598981532153" target="_blank" rel="noopener noreferrer"
-        class="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-50 bg-blush-500 hover:bg-blush-400 text-white px-4 py-3 sm:px-5 sm:py-4 rounded-full shadow-xl flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
-        <i data-feather="message-circle" class="w-6 h-6 sm:w-7 sm:h-7"></i>
-        <span class="ml-2 sm:ml-3 font-medium whitespace-nowrap text-sm sm:text-base">
-            Agende sua Consulta
-        </span>
-    </a>
+    <!-- Floating Menu Container (shared pattern: quiz + WhatsApp) -->
+    <div id="floating-container" class="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-50 flex flex-col items-end group transition-all duration-500 translate-y-32 opacity-0 pointer-events-none">
+        <!-- Dropdown Menu -->
+        <div id="floating-menu"
+            class="hidden flex flex-col items-end space-y-3 mb-4 opacity-0 transition-opacity duration-300">
+            <a href="/?quiz=1"
+                class="bg-white hover:bg-blush-50 text-charcoal px-5 py-3 rounded-full shadow-lg flex items-center space-x-3 transition-transform hover:-translate-y-1 border border-blush-200 font-medium">
+                <i data-feather="file-text" class="w-5 h-5 text-blush-500"></i>
+                <span class="whitespace-nowrap text-sm sm:text-base">Quero entender o que sinto</span>
+            </a>
+            <a href="https://wa.me/5598981532153" target="_blank" rel="noopener noreferrer"
+                class="bg-white hover:bg-blush-50 text-charcoal px-5 py-3 rounded-full shadow-lg flex items-center space-x-3 transition-transform hover:-translate-y-1 border border-blush-200 font-medium">
+                <i data-feather="message-circle" class="w-5 h-5 text-blush-500"></i>
+                <span class="whitespace-nowrap text-sm sm:text-base">WhatsApp</span>
+            </a>
+        </div>
+
+        <!-- Main Toggle Button -->
+        <button id="floating-main-btn" onclick="toggleFloatingMenu()"
+            class="bg-blush-500 hover:bg-blush-400 text-white px-4 py-3 sm:px-5 sm:py-4 rounded-full shadow-xl flex items-center justify-center transition-transform hover:-translate-y-1">
+            <i id="floating-btn-icon" data-feather="message-circle"
+                class="w-6 h-6 sm:w-7 sm:h-7 transition-all duration-300"></i>
+            <span class="ml-2 sm:ml-3 font-medium whitespace-nowrap text-sm sm:text-base">
+                Agende sua Consulta
+            </span>
+        </button>
+    </div>
 
     <!-- Main Content -->
     <main class="pt-32 pb-24 min-h-screen bg-sand-200 relative">
@@ -657,25 +678,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             feather.replace();
-            // Hide floating CTA when the bottom CTA card / footer is in view
-            const fab = document.getElementById('faq-floating-cta');
-            if (fab) {
-                const updateFab = () => {
-                    const footerEl = document.querySelector('footer');
-                    let nearFooter = false;
-                    if (footerEl) {
-                        nearFooter = footerEl.getBoundingClientRect().top < window.innerHeight * 0.85;
-                    }
-                    if (nearFooter) {
-                        fab.classList.add('opacity-0', 'pointer-events-none', 'translate-y-32');
-                    } else {
-                        fab.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-32');
-                    }
-                };
-                window.addEventListener('scroll', updateFab, { passive: true });
-                window.addEventListener('resize', updateFab);
-                updateFab();
-            }
+            // Floating menu scroll-show logic now lives in /main.js (#floating-container).
         });
     </script>
     <script src="/main.js" defer></script>

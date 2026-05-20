@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GSWCEYS7QB"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-GSWCEYS7QB', { anonymize_ip: true });
+    </script>
+
+    <title>Pacotes — Dra. Kerly Helena | Consulta e Jornada Integrativa</title>
+    <meta name="description" content="Duas formas de cuidar de você: a Consulta Integrativa avulsa (R$ 600) e a Jornada Integrativa de 3 meses com retornos, nutricionista e yoga. Atendimento em São Luís — MA.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://drakerlyhelena.com.br/pacotes/">
+    <link rel="icon" type="image/png" href="/assets/Favicon/Favicon%20Kerly.png">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:url" content="https://drakerlyhelena.com.br/pacotes/">
+    <meta property="og:title" content="Pacotes — Dra. Kerly Helena">
+    <meta property="og:description" content="Consulta Integrativa avulsa ou Jornada Integrativa de 3 meses: escolha o cuidado que faz sentido pra você.">
+    <meta property="og:image" content="https://drakerlyhelena.com.br/assets/_DSC2884.webp">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Structured Data: OfferCatalog with both packages -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalClinic",
+      "@id": "https://drakerlyhelena.com.br/#clinic",
+      "name": "Clínica Dra. Kerly Helena - Ginecologia Integrativa",
+      "url": "https://drakerlyhelena.com.br/pacotes/",
+      "telephone": "+55-98-98153-2153",
+      "priceRange": "$$$",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Pacotes de Atendimento",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "MedicalProcedure", "name": "Consulta Integrativa (avulsa)" },
+            "price": "600.00",
+            "priceCurrency": "BRL",
+            "description": "Consulta única de 60-90 minutos com avaliação ginecológica integrativa completa."
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "MedicalProcedure", "name": "Jornada Integrativa (3 meses)" },
+            "priceSpecification": { "@type": "PriceSpecification", "priceCurrency": "BRL", "valueAddedTaxIncluded": true },
+            "description": "Acompanhamento de 3 meses: consulta inicial, 2 retornos, WhatsApp direto com a médica, 1 consulta inicial + 1 retorno com nutricionista e 4 aulas de yoga."
+          }
+        ]
+      }
+    }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sand-100': '#FAF6F1', 'sand-200': '#F2EAE0',
+                        'nude-100': '#EFE3D5', 'nude-200': '#E5D2BD', 'nude-300': '#D4B89A',
+                        'blush-100': '#F0D5C9', 'blush-200': '#E5B4A1',
+                        'blush-300': '#D89A85', 'blush-400': '#C97B62', 'blush-500': '#B5664E',
+                        'charcoal': '#2C2622'
+                    },
+                    fontFamily: {
+                        sans: ['Lato', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif']
+                    }
+                }
+            }
+        };
+    </script>
+    <script src="https://unpkg.com/feather-icons" defer></script>
+</head>
+
+<body class="bg-sand-100 text-charcoal font-sans antialiased overflow-x-hidden">
+
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 bg-sand-100/80 backdrop-blur-md transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="/" class="flex items-center space-x-3 group transition-all duration-300 hover:-translate-y-1">
+                <img src="/assets/Favicon/Favicon%20Kerly.png" alt="Logo Dra. Kerly Helena"
+                    class="w-8 h-8 md:w-10 md:h-10 object-contain transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                <span class="text-2xl md:text-3xl font-serif text-charcoal font-semibold tracking-wide group-hover:text-blush-500 transition-colors duration-300">
+                    Dra. Kerly Helena
+                </span>
+            </a>
+            <nav class="hidden md:flex items-center space-x-7 lg:space-x-9 text-sm uppercase tracking-widest text-charcoal/70">
+                <a href="/#hero" class="hover:text-blush-500 transition-colors">Início</a>
+                <a href="/#manifesto" class="hover:text-blush-500 transition-colors">Sobre</a>
+                <a href="/#integrative" class="hover:text-blush-500 transition-colors">A Abordagem</a>
+                <a href="/pacotes/" class="group inline-flex items-center gap-2 text-blush-500 font-medium transition-colors">
+                    <span class="w-1.5 h-1.5 rounded-full bg-blush-500 transition-transform duration-300 group-hover:scale-125"></span>
+                    <span>Pacotes</span>
+                </a>
+                <a href="/faq/" class="hover:text-blush-500 transition-colors">FAQ</a>
+                <a href="https://wa.me/5598981532153" target="_blank" rel="noopener noreferrer"
+                    class="bg-blush-500 hover:bg-blush-400 text-white px-6 py-2.5 rounded-full transition-colors normal-case tracking-normal shadow-sm font-medium">Agende sua Consulta</a>
+            </nav>
+            <button class="md:hidden text-charcoal focus:outline-none" id="mobile-menu-btn" aria-label="Abrir menu de navegação">
+                <i data-feather="menu"></i>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-sand-100/95 backdrop-blur-md border-t border-blush-200/50 shadow-lg absolute w-full left-0 top-full">
+            <nav class="flex flex-col space-y-6 px-6 py-8 text-sm uppercase tracking-widest text-charcoal/80 text-center">
+                <a href="/#hero" class="hover:text-blush-500 transition-colors">Início</a>
+                <a href="/#manifesto" class="hover:text-blush-500 transition-colors">Sobre</a>
+                <a href="/#integrative" class="hover:text-blush-500 transition-colors">A Abordagem</a>
+                <a href="/pacotes/" class="inline-flex items-center justify-center gap-2 text-blush-500 font-medium transition-colors">
+                    <span class="w-1.5 h-1.5 rounded-full bg-blush-500"></span>
+                    <span>Pacotes</span>
+                </a>
+                <a href="/faq/" class="hover:text-blush-500 transition-colors">FAQ</a>
+                <div class="pt-4">
+                    <a href="https://wa.me/5598981532153" target="_blank" rel="noopener noreferrer"
+                        class="inline-block bg-blush-500 hover:bg-blush-400 text-white px-6 py-3 rounded-full transition-colors normal-case tracking-normal shadow-md font-medium w-full">Agende sua Consulta</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="pt-32 pb-24 min-h-screen relative">
+        <!-- Organic background blobs -->
+        <div class="absolute top-0 right-0 w-1/3 h-1/2 bg-nude-200 rounded-bl-full opacity-50 pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-1/4 h-1/3 bg-nude-300 rounded-tr-[100px] opacity-30 pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 max-w-6xl relative z-10">
+
+            <!-- Hero -->
+            <div class="text-center mb-20">
+                <span class="text-xs tracking-[0.3em] text-blush-400 uppercase font-bold">Como cuidamos de você</span>
+                <h1 class="text-4xl md:text-6xl font-serif mt-4 text-charcoal leading-tight">
+                    Dois caminhos.<br>
+                    <span class="text-blush-500 italic">Um mesmo cuidado.</span>
+                </h1>
+                <div class="w-24 h-1 bg-blush-300 mx-auto mt-8 rounded-full"></div>
+                <p class="text-charcoal/70 font-light max-w-2xl mx-auto mt-8 text-base md:text-lg leading-relaxed">
+                    Você pode começar com uma consulta única, para entender o que está acontecendo no seu corpo. Ou seguir uma jornada de três meses, com a Dra. Kerly te acompanhando de perto — junto com nutricionista parceira e aulas de yoga para a vitalidade feminina.
+                </p>
+            </div>
+
+            <!-- Packages Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 max-w-5xl mx-auto">
+
+                <!-- Package 1: Consulta Avulsa -->
+                <article class="relative bg-white/60 backdrop-blur-sm rounded-3xl p-8 md:p-10 border border-blush-100 shadow-sm hover:shadow-md transition-shadow flex flex-col">
+                    <div class="mb-6">
+                        <span class="text-[10px] uppercase tracking-[0.2em] text-blush-400 font-bold">O ponto de partida</span>
+                        <h2 class="text-3xl md:text-4xl font-serif mt-3 text-charcoal leading-tight">
+                            Consulta<br><span class="italic text-blush-500">Integrativa</span>
+                        </h2>
+                    </div>
+
+                    <div class="mb-7 flex items-baseline gap-3">
+                        <span class="text-4xl md:text-5xl font-serif text-charcoal">R$ 600</span>
+                        <span class="text-xs text-charcoal/55 italic">valor promocional</span>
+                    </div>
+
+                    <p class="text-charcoal/75 font-light leading-relaxed mb-7">
+                        Uma escuta longa e atenta. Avaliação ginecológica integrativa completa em uma consulta única, com plano terapêutico individualizado pra você levar pra casa.
+                    </p>
+
+                    <ul class="space-y-3 mb-8 flex-1">
+                        <li class="flex items-start gap-3 text-charcoal/75 text-sm">
+                            <span class="w-5 h-5 rounded-full bg-blush-500/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i data-feather="check" class="w-3 h-3 text-blush-500"></i>
+                            </span>
+                            <span>Consulta de 60-90 minutos com a Dra. Kerly</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-charcoal/75 text-sm">
+                            <span class="w-5 h-5 rounded-full bg-blush-500/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i data-feather="check" class="w-3 h-3 text-blush-500"></i>
+                            </span>
+                            <span>Investigação hormonal, metabólica e emocional</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-charcoal/75 text-sm">
+                            <span class="w-5 h-5 rounded-full bg-blush-500/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i data-feather="check" class="w-3 h-3 text-blush-500"></i>
+                            </span>
+                            <span>Plano terapêutico individualizado por escrito</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-charcoal/75 text-sm">
+                            <span class="w-5 h-5 rounded-full bg-blush-500/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i data-feather="check" class="w-3 h-3 text-blush-500"></i>
+                            </span>
+                            <span>Solicitação de exames quando necessário</span>
+                        </li>
+                    </ul>
+
+                    <p class="text-xs text-charcoal/55 italic mb-5">Indicado para: primeira consulta, segunda opinião ou orientação pontual.</p>
+
+                    <a href="https://wa.me/5598981532153?text=Olá!%20Gostaria%20de%20agendar%20a%20Consulta%20Integrativa%20avulsa%20(R%24%20600)."
+                        target="_blank" rel="noopener noreferrer"
+                        onclick="trackPackageClick('avulsa')"
+                        class="block text-center bg-white hover:bg-blush-50 text-blush-500 border-2 border-blush-500 px-6 py-4 rounded-full transition-all duration-300 font-medium">
+                        Agendar consulta avulsa
+                    </a>
+                </article>
+
+                <!-- Package 2: Jornada Integrativa (highlighted) -->
+                <article id="jornada" class="relative rounded-3xl p-8 md:p-10 shadow-xl flex flex-col overflow-hidden scroll-mt-32"
+                    style="background: linear-gradient(135deg, #F9EAEF 0%, #FBF5F7 50%, #FDFCFB 100%); border: 2px solid #D89A85;">
+
+                    <div class="absolute -top-12 -right-12 w-44 h-44 bg-blush-300/25 rounded-full blur-3xl pointer-events-none"></div>
+                    <div class="absolute -bottom-16 -left-16 w-44 h-44 bg-nude-300/30 rounded-full blur-3xl pointer-events-none"></div>
+
+                    <div class="absolute top-6 right-6 z-10">
+                        <span class="inline-flex items-center gap-1.5 bg-blush-500 text-white text-[10px] uppercase tracking-[0.18em] font-bold px-3 py-1.5 rounded-full shadow-sm">
+                            <i data-feather="star" class="w-3 h-3"></i>
+                            Mais completo
+                        </span>
+                    </div>
+
+                    <div class="relative mb-6">
+                        <span class="text-[10px] uppercase tracking-[0.2em] text-blush-500 font-bold">Acompanhamento de 3 meses</span>
+                        <h2 class="text-3xl md:text-4xl font-serif mt-3 text-charcoal leading-tight">
+                            Jornada<br><span class="italic text-blush-500">Integrativa</span>
+                        </h2>
+                    </div>
+
+                    <div class="relative mb-7 flex items-baseline gap-3">
+                        <span class="text-2xl md:text-3xl font-serif text-charcoal italic">Sob consulta</span>
+                        <span class="text-xs text-charcoal/55">conversamos no WhatsApp</span>
+                    </div>
+
+                    <p class="relative text-charcoal/75 font-light leading-relaxed mb-7">
+                        Para quem quer transformação real, não só uma consulta pontual. A Dra. Kerly te acompanha de perto durante 3 meses, com retornos, ajustes do plano e acesso direto via WhatsApp.
+                    </p>
+
+                    <ul class="relative space-y-3 mb-8 flex-1">
+                        <li class="flex items-start gap-3 text-charcoal/80 text-sm">
+                            <span class="w-5 h-5 rounded-full bg-blush-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i data-feather="check" class="w-3 h-3 text-blush-500"></i>
+                            </span>
+                            <span><strong class="text-charcoal">Consulta inicial completa</strong> com a Dra. Kerly</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-charcoal/80 text-sm">
+                            <span class="w-5 h-5 rounded-full bg-blush-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i data-feather="check" class="w-3 h-3 text-blush-500"></i>
+                            </span>
+                            <span><strong class="text-charcoal">2 retornos</strong> em 30 e 60 dias para ajustar o plano</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-charcoal/80 text-sm">
+                            <span class="w-5 h-5 rounded-full bg-blush-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i data-feather="check" class="w-3 h-3 text-blush-500"></i>
+                            </span>
+                            <span><strong class="text-charcoal">WhatsApp direto</strong> com a Dra. Kerly durante os 3 meses</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-charcoal/80 text-sm">
+                            <span class="w-5 h-5 rounded-full bg-blush-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i data-feather="check" class="w-3 h-3 text-blush-500"></i>
+                            </span>
+                            <span><strong class="text-charcoal">Nutricionista parceira</strong> — 1 consulta inicial + 1 retorno</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-charcoal/80 text-sm">
+                            <span class="w-5 h-5 rounded-full bg-blush-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i data-feather="check" class="w-3 h-3 text-blush-500"></i>
+                            </span>
+                            <span><strong class="text-charcoal">4 aulas de yoga</strong> para vitalidade feminina (1 por semana)</span>
+                        </li>
+                    </ul>
+
+                    <p class="relative text-xs text-charcoal/55 italic mb-5">Indicado para: quem quer um cuidado contínuo, com suporte e acompanhamento real entre as consultas.</p>
+
+                    <a href="https://wa.me/5598981532153?text=Olá!%20Tenho%20interesse%20na%20Jornada%20Integrativa%20de%203%20meses.%20Pode%20me%20contar%20mais?"
+                        target="_blank" rel="noopener noreferrer"
+                        onclick="trackPackageClick('jornada')"
+                        class="relative block text-center bg-blush-500 hover:bg-blush-400 text-white px-6 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 font-medium">
+                        Quero a Jornada Integrativa →
+                    </a>
+                </article>
+            </div>
+
+            <!-- Comparison / FAQ rápida -->
+            <section class="max-w-3xl mx-auto mt-24">
+                <div class="text-center mb-12">
+                    <span class="text-xs tracking-[0.3em] text-blush-400 uppercase font-bold">Dúvidas comuns</span>
+                    <h2 class="text-3xl md:text-4xl font-serif mt-4 text-charcoal">Antes de escolher</h2>
+                </div>
+
+                <div class="space-y-5">
+                    <details class="group bg-white/60 backdrop-blur-sm rounded-2xl border border-blush-100 px-6 py-5">
+                        <summary class="cursor-pointer font-serif text-lg text-charcoal flex items-center justify-between gap-4">
+                            Posso começar pela consulta avulsa e migrar pra Jornada depois?
+                            <i data-feather="chevron-down" class="w-5 h-5 text-blush-500 transition-transform group-open:rotate-180 shrink-0"></i>
+                        </summary>
+                        <p class="text-charcoal/75 font-light leading-relaxed mt-4">
+                            Sim. Muitas pacientes começam pela consulta avulsa pra sentir como é o atendimento. Se faz sentido continuar, o valor da consulta inicial entra como crédito na Jornada — basta combinar no WhatsApp.
+                        </p>
+                    </details>
+
+                    <details class="group bg-white/60 backdrop-blur-sm rounded-2xl border border-blush-100 px-6 py-5">
+                        <summary class="cursor-pointer font-serif text-lg text-charcoal flex items-center justify-between gap-4">
+                            Os retornos são presenciais ou online?
+                            <i data-feather="chevron-down" class="w-5 h-5 text-blush-500 transition-transform group-open:rotate-180 shrink-0"></i>
+                        </summary>
+                        <p class="text-charcoal/75 font-light leading-relaxed mt-4">
+                            A consulta inicial é presencial, em São Luís. Os retornos podem ser presenciais ou online, dependendo da sua localização e do que faz mais sentido pra cada momento.
+                        </p>
+                    </details>
+
+                    <details class="group bg-white/60 backdrop-blur-sm rounded-2xl border border-blush-100 px-6 py-5">
+                        <summary class="cursor-pointer font-serif text-lg text-charcoal flex items-center justify-between gap-4">
+                            E se eu não puder ir a todas as aulas de yoga?
+                            <i data-feather="chevron-down" class="w-5 h-5 text-blush-500 transition-transform group-open:rotate-180 shrink-0"></i>
+                        </summary>
+                        <p class="text-charcoal/75 font-light leading-relaxed mt-4">
+                            As 4 aulas são oferecidas como apoio à sua jornada — não é uma obrigação. Você participa do que conseguir. As aulas são em grupo pequeno, com a professora parceira que conduz a Yoga para Vitalidade Feminina.
+                        </p>
+                    </details>
+
+                    <details class="group bg-white/60 backdrop-blur-sm rounded-2xl border border-blush-100 px-6 py-5">
+                        <summary class="cursor-pointer font-serif text-lg text-charcoal flex items-center justify-between gap-4">
+                            Como é o WhatsApp direto com a médica?
+                            <i data-feather="chevron-down" class="w-5 h-5 text-blush-500 transition-transform group-open:rotate-180 shrink-0"></i>
+                        </summary>
+                        <p class="text-charcoal/75 font-light leading-relaxed mt-4">
+                            Um canal pra você tirar dúvidas pontuais sobre o plano, sintomas ou reações ao tratamento — sem precisar esperar até o retorno. Não substitui consulta, mas oferece segurança no caminho.
+                        </p>
+                    </details>
+                </div>
+            </section>
+
+            <!-- Final CTA -->
+            <section class="mt-24 text-center max-w-2xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-serif text-charcoal leading-tight mb-4">
+                    Ainda em dúvida?
+                </h2>
+                <p class="text-charcoal/75 font-light leading-relaxed mb-8">
+                    Conta sua situação no WhatsApp. A gente ajuda a escolher o caminho que faz sentido pra você agora.
+                </p>
+                <a href="https://wa.me/5598981532153?text=Olá!%20Estou%20em%20dúvida%20entre%20os%20pacotes.%20Pode%20me%20ajudar%20a%20escolher?"
+                    target="_blank" rel="noopener noreferrer"
+                    onclick="trackPackageClick('duvida')"
+                    class="inline-flex items-center gap-2 bg-blush-500 hover:bg-blush-400 text-white px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 font-medium">
+                    <i data-feather="message-circle" class="w-5 h-5"></i>
+                    <span>Falar com a equipe</span>
+                </a>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer (compact, links de volta ao site) -->
+    <footer class="bg-sand-200 py-12 border-t border-blush-100">
+        <div class="container mx-auto px-6 text-center text-charcoal/60 text-sm space-y-3">
+            <p>
+                <a href="/" class="hover:text-blush-500 transition-colors">Voltar ao site</a>
+                <span class="mx-3 text-charcoal/30">·</span>
+                <a href="/faq/" class="hover:text-blush-500 transition-colors">FAQ</a>
+                <span class="mx-3 text-charcoal/30">·</span>
+                <a href="/privacy/" class="hover:text-blush-500 transition-colors">Política de Privacidade</a>
+            </p>
+            <p class="text-xs text-charcoal/50">
+                Dra. Kerly Helena · CRM/MA 3130 · RQE 5232 · São Luís — MA
+            </p>
+        </div>
+    </footer>
+
+    <!-- Floating Menu Container -->
+    <div id="floating-container" class="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-50 flex flex-col items-end group transition-all duration-500 translate-y-32 opacity-0 pointer-events-none">
+        <div id="floating-menu" class="hidden flex flex-col items-end space-y-3 mb-4 opacity-0 transition-opacity duration-300">
+            <a href="/?quiz=1"
+                class="bg-white hover:bg-blush-50 text-charcoal px-5 py-3 rounded-full shadow-lg flex items-center space-x-3 transition-transform hover:-translate-y-1 border border-blush-200 font-medium">
+                <i data-feather="file-text" class="w-5 h-5 text-blush-500"></i>
+                <span class="whitespace-nowrap text-sm sm:text-base">Quero entender o que sinto</span>
+            </a>
+            <a href="https://wa.me/5598981532153" target="_blank" rel="noopener noreferrer"
+                class="bg-white hover:bg-blush-50 text-charcoal px-5 py-3 rounded-full shadow-lg flex items-center space-x-3 transition-transform hover:-translate-y-1 border border-blush-200 font-medium">
+                <i data-feather="message-circle" class="w-5 h-5 text-blush-500"></i>
+                <span class="whitespace-nowrap text-sm sm:text-base">WhatsApp</span>
+            </a>
+        </div>
+        <button id="floating-main-btn" onclick="toggleFloatingMenu()"
+            class="bg-blush-500 hover:bg-blush-400 text-white px-4 py-3 sm:px-5 sm:py-4 rounded-full shadow-xl flex items-center justify-center transition-transform hover:-translate-y-1">
+            <i id="floating-btn-icon" data-feather="message-circle" class="w-6 h-6 sm:w-7 sm:h-7 transition-all duration-300"></i>
+            <span class="ml-2 sm:ml-3 font-medium whitespace-nowrap text-sm sm:text-base">Agende sua Consulta</span>
+        </button>
+    </div>
+
+    <script>
+        // Analytics: page view + CTA clicks
+        if (typeof gtag === 'function') {
+            gtag('event', 'view_packages');
+        }
+        function trackPackageClick(pkg) {
+            try {
+                if (typeof gtag === 'function') {
+                    gtag('event', 'package_cta_click', { package: pkg });
+                }
+                if (typeof fbq === 'function') {
+                    fbq('track', 'Contact', { package: pkg });
+                }
+            } catch (e) { /* swallow */ }
+        }
+
+        function swapFeatherIcon(parent, iconName) {
+            while (parent.firstChild) parent.removeChild(parent.firstChild);
+            const el = document.createElement('i');
+            el.setAttribute('data-feather', iconName);
+            parent.appendChild(el);
+            if (typeof feather !== 'undefined') feather.replace();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof feather !== 'undefined') feather.replace();
+
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            if (btn && menu) {
+                btn.addEventListener('click', () => {
+                    menu.classList.toggle('hidden');
+                    swapFeatherIcon(btn, menu.classList.contains('hidden') ? 'menu' : 'x');
+                });
+            }
+
+            // Floating menu toggle
+            window.toggleFloatingMenu = function () {
+                const m = document.getElementById('floating-menu');
+                const mainBtn = document.getElementById('floating-main-btn');
+                if (!m) return;
+                if (m.classList.contains('hidden')) {
+                    m.classList.remove('hidden');
+                    setTimeout(() => m.classList.replace('opacity-0', 'opacity-100'), 10);
+                    if (mainBtn) {
+                        const iconWrap = mainBtn.querySelector('#floating-btn-icon, [data-feather], svg.feather');
+                        if (iconWrap && iconWrap.parentNode) {
+                            const newI = document.createElement('i');
+                            newI.id = 'floating-btn-icon';
+                            newI.setAttribute('data-feather', 'x');
+                            newI.className = 'w-6 h-6 sm:w-7 sm:h-7 transition-all duration-300';
+                            iconWrap.parentNode.replaceChild(newI, iconWrap);
+                            if (typeof feather !== 'undefined') feather.replace();
+                        }
+                    }
+                } else {
+                    m.classList.replace('opacity-100', 'opacity-0');
+                    setTimeout(() => m.classList.add('hidden'), 300);
+                    if (mainBtn) {
+                        const iconWrap = mainBtn.querySelector('#floating-btn-icon, [data-feather], svg.feather');
+                        if (iconWrap && iconWrap.parentNode) {
+                            const newI = document.createElement('i');
+                            newI.id = 'floating-btn-icon';
+                            newI.setAttribute('data-feather', 'message-circle');
+                            newI.className = 'w-6 h-6 sm:w-7 sm:h-7 transition-all duration-300';
+                            iconWrap.parentNode.replaceChild(newI, iconWrap);
+                            if (typeof feather !== 'undefined') feather.replace();
+                        }
+                    }
+                }
+            };
+
+            document.addEventListener('click', (e) => {
+                const m = document.getElementById('floating-menu');
+                const b = document.getElementById('floating-main-btn');
+                if (m && b && !m.classList.contains('hidden')
+                    && !m.contains(e.target) && !b.contains(e.target)) {
+                    window.toggleFloatingMenu();
+                }
+            });
+
+            // Reveal floating CTA after scrolling, hide near footer
+            const container = document.getElementById('floating-container');
+            if (container) {
+                const isNearFooter = () => {
+                    const f = document.querySelector('footer');
+                    return f && f.getBoundingClientRect().top < window.innerHeight * 0.75;
+                };
+                const update = () => {
+                    const past = window.scrollY > window.innerHeight * 0.3;
+                    if (past && !isNearFooter()) {
+                        container.classList.remove('translate-y-32', 'opacity-0', 'pointer-events-none');
+                    } else {
+                        container.classList.add('translate-y-32', 'opacity-0', 'pointer-events-none');
+                    }
+                };
+                window.addEventListener('scroll', update, { passive: true });
+                window.addEventListener('resize', update);
+                update();
+            }
+        });
+    </script>
+</body>
+</html>
