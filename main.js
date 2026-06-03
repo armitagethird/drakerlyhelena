@@ -68,6 +68,9 @@ function initHeroStagger() {
         .from('.gs-hero-card', { opacity: 0, y: 16, duration: 0.8 }, 0.9)
         .from('.gs-hero-scrollhint', { opacity: 0, duration: 0.6 }, 1.1);
 
+    // Flutuação contínua e suave do card "Pausa e Reconexão" — começa após a entrada do card (~1.7s)
+    gsap.to('.gs-hero-card', { y: -10, duration: 3, ease: 'sine.inOut', repeat: -1, yoyo: true, delay: 1.8 });
+
     const hint = document.querySelector('.gs-hero-scrollhint');
     if (hint) {
         hint.style.transition = 'opacity 400ms ease';
