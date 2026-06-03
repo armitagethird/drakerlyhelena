@@ -489,9 +489,9 @@ function renderQuestion() {
                 <p class="text-xs uppercase tracking-widest text-blush-400 font-semibold">Marque o quanto isso ressoa com você hoje</p>
                 <h4 class="text-xl md:text-2xl font-medium text-charcoal leading-tight">${question.text}</h4>
                 <div class="space-y-3 pt-4">
-                    <button onclick="handleAnswer(3)" class="option-btn"><span class="font-medium">Muito — é exatamente o que eu quero</span></button>
-                    <button onclick="handleAnswer(1)" class="option-btn"><span class="font-medium">Um pouco — está no meu radar</span></button>
-                    <button onclick="handleAnswer(0)" class="option-btn"><span class="font-medium">Nada — já estou bem nessa</span></button>
+                    <button onclick="handleAnswer(3)" class="option-btn"><span class="font-medium">Muito, é exatamente o que eu quero</span></button>
+                    <button onclick="handleAnswer(1)" class="option-btn"><span class="font-medium">Um pouco, está no meu radar</span></button>
+                    <button onclick="handleAnswer(0)" class="option-btn"><span class="font-medium">Nada, já estou bem nessa</span></button>
                 </div>
             </div>
         `;
@@ -648,7 +648,7 @@ function showResults() {
         ENERGIA:    "Você quer mais energia e leveza no corpo. Esse é um dos primeiros sinais de que algo no seu equilíbrio interno pede atenção e cuidado.",
         DESCANSO:   "Você quer mais descanso real — sono profundo e mente que sabe pausar. Seu sistema nervoso está pedindo um cuidado mais consciente.",
         PRESENCA:   "Você quer voltar a habitar seu corpo com leveza, presença e aceitação. Esse é o coração do cuidado integrativo.",
-        VITALIDADE: "Você quer reencontrar sua vitalidade — ciclo, libido, prazer, humor — em equilíbrio. É exatamente nesse território que a abordagem integrativa atua."
+        VITALIDADE: "Você quer reencontrar sua vitalidade (ciclo, libido, prazer, humor) em equilíbrio. É exatamente nesse território que a abordagem integrativa atua."
     };
 
     const phaseAdjustment = {
@@ -770,13 +770,11 @@ function transitionQuizStage(fromId, toId, callback) {
             fromEl.classList.add('hidden');
             toEl.classList.remove('hidden');
             
-            // Critical: Reset scroll to top
-            if (modalContent) {
-                modalContent.scrollTop = 0;
-                
-                // Animation stage now has its own light radial-gradient background;
-                // no need to flip the modal container.
-            }
+            // Critical: Reset scroll to top. The scrollable area is #quiz-scroll-area;
+            // resetting modalContent alone had no effect (it doesn't scroll).
+            const scrollArea = document.getElementById('quiz-scroll-area');
+            if (scrollArea) scrollArea.scrollTop = 0;
+            if (modalContent) modalContent.scrollTop = 0;
             
             gsap.fromTo(toEl, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" });
             if (callback) callback();
