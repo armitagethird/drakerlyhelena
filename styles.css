@@ -252,4 +252,81 @@ body {
     }
 }
 
+/* === Botão flutuante de WhatsApp ===
+   Verde oficial (#25D366) com o símbolo do WhatsApp, fixo no canto inferior
+   direito em todas as páginas. CSS autocontido (não depende de Tailwind nem
+   de ícones externos) para renderizar idêntico em qualquer página. */
+.wa-fab {
+    position: fixed;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    z-index: 45;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 9999px;
+    background-color: #25D366;
+    color: #ffffff;
+    box-shadow: 0 6px 16px rgba(37, 211, 102, 0.35), 0 2px 6px rgba(0, 0, 0, 0.12);
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.25s ease, background-color 0.25s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+@media (min-width: 640px) {
+    .wa-fab {
+        right: 2rem;
+        bottom: 2rem;
+        width: 4rem;
+        height: 4rem;
+    }
+}
+
+.wa-fab:hover {
+    background-color: #1ebe5b;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 12px 28px rgba(37, 211, 102, 0.45), 0 4px 10px rgba(0, 0, 0, 0.16);
+}
+
+.wa-fab:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+.wa-fab__icon {
+    position: relative;
+    z-index: 1;
+    width: 1.85rem;
+    height: 1.85rem;
+}
+
+@media (min-width: 640px) {
+    .wa-fab__icon {
+        width: 2.1rem;
+        height: 2.1rem;
+    }
+}
+
+/* Anel que pulsa para o botão "saltar aos olhos" sem ser intrusivo */
+.wa-fab__ring {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: 9999px;
+    background-color: #25D366;
+    animation: wa-pulse 2.4s ease-out infinite;
+}
+
+@keyframes wa-pulse {
+    0%   { transform: scale(1);   opacity: 0.55; }
+    70%  { transform: scale(1.8); opacity: 0; }
+    100% { transform: scale(1.8); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .wa-fab__ring { display: none; }
+    .wa-fab:hover { transform: none; }
+}
+
 
