@@ -136,8 +136,8 @@
 <body class="bg-yoga-light text-yoga-dark font-sans antialiased overflow-x-hidden">
 
     <!-- Header / Nav -->
-    <header class="fixed top-0 w-full z-50 bg-yoga-light/80 backdrop-blur-md transition-all duration-300 border-b border-yellow-600/10" id="navbar">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <header class="fixed top-3 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-1.5rem)] max-w-6xl md:w-[calc(100%-3rem)] glass glass--header" id="navbar">
+        <div class="px-6 md:px-8 py-3 flex justify-between items-center">
             <a href="/" class="flex items-center space-x-3 group transition-all duration-300 hover:-translate-y-1">
                 <img src="/assets/Favicon/Favicon%20Kerly.png" alt="Logo Dra. Kerly Helena"
                     class="w-8 h-8 md:w-10 md:h-10 object-contain transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
@@ -147,10 +147,12 @@
                 </span>
             </a>
             <nav class="hidden md:flex items-center space-x-8 text-sm uppercase tracking-widest text-yoga-dark/70">
+                <div class="nav-links flex items-center space-x-8">
                 <a href="/" class="hover:text-yoga-gold transition-colors">Voltar ao Início</a>
                 <a href="#detalhes" class="hover:text-yoga-gold transition-colors">O Curso</a>
                 <a href="#professoras" class="hover:text-yoga-gold transition-colors">Professoras</a>
                 <a href="/pacotes/" class="hover:text-yoga-gold transition-colors">Pacotes</a>
+                </div>
                 <button onclick="openYogaModal()"
                     class="bg-yoga-gold hover:bg-yellow-600 text-white px-6 py-2.5 rounded-full transition-colors normal-case tracking-normal shadow-sm font-medium">Quero ser avisada</button>
             </nav>
@@ -161,7 +163,7 @@
         </div>
         <!-- Mobile Dropdown -->
         <div id="mobile-menu"
-            class="hidden md:hidden bg-yoga-light border-t border-yellow-200/50 shadow-lg absolute w-full left-0 top-full">
+            class="hidden md:hidden glass rounded-3xl absolute left-0 right-0 top-full mt-2">
             <nav
                 class="flex flex-col space-y-6 px-6 py-8 text-sm uppercase tracking-widest text-yoga-dark/80 text-center">
                 <a href="/" class="hover:text-yoga-gold transition-colors">Voltar ao Início</a>
@@ -204,7 +206,7 @@
                         Consciência e fortalecimento do assoalho pélvico.
                     </p>
 
-                    <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 mb-12 bg-white/60 backdrop-blur-sm p-6 rounded-3xl border border-yellow-600/20 shadow-lg">
+                    <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 mb-12 glass p-6 rounded-3xl border border-yellow-600/20 shadow-lg">
                         <div class="flex items-center gap-3">
                             <div class="w-12 h-12 rounded-full bg-yoga-gold/20 flex items-center justify-center text-yoga-gold">
                                 <i data-feather="calendar"></i>
@@ -571,6 +573,7 @@
 
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="/glass.js" defer></script>
 
     <script>
         // Initialize Swiper for Ambiente
@@ -612,16 +615,6 @@
 
         mobileMenuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
-            
-            if (mobileMenu.classList.contains('hidden')) {
-                // Menu closed: restore original header styling
-                navbar.classList.add('bg-yoga-light/80', 'backdrop-blur-md');
-                navbar.classList.remove('bg-yoga-light');
-            } else {
-                // Menu open: make header fully solid
-                navbar.classList.remove('bg-yoga-light/80', 'backdrop-blur-md');
-                navbar.classList.add('bg-yoga-light');
-            }
         });
 
         // Close menu on link click
@@ -630,8 +623,6 @@
             link.addEventListener('click', () => {
                 if(!link.id || link.id !== 'mobile-menu-btn') {
                     mobileMenu.classList.add('hidden');
-                    navbar.classList.add('bg-yoga-light/80', 'backdrop-blur-md');
-                    navbar.classList.remove('bg-yoga-light');
                 }
             });
         });

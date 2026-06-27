@@ -146,6 +146,120 @@ body {
     --blush-100: #f5ebe7;
     --charcoal: #3d3330;
     --sand-100: #fdfaf8;
+
+    /* --- Liquid Glass (iOS 26) design tokens --- */
+    --glass-bg:        rgba(253, 252, 251, 0.55);  /* header / pílula (sand) */
+    --glass-bg-card:   rgba(255, 255, 255, 0.42);  /* cards / seções */
+    --glass-blur:      26px;
+    --glass-saturate:  185%;
+    --glass-border:    rgba(255, 255, 255, 0.60);  /* rim luminoso */
+    --glass-rim-light: rgba(255, 255, 255, 0.90);  /* brilho da borda superior */
+    --glass-rim-dark:  rgba(74, 59, 64, 0.05);     /* profundidade da borda inferior */
+    --glass-shadow:    0 10px 36px rgba(74, 59, 64, 0.12);
+    --glass-glow:      rgba(255, 255, 255, 0.55);  /* halo de luz (glow iOS 26) */
+}
+
+/* =========================================================================
+   LIQUID GLASS SYSTEM (iOS 26 / Apple)
+   Sistema único e reutilizável. Base CSS compatível com todo navegador
+   (Safari/iOS incluso); a refração SVG entra via .glass--refract só onde o
+   navegador suporta (ligada por glass.js). Estética sutil/profissional.
+   ========================================================================= */
+.glass {
+    position: relative;
+    background: var(--glass-bg-card);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+    backdrop-filter:         blur(var(--glass-blur)) saturate(var(--glass-saturate));
+    border: 1px solid var(--glass-border);
+    box-shadow:
+        var(--glass-shadow),
+        0 0 22px var(--glass-glow),                    /* bloom externo (glow) */
+        inset 0 0 0 1px rgba(255, 255, 255, 0.40),     /* anel luminoso interno */
+        inset 0 1px 1px var(--glass-rim-light),        /* sheen no topo */
+        inset 0 9px 22px rgba(255, 255, 255, 0.22),    /* glow interno superior */
+        inset 0 -10px 22px rgba(255, 255, 255, 0.15),  /* glow interno inferior */
+        inset 0 -1px 0 var(--glass-rim-dark);          /* profundidade base */
+}
+
+/* Rim "lentilhado": brilho diagonal forte = borda de vidro que pega a luz. */
+.glass::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    box-shadow:
+        inset  2px  2px 2px -1px rgba(255, 255, 255, 0.90),
+        inset -2px -2px 2px -1px rgba(255, 255, 255, 0.48);
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.35));
+}
+
+/* Header flutuante em pílula (Dynamic Island). */
+.glass--header {
+    background: var(--glass-bg);
+    border-radius: 9999px;
+    box-shadow:
+        0 12px 40px rgba(74, 59, 64, 0.16),
+        0 0 26px var(--glass-glow),                    /* glow da pílula */
+        inset 0 0 0 1px rgba(255, 255, 255, 0.45),
+        inset 0 1px 1px var(--glass-rim-light),
+        inset 0 -10px 24px rgba(255, 255, 255, 0.14);
+    transition: max-width .3s ease, padding .3s ease, background .3s ease, box-shadow .3s ease;
+}
+.glass--header.is-scrolled {           /* "contrai" ao rolar → cápsula compacta */
+    max-width: 36rem;                  /* encolhe no desktop (mobile fica abaixo disso) */
+    background: rgba(253, 252, 251, 0.74);
+    box-shadow:
+        0 8px 30px rgba(74, 59, 64, 0.18),
+        0 0 22px var(--glass-glow),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.5),
+        inset 0 1px 1px var(--glass-rim-light);
+}
+
+/* Links do meio: colapsam suave ao rolar (some Início/Sobre/Abordagem/Pacotes/FAQ).
+   Sobram só logo+nome (esquerda) e o CTA Agende (direita). */
+.glass--header .nav-links {
+    display: flex;
+    align-items: center;
+    max-width: 60rem;
+    opacity: 1;
+    overflow: hidden;
+    visibility: visible;
+    transition: max-width .35s ease, opacity .25s ease;
+}
+.glass--header.is-scrolled .nav-links {
+    max-width: 0;
+    opacity: 0;
+    visibility: hidden;          /* tira do tab order quando colapsado */
+    pointer-events: none;
+}
+
+/* CTA primário: mantém o blush sólido (contraste do texto branco) + rim de luz. */
+.glass--cta {
+    background: rgba(169, 99, 123, 0.90);
+    border-color: rgba(255, 255, 255, 0.35);
+}
+.glass--cta:hover { background: rgba(199, 136, 157, 0.92); }   /* ~blush-400 */
+
+/* Refração SVG — ligada por glass.js só em Chromium compatível. */
+.glass--refract {
+    -webkit-backdrop-filter: url(#liquid-glass) blur(var(--glass-blur)) saturate(var(--glass-saturate));
+    backdrop-filter:         url(#liquid-glass) blur(var(--glass-blur)) saturate(var(--glass-saturate));
+}
+
+/* Fallbacks de compatibilidade e acessibilidade. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .glass { background: rgba(253, 252, 251, 0.93); }
+    .glass--header { background: rgba(253, 252, 251, 0.95); }
+}
+@media (prefers-reduced-transparency: reduce) {
+    .glass {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+        background: rgba(253, 252, 251, 0.96);
+    }
+    .glass--header { background: rgba(253, 252, 251, 0.97); }
+    .glass::after { display: none; }
 }
 
 /* Background soft variants for result cards */
@@ -413,6 +527,171 @@ body {
     .wa-fab__ring { display: none; }
     .wa-fab__toggle:hover { transform: none; }
     .wa-fab[open] .wa-fab__option { animation: none; }
+}
+
+/* === Depoimentos / Avaliações do Google (#depoimentos) ===
+   Bloco autocontido (não depende de Tailwind). Barra de prova com selo
+   Google oficial, grid de 5 cards com a última linha centralizada, aspas
+   serif decorativas, avatares em tons rotativos do sistema e selo de
+   procedência "Avaliação no Google" em cada card. Ícones via <use> do
+   sprite SVG embutido na seção (#ic-gstar, #ic-google, #ic-extlink). */
+
+.reviews-star { width: 1.1rem; height: 1.1rem; fill: #FACC15; flex-shrink: 0; }
+.reviews-gicon { width: 1.1rem; height: 1.1rem; flex-shrink: 0; }
+.reviews-arrow { width: 0.9rem; height: 0.9rem; flex-shrink: 0; }
+
+/* Barra de prova */
+.reviews-trustbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem 1.25rem;
+    max-width: 38rem;
+    margin: 0 auto 3rem;
+    padding: 0.85rem 1.75rem;
+    border-radius: 9999px;
+    background-color: var(--glass-bg-card);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+    backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+    border: 1px solid var(--glass-border);
+    box-shadow:
+        0 6px 20px rgba(74, 59, 64, 0.08),
+        inset 0 1px 0 var(--glass-rim-light),
+        inset 0 -1px 0 var(--glass-rim-dark);
+    text-decoration: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.reviews-trustbar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(74, 59, 64, 0.14);
+}
+.reviews-trustbar__brand { display: inline-flex; align-items: center; gap: 0.55rem; }
+.reviews-trustbar__brand .reviews-gicon { width: 1.4rem; height: 1.4rem; }
+.reviews-trustbar__label {
+    font-family: "Lato", sans-serif;
+    font-size: 0.95rem;
+    color: #4A3B40;
+}
+.reviews-trustbar__label strong { font-weight: 700; }
+.reviews-trustbar__stars { display: inline-flex; gap: 0.15rem; }
+.reviews-trustbar__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: #A9637B; /* blush-500 */
+    font-family: "Lato", sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+/* Grid responsivo */
+.reviews-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+@media (min-width: 768px) {
+    .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+    /* 6 cards: grid 3×2 exato, sem orphan */
+    .reviews-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Card */
+.review-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    background-color: var(--glass-bg-card);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+    backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+    border: 1px solid var(--glass-border);
+    box-shadow:
+        var(--glass-shadow),
+        inset 0 1px 0 var(--glass-rim-light),
+        inset 0 -1px 0 var(--glass-rim-dark);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.review-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 34px rgba(74, 59, 64, 0.12);
+}
+
+/* Aspas decorativas */
+.review-quote {
+    position: absolute;
+    top: 0.5rem;
+    right: 1.4rem;
+    font-family: "Playfair Display", serif;
+    font-size: 5rem;
+    line-height: 1;
+    color: #F0D1DC; /* blush-200 */
+    pointer-events: none;
+    user-select: none;
+}
+
+.review-stars { display: flex; gap: 0.2rem; margin-bottom: 1rem; position: relative; }
+.review-text {
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(74, 59, 64, 0.8);
+    line-height: 1.65;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.review-foot {
+    border-top: 1px solid rgba(240, 209, 220, 0.5);
+    padding-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+.review-author { display: inline-flex; align-items: center; gap: 0.65rem; }
+.review-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 9999px;
+    font-family: "Playfair Display", serif;
+    font-weight: 700;
+    color: #4A3B40;
+    flex-shrink: 0;
+    background-color: #F0D1DC;
+}
+/* Avatares em tons rotativos do sistema (blush / sand / nude) */
+.reviews-grid > :nth-child(5n + 1) .review-avatar { background-color: #E0AEBE; } /* blush-300 */
+.reviews-grid > :nth-child(5n + 2) .review-avatar { background-color: #D5CACA; } /* sand-400  */
+.reviews-grid > :nth-child(5n + 3) .review-avatar { background-color: #E6D3D8; } /* nude-400  */
+.reviews-grid > :nth-child(5n + 4) .review-avatar { background-color: #F0D1DC; } /* blush-200 */
+.reviews-grid > :nth-child(5n + 5) .review-avatar { background-color: #C7889D; color: #fff; } /* blush-400 */
+.review-name { font-family: "Lato", sans-serif; font-weight: 500; color: #4A3B40; }
+
+/* Selo de procedência por card */
+.google-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: "Lato", sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: rgba(74, 59, 64, 0.55);
+    white-space: nowrap;
+}
+.google-badge .reviews-gicon { width: 0.95rem; height: 0.95rem; }
+
+@media (prefers-reduced-motion: reduce) {
+    .reviews-trustbar:hover, .review-card:hover { transform: none; }
 }
 
 

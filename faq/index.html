@@ -154,8 +154,8 @@
 <body class="bg-sand-100 text-charcoal font-sans antialiased overflow-x-hidden">
 
     <!-- Header / Nav -->
-    <header class="fixed top-0 w-full z-50 bg-sand-100/80 backdrop-blur-md transition-all duration-300" id="navbar">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <header class="fixed top-3 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-1.5rem)] max-w-6xl md:w-[calc(100%-3rem)] glass glass--header" id="navbar">
+        <div class="px-6 md:px-8 py-3 flex justify-between items-center">
             <a href="/"
                 class="flex items-center space-x-3 group transition-all duration-300 hover:-translate-y-1">
                 <img src="/assets/Favicon/Favicon%20Kerly.png" alt="Logo Dra. Kerly Helena"
@@ -166,6 +166,7 @@
                 </span>
             </a>
             <nav class="hidden md:flex items-center space-x-7 lg:space-x-9 text-sm uppercase tracking-widest text-charcoal/70">
+                <div class="nav-links flex items-center space-x-7 lg:space-x-9">
                 <a href="/#hero" class="hover:text-blush-500 transition-colors">Início</a>
                 <a href="/#manifesto" class="hover:text-blush-500 transition-colors">Sobre</a>
                 <a href="/#integrative" class="hover:text-blush-500 transition-colors">A Abordagem</a>
@@ -174,8 +175,9 @@
                     <span>Pacotes</span>
                 </a>
                 <a href="/faq/" class="text-blush-500 font-medium transition-colors">FAQ</a>
+                </div>
                 <a href="https://wa.me/5598981532153" target="_blank" rel="noopener noreferrer"
-                    class="bg-blush-500 hover:bg-blush-400 text-white px-6 py-2.5 rounded-full transition-colors normal-case tracking-normal shadow-sm font-medium">Agende
+                    class="glass glass--cta text-white px-6 py-2.5 rounded-full transition-colors normal-case tracking-normal font-medium">Agende
                     sua Consulta</a>
             </nav>
             <button class="md:hidden text-charcoal focus:outline-none" id="mobile-menu-btn"
@@ -185,7 +187,7 @@
         </div>
         <!-- Mobile Dropdown -->
         <div id="mobile-menu"
-            class="hidden md:hidden bg-sand-100/95 backdrop-blur-md border-t border-blush-200/50 shadow-lg absolute w-full left-0 top-full">
+            class="hidden md:hidden glass rounded-3xl absolute left-0 right-0 top-full mt-2">
             <nav
                 class="flex flex-col space-y-6 px-6 py-8 text-sm uppercase tracking-widest text-charcoal/80 text-center">
                 <a href="/#hero" class="hover:text-blush-500 transition-colors">Início</a>
@@ -198,7 +200,7 @@
                 <a href="/faq/" class="text-blush-500 font-medium transition-colors">FAQ</a>
                 <div class="pt-4">
                     <a href="https://wa.me/5598981532153" target="_blank" rel="noopener noreferrer"
-                        class="inline-block bg-blush-500 hover:bg-blush-400 text-white px-6 py-3 rounded-full transition-colors normal-case tracking-normal shadow-md font-medium w-full">Agende
+                        class="glass glass--cta inline-block text-white px-6 py-3 rounded-full transition-colors normal-case tracking-normal font-medium w-full">Agende
                         sua Consulta</a>
                 </div>
             </nav>
@@ -257,7 +259,7 @@
 
                 <!-- Question Item 1 -->
                 <div
-                    class="faq-item group bg-white/40 backdrop-blur-sm rounded-[1.5rem] md:rounded-[2rem] shadow-sm border border-blush-100/50 overflow-hidden transition-all duration-500 hover:bg-white/60">
+                    class="faq-item group glass rounded-[1.5rem] md:rounded-[2rem] shadow-sm border border-blush-100/50 overflow-hidden transition-all duration-500 hover:bg-white/60">
                     <button
                         class="w-full px-5 py-5 md:px-8 md:py-6 text-left flex items-center justify-between focus:outline-none faq-btn">
                         <div class="flex items-center space-x-4 md:space-x-5">
@@ -293,7 +295,7 @@
 
                 <!-- Question Item 2 -->
                 <div
-                    class="faq-item group bg-white/40 backdrop-blur-sm rounded-[1.5rem] md:rounded-[2rem] shadow-sm border border-blush-100/50 overflow-hidden transition-all duration-500 hover:bg-white/60">
+                    class="faq-item group glass rounded-[1.5rem] md:rounded-[2rem] shadow-sm border border-blush-100/50 overflow-hidden transition-all duration-500 hover:bg-white/60">
                     <button
                         class="w-full px-5 py-5 md:px-8 md:py-6 text-left flex items-center justify-between focus:outline-none faq-btn">
                         <div class="flex items-center space-x-4 md:space-x-5">
@@ -329,7 +331,7 @@
 
                 <!-- Question Item 3 -->
                 <div
-                    class="faq-item group bg-white/40 backdrop-blur-sm rounded-[1.5rem] md:rounded-[2rem] shadow-sm border border-blush-100/50 overflow-hidden transition-all duration-500 hover:bg-white/60">
+                    class="faq-item group glass rounded-[1.5rem] md:rounded-[2rem] shadow-sm border border-blush-100/50 overflow-hidden transition-all duration-500 hover:bg-white/60">
                     <button
                         class="w-full px-5 py-5 md:px-8 md:py-6 text-left flex items-center justify-between focus:outline-none faq-btn">
                         <div class="flex items-center space-x-4 md:space-x-5">
@@ -364,7 +366,7 @@
 
                 <!-- Question Item 4 -->
                 <div
-                    class="faq-item group bg-white/40 backdrop-blur-sm rounded-[1.5rem] md:rounded-[2rem] shadow-sm border border-blush-100/50 overflow-hidden transition-all duration-500 hover:bg-white/60">
+                    class="faq-item group glass rounded-[1.5rem] md:rounded-[2rem] shadow-sm border border-blush-100/50 overflow-hidden transition-all duration-500 hover:bg-white/60">
                     <button
                         class="w-full px-5 py-5 md:px-8 md:py-6 text-left flex items-center justify-between focus:outline-none faq-btn">
                         <div class="flex items-center space-x-4 md:space-x-5">
@@ -427,7 +429,7 @@
 
                 <!-- Question Item 5 -->
                 <div
-                    class="faq-item group bg-white/40 backdrop-blur-sm rounded-[1.5rem] md:rounded-[2rem] shadow-sm border border-blush-100/50 overflow-hidden transition-all duration-500 hover:bg-white/60">
+                    class="faq-item group glass rounded-[1.5rem] md:rounded-[2rem] shadow-sm border border-blush-100/50 overflow-hidden transition-all duration-500 hover:bg-white/60">
                     <button
                         class="w-full px-5 py-5 md:px-8 md:py-6 text-left flex items-center justify-between focus:outline-none faq-btn">
                         <div class="flex items-center space-x-4 md:space-x-5">
@@ -469,7 +471,7 @@
 
                 <!-- Question Item 6 -->
                 <div
-                    class="faq-item group bg-white/40 backdrop-blur-sm rounded-[1.5rem] md:rounded-[2rem] shadow-sm border border-blush-100/50 overflow-hidden transition-all duration-500 hover:bg-white/60">
+                    class="faq-item group glass rounded-[1.5rem] md:rounded-[2rem] shadow-sm border border-blush-100/50 overflow-hidden transition-all duration-500 hover:bg-white/60">
                     <button
                         class="w-full px-5 py-5 md:px-8 md:py-6 text-left flex items-center justify-between focus:outline-none faq-btn">
                         <div class="flex items-center space-x-4 md:space-x-5">
@@ -499,7 +501,7 @@
 
                 <!-- Item 7 -->
                 <div
-                    class="faq-item group bg-white/40 backdrop-blur-sm rounded-[1.5rem] md:rounded-[2rem] shadow-sm border border-blush-100/50 overflow-hidden transition-all duration-500 hover:bg-white/60">
+                    class="faq-item group glass rounded-[1.5rem] md:rounded-[2rem] shadow-sm border border-blush-100/50 overflow-hidden transition-all duration-500 hover:bg-white/60">
                     <button
                         class="w-full px-5 py-5 md:px-8 md:py-6 text-left flex items-center justify-between focus:outline-none faq-btn">
                         <div class="flex items-center space-x-4 md:space-x-5">
@@ -531,7 +533,7 @@
 
                 <!-- Item 10 (Menopausa) -->
                 <div
-                    class="faq-item group bg-white/40 backdrop-blur-sm rounded-[1.5rem] md:rounded-[2rem] shadow-sm border border-blush-100/50 overflow-hidden transition-all duration-500 hover:bg-white/60">
+                    class="faq-item group glass rounded-[1.5rem] md:rounded-[2rem] shadow-sm border border-blush-100/50 overflow-hidden transition-all duration-500 hover:bg-white/60">
                     <button
                         class="w-full px-5 py-5 md:px-8 md:py-6 text-left flex items-center justify-between focus:outline-none faq-btn">
                         <div class="flex items-center space-x-4 md:space-x-5">
@@ -563,7 +565,7 @@
 
             <!-- CTA ... (Same as before but with flex-shrink fix for icons) -->
             <div
-                class="mt-20 bg-white/60 backdrop-blur-md p-8 md:p-16 rounded-[2.5rem] md:rounded-[3rem] text-center shadow-xl border border-white/50 gs-reveal relative overflow-hidden">
+                class="mt-20 glass p-8 md:p-16 rounded-[2.5rem] md:rounded-[3rem] text-center shadow-xl border border-white/50 gs-reveal relative overflow-hidden">
                 <h3 class="text-2xl md:text-4xl font-serif text-charcoal mb-6 relative z-10 leading-tight">Quer entender
                     como a medicina integrativa pode ajudar você?</h3>
                 <a href="https://wa.me/5598981532153" target="_blank" rel="noopener noreferrer"
@@ -606,14 +608,14 @@
             <div
                 class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-6 w-full max-w-4xl mx-auto pt-4 pb-6">
                 <div
-                    class="flex items-center space-x-4 bg-white/60 backdrop-blur-sm px-6 py-4 rounded-2xl border border-white/50 shadow-sm w-full md:w-auto transform hover:-translate-y-1 transition-transform duration-300">
+                    class="flex items-center space-x-4 glass px-6 py-4 rounded-2xl border border-white/50 shadow-sm w-full md:w-auto transform hover:-translate-y-1 transition-transform duration-300">
                     <div class="bg-blush-100 p-2.5 rounded-full text-blush-500 shadow-inner">
                         <i data-feather="map-pin" class="w-5 h-5"></i>
                     </div>
                     <span class="text-charcoal font-medium text-left">Atendimento em São Luís – Maranhão</span>
                 </div>
                 <div
-                    class="flex items-center space-x-4 bg-white/60 backdrop-blur-sm px-6 py-4 rounded-2xl border border-white/50 shadow-sm w-full md:w-auto transform hover:-translate-y-1 transition-transform duration-300">
+                    class="flex items-center space-x-4 glass px-6 py-4 rounded-2xl border border-white/50 shadow-sm w-full md:w-auto transform hover:-translate-y-1 transition-transform duration-300">
                     <div class="bg-blush-100 p-2.5 rounded-full text-blush-500 shadow-inner">
                         <i data-feather="navigation" class="w-5 h-5"></i>
                     </div>
@@ -643,6 +645,7 @@
             // Floating menu scroll-show logic now lives in /main.js (#floating-container).
         });
     </script>
+    <script src="/glass.js" defer></script>
     <script src="/main.js" defer></script>
 
     <script>

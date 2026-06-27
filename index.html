@@ -102,6 +102,44 @@
         "https://www.instagram.com/kerly.helena",
         "https://www.tiktok.com/@drakerlyhelena"
       ],
+      "review": [
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Tagla Moreira" },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "reviewBody": "Excelente médica! Muito atenciosa, competente e dedicada. Explica tudo com clareza, escuta o paciente com paciência e transmite muita segurança. Estou bem melhor depois das orientações dela. Super recomendo!"
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Lucinete Oliveira" },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "reviewBody": "Dra. Kerly é uma excelente ginecologista, médica acolhedora, atende com muita serenidade e cuida da gente com abordagem física, emocional e espiritual. Consultar com ela traz segurança no tratamento e a paz e energia boa que ela transmite."
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Flavia Miranda" },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "reviewBody": "Excelente atendimento e local muito acolhedor. A Dra Kerly é uma médica diferenciada e atenciosa. Com uma escuta ativa, tem uma visão geral da nossa saúde e dicas de melhorar bons hábitos. Minuciosa nos detalhes e exames é minha médica de todos os momentos. Recomendo as minhas amigas e a todos!"
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Priscila Oliveira" },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "reviewBody": "Minha experiência foi muito positiva. O atendimento da recepção foi muito cortês e o atendimento da Dra. Kerly Helena Santos foi excepcional. Gratidão."
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Maria Inês Sousa" },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "reviewBody": "Excelente profissional, dedicada e competente, sempre buscando soluções e novos conhecimentos. Parabéns Dra. Kerly você é inspiração para todas nós."
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Família Valente" },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "reviewBody": "Uma médica maravilhosamente acolhedora, ótima ouvinte e uma médica muito competente e humilde. Já faço acompanhamento com ela a quase 5 anos e pretendo continuar!"
+        }
+      ],
       "worksFor": { "@id": "https://drakerlyhelena.com.br/#clinic" }
     }
     </script>
@@ -154,8 +192,8 @@
 <body class="bg-sand-100 text-charcoal font-sans antialiased overflow-x-hidden">
 
     <!-- Header / Nav (Minimalist) -->
-    <header class="fixed top-0 w-full z-50 bg-sand-100/80 backdrop-blur-md transition-all duration-300" id="navbar">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <header class="fixed top-3 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-1.5rem)] max-w-6xl md:w-[calc(100%-3rem)] glass glass--header" id="navbar">
+        <div class="px-6 md:px-8 py-3 flex justify-between items-center">
             <a href="#hero" class="flex items-center space-x-3 group transition-all duration-300 hover:-translate-y-1">
                 <img src="assets/Favicon/Favicon%20Kerly.png" alt="Logo Dra. Kerly Helena"
                     class="w-8 h-8 md:w-10 md:h-10 object-contain transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
@@ -165,6 +203,7 @@
                 </span>
             </a>
             <nav class="hidden md:flex items-center space-x-7 lg:space-x-9 text-sm uppercase tracking-widest text-charcoal/70">
+                <div class="nav-links flex items-center space-x-7 lg:space-x-9">
                 <a href="#hero" class="hover:text-blush-500 transition-colors">Início</a>
                 <a href="#manifesto" class="hover:text-blush-500 transition-colors">Sobre</a>
                 <a href="#integrative" class="hover:text-blush-500 transition-colors">A Abordagem</a>
@@ -173,8 +212,9 @@
                     <span>Pacotes</span>
                 </a>
                 <a href="/faq/" class="hover:text-blush-500 transition-colors">FAQ</a>
+                </div>
                 <a href="https://wa.me/5598981532153" target="_blank" rel="noopener noreferrer"
-                    class="bg-blush-500 hover:bg-blush-400 text-white px-6 py-2.5 rounded-full transition-colors normal-case tracking-normal shadow-sm font-medium">Agende
+                    class="glass glass--cta text-white px-6 py-2.5 rounded-full transition-colors normal-case tracking-normal font-medium">Agende
                     sua Consulta</a>
             </nav>
             <button class="md:hidden text-charcoal focus:outline-none" id="mobile-menu-btn"
@@ -184,7 +224,7 @@
         </div>
         <!-- Mobile Dropdown -->
         <div id="mobile-menu"
-            class="hidden md:hidden bg-sand-100/95 backdrop-blur-md border-t border-blush-200/50 shadow-lg absolute w-full left-0 top-full">
+            class="hidden md:hidden glass rounded-3xl absolute left-0 right-0 top-full mt-2">
             <nav
                 class="flex flex-col space-y-6 px-6 py-8 text-sm uppercase tracking-widest text-charcoal/80 text-center">
                 <a href="#hero" class="hover:text-blush-500 transition-colors">Início</a>
@@ -197,7 +237,7 @@
                 <a href="/faq/" class="hover:text-blush-500 transition-colors">FAQ</a>
                 <div class="pt-4">
                     <a href="https://wa.me/5598981532153" target="_blank" rel="noopener noreferrer"
-                        class="inline-block bg-blush-500 hover:bg-blush-400 text-white px-6 py-3 rounded-full transition-colors normal-case tracking-normal shadow-md font-medium w-full">Agende
+                        class="glass glass--cta inline-block text-white px-6 py-3 rounded-full transition-colors normal-case tracking-normal font-medium w-full">Agende
                         sua Consulta</a>
                 </div>
             </nav>
@@ -268,7 +308,7 @@
                             class="w-full h-full object-cover object-[center_25%]">
                     </div>
                     <!-- Card flutuante refinado (desktop only) -->
-                    <div class="hidden lg:block absolute bottom-8 -left-6 bg-white/85 backdrop-blur-sm px-5 py-4 rounded-2xl border border-blush-200/40 shadow-lg max-w-[180px] gs-hero-card">
+                    <div class="hidden lg:block absolute bottom-8 -left-6 glass px-5 py-4 rounded-2xl border border-blush-200/40 shadow-lg max-w-[180px] gs-hero-card">
                         <p class="font-serif italic text-base text-blush-500 leading-snug">
                             Pausa e<br>Reconexão.
                         </p>
@@ -365,7 +405,7 @@
                                     class="w-full h-full object-cover">
                             </div>
                             <!-- Caption editorial (desktop only) — espelha "Pausa e Reconexão" do hero -->
-                            <figcaption class="hidden lg:block absolute -bottom-3 -right-3 bg-white/85 backdrop-blur-sm px-5 py-3 rounded-2xl border border-blush-200/40 shadow-lg max-w-[170px]">
+                            <figcaption class="hidden lg:block absolute -bottom-3 -right-3 glass px-5 py-3 rounded-2xl border border-blush-200/40 shadow-lg max-w-[170px]">
                                 <p class="text-[10px] uppercase tracking-[0.18em] text-blush-400 font-bold">A jornada</p>
                                 <p class="font-serif italic text-blush-500 text-base leading-snug">por inteiro</p>
                             </figcaption>
@@ -485,27 +525,27 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 gs-reveal">
-                    <div class="bg-white/60 backdrop-blur-sm p-6 rounded-3xl border border-blush-100/60 shadow-sm hover:bg-white hover:-translate-y-1 transition-all duration-300">
+                    <div class="glass p-6 rounded-3xl border border-blush-100/60 shadow-sm hover:bg-white hover:-translate-y-1 transition-all duration-300">
                         <i data-feather="sun" class="text-blush-500 w-6 h-6 mb-4"></i>
                         <p class="text-lg text-charcoal/90 font-serif italic leading-snug">"Quero acordar com energia e disposição."</p>
                     </div>
-                    <div class="bg-white/60 backdrop-blur-sm p-6 rounded-3xl border border-blush-100/60 shadow-sm hover:bg-white hover:-translate-y-1 transition-all duration-300">
+                    <div class="glass p-6 rounded-3xl border border-blush-100/60 shadow-sm hover:bg-white hover:-translate-y-1 transition-all duration-300">
                         <i data-feather="feather" class="text-blush-500 w-6 h-6 mb-4"></i>
                         <p class="text-lg text-charcoal/90 font-serif italic leading-snug">"Quero me sentir leve no meu corpo."</p>
                     </div>
-                    <div class="bg-white/60 backdrop-blur-sm p-6 rounded-3xl border border-blush-100/60 shadow-sm hover:bg-white hover:-translate-y-1 transition-all duration-300">
+                    <div class="glass p-6 rounded-3xl border border-blush-100/60 shadow-sm hover:bg-white hover:-translate-y-1 transition-all duration-300">
                         <i data-feather="moon" class="text-blush-500 w-6 h-6 mb-4"></i>
                         <p class="text-lg text-charcoal/90 font-serif italic leading-snug">"Quero dormir profundamente e acordar descansada."</p>
                     </div>
-                    <div class="bg-white/60 backdrop-blur-sm p-6 rounded-3xl border border-blush-100/60 shadow-sm hover:bg-white hover:-translate-y-1 transition-all duration-300">
+                    <div class="glass p-6 rounded-3xl border border-blush-100/60 shadow-sm hover:bg-white hover:-translate-y-1 transition-all duration-300">
                         <i data-feather="heart" class="text-blush-500 w-6 h-6 mb-4"></i>
                         <p class="text-lg text-charcoal/90 font-serif italic leading-snug">"Quero me sentir bonita e em paz com meu corpo."</p>
                     </div>
-                    <div class="bg-white/60 backdrop-blur-sm p-6 rounded-3xl border border-blush-100/60 shadow-sm hover:bg-white hover:-translate-y-1 transition-all duration-300">
+                    <div class="glass p-6 rounded-3xl border border-blush-100/60 shadow-sm hover:bg-white hover:-translate-y-1 transition-all duration-300">
                         <i data-feather="compass" class="text-blush-500 w-6 h-6 mb-4"></i>
                         <p class="text-lg text-charcoal/90 font-serif italic leading-snug">"Quero estar presente comigo mesma e nas pequenas coisas."</p>
                     </div>
-                    <div class="bg-white/60 backdrop-blur-sm p-6 rounded-3xl border border-blush-100/60 shadow-sm hover:bg-white hover:-translate-y-1 transition-all duration-300">
+                    <div class="glass p-6 rounded-3xl border border-blush-100/60 shadow-sm hover:bg-white hover:-translate-y-1 transition-all duration-300">
                         <i data-feather="zap" class="text-blush-500 w-6 h-6 mb-4"></i>
                         <p class="text-lg text-charcoal/90 font-serif italic leading-snug">"Quero redescobrir meu prazer, libido e vitalidade."</p>
                     </div>
@@ -542,7 +582,7 @@
                         estilo de vida como um sistema interligado.
                     </p>
 
-                    <div class="bg-white/50 backdrop-blur-sm p-8 rounded-3xl shadow-sm border border-blush-100 my-10">
+                    <div class="glass p-8 rounded-3xl shadow-sm border border-blush-100 my-10">
                         <p class="text-xl text-charcoal/80 font-light italic text-center">
                             "Muitos sintomas são desequilíbrios profundos que exames isolados não mostram."
                         </p>
@@ -555,7 +595,7 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-6 font-light">
                         <!-- Saúde Hormonal -->
                         <div tabindex="0"
-                            class="group relative cursor-pointer bg-white/40 backdrop-blur-md p-5 rounded-2xl shadow-sm border border-blush-100 hover:bg-white hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blush-200">
+                            class="group relative cursor-pointer glass p-5 rounded-2xl shadow-sm border border-blush-100 hover:bg-white hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blush-200">
                             <div class="flex items-center space-x-3">
                                 <i data-feather="heart" class="text-blush-500 w-5 h-5 flex-shrink-0"></i>
                                 <span class="text-charcoal font-medium text-lg">Saúde hormonal</span>
@@ -574,7 +614,7 @@
 
                         <!-- Qualidade do Sono -->
                         <div tabindex="0"
-                            class="group relative cursor-pointer bg-white/40 backdrop-blur-md p-5 rounded-2xl shadow-sm border border-blush-100 hover:bg-white hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blush-200">
+                            class="group relative cursor-pointer glass p-5 rounded-2xl shadow-sm border border-blush-100 hover:bg-white hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blush-200">
                             <div class="flex items-center space-x-3">
                                 <i data-feather="moon" class="text-blush-500 w-5 h-5 flex-shrink-0"></i>
                                 <span class="text-charcoal font-medium text-lg">Qualidade do sono</span>
@@ -593,7 +633,7 @@
 
                         <!-- Alimentação -->
                         <div tabindex="0"
-                            class="group relative cursor-pointer bg-white/40 backdrop-blur-md p-5 rounded-2xl shadow-sm border border-blush-100 hover:bg-white hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blush-200">
+                            class="group relative cursor-pointer glass p-5 rounded-2xl shadow-sm border border-blush-100 hover:bg-white hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blush-200">
                             <div class="flex items-center space-x-3">
                                 <i data-feather="coffee" class="text-blush-500 w-5 h-5 flex-shrink-0"></i>
                                 <span class="text-charcoal font-medium text-lg">Alimentação</span>
@@ -612,7 +652,7 @@
 
                         <!-- Inflamação Metabólica -->
                         <div tabindex="0"
-                            class="group relative cursor-pointer bg-white/40 backdrop-blur-md p-5 rounded-2xl shadow-sm border border-blush-100 hover:bg-white hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blush-200">
+                            class="group relative cursor-pointer glass p-5 rounded-2xl shadow-sm border border-blush-100 hover:bg-white hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blush-200">
                             <div class="flex items-center space-x-3">
                                 <i data-feather="activity" class="text-blush-500 w-5 h-5 flex-shrink-0"></i>
                                 <span class="text-charcoal font-medium text-lg">Inflamação metabólica</span>
@@ -631,7 +671,7 @@
 
                         <!-- Saúde Emocional -->
                         <div tabindex="0"
-                            class="group relative cursor-pointer bg-white/40 backdrop-blur-md p-5 rounded-2xl shadow-sm border border-blush-100 hover:bg-white hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blush-200">
+                            class="group relative cursor-pointer glass p-5 rounded-2xl shadow-sm border border-blush-100 hover:bg-white hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blush-200">
                             <div class="flex items-center space-x-3">
                                 <i data-feather="smile" class="text-blush-500 w-5 h-5 flex-shrink-0"></i>
                                 <span class="text-charcoal font-medium text-lg">Saúde emocional</span>
@@ -650,7 +690,7 @@
 
                         <!-- Hábitos e Rotina -->
                         <div tabindex="0"
-                            class="group relative cursor-pointer bg-white/40 backdrop-blur-md p-5 rounded-2xl shadow-sm border border-blush-100 hover:bg-white hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blush-200">
+                            class="group relative cursor-pointer glass p-5 rounded-2xl shadow-sm border border-blush-100 hover:bg-white hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blush-200">
                             <div class="flex items-center space-x-3">
                                 <i data-feather="compass" class="text-blush-500 w-5 h-5 flex-shrink-0"></i>
                                 <span class="text-charcoal font-medium text-lg">Hábitos e rotina</span>
@@ -761,91 +801,209 @@
                     <span class="text-sm tracking-[0.2em] text-blush-500 uppercase font-semibold">Ouvindo você</span>
                     <h2 class="text-4xl md:text-5xl font-serif mt-4 text-charcoal">Depoimentos</h2>
                     <p class="mt-2 text-charcoal/70 font-light">
-                        Avaliações reais de mulheres que nós transformamos.
+                        Avaliações autênticas, direto do nosso perfil no Google.
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Review 1 -->
-                    <div
-                        class="bg-white/60 backdrop-blur-sm p-8 rounded-3xl shadow-sm border border-blush-100 gs-reveal hover:shadow-md transition-shadow">
-                        <div class="flex items-center space-x-2 mb-4">
-                            <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
-                            <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
-                            <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
-                            <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
-                            <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
-                        </div>
-                        <p class="text-charcoal/80 font-light italic mb-6">
-                            "Excelente profissional! A abordagem da Dra. Kerly vai muito além do sintoma; ela olha para
-                            a saúde como um todo. A visão integrativa sobre estilo de vida e bem-estar fez toda a
-                            diferença no meu tratamento. Recomendo muito!"
-                        </p>
-                        <hr class="border-blush-200/50 mb-4">
-                        <div class="flex items-center space-x-3">
-                            <div class="w-10 h-10 bg-blush-200 rounded-full flex items-center justify-center text-charcoal font-serif font-bold relative overflow-hidden shrink-0">
-                                <span aria-hidden="true">M</span>
-                                <img src="assets/depoimentos/maysa.webp" alt="" loading="lazy"
-                                    onerror="this.remove()"
-                                    class="absolute inset-0 w-full h-full object-cover">
-                            </div>
-                            <span class="text-charcoal font-medium">Maysa Pinheiro</span>
-                        </div>
-                    </div>
+                <!-- Sprite de ícones (estrela + logo Google) reutilizado nos depoimentos -->
+                <svg width="0" height="0" aria-hidden="true" focusable="false"
+                    style="position:absolute;width:0;height:0;overflow:hidden">
+                    <symbol id="ic-gstar" viewBox="0 0 24 24">
+                        <path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.785 1.401 8.169L12 18.896l-7.335 3.868 1.401-8.169L.132 9.21l8.2-1.192z"/>
+                    </symbol>
+                    <symbol id="ic-google" viewBox="0 0 48 48">
+                        <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+                        <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+                        <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+                        <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+                    </symbol>
+                    <symbol id="ic-extlink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="8 7 17 7 17 16"></polyline>
+                    </symbol>
+                </svg>
 
-                    <!-- Review 2 -->
-                    <div
-                        class="bg-white/60 backdrop-blur-sm p-8 rounded-3xl shadow-sm border border-blush-100 gs-reveal hover:shadow-md transition-shadow">
-                        <div class="flex items-center space-x-2 mb-4">
-                            <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
-                            <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
-                            <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
-                            <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
-                            <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
+                <!-- Barra de prova: avaliações autênticas do Google -->
+                <a href="https://share.google/mytP6jGcdTPTe1DJ4" target="_blank" rel="noopener noreferrer"
+                    class="reviews-trustbar gs-reveal" aria-label="Avaliações reais no Google — abrir nosso perfil">
+                    <span class="reviews-trustbar__brand">
+                        <svg class="reviews-gicon"><use href="#ic-google"></use></svg>
+                        <span class="reviews-trustbar__label">Avaliações reais no <strong>Google</strong></span>
+                    </span>
+                    <span class="reviews-trustbar__stars" aria-hidden="true">
+                        <svg class="reviews-star"><use href="#ic-gstar"></use></svg>
+                        <svg class="reviews-star"><use href="#ic-gstar"></use></svg>
+                        <svg class="reviews-star"><use href="#ic-gstar"></use></svg>
+                        <svg class="reviews-star"><use href="#ic-gstar"></use></svg>
+                        <svg class="reviews-star"><use href="#ic-gstar"></use></svg>
+                    </span>
+                    <span class="reviews-trustbar__cta">
+                        Ver no Google
+                        <svg class="reviews-arrow"><use href="#ic-extlink"></use></svg>
+                    </span>
+                </a>
+
+                <div class="reviews-grid">
+                    <!-- Review: Tagla Moreira -->
+                    <article class="review-card gs-reveal">
+                        <span class="review-quote" aria-hidden="true">&ldquo;</span>
+                        <div class="review-stars" aria-label="Avaliação 5 de 5 estrelas">
+                            <svg class="reviews-star"><use href="#ic-gstar"></use></svg>
+                            <svg class="reviews-star"><use href="#ic-gstar"></use></svg>
+                            <svg class="reviews-star"><use href="#ic-gstar"></use></svg>
+                            <svg class="reviews-star"><use href="#ic-gstar"></use></svg>
+                            <svg class="reviews-star"><use href="#ic-gstar"></use></svg>
                         </div>
-                        <p class="text-charcoal/80 font-light italic mb-6">
+                        <p class="review-text">
+                            "Excelente médica! Muito atenciosa, competente e dedicada. Explica tudo com clareza, escuta
+                            o paciente com paciência e transmite muita segurança. Estou bem melhor depois das
+                            orientações dela. Super recomendo!"
+                        </p>
+                        <div class="review-foot">
+                            <span class="review-author">
+                                <span class="review-avatar" aria-hidden="true">T</span>
+                                <span class="review-name">Tagla Moreira</span>
+                            </span>
+                            <span class="google-badge">
+                                <svg class="reviews-gicon"><use href="#ic-google"></use></svg>
+                                Avaliação no Google
+                            </span>
+                        </div>
+                    </article>
+
+                    <!-- Review: Lucinete Oliveira -->
+                    <article class="review-card gs-reveal">
+                        <span class="review-quote" aria-hidden="true">&ldquo;</span>
+                        <div class="review-stars" aria-label="Avaliação 5 de 5 estrelas">
+                            <svg class="reviews-star"><use href="#ic-gstar"></use></svg>
+                            <svg class="reviews-star"><use href="#ic-gstar"></use></svg>
+                            <svg class="reviews-star"><use href="#ic-gstar"></use></svg>
+                            <svg class="reviews-star"><use href="#ic-gstar"></use></svg>
+                            <svg class="reviews-star"><use href="#ic-gstar"></use></svg>
+                        </div>
+                        <p class="review-text">
+                            "Dra. Kerly é uma excelente ginecologista, médica acolhedora, atende com muita serenidade e
+                            cuida da gente com abordagem física, emocional e espiritual. Consultar com ela traz
+                            segurança no tratamento e a paz e energia boa que ela transmite."
+                        </p>
+                        <div class="review-foot">
+                            <span class="review-author">
+                                <span class="review-avatar" aria-hidden="true">L</span>
+                                <span class="review-name">Lucinete Oliveira</span>
+                            </span>
+                            <span class="google-badge">
+                                <svg class="reviews-gicon"><use href="#ic-google"></use></svg>
+                                Avaliação no Google
+                            </span>
+                        </div>
+                    </article>
+
+                    <!-- Review: Flavia Miranda -->
+                    <article class="review-card gs-reveal">
+                        <span class="review-quote" aria-hidden="true">&ldquo;</span>
+                        <div class="review-stars" aria-label="Avaliação 5 de 5 estrelas">
+                            <svg class="reviews-star"><use href="#ic-gstar"></use></svg>
+                            <svg class="reviews-star"><use href="#ic-gstar"></use></svg>
+                            <svg class="reviews-star"><use href="#ic-gstar"></use></svg>
+                            <svg class="reviews-star"><use href="#ic-gstar"></use></svg>
+                            <svg class="reviews-star"><use href="#ic-gstar"></use></svg>
+                        </div>
+                        <p class="review-text">
                             "Excelente atendimento e local muito acolhedor. A Dra Kerly é uma médica diferenciada e
                             atenciosa. Com uma escuta ativa, tem uma visão geral da nossa saúde e dicas de melhorar bons
                             hábitos. Minuciosa nos detalhes e exames é minha médica de todos os momentos. Recomendo as
                             minhas amigas e a todos!"
                         </p>
-                        <hr class="border-blush-200/50 mb-4">
-                        <div class="flex items-center space-x-3">
-                            <div class="w-10 h-10 bg-blush-200 rounded-full flex items-center justify-center text-charcoal font-serif font-bold relative overflow-hidden shrink-0">
-                                <span aria-hidden="true">F</span>
-                                <img src="assets/depoimentos/flavia.webp" alt="" loading="lazy"
-                                    onerror="this.remove()"
-                                    class="absolute inset-0 w-full h-full object-cover">
-                            </div>
-                            <span class="text-charcoal font-medium">Flavia Miranda</span>
+                        <div class="review-foot">
+                            <span class="review-author">
+                                <span class="review-avatar" aria-hidden="true">F</span>
+                                <span class="review-name">Flavia Miranda</span>
+                            </span>
+                            <span class="google-badge">
+                                <svg class="reviews-gicon"><use href="#ic-google"></use></svg>
+                                Avaliação no Google
+                            </span>
                         </div>
-                    </div>
+                    </article>
 
-                    <!-- Review 3 -->
-                    <div
-                        class="bg-white/60 backdrop-blur-sm p-8 rounded-3xl shadow-sm border border-blush-100 gs-reveal hover:shadow-md transition-shadow">
-                        <div class="flex items-center space-x-2 mb-4">
-                            <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
-                            <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
-                            <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
-                            <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
-                            <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-current"></i>
+                    <!-- Review: Priscila Oliveira -->
+                    <article class="review-card gs-reveal">
+                        <span class="review-quote" aria-hidden="true">&ldquo;</span>
+                        <div class="review-stars" aria-label="Avaliação 5 de 5 estrelas">
+                            <svg class="reviews-star"><use href="#ic-gstar"></use></svg>
+                            <svg class="reviews-star"><use href="#ic-gstar"></use></svg>
+                            <svg class="reviews-star"><use href="#ic-gstar"></use></svg>
+                            <svg class="reviews-star"><use href="#ic-gstar"></use></svg>
+                            <svg class="reviews-star"><use href="#ic-gstar"></use></svg>
                         </div>
-                        <p class="text-charcoal/80 font-light italic mb-6">
+                        <p class="review-text">
+                            "Minha experiência foi muito positiva. O atendimento da recepção foi muito cortês e o
+                            atendimento da Dra. Kerly Helena Santos foi excepcional. Gratidão."
+                        </p>
+                        <div class="review-foot">
+                            <span class="review-author">
+                                <span class="review-avatar" aria-hidden="true">P</span>
+                                <span class="review-name">Priscila Oliveira</span>
+                            </span>
+                            <span class="google-badge">
+                                <svg class="reviews-gicon"><use href="#ic-google"></use></svg>
+                                Avaliação no Google
+                            </span>
+                        </div>
+                    </article>
+
+                    <!-- Review: Maria Inês Sousa -->
+                    <article class="review-card gs-reveal">
+                        <span class="review-quote" aria-hidden="true">&ldquo;</span>
+                        <div class="review-stars" aria-label="Avaliação 5 de 5 estrelas">
+                            <svg class="reviews-star"><use href="#ic-gstar"></use></svg>
+                            <svg class="reviews-star"><use href="#ic-gstar"></use></svg>
+                            <svg class="reviews-star"><use href="#ic-gstar"></use></svg>
+                            <svg class="reviews-star"><use href="#ic-gstar"></use></svg>
+                            <svg class="reviews-star"><use href="#ic-gstar"></use></svg>
+                        </div>
+                        <p class="review-text">
                             "Excelente profissional, dedicada e competente, sempre buscando soluções e novos
                             conhecimentos. Parabéns Dra. Kerly você é inspiração para todas nós."
                         </p>
-                        <hr class="border-blush-200/50 mb-4">
-                        <div class="flex items-center space-x-3">
-                            <div class="w-10 h-10 bg-blush-200 rounded-full flex items-center justify-center text-charcoal font-serif font-bold relative overflow-hidden shrink-0">
-                                <span aria-hidden="true">M</span>
-                                <img src="assets/depoimentos/maria.webp" alt="" loading="lazy"
-                                    onerror="this.remove()"
-                                    class="absolute inset-0 w-full h-full object-cover">
-                            </div>
-                            <span class="text-charcoal font-medium">Maria Inês Sousa</span>
+                        <div class="review-foot">
+                            <span class="review-author">
+                                <span class="review-avatar" aria-hidden="true">M</span>
+                                <span class="review-name">Maria Inês Sousa</span>
+                            </span>
+                            <span class="google-badge">
+                                <svg class="reviews-gicon"><use href="#ic-google"></use></svg>
+                                Avaliação no Google
+                            </span>
                         </div>
-                    </div>
+                    </article>
+
+                    <!-- Review: Família Valente -->
+                    <article class="review-card gs-reveal">
+                        <span class="review-quote" aria-hidden="true">&ldquo;</span>
+                        <div class="review-stars" aria-label="Avaliação 5 de 5 estrelas">
+                            <svg class="reviews-star"><use href="#ic-gstar"></use></svg>
+                            <svg class="reviews-star"><use href="#ic-gstar"></use></svg>
+                            <svg class="reviews-star"><use href="#ic-gstar"></use></svg>
+                            <svg class="reviews-star"><use href="#ic-gstar"></use></svg>
+                            <svg class="reviews-star"><use href="#ic-gstar"></use></svg>
+                        </div>
+                        <p class="review-text">
+                            "Uma médica maravilhosamente acolhedora, ótima ouvinte e uma médica muito competente e
+                            humilde. Já faço acompanhamento com ela a quase 5 anos e pretendo continuar!"
+                        </p>
+                        <div class="review-foot">
+                            <span class="review-author">
+                                <span class="review-avatar" aria-hidden="true">F</span>
+                                <span class="review-name">Família Valente</span>
+                            </span>
+                            <span class="google-badge">
+                                <svg class="reviews-gicon"><use href="#ic-google"></use></svg>
+                                Avaliação no Google
+                            </span>
+                        </div>
+                    </article>
                 </div>
 
                 <div class="text-center mt-12">
@@ -872,7 +1030,7 @@
         <section id="location" class="py-24 bg-sand-200 relative">
             <div class="container mx-auto px-6 max-w-5xl">
                 <div
-                    class="bg-white/60 backdrop-blur-lg rounded-3xl p-10 md:p-16 shadow-xl gs-reveal flex flex-col md:flex-row gap-12 items-center border border-white/50">
+                    class="glass rounded-3xl p-10 md:p-16 shadow-xl gs-reveal flex flex-col md:flex-row gap-12 items-center border border-white/50">
                     <div class="w-full md:w-1/2 space-y-6">
                         <h2 class="text-3xl font-serif text-charcoal">Somente com hora marcada</h2>
                         <div class="space-y-4">
@@ -963,14 +1121,14 @@
             <div
                 class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-6 w-full max-w-4xl mx-auto pt-4 pb-6">
                 <div
-                    class="flex items-center space-x-4 bg-white/60 backdrop-blur-sm px-6 py-4 rounded-2xl border border-white/50 shadow-sm w-full md:w-auto transform hover:-translate-y-1 transition-transform duration-300">
+                    class="flex items-center space-x-4 glass px-6 py-4 rounded-2xl border border-white/50 shadow-sm w-full md:w-auto transform hover:-translate-y-1 transition-transform duration-300">
                     <div class="bg-blush-100 p-2.5 rounded-full text-blush-500 shadow-inner">
                         <i data-feather="map-pin" class="w-5 h-5"></i>
                     </div>
                     <span class="text-charcoal font-medium text-left">Atendimento em São Luís – Maranhão</span>
                 </div>
                 <div
-                    class="flex items-center space-x-4 bg-white/60 backdrop-blur-sm px-6 py-4 rounded-2xl border border-white/50 shadow-sm w-full md:w-auto transform hover:-translate-y-1 transition-transform duration-300">
+                    class="flex items-center space-x-4 glass px-6 py-4 rounded-2xl border border-white/50 shadow-sm w-full md:w-auto transform hover:-translate-y-1 transition-transform duration-300">
                     <div class="bg-blush-100 p-2.5 rounded-full text-blush-500 shadow-inner">
                         <i data-feather="navigation" class="w-5 h-5"></i>
                     </div>
@@ -1333,6 +1491,7 @@
     </script>
 
     <!-- Custom JS -->
+    <script src="/glass.js" defer></script>
     <script src="main.js" defer></script>
 </body>
 

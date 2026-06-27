@@ -90,8 +90,8 @@
 <body class="bg-sand-100 text-charcoal font-sans antialiased overflow-x-hidden">
 
     <!-- Header -->
-    <header class="fixed top-0 w-full z-50 bg-sand-100/80 backdrop-blur-md transition-all duration-300" id="navbar">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <header class="fixed top-3 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-1.5rem)] max-w-6xl md:w-[calc(100%-3rem)] glass glass--header" id="navbar">
+        <div class="px-6 md:px-8 py-3 flex justify-between items-center">
             <a href="/" class="flex items-center space-x-3 group transition-all duration-300 hover:-translate-y-1">
                 <img src="/assets/Favicon/Favicon%20Kerly.png" alt="Logo Dra. Kerly Helena"
                     class="w-8 h-8 md:w-10 md:h-10 object-contain transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
@@ -100,6 +100,7 @@
                 </span>
             </a>
             <nav class="hidden md:flex items-center space-x-7 lg:space-x-9 text-sm uppercase tracking-widest text-charcoal/70">
+                <div class="nav-links flex items-center space-x-7 lg:space-x-9">
                 <a href="/#hero" class="hover:text-blush-500 transition-colors">Início</a>
                 <a href="/#manifesto" class="hover:text-blush-500 transition-colors">Sobre</a>
                 <a href="/#integrative" class="hover:text-blush-500 transition-colors">A Abordagem</a>
@@ -108,14 +109,15 @@
                     <span>Pacotes</span>
                 </a>
                 <a href="/faq/" class="hover:text-blush-500 transition-colors">FAQ</a>
+                </div>
                 <a href="https://wa.me/5598981532153" target="_blank" rel="noopener noreferrer"
-                    class="bg-blush-500 hover:bg-blush-400 text-white px-6 py-2.5 rounded-full transition-colors normal-case tracking-normal shadow-sm font-medium">Agende sua Consulta</a>
+                    class="glass glass--cta text-white px-6 py-2.5 rounded-full transition-colors normal-case tracking-normal font-medium">Agende sua Consulta</a>
             </nav>
             <button class="md:hidden text-charcoal focus:outline-none" id="mobile-menu-btn" aria-label="Abrir menu de navegação">
                 <i data-feather="menu"></i>
             </button>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-sand-100/95 backdrop-blur-md border-t border-blush-200/50 shadow-lg absolute w-full left-0 top-full">
+        <div id="mobile-menu" class="hidden md:hidden glass rounded-3xl absolute left-0 right-0 top-full mt-2">
             <nav class="flex flex-col space-y-6 px-6 py-8 text-sm uppercase tracking-widest text-charcoal/80 text-center">
                 <a href="/#hero" class="hover:text-blush-500 transition-colors">Início</a>
                 <a href="/#manifesto" class="hover:text-blush-500 transition-colors">Sobre</a>
@@ -127,7 +129,7 @@
                 <a href="/faq/" class="hover:text-blush-500 transition-colors">FAQ</a>
                 <div class="pt-4">
                     <a href="https://wa.me/5598981532153" target="_blank" rel="noopener noreferrer"
-                        class="inline-block bg-blush-500 hover:bg-blush-400 text-white px-6 py-3 rounded-full transition-colors normal-case tracking-normal shadow-md font-medium w-full">Agende sua Consulta</a>
+                        class="glass glass--cta inline-block text-white px-6 py-3 rounded-full transition-colors normal-case tracking-normal font-medium w-full">Agende sua Consulta</a>
                 </div>
             </nav>
         </div>
@@ -157,7 +159,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 max-w-5xl mx-auto">
 
                 <!-- Package 1: Consulta Avulsa -->
-                <article class="relative bg-white/60 backdrop-blur-sm rounded-3xl p-6 sm:p-8 md:p-10 border border-blush-100 shadow-sm hover:shadow-md transition-shadow flex flex-col">
+                <article class="relative glass rounded-3xl p-6 sm:p-8 md:p-10 border border-blush-100 shadow-sm hover:shadow-md transition-shadow flex flex-col">
                     <div class="mb-6">
                         <span class="text-[10px] uppercase tracking-[0.2em] text-blush-400 font-bold">O ponto de partida</span>
                         <h2 class="text-3xl md:text-4xl font-serif mt-3 text-charcoal leading-tight">
@@ -293,7 +295,7 @@
                 </div>
 
                 <div class="space-y-5">
-                    <details class="group bg-white/60 backdrop-blur-sm rounded-2xl border border-blush-100 px-6 py-5">
+                    <details class="group glass rounded-2xl border border-blush-100 px-6 py-5">
                         <summary class="cursor-pointer font-serif text-lg text-charcoal flex items-center justify-between gap-4">
                             Posso começar pela consulta avulsa e migrar pra Jornada depois?
                             <i data-feather="chevron-down" class="w-5 h-5 text-blush-500 transition-transform group-open:rotate-180 shrink-0"></i>
@@ -303,7 +305,7 @@
                         </p>
                     </details>
 
-                    <details class="group bg-white/60 backdrop-blur-sm rounded-2xl border border-blush-100 px-6 py-5">
+                    <details class="group glass rounded-2xl border border-blush-100 px-6 py-5">
                         <summary class="cursor-pointer font-serif text-lg text-charcoal flex items-center justify-between gap-4">
                             Os retornos são presenciais ou online?
                             <i data-feather="chevron-down" class="w-5 h-5 text-blush-500 transition-transform group-open:rotate-180 shrink-0"></i>
@@ -313,7 +315,7 @@
                         </p>
                     </details>
 
-                    <details class="group bg-white/60 backdrop-blur-sm rounded-2xl border border-blush-100 px-6 py-5">
+                    <details class="group glass rounded-2xl border border-blush-100 px-6 py-5">
                         <summary class="cursor-pointer font-serif text-lg text-charcoal flex items-center justify-between gap-4">
                             E se eu não puder ir a todas as aulas de yoga?
                             <i data-feather="chevron-down" class="w-5 h-5 text-blush-500 transition-transform group-open:rotate-180 shrink-0"></i>
@@ -323,7 +325,7 @@
                         </p>
                     </details>
 
-                    <details class="group bg-white/60 backdrop-blur-sm rounded-2xl border border-blush-100 px-6 py-5">
+                    <details class="group glass rounded-2xl border border-blush-100 px-6 py-5">
                         <summary class="cursor-pointer font-serif text-lg text-charcoal flex items-center justify-between gap-4">
                             Como é o WhatsApp direto com a médica?
                             <i data-feather="chevron-down" class="w-5 h-5 text-blush-500 transition-transform group-open:rotate-180 shrink-0"></i>
@@ -440,5 +442,6 @@
             // O botão flutuante de WhatsApp é fixo via CSS — sem lógica de scroll.
         });
     </script>
+    <script src="/glass.js" defer></script>
 </body>
 </html>

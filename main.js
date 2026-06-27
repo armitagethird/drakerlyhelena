@@ -97,17 +97,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     // Register ScrollTrigger
     gsap.registerPlugin(ScrollTrigger);
 
-    // Navbar Scroll Effect
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('shadow-md', 'bg-sand-100/90');
-            navbar.classList.remove('bg-sand-100/80');
-        } else {
-            navbar.classList.remove('shadow-md', 'bg-sand-100/90');
-            navbar.classList.add('bg-sand-100/80');
-        }
-    });
+    // Navbar scroll-state (.is-scrolled) é gerido por glass.js (header pílula).
 
     // Hero stagger (above-the-fold; runs once on load, not via ScrollTrigger)
     initHeroStagger();
