@@ -196,6 +196,11 @@ body {
 
 /* Header flutuante em pílula (Dynamic Island). */
 .glass--header {
+    /* Tailwind v4 põe `.fixed` em @layer utilities; o `.glass { position: relative }`
+       (sem layer) venceria na cascata e o header rolava junto. Fixamos aqui (sem layer,
+       depois de .glass) p/ garantir o pin em todas as páginas. top/left/translate/z vêm
+       das utilities (não disputadas). */
+    position: fixed;
     background: var(--glass-bg);
     border-radius: 9999px;
     box-shadow:
@@ -204,10 +209,15 @@ body {
         inset 0 0 0 1px rgba(255, 255, 255, 0.45),
         inset 0 1px 1px var(--glass-rim-light),
         inset 0 -10px 24px rgba(255, 255, 255, 0.14);
-    transition: max-width .3s ease, padding .3s ease, background .3s ease, box-shadow .3s ease;
+    /* Timeline única, mesma curva/duração do colapso dos links → sem desencontro. */
+    transition: max-width .42s cubic-bezier(0.4, 0, 0.2, 1),
+                padding .42s cubic-bezier(0.4, 0, 0.2, 1),
+                background .42s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow .42s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: max-width;
 }
-.glass--header.is-scrolled {           /* "contrai" ao rolar → cápsula compacta */
-    max-width: 36rem;                  /* encolhe no desktop (mobile fica abaixo disso) */
+.glass--header.is-scrolled {           /* "contrai" ao rolar → cápsula mais fina */
+    max-width: 38rem;                  /* cabe logo + nome + CTA numa linha; menor que o hero */
     background: rgba(253, 252, 251, 0.74);
     box-shadow:
         0 8px 30px rgba(74, 59, 64, 0.18),
@@ -217,21 +227,60 @@ body {
 }
 
 /* Links do meio: colapsam suave ao rolar (some Início/Sobre/Abordagem/Pacotes/FAQ).
-   Sobram só logo+nome (esquerda) e o CTA Agende (direita). */
+   Sobram só logo+nome (esquerda) e o CTA Agende (direita).
+   Técnica: grid-template-columns 1fr→0fr (interpolável, sem "zona morta" do max-width,
+   que ocorria porque 60rem >> largura real do conteúdo e causava a "sacudida"). */
 .glass--header .nav-links {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    min-width: 0;                /* permite o item flex encolher abaixo do conteúdo */
+    overflow: hidden;
+    opacity: 1;
+    visibility: visible;
+    transition: grid-template-columns .42s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity .26s ease,
+                visibility .42s linear;   /* segura visível até o fim do fade */
+}
+.glass--header .nav-links__inner {
     display: flex;
     align-items: center;
-    max-width: 60rem;
-    opacity: 1;
-    overflow: hidden;
-    visibility: visible;
-    transition: max-width .35s ease, opacity .25s ease;
+    min-width: 0;                /* deixa o grid colapsar a coluna até 0 */
+    white-space: nowrap;         /* sem wrap dos links durante o colapso */
 }
 .glass--header.is-scrolled .nav-links {
-    max-width: 0;
+    grid-template-columns: 0fr;
     opacity: 0;
     visibility: hidden;          /* tira do tab order quando colapsado */
     pointer-events: none;
+}
+
+/* Ao rolar: só os links do meio somem (.nav-links). Nome + logo + CTA continuam no
+   MESMO tamanho, tudo numa única linha (nunca empilha), e a barra fica mais FINA
+   (menos padding vertical). */
+
+/* Linha interna mais fina (padding vertical menor). Alvo estrutural: a 1ª div é a barra. */
+.glass--header > div:first-child {
+    transition: padding .42s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glass--header.is-scrolled > div:first-child {
+    padding-top: .35rem;
+    padding-bottom: .35rem;
+}
+
+/* Nome nunca quebra: fica sempre numa linha só (sem palavras empilhadas). */
+.glass--header .nav-brand,
+.glass--header .nav-brand__text {
+    white-space: nowrap;
+}
+
+/* CTA mantém a fonte; só afina (botão mais baixo) p/ acompanhar a barra. */
+.glass--header .nav-cta {
+    transition: padding .42s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glass--header.is-scrolled .nav-cta {
+    padding-top: .3rem;
+    padding-bottom: .3rem;
 }
 
 /* CTA primário: mantém o blush sólido (contraste do texto branco) + rim de luz. */

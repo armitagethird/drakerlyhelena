@@ -141,20 +141,22 @@
             <a href="/" class="flex items-center space-x-3 group transition-all duration-300 hover:-translate-y-1">
                 <img src="/assets/Favicon/Favicon%20Kerly.png" alt="Logo Dra. Kerly Helena"
                     class="w-8 h-8 md:w-10 md:h-10 object-contain transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
-                <span
-                    class="text-2xl md:text-3xl font-serif text-yoga-dark font-semibold tracking-wide group-hover:text-yoga-gold transition-colors duration-300">
+                <span class="nav-brand"><span
+                    class="nav-brand__text text-2xl md:text-3xl font-serif text-yoga-dark font-semibold tracking-wide group-hover:text-yoga-gold transition-colors duration-300">
                     Dra. Kerly Helena
-                </span>
+                </span></span>
             </a>
             <nav class="hidden md:flex items-center space-x-8 text-sm uppercase tracking-widest text-yoga-dark/70">
-                <div class="nav-links flex items-center space-x-8">
+                <div class="nav-links">
+                <div class="nav-links__inner flex items-center space-x-8">
                 <a href="/" class="hover:text-yoga-gold transition-colors">Voltar ao Início</a>
                 <a href="#detalhes" class="hover:text-yoga-gold transition-colors">O Curso</a>
                 <a href="#professoras" class="hover:text-yoga-gold transition-colors">Professoras</a>
                 <a href="/pacotes/" class="hover:text-yoga-gold transition-colors">Pacotes</a>
                 </div>
+                </div>
                 <button onclick="openYogaModal()"
-                    class="bg-yoga-gold hover:bg-yellow-600 text-white px-6 py-2.5 rounded-full transition-colors normal-case tracking-normal shadow-sm font-medium">Quero ser avisada</button>
+                    class="bg-yoga-gold hover:bg-yellow-600 nav-cta text-white px-6 py-2.5 rounded-full transition-colors normal-case tracking-normal shadow-sm font-medium">Quero ser avisada</button>
             </nav>
             <button class="md:hidden text-yoga-dark focus:outline-none" id="mobile-menu-btn"
                 aria-label="Abrir menu de navegação">
