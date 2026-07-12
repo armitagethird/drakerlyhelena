@@ -82,6 +82,7 @@ function initHeroStagger() {
 
 document.addEventListener("DOMContentLoaded", (event) => {
     wireAnalytics();
+    wireModalFocusTrap();
 
     const yearEl = document.getElementById('footer-year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -241,6 +242,51 @@ let currentQuestionIndex = 0;
 let quizAnswers = [];
 let userData = { name: '', phone: '', email: '', age: '', phase: '' };
 
+// Elemento que tinha o foco antes de abrir o modal (para devolver ao fechar).
+let modalPreviouslyFocusedEl = null;
+
+// Elementos focáveis VISÍVEIS dentro do modal (ignora os que estão dentro de
+// estágios .hidden — offsetParent é null para elementos não renderizados).
+function getModalFocusableElements() {
+    const modal = document.getElementById('symptom-modal');
+    if (!modal) return [];
+    const selector = 'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    return Array.from(modal.querySelectorAll(selector)).filter(el => el.offsetParent !== null);
+}
+
+// Trap de Tab + Escape no modal do quiz. Registrado uma única vez: o listener
+// fica em #symptom-modal e só recebe eventos quando o foco está dentro dele
+// (o modal fechado é display:none, então nada dentro dele pode estar focado).
+function wireModalFocusTrap() {
+    const modal = document.getElementById('symptom-modal');
+    if (!modal) return;
+
+    modal.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+            e.preventDefault();
+            window.closeSymptomModal();
+            return;
+        }
+        if (e.key !== 'Tab') return;
+
+        const focusable = getModalFocusableElements();
+        if (!focusable.length) return;
+
+        const activeIndex = focusable.indexOf(document.activeElement);
+        const lastIndex = focusable.length - 1;
+
+        if (e.shiftKey && activeIndex <= 0) {
+            // Shift+Tab no primeiro (ou com foco fora da lista, ex. no container) -> vai ao último.
+            e.preventDefault();
+            focusable[lastIndex].focus();
+        } else if (!e.shiftKey && (activeIndex === -1 || activeIndex === lastIndex)) {
+            // Tab no último (ou com foco fora da lista) -> volta ao primeiro.
+            e.preventDefault();
+            focusable[0].focus();
+        }
+    });
+}
+
 // Intro substep state (5 substeps: name, phone, email, age, consent)
 let introSubstep = 0;
 const INTRO_TOTAL_SUBSTEPS = 5;
@@ -270,6 +316,10 @@ const quizQuestions = [
 window.openSymptomModal = function () {
     const modal = document.getElementById('symptom-modal');
     const modalContent = document.getElementById('symptom-modal-content');
+
+    // Acessibilidade: guarda quem tinha o foco para devolver ao fechar.
+    modalPreviouslyFocusedEl = document.activeElement;
+
     modal.classList.remove('hidden');
     setTimeout(() => {
         modal.classList.remove('opacity-0');
@@ -297,6 +347,9 @@ window.openSymptomModal = function () {
     showIntroSubstep(0);
     clearAllIntroErrors();
 
+    // Acessibilidade: move o foco para dentro do modal (trap de Tab cuida do resto).
+    try { modalContent.focus({ preventScroll: true }); } catch (e) { modalContent.focus(); }
+
     window.trackEvent('quiz_open');
 };
 
@@ -311,6 +364,12 @@ window.closeSymptomModal = function () {
     document.body.style.overflow = '';
     stopAnimationTweens();
     document.getElementById('quiz-sticky-cta').classList.add('hidden');
+
+    // Acessibilidade: devolve o foco a quem abriu o modal, se ainda existir no DOM.
+    if (modalPreviouslyFocusedEl && document.body.contains(modalPreviouslyFocusedEl)) {
+        try { modalPreviouslyFocusedEl.focus({ preventScroll: true }); } catch (e) { modalPreviouslyFocusedEl.focus(); }
+    }
+    modalPreviouslyFocusedEl = null;
 };
 
 // --- Intro Substep Controls ---
