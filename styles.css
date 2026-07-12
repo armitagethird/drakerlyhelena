@@ -682,3 +682,158 @@ body {
 }
 
 
+/* =========================================================================
+   ELEVAÇÃO EDITORIAL (2026-07-12)
+   Novos componentes autocontidos (não dependem do build Tailwind):
+   .desire-* (lista "Talvez você esteja aqui"), .step-* ("Como funciona"),
+   .cred-* ("Formação & Credenciais" do Sobre Mim).
+   ========================================================================= */
+
+/* Lista editorial de desejos — cada frase é um botão que abre o quiz */
+.desire-list { list-style: none; margin: 0; padding: 0; }
+.desire-item {
+    width: 100%;
+    display: flex;
+    align-items: baseline;
+    gap: 1.1rem;
+    padding: 1.3rem 0.25rem;
+    border: 0;
+    border-top: 1px solid rgba(224, 174, 190, 0.38); /* blush-300 */
+    background: transparent;
+    text-align: left;
+    cursor: pointer;
+    position: relative;
+    font: inherit;
+    transition: padding-left 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                background-color 0.35s ease;
+}
+.desire-list li:last-child .desire-item { border-bottom: 1px solid rgba(224, 174, 190, 0.38); }
+.desire-item::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 0;
+    height: 1px;
+    width: 0;
+    background: #A9637B; /* blush-500 */
+    transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.desire-num {
+    font-family: "Playfair Display", serif;
+    font-size: 0.85rem;
+    color: #C7889D; /* blush-400 */
+    flex-shrink: 0;
+    min-width: 1.6rem;
+    transition: color 0.3s ease;
+}
+.desire-text {
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    line-height: 1.45;
+    color: rgba(74, 59, 64, 0.88);
+    flex: 1;
+    margin: 0;
+}
+@media (min-width: 768px) { .desire-text { font-size: 1.35rem; } }
+.desire-arrow {
+    color: #A9637B;
+    font-size: 1.05rem;
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    flex-shrink: 0;
+}
+@media (hover: hover) and (pointer: fine) {
+    .desire-item:hover { padding-left: 1rem; background: rgba(255, 255, 255, 0.45); }
+    .desire-item:hover::before { width: 100%; }
+    .desire-item:hover .desire-num { color: #A9637B; }
+    .desire-item:hover .desire-arrow { opacity: 1; transform: none; }
+}
+.desire-item:focus-visible .desire-arrow { opacity: 1; transform: none; }
+
+/* Passos editoriais — "Como funciona" */
+.steps-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+    margin: 0 0 3.5rem;
+    padding: 0;
+}
+@media (min-width: 1024px) { .steps-grid { grid-template-columns: repeat(3, 1fr); gap: 2.5rem; } }
+.step-item {
+    position: relative;
+    border-top: 1px solid rgba(224, 174, 190, 0.4);
+    padding-top: 1.75rem;
+}
+.step-item::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 0;
+    height: 1px;
+    width: 2.5rem;
+    background: #A9637B;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@media (hover: hover) { .step-item:hover::before { width: 100%; } }
+.step-num {
+    display: block;
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: 2.6rem;
+    line-height: 1;
+    color: #E0AEBE; /* blush-300 */
+    margin-bottom: 1.1rem;
+    transition: color 0.35s ease;
+}
+.step-item:hover .step-num { color: #A9637B; }
+.step-title {
+    font-family: "Playfair Display", serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #4A3B40;
+    margin: 0 0 0.65rem;
+    line-height: 1.3;
+}
+.step-body {
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: rgba(74, 59, 64, 0.75);
+    margin: 0;
+    max-width: 36ch;
+}
+
+/* Credenciais — "Formação & Credenciais" (Sobre Mim) */
+.creds-grid { display: grid; grid-template-columns: 1fr; margin: 0; }
+@media (min-width: 768px) { .creds-grid { grid-template-columns: repeat(2, 1fr); column-gap: 3rem; } }
+.cred-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 1.1rem 0.25rem;
+    border-top: 1px solid rgba(224, 174, 190, 0.32);
+}
+.cred-label {
+    font-family: "Lato", sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #A9637B;
+    font-weight: 700;
+}
+.cred-value {
+    font-family: "Playfair Display", serif;
+    font-size: 1.05rem;
+    color: rgba(74, 59, 64, 0.9);
+    line-height: 1.45;
+    margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .desire-item, .desire-item::before, .desire-arrow,
+    .step-item::before, .step-num { transition: none; }
+}

@@ -136,17 +136,25 @@
 
         <div class="container mx-auto px-6 max-w-6xl relative z-10">
 
-            <!-- Hero -->
-            <div class="text-center mb-20">
-                <span class="text-xs tracking-[0.3em] text-blush-400 uppercase font-bold">Como cuidamos de você</span>
-                <h1 class="text-4xl md:text-6xl font-serif mt-4 text-charcoal leading-tight">
-                    Dois caminhos.<br>
-                    <span class="text-blush-500 italic">Um mesmo cuidado.</span>
-                </h1>
-                <div class="w-24 h-1 bg-blush-300 mx-auto mt-8 rounded-full"></div>
-                <p class="text-charcoal/70 font-light max-w-2xl mx-auto mt-8 text-base md:text-lg leading-relaxed">
-                    Você pode começar com uma consulta única, para entender o que está acontecendo no seu corpo. Ou seguir uma jornada de três meses, com a Dra. Kerly te acompanhando de perto — junto com nutricionista parceira e aulas de yoga para a vitalidade feminina.
-                </p>
+            <!-- Hero editorial (padrão da home) -->
+            <div class="grid grid-cols-12 gap-x-6 mb-16 md:mb-20">
+                <aside class="hidden lg:flex col-span-1 flex-col items-start gap-6 pt-2 metadata-rail">
+                    <span class="text-blush-500 font-serif text-sm tracking-wide">№ 01–02</span>
+                    <span class="hairline-vertical h-20"></span>
+                    <span class="text-[11px] tracking-[0.15em] uppercase text-charcoal/60 [writing-mode:vertical-rl] rotate-180">Consulta Integrativa</span>
+                    <span class="text-[11px] tracking-[0.15em] uppercase text-charcoal/60 [writing-mode:vertical-rl] rotate-180">Jornada · 3 meses</span>
+                </aside>
+                <div class="hidden lg:block col-span-1 col-start-2 -ml-3 hairline-vertical"></div>
+                <div class="col-span-12 lg:col-span-10 lg:col-start-3">
+                    <p class="text-[11px] tracking-[0.2em] uppercase text-charcoal/60 font-sans mb-3">Como cuidamos de você</p>
+                    <h1 class="font-serif font-bold text-charcoal text-[clamp(2.5rem,6vw,5.5rem)] leading-[1.05] tracking-[-0.02em] headline-editorial">
+                        <span class="block">Dois caminhos.</span>
+                        <span class="block"><em class="italic font-light text-blush-500">Um mesmo cuidado.</em></span>
+                    </h1>
+                    <p class="text-charcoal/70 font-light max-w-2xl mt-8 text-base md:text-lg leading-relaxed">
+                        Você pode começar com uma consulta única, para entender o que está acontecendo no seu corpo. Ou seguir uma jornada de três meses, com a Dra. Kerly te acompanhando de perto — junto com nutricionista parceira e aulas de yoga para a vitalidade feminina.
+                    </p>
+                </div>
             </div>
 
             <!-- Packages Grid -->
@@ -155,6 +163,7 @@
                 <!-- Package 1: Consulta Avulsa -->
                 <article class="relative glass rounded-3xl p-6 sm:p-8 md:p-10 border border-blush-100 shadow-sm hover:shadow-md transition-shadow flex flex-col">
                     <div class="mb-6">
+                        <span class="block text-blush-400 font-serif text-sm tracking-wide mb-2">№ 01</span>
                         <span class="text-[10px] uppercase tracking-[0.2em] text-blush-400 font-bold">O ponto de partida</span>
                         <h2 class="text-3xl md:text-4xl font-serif mt-3 text-charcoal leading-tight">
                             Consulta<br><span class="italic text-blush-500">Integrativa</span>
@@ -222,6 +231,7 @@
                     </div>
 
                     <div class="relative mb-6 pt-8 sm:pt-0">
+                        <span class="block text-blush-500 font-serif text-sm tracking-wide mb-2">№ 02</span>
                         <span class="text-[10px] uppercase tracking-[0.2em] text-blush-500 font-bold">Acompanhamento de 3 meses</span>
                         <h2 class="text-3xl md:text-4xl font-serif mt-3 text-charcoal leading-tight">
                             Jornada<br><span class="italic text-blush-500">Integrativa</span>

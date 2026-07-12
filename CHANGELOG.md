@@ -6,6 +6,41 @@ Registro das atualizações do site (`drakerlyhelena.com.br`). Entradas mais rec
 
 ---
 
+## [2026-07-12] Elevação de design: home editorial, "Como funciona", pacotes e 404
+
+Rodada de design (sem mudança de conteúdo clínico): a home ganha a seção "Como funciona", a lista de desejos vira formato editorial clicável, o Sobre Mim ganha bloco de credenciais, o hero de `/pacotes/` adota o padrão editorial da home e a `404.html` foi personalizada.
+
+### Home (`index.html`)
+- **"Talvez você esteja aqui porque..."**: o grid de 6 cards idênticos virou lista editorial com hairlines (numeração serif 01–06, em itálico). Cada frase agora é um **botão que abre o quiz** (`openSymptomModal()`), com evento `desire_click` no GA4 e microinteração de hover (hairline cresce, seta aparece).
+- **Nova seção "Como funciona" (№ 03)**: 3 passos (WhatsApp → consulta de 60–90 min → plano por escrito + Jornada), no padrão editorial com rail vertical, entre "Para quem é este cuidado" e "A abordagem". CTAs: WhatsApp + `/pacotes/`.
+- **"Formação & Credenciais"** no fim do Sobre Mim (E-E-A-T): 4 itens com fatos já publicados no site (CRM/RQE, medicina integrativa, Yoga Sivananda, atendimento). Itens adicionais (residência, pós, tempo de prática) ficaram como RASCUNHO em comentário HTML — **aprovar com a Doutora antes de publicar**.
+- Corrigido `hover:bg-blush-600` no CTA do hero (cor inexistente no tema; hover não fazia nada) → `hover:bg-blush-400`.
+
+### Pacotes (`pacotes/index.html`)
+- Hero redesenhado no padrão editorial da home: rail vertical (№ 01–02, "Consulta Integrativa" / "Jornada · 3 meses"), headline em `clamp` com itálico blush e hairlines no lugar da barra sólida.
+- Cards ganharam numeração editorial (№ 01 Consulta, № 02 Jornada).
+
+### FAQ / Privacy / Yoga
+- FAQ: headline com itálico blush ("Perguntas *frequentes.*") e hairline no lugar da barra sólida; © 2024 → 2026.
+- Privacy: eyebrow "LGPD · Transparência", headline com itálico blush; removidas classes `prose` mortas (plugin não incluído no build).
+- Yoga: © 2024 → 2026 (tema dourado mantido como sub-marca, sem alterações).
+
+### 404 (`404.html`)
+- Página personalizada no padrão editorial: "Erro · № 404", foto em moldura orgânica com card "Pausa e Reconexão", links rápidos (Início/Pacotes/FAQ/Yoga), CTA de WhatsApp e halos suaves de fundo.
+
+### CSS
+- Novos componentes autocontidos no **`styles.css`** (`.desire-*`, `.step-*`, `.cred-*`), com `prefers-reduced-motion` respeitado — **não dependem do build Tailwind**.
+- Verificação automatizada: todas as classes Tailwind usadas nas 6 páginas existem no `output.css` compilado atual (nenhuma classe nova fora do conjunto compilado). Ainda assim, rodar `npm run build:css` antes do próximo deploy é recomendado.
+
+### Não alterado (garantias)
+- Quiz/questionário → Google Sheets: nenhum ID, campo ou fluxo do modal (`symptom-modal`, `quiz-*`) foi tocado.
+- Nenhum valor de consulta exibido; nenhuma menção a ortomolecular.
+
+### Arquivos alterados
+- `index.html`, `pacotes/index.html`, `faq/index.html`, `privacy/index.html`, `yoga/index.html`, `404.html`, `styles.css`, `CHANGELOG.md`.
+
+---
+
 ## [2026-07-12] Correções críticas: paleta unificada, analytics e SEO técnico
 
 Correção de 5 problemas técnicos identificados em auditoria: paleta de cores divergente em duas páginas, analytics quebrado, sitemap incompleto e sinal de preço residual no JSON-LD.
