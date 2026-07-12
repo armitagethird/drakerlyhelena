@@ -4,26 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#FDFCFB">
 
-    <!-- ANALYTICS: ver instruções em index.html. Descomentar quando tiver as IDs. -->
-    <!--
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GSWCEYS7QB"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX');
+      gtag('config', 'G-GSWCEYS7QB', { anonymize_ip: true });
     </script>
-    <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "TAG_ID");
-    </script>
-    -->
 
-    <title>Perguntas Frequentes sobre Medicina Integrativa | Dra. Kerly Helena</title>
+    <title>FAQ - Medicina Integrativa em São Luís | Dra. Kerly Helena</title>
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/assets/Favicon/Favicon%20Kerly.png">
     <meta name="description"
@@ -37,16 +29,19 @@
     <meta property="og:locale" content="pt_BR">
     <meta property="og:site_name" content="Dra. Kerly Helena - Ginecologia Integrativa">
     <meta property="og:url" content="https://drakerlyhelena.com.br/faq/">
-    <meta property="og:title" content="Perguntas Frequentes sobre Medicina Integrativa | Dra. Kerly Helena">
+    <meta property="og:title" content="FAQ - Medicina Integrativa em São Luís | Dra. Kerly Helena">
     <meta property="og:description" content="Respostas às dúvidas mais comuns sobre medicina integrativa, consulta, menopausa e equilíbrio hormonal com a Dra. Kerly Helena.">
-    <meta property="og:image" content="https://drakerlyhelena.com.br/assets/_DSC2884.webp">
+    <meta property="og:image" content="https://drakerlyhelena.com.br/assets/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:alt" content="Dra. Kerly Helena - Médica Ginecologista Integrativa">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="FAQ - Medicina Integrativa | Dra. Kerly Helena">
+    <meta name="twitter:title" content="FAQ - Medicina Integrativa em São Luís | Dra. Kerly Helena">
     <meta name="twitter:description" content="Respostas às dúvidas mais comuns sobre medicina integrativa, consulta e menopausa.">
-    <meta name="twitter:image" content="https://drakerlyhelena.com.br/assets/_DSC2884.webp">
+    <meta name="twitter:image" content="https://drakerlyhelena.com.br/assets/og-image.jpg">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -183,7 +178,7 @@
                     sua Consulta</a>
             </nav>
             <button class="md:hidden text-charcoal focus:outline-none" id="mobile-menu-btn"
-                aria-label="Abrir menu de navegação">
+                aria-label="Abrir menu de navegação" aria-controls="mobile-menu" aria-expanded="false">
                 <i data-feather="menu"></i>
             </button>
         </div>
@@ -644,7 +639,6 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             feather.replace();
-            // Floating menu scroll-show logic now lives in /main.js (#floating-container).
         });
     </script>
     <script src="/glass.js" defer></script>

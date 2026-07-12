@@ -96,56 +96,13 @@ body {
     }
 }
 
-/* Marquee Animation */
-@keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
-
-.animate-marquee {
-    display: flex;
-    white-space: nowrap;
-    animation: marquee 10s linear infinite;
-    will-change: transform;
-}
-
-/* Fast Pulse Animation */
-@keyframes pulse-fast {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.1; }
-}
-
-.animate-pulse-fast {
-    animation: pulse-fast 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-/* Golden Glow Text */
-.text-golden-glow {
-    background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    text-shadow: 0 0 15px rgba(252, 246, 186, 0.6), 0 0 30px rgba(252, 246, 186, 0.3);
-    animation: shine 4s linear infinite;
-    display: inline-block;
-}
-
-@keyframes shine {
-    to {
-      background-position: 200% center;
-    }
-}
-
 /* --- Global Variables --- */
 :root {
-    --sage: #8ca693;
-    --terracotta: #c67d64;
     --blush-500: #A9637B;
-    --blush-400: #d4a395;
-    --blush-100: #f5ebe7;
-    --charcoal: #3d3330;
-    --sand-100: #fdfaf8;
+    --blush-400: #C7889D;
+    --blush-100: #F9EAEF;
+    --charcoal: #4A3B40;
+    --sand-100: #FDFCFB;
 
     /* --- Liquid Glass (iOS 26) design tokens --- */
     --glass-bg:        rgba(253, 252, 251, 0.55);  /* header / pílula (sand) */
@@ -215,6 +172,13 @@ body {
                 background .42s cubic-bezier(0.4, 0, 0.2, 1),
                 box-shadow .42s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: max-width;
+}
+/* Mobile: mesmo raio do dropdown do burger (rounded-3xl = 24px) — evita o
+   header em "oval" descolado do painel do menu abaixo do breakpoint md. */
+@media (max-width: 767px) {
+    .glass--header {
+        border-radius: 1.5rem;
+    }
 }
 .glass--header.is-scrolled {           /* "contrai" ao rolar → cápsula mais fina */
     max-width: 38rem;                  /* cabe logo + nome + CTA numa linha; menor que o hero */
@@ -311,18 +275,11 @@ body {
     .glass::after { display: none; }
 }
 
-/* Background soft variants for result cards */
-.bg-sage-soft { background-color: rgba(140, 166, 147, 0.1); color: var(--sage); }
-.bg-terracotta-soft { background-color: rgba(198, 125, 100, 0.1); color: var(--terracotta); }
-.bg-blush-soft { background-color: rgba(212, 163, 149, 0.1); color: var(--blush-500); }
-
 /* --- Health Quiz & Animation Styles --- */
 
 /* Initial states for the blooming-rose animation. GSAP drives the actual
    animation in main.js. We only set "frame zero" here so there's no flicker. */
 .anim-aura { opacity: 0; }
-.anim-ring { opacity: 0; }
-.anim-line { stroke-dasharray: 1; stroke-dashoffset: 1; }
 .anim-petal-outer path,
 .anim-petal-inner path {
     transform-box: fill-box;
@@ -332,12 +289,6 @@ body {
 }
 .anim-rose-pistil { opacity: 0; }
 .anim-particle { opacity: 0; }
-
-/* Steady-state breathing for the figure once everything is drawn */
-.anim-figure {
-    transform-origin: 160px 235px;
-    transform-box: view-box;
-}
 
 #quiz-questions .option-btn {
     width: 100%;
@@ -378,23 +329,10 @@ body {
     to { transform: translateY(0); opacity: 1; }
 }
 
-/* Result Dimension Badge */
-.dimension-badge {
-    padding: 0.25rem 0.75rem;
-    border-radius: 9999px;
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-}
-
 /* Extra padding for modal content to avoid cut-off */
 .pb-modal-safe {
     padding-bottom: 4rem !important;
 }
-
-/* Custom colors for animation */
-.text-terracotta { color: var(--terracotta); }
 
 /* --- Acessibilidade --- */
 

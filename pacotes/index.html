@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#FDFCFB">
 
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GSWCEYS7QB"></script>
@@ -26,7 +27,16 @@
     <meta property="og:url" content="https://drakerlyhelena.com.br/pacotes/">
     <meta property="og:title" content="Pacotes — Dra. Kerly Helena">
     <meta property="og:description" content="Consulta Integrativa avulsa ou Jornada Integrativa de 3 meses: escolha o cuidado que faz sentido pra você.">
-    <meta property="og:image" content="https://drakerlyhelena.com.br/assets/_DSC2884.webp">
+    <meta property="og:image" content="https://drakerlyhelena.com.br/assets/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/jpeg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pacotes — Dra. Kerly Helena">
+    <meta name="twitter:description" content="Consulta Integrativa avulsa ou Jornada Integrativa de 3 meses: escolha o cuidado que faz sentido pra você.">
+    <meta name="twitter:image" content="https://drakerlyhelena.com.br/assets/og-image.jpg">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,7 +52,6 @@
       "name": "Clínica Dra. Kerly Helena - Ginecologia Integrativa",
       "url": "https://drakerlyhelena.com.br/pacotes/",
       "telephone": "+55-98-98153-2153",
-      "priceRange": "$$$",
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Pacotes de Atendimento",
@@ -55,7 +64,6 @@
           {
             "@type": "Offer",
             "itemOffered": { "@type": "MedicalProcedure", "name": "Jornada Integrativa (3 meses)" },
-            "priceSpecification": { "@type": "PriceSpecification", "priceCurrency": "BRL", "valueAddedTaxIncluded": true },
             "description": "Acompanhamento de 3 meses: consulta inicial, 2 retornos, WhatsApp direto com a médica, 1 consulta inicial + 1 retorno com nutricionista e 4 aulas de yoga."
           }
         ]
@@ -63,28 +71,11 @@
     }
     </script>
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'sand-100': '#FAF6F1', 'sand-200': '#F2EAE0',
-                        'nude-100': '#EFE3D5', 'nude-200': '#E5D2BD', 'nude-300': '#D4B89A',
-                        'blush-100': '#F0D5C9', 'blush-200': '#E5B4A1',
-                        'blush-300': '#D89A85', 'blush-400': '#C97B62', 'blush-500': '#B5664E',
-                        'charcoal': '#2C2622'
-                    },
-                    fontFamily: {
-                        sans: ['Lato', 'sans-serif'],
-                        serif: ['"Playfair Display"', 'serif']
-                    }
-                }
-            }
-        };
-    </script>
     <script src="https://unpkg.com/feather-icons" defer></script>
     <link rel="stylesheet" href="/styles.css">
+
+    <!-- Tailwind CSS (compiled) -->
+    <link rel="stylesheet" href="/output.css">
 </head>
 
 <body class="bg-sand-100 text-charcoal font-sans antialiased overflow-x-hidden">
@@ -115,7 +106,7 @@
                 <a href="https://wa.me/5598981532153" target="_blank" rel="noopener noreferrer"
                     class="glass glass--cta nav-cta text-white px-6 py-2.5 rounded-full transition-colors normal-case tracking-normal font-medium">Agende sua Consulta</a>
             </nav>
-            <button class="md:hidden text-charcoal focus:outline-none" id="mobile-menu-btn" aria-label="Abrir menu de navegação">
+            <button class="md:hidden text-charcoal focus:outline-none" id="mobile-menu-btn" aria-label="Abrir menu de navegação" aria-controls="mobile-menu" aria-expanded="false">
                 <i data-feather="menu"></i>
             </button>
         </div>
@@ -210,14 +201,14 @@
                     <a href="https://wa.me/5598981532153?text=Olá!%20Gostaria%20de%20agendar%20a%20Consulta%20Integrativa%20avulsa."
                         target="_blank" rel="noopener noreferrer"
                         onclick="trackPackageClick('avulsa')"
-                        class="block text-center bg-white hover:bg-blush-50 text-blush-500 border-2 border-blush-500 px-6 py-4 rounded-full transition-all duration-300 font-medium">
+                        class="block text-center bg-white hover:bg-blush-100 text-blush-500 border-2 border-blush-500 px-6 py-4 rounded-full transition-all duration-300 font-medium">
                         Agendar consulta avulsa
                     </a>
                 </article>
 
                 <!-- Package 2: Jornada Integrativa (highlighted) -->
                 <article id="jornada" class="relative rounded-3xl p-6 sm:p-8 md:p-10 shadow-xl flex flex-col overflow-hidden scroll-mt-32"
-                    style="background: linear-gradient(135deg, #F9EAEF 0%, #FBF5F7 50%, #FDFCFB 100%); border: 2px solid #D89A85;">
+                    style="background: linear-gradient(135deg, #F9EAEF 0%, #FBF5F7 50%, #FDFCFB 100%); border: 2px solid #E0AEBE;">
 
                     <div class="absolute -top-12 -right-12 w-44 h-44 bg-blush-300/25 rounded-full blur-3xl pointer-events-none"></div>
                     <div class="absolute -bottom-16 -left-16 w-44 h-44 bg-nude-300/30 rounded-full blur-3xl pointer-events-none"></div>
@@ -437,7 +428,9 @@
             if (btn && menu) {
                 btn.addEventListener('click', () => {
                     menu.classList.toggle('hidden');
-                    swapFeatherIcon(btn, menu.classList.contains('hidden') ? 'menu' : 'x');
+                    const isOpen = !menu.classList.contains('hidden');
+                    swapFeatherIcon(btn, isOpen ? 'x' : 'menu');
+                    btn.setAttribute('aria-expanded', String(isOpen));
                 });
             }
 

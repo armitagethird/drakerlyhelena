@@ -94,48 +94,52 @@ document.addEventListener("DOMContentLoaded", (event) => {
         }
     } catch (e) { /* ignore */ }
 
-    // Register ScrollTrigger
-    gsap.registerPlugin(ScrollTrigger);
+    // GSAP-dependent enhancements: skip gracefully if the CDN failed/was blocked,
+    // so mobile menu, smooth scroll, footer year and analytics below still work.
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        // Register ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
 
-    // Navbar scroll-state (.is-scrolled) é gerido por glass.js (header pílula).
+        // Navbar scroll-state (.is-scrolled) é gerido por glass.js (header pílula).
 
-    // Hero stagger (above-the-fold; runs once on load, not via ScrollTrigger)
-    initHeroStagger();
+        // Hero stagger (above-the-fold; runs once on load, not via ScrollTrigger)
+        initHeroStagger();
 
-    // Reveal Elements on Scroll with advanced, satisfying physics
-    const revealElements = document.querySelectorAll('.gs-reveal');
+        // Reveal Elements on Scroll with advanced, satisfying physics
+        const revealElements = document.querySelectorAll('.gs-reveal');
 
-    revealElements.forEach((elem) => {
-        // Find if element has an image to add a subtle scale effect
-        const img = elem.querySelector('img');
+        revealElements.forEach((elem) => {
+            // Find if element has an image to add a subtle scale effect
+            const img = elem.querySelector('img');
 
-        let tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: elem,
-                start: "top 85%", // Trigger when top of element hits 85% of viewport
-                toggleActions: "play none none reverse"
+            let tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: elem,
+                    start: "top 85%", // Trigger when top of element hits 85% of viewport
+                    toggleActions: "play none none reverse"
+                }
+            });
+
+            tl.fromTo(elem,
+                { y: 60, opacity: 0 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    duration: 1.4,
+                    ease: "power4.out",
+                }
+            );
+
+            // If there's an image inside, give it a beautiful zoom-out reveal
+            if (img) {
+                tl.fromTo(img,
+                    { scale: 1.15 },
+                    { scale: 1, duration: 1.8, ease: "power2.out" },
+                    "-=1.4" // Start at the same time
+                );
             }
         });
-
-        tl.fromTo(elem,
-            { y: 60, opacity: 0 },
-            {
-                y: 0,
-                opacity: 1,
-                duration: 1.4,
-                ease: "power4.out",
-            }
-        );
-
-        // If there's an image inside, give it a beautiful zoom-out reveal
-        if (img) {
-            tl.fromTo(img,
-                { scale: 1.15 },
-                { scale: 1, duration: 1.8, ease: "power2.out" },
-                "-=1.4" // Start at the same time
-            );
-        }
-    });
+    }
 
     // Mobile Menu Toggle
     const mobileBtn = document.getElementById('mobile-menu-btn');
@@ -148,8 +152,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
             // Adjust icon
             if (mobileMenu.classList.contains('hidden')) {
                 mobileBtn.innerHTML = '<i data-feather="menu"></i>';
+                mobileBtn.setAttribute('aria-expanded', 'false');
             } else {
                 mobileBtn.innerHTML = '<i data-feather="x"></i>';
+                mobileBtn.setAttribute('aria-expanded', 'true');
             }
             feather.replace();
         });
@@ -160,6 +166,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
                 mobileBtn.innerHTML = '<i data-feather="menu"></i>';
+                mobileBtn.setAttribute('aria-expanded', 'false');
                 feather.replace();
             });
         });
@@ -524,6 +531,8 @@ function stopAnimationTweens() {
 }
 
 function runHealthFingerprint() {
+    if (typeof gsap === 'undefined') { showResults(); return; }
+
     const textEl = document.getElementById('animation-text');
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -756,7 +765,18 @@ function transitionQuizStage(fromId, toId, callback) {
     const fromEl = document.getElementById(fromId);
     const toEl = document.getElementById(toId);
     const modalContent = document.getElementById('symptom-modal-content');
-    
+
+    if (typeof gsap === 'undefined') {
+        // No animation library: swap stages instantly instead of breaking the quiz.
+        fromEl.classList.add('hidden');
+        toEl.classList.remove('hidden');
+        const scrollArea = document.getElementById('quiz-scroll-area');
+        if (scrollArea) scrollArea.scrollTop = 0;
+        if (modalContent) modalContent.scrollTop = 0;
+        if (callback) callback();
+        return;
+    }
+
     gsap.to(fromEl, {
         opacity: 0, y: -20, duration: 0.4, ease: "power2.in",
         onComplete: () => {
@@ -773,72 +793,4 @@ function transitionQuizStage(fromId, toId, callback) {
             if (callback) callback();
         }
     });
-}
-
-
-
-window.toggleFloatingMenu = function () {
-    const menu = document.getElementById('floating-menu');
-    const icon = document.getElementById('floating-btn-icon');
-
-    if (menu.classList.contains('hidden')) {
-        menu.classList.remove('hidden');
-        setTimeout(() => {
-            menu.classList.remove('opacity-0');
-            menu.classList.add('opacity-100');
-        }, 10);
-        icon.setAttribute('data-feather', 'x');
-        feather.replace();
-    } else {
-        menu.classList.remove('opacity-100');
-        menu.classList.add('opacity-0');
-        setTimeout(() => {
-            menu.classList.add('hidden');
-        }, 300);
-        icon.setAttribute('data-feather', 'message-circle');
-        feather.replace();
-    }
-};
-
-// Close floating menu when clicking outside
-document.addEventListener('click', (event) => {
-    const menu = document.getElementById('floating-menu');
-    const btn = document.getElementById('floating-main-btn');
-    if (menu && btn && !menu.classList.contains('hidden')) {
-        if (!menu.contains(event.target) && !btn.contains(event.target)) {
-            window.toggleFloatingMenu();
-        }
-    }
-});
-
-// Floating button visibility on scroll.
-// Show after scrolling past half the viewport, but HIDE again when the
-// contact / footer section is on screen (those areas already have their own
-// CTAs and the floating button was overlapping content).
-const floatingContainer = document.getElementById('floating-container');
-if (floatingContainer) {
-    const hideZoneSelectors = ['#location', 'footer'];
-    const isNearHideZone = () => {
-        return hideZoneSelectors.some(sel => {
-            const el = document.querySelector(sel);
-            if (!el) return false;
-            const rect = el.getBoundingClientRect();
-            // Hide once the section's top reaches 70% of viewport
-            return rect.top < window.innerHeight * 0.7;
-        });
-    };
-    const updateFloating = () => {
-        const pastHero = window.scrollY > window.innerHeight * 0.5;
-        if (pastHero && !isNearHideZone()) {
-            floatingContainer.classList.remove('translate-y-32', 'opacity-0', 'pointer-events-none');
-        } else {
-            floatingContainer.classList.add('translate-y-32', 'opacity-0', 'pointer-events-none');
-            const menu = document.getElementById('floating-menu');
-            if (menu && !menu.classList.contains('hidden')) {
-                window.toggleFloatingMenu();
-            }
-        }
-    };
-    window.addEventListener('scroll', updateFloating, { passive: true });
-    window.addEventListener('resize', updateFloating);
 }

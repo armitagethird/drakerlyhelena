@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#FDFCFB">
 
     <!-- =========================================================
          ANALYTICS — Eventos custom (whatsapp_click, quiz_open, quiz_start,
@@ -19,7 +20,8 @@
       gtag('js', new Date());
       gtag('config', 'G-GSWCEYS7QB', { anonymize_ip: true });
     </script>
-    <!-- TODO: substituir CLARITY_TAG_ID pela tag real do Clarity -->
+    <!-- Desativado: substituir CLARITY_TAG_ID / META_PIXEL_ID pelos IDs reais e descomentar -->
+    <!--
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -27,7 +29,6 @@
             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
         })(window, document, "clarity", "script", "CLARITY_TAG_ID");
     </script>
-    <!-- TODO: substituir META_PIXEL_ID pelo Pixel ID real (15-16 dígitos) -->
     <script>
       !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
       n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
@@ -39,8 +40,9 @@
     </script>
     <noscript><img height="1" width="1" style="display:none"
       src="https://www.facebook.com/tr?id=META_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+    -->
 
-    <title>Dra. Kerly Helena - Ginecologia Integrativa</title>
+    <title>Dra. Kerly Helena | Ginecologia Integrativa em São Luís - MA</title>
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/Favicon/Favicon%20Kerly.png">
     <!-- Google Fonts -->
@@ -51,7 +53,7 @@
         rel="stylesheet">
     <!-- SEO Meta Description -->
     <meta name="description"
-        content="Dra. Kerly Helena é médica ginecologista com abordagem em medicina integrativa em São Luís – MA. Tratamento para menopausa, equilíbrio hormonal e saúde feminina com visão integrativa.">
+        content="Dra. Kerly Helena é ginecologista com abordagem integrativa em São Luís - MA. Cuidado para menopausa, equilíbrio hormonal e saúde feminina com escuta atenta.">
     <meta name="author" content="Dra. Kerly Helena">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://drakerlyhelena.com.br/">
@@ -63,18 +65,22 @@
     <meta property="og:url" content="https://drakerlyhelena.com.br/">
     <meta property="og:title" content="Dra. Kerly Helena - Ginecologia Integrativa em São Luís - MA">
     <meta property="og:description" content="Cuidado integrativo para a saúde da mulher: menopausa, equilíbrio hormonal e bem-estar com escuta atenta. Atendimento em São Luís - MA.">
-    <!-- TODO: criar imagem OG dedicada 1200x630 em assets/og-image.jpg -->
-    <meta property="og:image" content="https://drakerlyhelena.com.br/assets/_DSC2884.webp">
+    <meta property="og:image" content="https://drakerlyhelena.com.br/assets/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:alt" content="Dra. Kerly Helena - Médica Ginecologista Integrativa">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Dra. Kerly Helena - Ginecologia Integrativa em São Luís - MA">
     <meta name="twitter:description" content="Cuidado integrativo para a saúde da mulher: menopausa, equilíbrio hormonal e bem-estar com escuta atenta.">
-    <meta name="twitter:image" content="https://drakerlyhelena.com.br/assets/_DSC2884.webp">
+    <meta name="twitter:image" content="https://drakerlyhelena.com.br/assets/og-image.jpg">
 
     <!-- Preload do LCP (imagem do hero) -->
-    <link rel="preload" as="image" href="assets/_DSC2884.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="assets/_DSC2884.webp"
+        imagesrcset="assets/_DSC2884-640.webp 640w, assets/_DSC2884-960.webp 960w, assets/_DSC2884-1280.webp 1280w, assets/_DSC2884.webp 1920w"
+        imagesizes="(min-width:1024px) 30vw, (min-width:640px) 384px, calc(100vw - 3rem)" fetchpriority="high">
 
     <!-- Structured Data: Physician + MedicalClinic -->
     <script type="application/ld+json">
@@ -153,17 +159,6 @@
       "url": "https://drakerlyhelena.com.br/",
       "image": "https://drakerlyhelena.com.br/assets/_DSC4964.webp",
       "telephone": "+55-98-98153-2153",
-      "priceRange": "$$$",
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Serviços",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": { "@type": "MedicalProcedure", "name": "Consulta Ginecológica Integrativa" }
-          }
-        ]
-      },
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Av. Coronel Colares Moreira, Sala 310 - Condomínio Edifício Monumental",
@@ -220,7 +215,7 @@
                     sua Consulta</a>
             </nav>
             <button class="md:hidden text-charcoal focus:outline-none" id="mobile-menu-btn"
-                aria-label="Abrir menu de navegação">
+                aria-label="Abrir menu de navegação" aria-controls="mobile-menu" aria-expanded="false">
                 <i data-feather="menu"></i>
             </button>
         </div>
@@ -278,13 +273,6 @@
 
     <!-- Main Content -->
     <main>
-        <!-- Yoga Marquee Banner
-        <a href="/yoga/" class="block w-full bg-[#3d3330] py-4 overflow-hidden border-b border-[#D4AF37]/30 hover:bg-[#2a2321] transition-colors relative z-40 mt-[73px] md:mt-[88px] shadow-lg">
-            <div class="flex items-center justify-center font-serif text-lg md:text-xl tracking-wider text-center animate-pulse-fast">
-                <span class="text-golden-glow px-4">✨ YOGA PARA A VITALIDADE ÍNTIMA FEMININA - 04/04 às 8h30 - INSCREVA-SE AGORA ✨</span>
-            </div>
-        </a> -->
-
         <!-- Hero Section — Editorial Sereno -->
         <section id="hero"
             class="relative bg-sand-100 mt-[73px] md:mt-[88px] min-h-[calc(100vh-73px)] md:min-h-[calc(100vh-88px)] overflow-hidden">
@@ -305,7 +293,10 @@
                 <!-- Foto com moldura orgânica + card flutuante refinado -->
                 <figure class="col-span-12 lg:col-span-4 lg:col-start-9 order-1 lg:order-2 relative max-w-sm mx-auto w-full lg:max-w-none lg:mx-0 lg:-mt-5 mb-12 lg:mb-0 gs-hero-photo">
                     <div class="relative aspect-[4/5] w-full overflow-hidden organic-blob-1 shadow-2xl">
-                        <img src="assets/_DSC2884.webp" alt="Dra. Kerly Helena, médica ginecologista integrativa, em consultório"
+                        <img src="assets/_DSC2884.webp"
+                            srcset="assets/_DSC2884-640.webp 640w, assets/_DSC2884-960.webp 960w, assets/_DSC2884-1280.webp 1280w, assets/_DSC2884.webp 1920w"
+                            sizes="(min-width:1024px) 30vw, (min-width:640px) 384px, calc(100vw - 3rem)"
+                            alt="Dra. Kerly Helena, médica ginecologista integrativa, em consultório"
                             width="1920" height="2400" fetchpriority="high"
                             class="w-full h-full object-cover object-[center_25%]">
                     </div>
@@ -1159,7 +1150,7 @@
     </footer>
 
     <!-- Symptom Questionnaire Modal -->
-    <div id="symptom-modal"
+    <div id="symptom-modal" role="dialog" aria-modal="true" aria-labelledby="quiz-welcome-title"
         class="fixed inset-0 z-[100] hidden items-center justify-center opacity-0 transition-opacity duration-300 p-4 sm:p-6">
         <!-- Overlay -->
         <div class="absolute inset-0 bg-charcoal/40 backdrop-blur-sm" onclick="closeSymptomModal()"></div>
@@ -1182,7 +1173,7 @@
                 <div class="inline-flex items-center justify-center w-16 h-16 bg-nude-300/50 text-blush-500 rounded-full mx-auto mb-4">
                     <i data-feather="sun" class="w-8 h-8 stroke-[1.5]"></i>
                 </div>
-                <h2 class="text-3xl md:text-4xl font-serif text-charcoal leading-tight mb-3">
+                <h2 id="quiz-welcome-title" class="text-3xl md:text-4xl font-serif text-charcoal leading-tight mb-3">
                     Vamos descobrir<br><span class="text-blush-500 italic">o que seu corpo está pedindo.</span>
                 </h2>
                 <p class="text-charcoal/80 font-light max-w-md mx-auto mb-2">
