@@ -6,6 +6,56 @@ Registro das atualizações do site (`drakerlyhelena.com.br`). Entradas mais rec
 
 ---
 
+## [2026-07-14] Convênio APCEF, novas páginas de SEO e acabamentos técnicos (sitemap, favicon, 404, imagens)
+
+Rodada de expansão do site: 3 páginas novas de conteúdo/SEO, o Convênio APCEF passa a ser o único convênio divulgado em todo o site (substituindo o antigo "atendimento particular, somente"), horários de atendimento tornam-se visíveis em todas as páginas, schema JSON-LD novo é adicionado e o sitemap/favicon/404 são atualizados para acompanhar.
+
+### Novas páginas
+- **`medicina-integrativa/index.html`** — página-pilar de SEO sobre a abordagem de medicina integrativa da Dra. Kerly (conteúdo, FAQ própria, `BreadcrumbList` + `MedicalWebPage` no JSON-LD).
+- **`menopausa/index.html`** — página dedicada a menopausa e climatério (`BreadcrumbList` + `MedicalWebPage`).
+- **`convenio-apcef/index.html`** — página dedicada ao Convênio APCEF (APCEF Mais Saúde): quem pode usar, como agendar, o que levar; inclui a ressalva "não como plano de saúde regulamentado pela ANS" (`BreadcrumbList` + `MedicalWebPage`).
+- As 3 seguem o padrão editorial do site (header/footer, GA4, `rel="canonical"`, Tailwind compilado) e estão linkadas a partir da home (nav, rodapé, blocos de conteúdo) e cruzadas entre si.
+
+### Convênio APCEF em todo o site
+- A frase antiga "Particular, somente com hora marcada" foi substituída, em todas as páginas, por variações de "Particular e Convênio APCEF (APCEF Mais Saúde, rede credenciada da APCEF/MA), exclusivamente com hora marcada" — o Convênio APCEF é o único convênio divulgado.
+- Links para `/convenio-apcef/` adicionados em `index.html`, `faq/index.html`, `pacotes/index.html`, `yoga/index.html`, `medicina-integrativa/index.html`, `menopausa/index.html` e, nesta rodada, também em `404.html`.
+
+### Horários visíveis + schema
+- Horário "Segunda a sexta, das 08h às 18h — exclusivamente com hora marcada" tornou-se visível em todas as páginas (faixa de rodapé "Seg a sex, 08h–18h..." e blocos dedicados de "Como agendar"/localização).
+- `openingHoursSpecification` (Seg–Sex, 08:00–18:00) adicionado ao JSON-LD `MedicalClinic` de `index.html`.
+
+### Schema novo (JSON-LD)
+- `index.html`: `GeoCoordinates` e `hasMap` no `MedicalClinic`, e um bloco `WebSite` novo.
+- `yoga/index.html`: bloco `Course` novo.
+- `convenio-apcef/`, `faq/`, `medicina-integrativa/`, `menopausa/`, `pacotes/`, `yoga/`: `BreadcrumbList` novo (todas as páginas internas, exceto a home).
+- `convenio-apcef/`, `medicina-integrativa/`, `menopausa/`: `MedicalWebPage` novo.
+
+### FAQ
+- 5 novas perguntas locais em `faq/index.html` (convênio, horários, localização), totalizando 13 perguntas no schema `FAQPage`.
+
+### Sitemap, favicon, 404 e imagens (esta rodada)
+- **`sitemap.xml`**: reescrito com as 7 URLs indexáveis — home (1.0), medicina-integrativa e pacotes (0.9), menopausa e convenio-apcef (0.8), faq (0.7), yoga (0.6) —, todas com `lastmod` `2026-07-14` e `changefreq` `monthly`. `/privacy/` removida do sitemap (página é `noindex`, não deve constar).
+- **`assets/favicon.png`**: reduzido de 512×512 (~77 KB) para 192×192 com paleta indexada (~8,1 KB), substituído in-place (mesmo nome/caminho). `apple-touch-icon.png` não foi alterado.
+- **`404.html`**: adicionado link "Convênio APCEF" → `/convenio-apcef/` na lista de links úteis existente (Início · Pacotes · FAQ · Yoga · **Convênio APCEF**), seguindo o mesmo padrão de URLs absolutas (root-relative, de propósito nesta página) e classes dos links vizinhos.
+- **`assets/ambiente/`**: geradas as variantes responsivas que faltavam do carrossel do Yoga — `_DSC4972-640/-960/-1280.webp` e `_DSC4982-640/-960/-1280.webp` (WebP, qualidade 80) — completando o `srcset` já referenciado em `yoga/index.html`.
+
+### Verificação realizada
+- `npm run build:css` sem erros; classes Tailwind exclusivas das páginas novas confirmadas no `output.css` compilado.
+- Todos os blocos `application/ld+json` das 7 páginas indexáveis revalidados com `JSON.parse`.
+- Checagem de links internos (`href="/..."`) e de assets (`src`/`srcset`/`href` com `../`) confirmando que todos os arquivos referenciados existem, incluindo os 6 novos WebP do Yoga.
+- Varredura confirmou zero ocorrências de "ortomolecular", "R$", "garantimos", "resultado garantido", "sem riscos" e da frase antiga "Particular, somente com hora marcada" (o padrão "a melhor" tem 1 falso positivo pré-existente em `privacy/index.html` — "...para **melhor**ar continuamente nosso conteúdo..." —, fora do escopo desta rodada e sem relação com promessa comercial). "Plano de saúde" ocorre exatamente 1 vez, em `convenio-apcef/index.html`, na ressalva "não como plano de saúde regulamentado pela ANS".
+- GA4 (`G-GSWCEYS7QB`) e `rel="canonical"` confirmados nas 7 páginas indexáveis; placeholders de analytics (`CLARITY_TAG_ID`/`META_PIXEL_ID`) seguem apenas dentro do bloco comentado do `index.html`.
+- `sitemap.xml` confirmado com exatamente 7 `<loc>` e zero menções a `privacy`.
+
+### Arquivos criados
+- `medicina-integrativa/index.html`, `menopausa/index.html`, `convenio-apcef/index.html`.
+- `assets/ambiente/_DSC4972-640.webp`, `_DSC4972-960.webp`, `_DSC4972-1280.webp`, `_DSC4982-640.webp`, `_DSC4982-960.webp`, `_DSC4982-1280.webp`.
+
+### Arquivos alterados
+- `index.html`, `faq/index.html`, `pacotes/index.html`, `yoga/index.html`, `sitemap.xml`, `404.html`, `output.css`, `assets/favicon.png`, `CHANGELOG.md`.
+
+---
+
 ## [2026-07-12] Elevação de design: home editorial, "Como funciona", pacotes e 404
 
 Rodada de design (sem mudança de conteúdo clínico): a home ganha a seção "Como funciona", a lista de desejos vira formato editorial clicável, o Sobre Mim ganha bloco de credenciais, o hero de `/pacotes/` adota o padrão editorial da home e a `404.html` foi personalizada.
