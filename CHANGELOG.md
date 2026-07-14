@@ -6,6 +6,17 @@ Registro das atualizações do site (`drakerlyhelena.com.br`). Entradas mais rec
 
 ---
 
+## [2026-07-14] Ajustes pós-deploy: acessos rápidos na home, mapa nítido e Jornada sem as 4 aulas de yoga
+
+Ajustes pedidos pela cliente logo após o deploy da rodada de SEO/APCEF do mesmo dia.
+
+- **Home — acessos rápidos**: nova faixa com 3 cards glass logo abaixo do hero, linkando `/medicina-integrativa/`, `/menopausa/` e `/convenio-apcef/` (ícones feather, padrão visual dos chips do rodapé). Facilita o acesso às páginas novas sem depender do rodapé.
+- **Home — mapa nítido**: removidos o filtro `grayscale opacity-90 contrast-75` do iframe do Google Maps e o véu `bg-charcoal/10` por cima (efeito antigo que só sumia no hover — no celular o mapa ficava permanentemente acinzentado, percebido como "borrado"). O selo "Abrir mapa" agora fica sempre visível.
+- **Jornada Integrativa — sem as 4 aulas de yoga**: substituídas por "práticas de yoga e respiração no dia da consulta" em: bullet da home (`index.html`), card № 02 e texto de abertura de `pacotes/index.html`, descrição da Jornada no JSON-LD `hasOfferCatalog` e a pergunta do FAQ de pacotes ("E se eu não puder ir a todas as aulas?" → "Como funcionam as práticas de yoga e respiração?").
+- Verificação: `npm run build:css` ok; JSON-LD de `index.html` (3 blocos) e `pacotes/index.html` (2 blocos) parseiam; grep sem resíduo de "4 aulas"/"aulas de yoga"; screenshots (desktop/mobile) da home e da seção do mapa conferidos.
+
+---
+
 ## [2026-07-14] Convênio APCEF, novas páginas de SEO e acabamentos técnicos (sitemap, favicon, 404, imagens)
 
 Rodada de expansão do site: 3 páginas novas de conteúdo/SEO, o Convênio APCEF passa a ser o único convênio divulgado em todo o site (substituindo o antigo "atendimento particular, somente"), horários de atendimento tornam-se visíveis em todas as páginas, schema JSON-LD novo é adicionado e o sitemap/favicon/404 são atualizados para acompanhar.
