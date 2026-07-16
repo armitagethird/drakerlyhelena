@@ -91,10 +91,34 @@
       "mainEntity": [
         {
           "@type": "Question",
+          "name": "O APCEF Mais Saúde é um plano de saúde?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não. É a rede credenciada de benefícios da APCEF/MA, e não um plano de saúde regulamentado pela ANS. O atendimento segue as regras da associação."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Meus dependentes também podem usar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim, associados da APCEF/MA e seus dependentes, conforme as regras da associação. Em caso de dúvida sobre elegibilidade, confirme diretamente com a APCEF/MA."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "A consulta pela APCEF é diferente da particular?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Não. É a mesma consulta integrativa, com a mesma duração e o mesmo cuidado — muda apenas a forma de atendimento, conforme as regras da APCEF/MA."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto custa a consulta pelo Convênio APCEF?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Os valores seguem a tabela vigente da APCEF/MA. Confirme diretamente com a associação; no agendamento pelo WhatsApp, a equipe orienta."
           }
         },
         {
@@ -263,13 +287,28 @@
                         No Maranhão, o APCEF Mais Saúde funciona como rede credenciada de benefícios da APCEF/MA (Associação do Pessoal da Caixa Econômica Federal), e não como plano de saúde regulamentado pela ANS.
                     </p>
                 </div>
+                <figure class="col-span-12 lg:col-span-10 lg:col-start-3 gs-reveal mt-14 md:mt-16 max-w-xl">
+                    <div class="glass rounded-3xl p-8 md:p-10 border border-white/50 shadow-sm">
+                        <div class="overflow-hidden">
+                            <img src="../assets/selo-apcef.webp"
+                                srcset="../assets/selo-apcef-640.webp 640w, ../assets/selo-apcef.webp 1280w"
+                                sizes="(min-width: 768px) 496px, calc(100vw - 7rem)"
+                                alt="Selo de credenciamento da APCEF/MA: consultório credenciado ao Clube de Descontos, com descontos especiais para associados e dependentes."
+                                width="1280" height="854"
+                                class="w-full">
+                        </div>
+                    </div>
+                    <figcaption class="text-[11px] tracking-[0.2em] uppercase text-charcoal/60 font-sans mt-4">
+                        Credenciamento oficial · APCEF/MA
+                    </figcaption>
+                </figure>
             </div>
 
             <!-- Quem pode usar -->
             <section class="max-w-3xl mx-auto gs-reveal">
                 <div class="text-center mb-10">
                     <span class="text-xs tracking-[0.3em] text-blush-400 uppercase font-bold">Elegibilidade</span>
-                    <h2 class="text-3xl md:text-4xl font-serif mt-4 text-charcoal">Quem pode usar</h2>
+                    <h2 class="text-3xl md:text-4xl font-serif mt-4 text-charcoal">Quem pode usar o Convênio APCEF</h2>
                 </div>
                 <ul class="space-y-0">
                     <li class="flex gap-4 py-4 border-t border-blush-100">
@@ -291,7 +330,7 @@
             <section class="max-w-5xl mx-auto mt-20 md:mt-24 gs-reveal">
                 <div class="text-center mb-12">
                     <span class="text-xs tracking-[0.3em] text-blush-400 uppercase font-bold">Passo a passo</span>
-                    <h2 class="text-3xl md:text-4xl font-serif mt-4 text-charcoal">Como agendar mencionando o convênio</h2>
+                    <h2 class="text-3xl md:text-4xl font-serif mt-4 text-charcoal">Como agendar pelo Convênio APCEF</h2>
                 </div>
                 <ol class="steps-grid">
                     <li class="step-item">
@@ -342,7 +381,7 @@
             <section class="max-w-3xl mx-auto mt-20 md:mt-24 gs-reveal">
                 <div class="text-center mb-10">
                     <span class="text-xs tracking-[0.3em] text-blush-400 uppercase font-bold">Onde e quando</span>
-                    <h2 class="text-3xl md:text-4xl font-serif mt-4 text-charcoal">Horários e onde fica</h2>
+                    <h2 class="text-3xl md:text-4xl font-serif mt-4 text-charcoal">Horários e onde fica o consultório em São Luís</h2>
                 </div>
                 <div class="glass rounded-3xl p-8 md:p-10 border border-white/50 shadow-sm space-y-5">
                     <div class="flex items-start gap-4">
@@ -367,7 +406,7 @@
             <section class="max-w-3xl mx-auto mt-20 md:mt-24 gs-reveal">
                 <div class="text-center mb-10">
                     <span class="text-xs tracking-[0.3em] text-blush-400 uppercase font-bold">Atendimento particular</span>
-                    <h2 class="text-3xl md:text-4xl font-serif mt-4 text-charcoal">Não é APCEF?</h2>
+                    <h2 class="text-3xl md:text-4xl font-serif mt-4 text-charcoal">Não é associado da APCEF?</h2>
                 </div>
                 <div class="space-y-6">
                     <p class="text-lg text-charcoal/80 font-light leading-relaxed">
@@ -388,11 +427,38 @@
                 <div class="space-y-5">
                     <details class="group glass rounded-2xl border border-blush-100 px-6 py-5">
                         <summary class="cursor-pointer font-serif text-lg text-charcoal flex items-center justify-between gap-4">
+                            O APCEF Mais Saúde é um plano de saúde?
+                            <i data-feather="chevron-down" class="w-5 h-5 text-blush-500 transition-transform group-open:rotate-180 shrink-0"></i>
+                        </summary>
+                        <p class="text-charcoal/75 font-light leading-relaxed mt-4">
+                            Não. É a rede credenciada de benefícios da APCEF/MA, e não um plano de saúde regulamentado pela ANS. O atendimento segue as regras da associação.
+                        </p>
+                    </details>
+                    <details class="group glass rounded-2xl border border-blush-100 px-6 py-5">
+                        <summary class="cursor-pointer font-serif text-lg text-charcoal flex items-center justify-between gap-4">
+                            Meus dependentes também podem usar?
+                            <i data-feather="chevron-down" class="w-5 h-5 text-blush-500 transition-transform group-open:rotate-180 shrink-0"></i>
+                        </summary>
+                        <p class="text-charcoal/75 font-light leading-relaxed mt-4">
+                            Sim, associados da APCEF/MA e seus dependentes, conforme as regras da associação. Em caso de dúvida sobre elegibilidade, confirme diretamente com a APCEF/MA.
+                        </p>
+                    </details>
+                    <details class="group glass rounded-2xl border border-blush-100 px-6 py-5">
+                        <summary class="cursor-pointer font-serif text-lg text-charcoal flex items-center justify-between gap-4">
                             A consulta pela APCEF é diferente da particular?
                             <i data-feather="chevron-down" class="w-5 h-5 text-blush-500 transition-transform group-open:rotate-180 shrink-0"></i>
                         </summary>
                         <p class="text-charcoal/75 font-light leading-relaxed mt-4">
                             Não. É a mesma consulta integrativa, com a mesma duração e o mesmo cuidado — muda apenas a forma de atendimento, conforme as regras da APCEF/MA.
+                        </p>
+                    </details>
+                    <details class="group glass rounded-2xl border border-blush-100 px-6 py-5">
+                        <summary class="cursor-pointer font-serif text-lg text-charcoal flex items-center justify-between gap-4">
+                            Quanto custa a consulta pelo Convênio APCEF?
+                            <i data-feather="chevron-down" class="w-5 h-5 text-blush-500 transition-transform group-open:rotate-180 shrink-0"></i>
+                        </summary>
+                        <p class="text-charcoal/75 font-light leading-relaxed mt-4">
+                            Os valores seguem a tabela vigente da APCEF/MA. Confirme diretamente com a associação; no agendamento pelo WhatsApp, a equipe orienta.
                         </p>
                     </details>
                     <details class="group glass rounded-2xl border border-blush-100 px-6 py-5">
