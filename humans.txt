@@ -1,0 +1,19 @@
+/* TEAM */
+
+  Software House: VibeSurfDev
+  Site: https://vibesurfdev.com
+  Instagram: @vibesurfdev
+  Location: São Luís, MA — Brasil
+
+  BUILD · SURF · SHIP
+  Sistemas, websites e apps sob medida.
+
+/* SITE */
+
+  Site: Dra. Kerly Helena — Ginecologia Integrativa
+  Last update: 2026/07/16
+  Language: Português (pt-BR)
+  Doctype: HTML5
+  Standards: HTML5, CSS3, Schema.org
+  Components: Tailwind CSS, Feather Icons
+  Software: VibeSurfDev
