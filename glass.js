@@ -48,7 +48,10 @@
         if (!supportsSvgBackdrop()) return;
         // Cards/seções/footer ganham refração; header e CTA ficam só com blur
         // (legibilidade do texto que passa por trás).
-        var els = document.querySelectorAll('.glass:not(.glass--header):not(.glass--cta)');
+        // .glass--no-refract: no Chromium, url() em backdrop-filter deforma o
+        // conteúdo do próprio elemento (feDisplacementMap sobre SourceGraphic),
+        // não só o fundo — inutilizável sobre mídia densa como o iframe do mapa.
+        var els = document.querySelectorAll('.glass:not(.glass--header):not(.glass--cta):not(.glass--no-refract)');
         for (var i = 0; i < els.length; i++) els[i].classList.add('glass--refract');
     }
 
