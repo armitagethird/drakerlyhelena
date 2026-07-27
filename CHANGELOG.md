@@ -6,6 +6,48 @@ Registro das atualizações do site (`drakerlyhelena.com.br`). Entradas mais rec
 
 ---
 
+## [2026-07-27] Medicina Ortomolecular volta ao site, Jornada de 3 meses sai temporariamente e rodapé editorial
+
+A Doutora voltou a trabalhar com **medicina ortomolecular** — o conteúdo retorna ao site com trabalho de SEO local para a busca "ortomolecular São Luís". Na mesma rodada, a **Jornada Integrativa de 3 meses sai temporariamente** (a pedido da cliente) e o rodapé troca os dois cards de vidro por uma faixa editorial.
+
+> **Reversão da diretriz de 2026-06-03**: aquela entrada removeu ortomolecular *e* valores de consulta. Só a **ortomolecular** foi revertida agora. A diretriz de **não exibir valores continua valendo** — inclusive `priceRange`, `hasOfferCatalog` e afins no JSON-LD.
+
+### Medicina Ortomolecular (conteúdo + SEO)
+- **Nova página `/ortomolecular/`** — H1 "Medicina ortomolecular em São Luís (MA)" e H2 por intenção de busca: o que é, como funciona na prática (3 passos), saúde da mulher, relação com a medicina integrativa, transparência e limites, onde agendar, FAQ (6 perguntas). JSON-LD `MedicalWebPage` + `BreadcrumbList` + `FAQPage` + `Organization`. Stub de redirect `ortomolecular.html` (a URL plana já existiu).
+- **Nova seção `#ortomolecular` na home**, na posição **№ 02** liberada pela Jornada, herdando o mesmo layout editorial (rail, foto orgânica, bullets com hairline). A curva SVG de transição foi realocada, não perdida.
+- **Home — SEO**: `<title>` volta a `Dra. Kerly Helena | Ginecologia Integrativa e Ortomolecular em São Luís – MA` (recupera também o "São Luís", cuja ausência a auditoria de 2026-07-12 apontava). Meta description, OG e Twitter atualizados. JSON-LD `Physician` ganhou `MedicalTherapy "Medicina Ortomolecular"` em `availableService`, o campo `knowsAbout` e nova `description`.
+- **Amarração interna**: `/ortomolecular/` no mapa do site do rodapé de todas as páginas, no `sitemap.xml` (priority 0.9) e no `404.html`; links contextuais em `/medicina-integrativa/` e `/menopausa/`; duas perguntas novas no `/faq/` (acordeão + `FAQPage`).
+- **Imagens** (nenhum arquivo novo — reaproveitados os assets existentes com `srcset` 640/960/1280): retrato da Doutora no herói com CRM/RQE na legenda, detalhe de flores secas como respiro visual, e o consultório na seção de agendamento.
+- **Enquadramento ético/CFM**: descrita como **abordagem complementar**, individualizada, baseada em exames, que **não substitui** o tratamento convencional. A palavra "especialidade" só aparece para **negar** (o CFM não reconhece ortomolecular como especialidade isolada). Nenhuma promessa de resultado.
+- **Pendente**: credencial real (curso/instituição/ano) — marcador `<!-- PENDENTE: credencial ortomolecular ... -->` em `ortomolecular/index.html`, aguardando a cliente. Nenhuma formação foi inventada.
+
+### Jornada Integrativa de 3 meses (removida temporariamente)
+- **Home**: seção `#jornada` excluída; passo 03 de "Como funciona" e CTA "Conhecer os formatos de atendimento" (→ "Conhecer a Consulta Integrativa") ajustados.
+- **`/pacotes/` continua no ar, só com a Consulta Integrativa avulsa**: card da Jornada excluído, grid vira coluna única, herói/título/metas reescritos, 2 perguntas do acordeão removidas e a de convênio reescrita.
+- **Referências cruzadas** limpas em `/convenio-apcef/` (FAQ da Jornada removida do acordeão **e** do JSON-LD), `/medicina-integrativa/` e `/menopausa/` (esta passou a apontar para `/ortomolecular/`).
+- **Como restaurar**: o estado anterior está no commit `4b505a2`. A seção da home sai de `git show 4b505a2:index.html` (bloco `<section id="jornada">`) e o card de `git show 4b505a2:pacotes/index.html` (`<article id="jornada">`). O rótulo "Pacotes" do menu foi **mantido** justamente para a volta ser simples.
+
+### Rodapé editorial
+- Saíram os dois cards `glass` ("Atendimento em São Luís" / "Consultório no Edifício Monumental") e o `<p>` de NAP que **duplicava** a mesma informação logo abaixo do mapa do site.
+- Entrou uma faixa `<dl>` "Onde / Quando" entre dois `hairline-horizontal`, com micro-rótulo em maiúsculas e valor em serifada — mesma linguagem dos rails `№ 01` do hero. Nenhuma informação perdida.
+- Redes sociais: círculos de 64/80 px com sombra pesada → 56/64 px com borda hairline.
+- Contraste do texto de apoio subiu de `text-charcoal/60` para `/70` (12 px em `/60` não passava no WCAG AA).
+- Aplicado nas 5 páginas com rodapé completo + a página nova. `pacotes/`, `yoga/` e `privacy/` têm rodapé curto e não têm esses blocos — `privacy/` não tem `<footer>` nenhum.
+
+### Correções de bug encontradas no caminho
+- **`pacotes/index.html` declarava `"@id": ".../#clinic"`**, o mesmo `@id` do `MedicalClinic` da home, porém com propriedades bem mais pobres. Como o Google funde entidades por `@id`, isso gerava dados conflitantes da mesma clínica. Substituído por um `MedicalWebPage` no padrão das demais páginas internas — o que também eliminou o `hasOfferCatalog` remanescente.
+- **`ortomolecular/index.html` referenciava `vibesurfdev.com/#organization` sem definir o bloco** (as páginas irmãs definem). `@id` pendurado corrigido.
+
+### Verificação
+- `npm run build:css` + `output.css` commitado. Observação: o `output.css` anterior **não estava minificado** (3249 linhas); o atual está (2 linhas) — daí a queda de 82 KB para 61 KB, que é formatação, não perda de classes.
+- Script de verificação: JSON-LD de todas as páginas parseado com parser real; perguntas do `FAQPage` conferidas **uma a uma** contra o acordeão visível; zero resíduo de "Jornada"/"3 meses"; zero sinal de preço; restrições de CFM checadas por proximidade de termos.
+- Auditoria de renderização (Puppeteer) em 375/414/1440 px nas 7 páginas alteradas: sem overflow horizontal, sem erro de console, faixa do rodapé com o responsivo correto e círculos sociais nas medidas esperadas.
+
+### Achado pré-existente (não corrigido, fora do escopo)
+- **`yoga/index.html` usa `yoga-gold`/`yoga-dark` em 69 lugares, mas essas classes não existem** — não estão no `@theme` do `input.css`, nem no `styles.css`, nem no `output.css` (nem no build anterior). São classes mortas; o dourado da página vem de hex inline. Corrigir mudaria a aparência de uma página fora desta rodada.
+
+---
+
 ## [2026-07-14] Ajustes pós-deploy: acessos rápidos na home, mapa nítido e Jornada sem as 4 aulas de yoga
 
 Ajustes pedidos pela cliente logo após o deploy da rodada de SEO/APCEF do mesmo dia.
