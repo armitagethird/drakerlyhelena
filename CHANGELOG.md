@@ -6,6 +6,25 @@ Registro das atualizações do site (`drakerlyhelena.com.br`). Entradas mais rec
 
 ---
 
+## [2026-07-31] Ressalvas sobre o CFM saem do site; ortomolecular e integrativa passam a ser tratadas como prática de igual valor
+
+A pedido da cliente, **toda menção a "o Conselho Federal de Medicina não reconhece…"** e ao enquadramento subordinado ("apenas complementar", "não substitui", "nunca no lugar de") foi **removida do site inteiro** — não só da ortomolecular, mas também da medicina integrativa. As duas passam a ser apresentadas como práticas que **caminham lado a lado com a medicina convencional**, dentro de um mesmo plano de cuidado.
+
+> **Reversão da diretriz de enquadramento de 2026-07-27** (registrada na entrada abaixo). A ressalva do CFM e o vocabulário de subordinação estão **descontinuados** — não reintroduzir. O que **continua valendo**: zero promessa de resultado (sem "cura", "elimina", "garante", "definitivo", antes/depois), individualização e base em exames, e a diretriz de **não exibir valores**.
+
+### O que mudou, por página
+- **`/ortomolecular/`** — metas (description, OG, Twitter), 3 respostas do `FAQPage` + os 3 itens correspondentes do acordeão, rail vertical (`Abordagem Complementar` → `Cuidado Integrado`), herói, "O que é" (2 parágrafos) e "Ortomolecular na saúde da mulher". A seção **"Transparência e limites" virou "Rigor e transparência"**: deixou de ser aviso e passou a descrever método — história clínica, exames laboratoriais e reavaliação periódica. A pergunta *"A abordagem ortomolecular substitui meu tratamento…?"* foi reescrita como *"Como a ortomolecular se combina com os tratamentos que já faço?"*.
+- **Home (`index.html`)** — eyebrow, parágrafo de abertura, 3º bullet e a nota em itálico da seção `#ortomolecular`.
+- **`/medicina-integrativa/`** — herói (saiu "não uma especialidade titulada"), "O que é medicina integrativa" (saiu "não substitui exames…") e as duas pontes para yoga e ortomolecular ("frente complementar" → "frente"/"lado a lado").
+- **`/faq/`** — perguntas "é reconhecida?", "é especialidade médica?", a de ortomolecular e a de ortomolecular × integrativa, sempre no par `FAQPage` + acordeão. A resposta de "é especialidade médica?" passou a afirmar o registro real (CRM/MA 3130 · RQE 5232) em vez de negar reconhecimento; a de "é reconhecida?" ganhou a menção ao SUS via PNPIC.
+
+### Notas técnicas
+- **Nenhuma classe Tailwind foi alterada** — só conteúdo de texto. `output.css` **não** precisou de rebuild.
+- **Nenhuma pergunta foi excluída**: todas as URLs, âncoras e perguntas de SEO foram preservadas, só reescritas — inclusive as que existiam justamente para responder à busca "é especialidade médica?".
+- Verificação: JSON-LD de todas as 10 páginas parseado com parser real (zero erro) e cada pergunta do `FAQPage` conferida uma a uma contra o acordeão visível. As **5 divergências remanescentes em `/faq/` são anteriores a esta mudança** (já presentes em `9fde98a`): o JSON-LD de "Como funciona…", "O que a medicina integrativa trata?", "Diferença entre integrativa e complementar?" e "ajuda na menopausa?" parafraseia o texto visível em vez de reproduzi-lo. Não foi tocado aqui — vale corrigir numa próxima rodada.
+
+---
+
 ## [2026-07-27] Medicina Ortomolecular volta ao site, Jornada de 3 meses sai temporariamente e rodapé editorial
 
 A Doutora voltou a trabalhar com **medicina ortomolecular** — o conteúdo retorna ao site com trabalho de SEO local para a busca "ortomolecular São Luís". Na mesma rodada, a **Jornada Integrativa de 3 meses sai temporariamente** (a pedido da cliente) e o rodapé troca os dois cards de vidro por uma faixa editorial.

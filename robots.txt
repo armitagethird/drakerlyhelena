@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
 
+# Arquivos de desenvolvimento — servidos pelo GitHub Pages, mas não são conteúdo do site
+Disallow: /CHANGELOG.md
+Disallow: /package.json
+Disallow: /package-lock.json
+Disallow: /input.css
+
 Sitemap: https://drakerlyhelena.com.br/sitemap.xml
