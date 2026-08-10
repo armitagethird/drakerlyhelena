@@ -61,14 +61,14 @@
     />
     <meta
       property="og:image"
-      content="https://drakerlyhelena.com.br/assets/og-image.jpg"
+      content="https://drakerlyhelena.com.br/assets/og-medicina-integrativa.jpg"
     />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:type" content="image/jpeg" />
     <meta
       property="og:image:alt"
-      content="Dra. Kerly Helena - Médica Ginecologista Integrativa"
+      content="Dra. Kerly Helena, médica ginecologista integrativa em São Luís"
     />
 
     <!-- Twitter Card -->
@@ -83,7 +83,20 @@
     />
     <meta
       name="twitter:image"
-      content="https://drakerlyhelena.com.br/assets/og-image.jpg"
+      content="https://drakerlyhelena.com.br/assets/og-medicina-integrativa.jpg"
+    />
+
+    <!-- Preload do retrato do hero (LCP em telas largas) -->
+    <link
+      rel="preload"
+      as="image"
+      imagesrcset="
+        ../assets/IMG_4323-640.webp   640w,
+        ../assets/IMG_4323-960.webp   960w,
+        ../assets/IMG_4323.webp      1280w
+      "
+      imagesizes="(min-width:1024px) 22vw, 260px"
+      fetchpriority="high"
     />
 
     <!-- Google Fonts -->
@@ -396,7 +409,7 @@
           <div
             class="hidden lg:block col-span-1 col-start-2 -ml-3 hairline-vertical"
           ></div>
-          <div class="col-span-12 lg:col-span-10 lg:col-start-3 gs-reveal">
+          <div class="col-span-12 lg:col-span-6 lg:col-start-3 gs-reveal">
             <p
               class="text-xs tracking-[0.3em] text-blush-400 uppercase font-bold mb-5"
             >
@@ -431,6 +444,35 @@
               mostram.
             </p>
           </div>
+
+          <!-- Retrato da Doutora — autoridade na página (conteúdo YMYL) -->
+          <figure
+            class="col-span-12 lg:col-span-3 lg:col-start-10 gs-reveal mt-12 lg:mt-2 max-w-[260px] mx-auto lg:mx-0 w-full"
+          >
+            <div
+              class="relative aspect-[4/5] w-full overflow-hidden organic-blob-2 shadow-xl"
+            >
+              <img
+                src="../assets/IMG_4323-640.webp"
+                srcset="
+                  ../assets/IMG_4323-640.webp  640w,
+                  ../assets/IMG_4323-960.webp  960w,
+                  ../assets/IMG_4323.webp     1280w
+                "
+                sizes="(min-width:1024px) 22vw, 260px"
+                alt="Dra. Kerly Helena, médica ginecologista integrativa em São Luís – MA, em seu consultório"
+                width="800"
+                height="1000"
+                fetchpriority="high"
+                class="w-full h-full object-cover object-[center_25%]"
+              />
+            </div>
+            <figcaption
+              class="mt-4 text-center lg:text-left text-[11px] tracking-[0.15em] uppercase text-charcoal/55"
+            >
+              Dra. Kerly Helena<br />CRM/MA 3130 · RQE 5232
+            </figcaption>
+          </figure>
         </div>
 
         <!-- O que é medicina integrativa -->
@@ -695,6 +737,28 @@
           </ul>
         </section>
 
+        <!-- Respiro visual entre duas seções densas de texto -->
+        <figure class="max-w-5xl mx-auto mt-20 md:mt-24 gs-reveal">
+          <div
+            class="relative aspect-[21/9] w-full overflow-hidden rounded-3xl shadow-lg"
+          >
+            <img
+              src="../assets/IMG_5151-wide-960.webp"
+              srcset="
+                ../assets/IMG_5151-wide-640.webp  640w,
+                ../assets/IMG_5151-wide-960.webp  960w,
+                ../assets/IMG_5151-wide.webp     1600w
+              "
+              sizes="(min-width:1024px) 1024px, calc(100vw - 3rem)"
+              alt="Dra. Kerly Helena em prática de meditação diante da vista de São Luís — práticas integrativas no cuidado da mulher"
+              width="1600"
+              height="686"
+              loading="lazy"
+              class="w-full h-full object-cover"
+            />
+          </div>
+        </figure>
+
         <!-- Ginecologia e medicina integrativa, juntas -->
         <section class="max-w-3xl mx-auto mt-20 md:mt-24 gs-reveal">
           <div class="text-center mb-10">
@@ -753,6 +817,35 @@
               Onde, quando e como agendar
             </h2>
           </div>
+
+          <!-- Atendimento: mostra o cuidado de que a seção fala -->
+          <figure class="mb-10">
+            <div
+              class="relative aspect-[3/2] w-full overflow-hidden rounded-3xl shadow-lg"
+            >
+              <img
+                src="../assets/IMG_4531-land-960.webp"
+                srcset="
+                  ../assets/IMG_4531-land-640.webp  640w,
+                  ../assets/IMG_4531-land-960.webp  960w,
+                  ../assets/IMG_4531-land.webp     1280w
+                "
+                sizes="(min-width:768px) 768px, calc(100vw - 3rem)"
+                alt="Dra. Kerly Helena em seu consultório em São Luís – MA, em momento de estudo entre consultas"
+                width="1280"
+                height="853"
+                loading="lazy"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <figcaption
+              class="mt-3 text-center text-xs text-charcoal/55 font-light"
+            >
+              Atendimento com hora marcada no Edifício Monumental, Jardim
+              Renascença.
+            </figcaption>
+          </figure>
+
           <div
             class="glass rounded-3xl p-8 md:p-10 border border-white/50 shadow-sm space-y-5"
           >
