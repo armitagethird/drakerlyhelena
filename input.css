@@ -30,6 +30,13 @@ html {
 
     --color-charcoal: #4A3B40;
 
+    /* Página Yoga — mesmos valores do <style> inline de yoga/index.html;
+       os tokens existem para gerar os variantes (text-yoga-dark/70,
+       bg-yoga-gold/20, hover:text-yoga-gold…) que o CSS inline não cobre. */
+    --color-yoga-light: #FDFBF7;
+    --color-yoga-dark: #4A3F35;
+    --color-yoga-gold: #C5A028;
+
     --font-sans: "Lato", sans-serif;
     --font-serif: "Playfair Display", serif;
 
