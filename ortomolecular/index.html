@@ -86,6 +86,19 @@
       content="https://drakerlyhelena.com.br/assets/og-image.jpg"
     />
 
+    <!-- Preload do retrato do hero (LCP em telas largas) -->
+    <link
+      rel="preload"
+      as="image"
+      imagesrcset="
+        ../assets/_DSC2944-640.webp   640w,
+        ../assets/_DSC2944-960.webp   960w,
+        ../assets/_DSC2944-1280.webp 1280w
+      "
+      imagesizes="(min-width:1024px) 22vw, 260px"
+      fetchpriority="high"
+    />
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -478,7 +491,7 @@
                 alt="Dra. Kerly Helena, médica ginecologista em São Luís – MA, responsável pelo atendimento com abordagem ortomolecular"
                 width="800"
                 height="1000"
-                loading="lazy"
+                fetchpriority="high"
                 class="w-full h-full object-cover object-[center_20%]"
               />
             </div>
@@ -671,7 +684,7 @@
               srcset="
                 ../assets/_DSC4966-640.webp   640w,
                 ../assets/_DSC4966-960.webp   960w,
-                ../assets/_DSC4966-1280.webp 1280w
+                ../assets/_DSC4966.webp      1200w
               "
               sizes="(min-width:1024px) 1024px, calc(100vw - 3rem)"
               alt="Detalhe do consultório da Dra. Kerly Helena: arranjo de flores secas em tons claros"
@@ -779,7 +792,7 @@
                 srcset="
                   ../assets/_DSC4968-640.webp   640w,
                   ../assets/_DSC4968-960.webp   960w,
-                  ../assets/_DSC4968-1280.webp 1280w
+                  ../assets/_DSC4968.webp      1200w
                 "
                 sizes="(min-width:768px) 768px, calc(100vw - 3rem)"
                 alt="Consultório da Dra. Kerly Helena no Edifício Monumental, Jardim Renascença, São Luís – MA"
