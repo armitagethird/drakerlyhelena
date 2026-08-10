@@ -389,31 +389,12 @@
             } catch (e) { /* swallow */ }
         }
 
-        function swapFeatherIcon(parent, iconName) {
-            while (parent.firstChild) parent.removeChild(parent.firstChild);
-            const el = document.createElement('i');
-            el.setAttribute('data-feather', iconName);
-            parent.appendChild(el);
-            if (typeof feather !== 'undefined') feather.replace();
-        }
-
         document.addEventListener('DOMContentLoaded', () => {
             if (typeof feather !== 'undefined') feather.replace();
-
-            const btn = document.getElementById('mobile-menu-btn');
-            const menu = document.getElementById('mobile-menu');
-            if (btn && menu) {
-                btn.addEventListener('click', () => {
-                    menu.classList.toggle('hidden');
-                    const isOpen = !menu.classList.contains('hidden');
-                    swapFeatherIcon(btn, isOpen ? 'x' : 'menu');
-                    btn.setAttribute('aria-expanded', String(isOpen));
-                });
-            }
-
-            // O botão flutuante de WhatsApp é fixo via CSS — sem lógica de scroll.
         });
+        // Menu mobile e tracking de WhatsApp ficam no main.js.
     </script>
     <script src="../glass.js" defer></script>
+    <script src="../main.js" defer></script>
 </body>
 </html>

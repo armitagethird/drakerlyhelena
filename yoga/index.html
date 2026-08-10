@@ -646,12 +646,14 @@
     </footer>
 
     <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
     <script src="../glass.js" defer></script>
+    <script src="../main.js" defer></script>
 
     <script>
-        // Initialize Swiper for Ambiente
-        const ambienteSwiper = new Swiper('.ambiente-swiper', {
+        // Initialize Swiper for Ambiente (Swiper carrega com defer; aguarda o DOM)
+        document.addEventListener('DOMContentLoaded', () => {
+        new Swiper('.ambiente-swiper', {
             effect: 'coverflow',
             grabCursor: true,
             centeredSlides: true,
@@ -678,28 +680,17 @@
                 prevEl: '.swiper-button-prev',
             },
         });
+        });
 
         // Initialize Feather Icons (feather-icons agora carrega com defer; aguarda o DOM)
         document.addEventListener('DOMContentLoaded', () => { feather.replace(); });
 
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const navbar = document.getElementById('navbar');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            mobileMenuBtn.setAttribute('aria-expanded', String(!mobileMenu.classList.contains('hidden')));
-        });
-
-        // Close menu on link click
-        const mobileLinks = mobileMenu.querySelectorAll('a, button');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if(!link.id || link.id !== 'mobile-menu-btn') {
-                    mobileMenu.classList.add('hidden');
-                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
-                }
+        // Menu mobile e tracking de WhatsApp ficam no main.js; aqui só o
+        // fechamento ao tocar no CTA (botão), que o main.js não cobre.
+        document.querySelectorAll('#mobile-menu button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+                document.getElementById('mobile-menu-btn').setAttribute('aria-expanded', 'false');
             });
         });
 
