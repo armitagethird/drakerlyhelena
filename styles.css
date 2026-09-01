@@ -9,11 +9,6 @@
     animation: morph2 10s ease-in-out infinite alternate;
 }
 
-.organic-blob-3 {
-    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
-    animation: float 6s ease-in-out infinite, morph3 12s ease-in-out infinite alternate;
-}
-
 @keyframes morph {
     0% {
         border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
@@ -32,38 +27,6 @@
     100% {
         border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
     }
-}
-
-@keyframes morph3 {
-    0% {
-        border-radius: 50%;
-    }
-
-    50% {
-        border-radius: 55% 45% 40% 60% / 50% 60% 40% 50%;
-    }
-
-    100% {
-        border-radius: 45% 55% 60% 40% / 60% 40% 50% 50%;
-    }
-}
-
-@keyframes float {
-    0% {
-        transform: translateY(0px) rotate(0deg);
-    }
-
-    50% {
-        transform: translateY(-15px) rotate(2deg);
-    }
-
-    100% {
-        transform: translateY(0px) rotate(0deg);
-    }
-}
-
-.animate-float {
-    animation: float 6s ease-in-out infinite;
 }
 
 /* Base custom styles to ensure aesthetics feeling premium */
@@ -681,7 +644,7 @@ body {
     .reviews-trustbar:hover, .review-card:hover { transform: none; }
 }
 
-
+
 /* =========================================================================
    ELEVAÇÃO EDITORIAL (2026-07-12)
    Novos componentes autocontidos (não dependem do build Tailwind):

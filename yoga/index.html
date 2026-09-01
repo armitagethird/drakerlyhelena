@@ -54,6 +54,8 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
         rel="stylesheet">
@@ -166,7 +168,7 @@
     <header class="fixed top-3 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-1.5rem)] max-w-6xl md:w-[calc(100%-3rem)] glass glass--header" id="navbar">
         <div class="px-6 md:px-8 py-3 flex justify-between items-center">
             <a href="/" class="flex items-center space-x-3 group transition-all duration-300 hover:-translate-y-1">
-                <img src="../assets/favicon.png" alt="Logo Dra. Kerly Helena"
+                <img src="../assets/favicon.png" alt="Logo Dra. Kerly Helena" width="192" height="192"
                     class="w-8 h-8 md:w-10 md:h-10 object-contain transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
                 <span class="nav-brand"><span
                     class="nav-brand__text text-2xl md:text-3xl font-serif text-yoga-dark font-semibold tracking-wide group-hover:text-yoga-gold transition-colors duration-300">
@@ -324,7 +326,7 @@
                     <!-- Professora 1 -->
                     <div class="bg-white rounded-[2.5rem] p-8 shadow-xl border border-yellow-600/10 text-center gs-reveal hover:-translate-y-2 transition-transform duration-300">
                         <div class="w-32 h-32 mx-auto rounded-full mb-6 overflow-hidden border-4 border-yoga-gold shadow-md flex items-center justify-center bg-yoga-dark object-cover group">
-                            <img src="../assets/Kerly.webp" alt="Kerly Santos, médica ginecologista e instrutora de Yoga Sivananda em São Luís" width="800" height="1200" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <img src="../assets/Kerly.webp" alt="Kerly Santos, médica ginecologista e instrutora de Yoga Sivananda em São Luís" width="800" height="1200" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                         </div>
                         <h3 class="text-2xl font-serif font-semibold text-yoga-dark mb-2">Kerly Santos</h3>
                         <p class="text-yoga-gold font-medium mb-4">Médica Ginecologista <br> Instrutora de Yoga Sivananda</p>
@@ -336,7 +338,7 @@
                     <!-- Professora 2 -->
                     <div class="bg-white rounded-[2.5rem] p-8 shadow-xl border border-yellow-600/10 text-center gs-reveal hover:-translate-y-2 transition-transform duration-300">
                         <div class="w-32 h-32 mx-auto rounded-full mb-6 overflow-hidden border-4 border-yoga-gold shadow-md flex items-center justify-center bg-yoga-dark object-cover group">
-                            <img src="../assets/Marina.webp" alt="Marina Corrêa, terapeuta ocupacional e instrutora de Yoga Sivananda" width="800" height="1063" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <img src="../assets/Marina.webp" alt="Marina Corrêa, terapeuta ocupacional e instrutora de Yoga Sivananda" width="800" height="1063" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                         </div>
                         <h3 class="text-2xl font-serif font-semibold text-yoga-dark mb-2">Marina Corrêa</h3>
                         <p class="text-yoga-gold font-medium mb-4">Terapeuta Ocupacional <br> Instrutora de Yoga Sivananda</p>
@@ -374,7 +376,7 @@
                             <!-- Slide 1 -->
                             <div class="swiper-slide w-4/5 md:w-[600px]">
                                 <div class="relative h-[400px] md:h-[550px] rounded-[2.5rem] overflow-hidden border border-yoga-gold/30 transition-all duration-500 shadow-xl" style="animation: goldenPulse 5s infinite;">
-                                    <img src="../assets/ambiente/_DSC4966.webp" alt="Ambiente acolhedor do espaço de yoga da Dra. Kerly Helena em São Luís" width="1600" height="2400" loading="lazy" srcset="../assets/ambiente/_DSC4966-640.webp 640w, ../assets/ambiente/_DSC4966-960.webp 960w, ../assets/ambiente/_DSC4966-1280.webp 1280w, ../assets/ambiente/_DSC4966.webp 1600w" sizes="(min-width: 768px) 600px, 80vw" class="w-full h-full object-cover transition-transform duration-1000 filter saturate-110 contrast-105 sepia-[.1]">
+                                    <img src="../assets/ambiente/_DSC4966.webp" alt="Ambiente acolhedor do espaço de yoga da Dra. Kerly Helena em São Luís" width="1600" height="2400" loading="lazy" decoding="async" srcset="../assets/ambiente/_DSC4966-640.webp 640w, ../assets/ambiente/_DSC4966-960.webp 960w, ../assets/ambiente/_DSC4966-1280.webp 1280w, ../assets/ambiente/_DSC4966.webp 1600w" sizes="(min-width: 768px) 600px, 80vw" class="w-full h-full object-cover transition-transform duration-1000 filter saturate-110 contrast-105 sepia-[.1]">
                                     <div class="absolute bottom-5 left-0 right-0 px-6 flex justify-center z-20">
                                         <div class="glass-title px-8 py-4 shadow-lg flex flex-col items-center">
                                             <p class="text-white font-serif text-2xl md:text-3xl tracking-wide uppercase drop-shadow-md">Acolhimento</p>
@@ -387,7 +389,7 @@
                             <!-- Slide 2 -->
                             <div class="swiper-slide w-4/5 md:w-[600px]">
                                 <div class="relative h-[400px] md:h-[550px] rounded-[2.5rem] overflow-hidden border border-yoga-gold/30 transition-all duration-500 shadow-xl" style="animation: goldenPulse 5s infinite; animation-delay: 1s;">
-                                    <img src="../assets/ambiente/_DSC4972.webp" alt="Detalhe em tons dourados do espaço de yoga em São Luís" width="1600" height="2400" loading="lazy" srcset="../assets/ambiente/_DSC4972-640.webp 640w, ../assets/ambiente/_DSC4972-960.webp 960w, ../assets/ambiente/_DSC4972-1280.webp 1280w, ../assets/ambiente/_DSC4972.webp 1600w" sizes="(min-width: 768px) 600px, 80vw" class="w-full h-full object-cover transition-transform duration-1000 filter saturate-110 contrast-105 sepia-[.1]">
+                                    <img src="../assets/ambiente/_DSC4972.webp" alt="Detalhe em tons dourados do espaço de yoga em São Luís" width="1600" height="2400" loading="lazy" decoding="async" srcset="../assets/ambiente/_DSC4972-640.webp 640w, ../assets/ambiente/_DSC4972-960.webp 960w, ../assets/ambiente/_DSC4972-1280.webp 1280w, ../assets/ambiente/_DSC4972.webp 1600w" sizes="(min-width: 768px) 600px, 80vw" class="w-full h-full object-cover transition-transform duration-1000 filter saturate-110 contrast-105 sepia-[.1]">
                                     <div class="absolute bottom-5 left-0 right-0 px-6 flex justify-center z-20">
                                         <div class="glass-title px-8 py-4 shadow-lg flex flex-col items-center">
                                             <p class="text-white font-serif text-2xl md:text-3xl tracking-wide uppercase drop-shadow-md">Luz e Paz</p>
@@ -400,7 +402,7 @@
                             <!-- Slide 3 -->
                             <div class="swiper-slide w-4/5 md:w-[600px]">
                                 <div class="relative h-[400px] md:h-[550px] rounded-[2.5rem] overflow-hidden border border-yoga-gold/30 transition-all duration-500 shadow-xl" style="animation: goldenPulse 5s infinite; animation-delay: 2s;">
-                                    <img src="../assets/ambiente/_DSC4976.webp" alt="Detalhes da decoração do espaço de práticas de yoga" width="1600" height="2400" loading="lazy" srcset="../assets/ambiente/_DSC4976-640.webp 640w, ../assets/ambiente/_DSC4976-960.webp 960w, ../assets/ambiente/_DSC4976-1280.webp 1280w, ../assets/ambiente/_DSC4976.webp 1600w" sizes="(min-width: 768px) 600px, 80vw" class="w-full h-full object-cover transition-transform duration-1000 filter saturate-110 contrast-105 sepia-[.1]">
+                                    <img src="../assets/ambiente/_DSC4976.webp" alt="Detalhes da decoração do espaço de práticas de yoga" width="1600" height="2400" loading="lazy" decoding="async" srcset="../assets/ambiente/_DSC4976-640.webp 640w, ../assets/ambiente/_DSC4976-960.webp 960w, ../assets/ambiente/_DSC4976-1280.webp 1280w, ../assets/ambiente/_DSC4976.webp 1600w" sizes="(min-width: 768px) 600px, 80vw" class="w-full h-full object-cover transition-transform duration-1000 filter saturate-110 contrast-105 sepia-[.1]">
                                     <div class="absolute bottom-5 left-0 right-0 px-6 flex justify-center z-20">
                                         <div class="glass-title px-8 py-4 shadow-lg flex flex-col items-center">
                                             <p class="text-white font-serif text-2xl md:text-3xl tracking-wide uppercase drop-shadow-md">Detalhes</p>
@@ -413,7 +415,7 @@
                             <!-- Slide 4 -->
                             <div class="swiper-slide w-4/5 md:w-[600px]">
                                 <div class="relative h-[400px] md:h-[550px] rounded-[2.5rem] overflow-hidden border border-yoga-gold/30 transition-all duration-500 shadow-xl" style="animation: goldenPulse 5s infinite; animation-delay: 3s;">
-                                    <img src="../assets/ambiente/_DSC4981.webp" alt="Ambiente confortável preparado para as práticas de yoga" width="1600" height="2400" loading="lazy" srcset="../assets/ambiente/_DSC4981-640.webp 640w, ../assets/ambiente/_DSC4981-960.webp 960w, ../assets/ambiente/_DSC4981-1280.webp 1280w, ../assets/ambiente/_DSC4981.webp 1600w" sizes="(min-width: 768px) 600px, 80vw" class="w-full h-full object-cover transition-transform duration-1000 filter saturate-110 contrast-105 sepia-[.1]">
+                                    <img src="../assets/ambiente/_DSC4981.webp" alt="Ambiente confortável preparado para as práticas de yoga" width="1600" height="2400" loading="lazy" decoding="async" srcset="../assets/ambiente/_DSC4981-640.webp 640w, ../assets/ambiente/_DSC4981-960.webp 960w, ../assets/ambiente/_DSC4981-1280.webp 1280w, ../assets/ambiente/_DSC4981.webp 1600w" sizes="(min-width: 768px) 600px, 80vw" class="w-full h-full object-cover transition-transform duration-1000 filter saturate-110 contrast-105 sepia-[.1]">
                                     <div class="absolute bottom-5 left-0 right-0 px-6 flex justify-center z-20">
                                         <div class="glass-title px-8 py-4 shadow-lg flex flex-col items-center">
                                             <p class="text-white font-serif text-2xl md:text-3xl tracking-wide uppercase drop-shadow-md">Conforto</p>
@@ -426,7 +428,7 @@
                             <!-- Slide 5 -->
                             <div class="swiper-slide w-4/5 md:w-[600px]">
                                 <div class="relative h-[400px] md:h-[550px] rounded-[2.5rem] overflow-hidden border border-yoga-gold/30 transition-all duration-500 shadow-xl" style="animation: goldenPulse 5s infinite; animation-delay: 0.5s;">
-                                    <img src="../assets/ambiente/_DSC4982.webp" alt="Luz natural dourada no espaço de yoga em São Luís" width="1600" height="2400" loading="lazy" srcset="../assets/ambiente/_DSC4982-640.webp 640w, ../assets/ambiente/_DSC4982-960.webp 960w, ../assets/ambiente/_DSC4982-1280.webp 1280w, ../assets/ambiente/_DSC4982.webp 1600w" sizes="(min-width: 768px) 600px, 80vw" class="w-full h-full object-cover transition-transform duration-1000 filter saturate-110 contrast-105 sepia-[.1]">
+                                    <img src="../assets/ambiente/_DSC4982.webp" alt="Luz natural dourada no espaço de yoga em São Luís" width="1600" height="2400" loading="lazy" decoding="async" srcset="../assets/ambiente/_DSC4982-640.webp 640w, ../assets/ambiente/_DSC4982-960.webp 960w, ../assets/ambiente/_DSC4982-1280.webp 1280w, ../assets/ambiente/_DSC4982.webp 1600w" sizes="(min-width: 768px) 600px, 80vw" class="w-full h-full object-cover transition-transform duration-1000 filter saturate-110 contrast-105 sepia-[.1]">
                                     <div class="absolute bottom-5 left-0 right-0 px-6 flex justify-center z-20">
                                         <div class="glass-title px-8 py-4 shadow-lg flex flex-col items-center">
                                             <p class="text-white font-serif text-2xl md:text-3xl tracking-wide uppercase drop-shadow-md">Harmonia</p>
@@ -439,7 +441,7 @@
                             <!-- Slide 6 -->
                             <div class="swiper-slide w-4/5 md:w-[600px]">
                                 <div class="relative h-[400px] md:h-[550px] rounded-[2.5rem] overflow-hidden border border-yoga-gold/30 transition-all duration-500 shadow-xl" style="animation: goldenPulse 5s infinite; animation-delay: 1.5s;">
-                                    <img src="../assets/ambiente/_DSC4970.webp" alt="Cantinho de presença e meditação do espaço de yoga" width="1600" height="2400" loading="lazy" srcset="../assets/ambiente/_DSC4970-640.webp 640w, ../assets/ambiente/_DSC4970-960.webp 960w, ../assets/ambiente/_DSC4970-1280.webp 1280w, ../assets/ambiente/_DSC4970.webp 1600w" sizes="(min-width: 768px) 600px, 80vw" class="w-full h-full object-cover transition-transform duration-1000 filter saturate-110 contrast-105 sepia-[.1]">
+                                    <img src="../assets/ambiente/_DSC4970.webp" alt="Cantinho de presença e meditação do espaço de yoga" width="1600" height="2400" loading="lazy" decoding="async" srcset="../assets/ambiente/_DSC4970-640.webp 640w, ../assets/ambiente/_DSC4970-960.webp 960w, ../assets/ambiente/_DSC4970-1280.webp 1280w, ../assets/ambiente/_DSC4970.webp 1600w" sizes="(min-width: 768px) 600px, 80vw" class="w-full h-full object-cover transition-transform duration-1000 filter saturate-110 contrast-105 sepia-[.1]">
                                     <div class="absolute bottom-5 left-0 right-0 px-6 flex justify-center z-20">
                                         <div class="glass-title px-8 py-4 shadow-lg flex flex-col items-center">
                                             <p class="text-white font-serif text-2xl md:text-3xl tracking-wide uppercase drop-shadow-md">Presença</p>
@@ -482,6 +484,7 @@
                             width="800"
                             height="1000"
                             loading="lazy"
+                            decoding="async"
                             class="w-full h-full object-cover object-[center_45%]">
                     </div>
                     <figcaption class="mt-4 text-center text-[11px] tracking-[0.15em] uppercase text-yoga-dark/55">
@@ -574,7 +577,7 @@
         <div class="relative bg-yoga-light w-full max-w-xl max-h-[90vh] overflow-y-auto rounded-[2.5rem] shadow-2xl p-8 md:p-12 transform scale-95 transition-transform duration-300 text-yoga-dark flex flex-col items-center text-center border border-yellow-600/20"
             id="yoga-modal-content">
             <!-- Close Button -->
-            <button onclick="closeYogaModal()" type="button"
+            <button onclick="closeYogaModal()" type="button" aria-label="Fechar"
                 class="absolute top-6 right-6 z-[60] text-yoga-dark/50 hover:text-yoga-gold transition-colors bg-white/80 backdrop-blur-md hover:bg-white rounded-full p-2 shadow-sm border border-yellow-600/10">
                 <i data-feather="x" class="w-6 h-6"></i>
             </button>
