@@ -54,6 +54,8 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
         rel="stylesheet">
@@ -235,7 +237,7 @@
     <header class="fixed top-3 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-1.5rem)] max-w-6xl md:w-[calc(100%-3rem)] glass glass--header" id="navbar">
         <div class="px-6 md:px-8 py-3 flex justify-between items-center">
             <a href="#hero" class="flex items-center space-x-3 group transition-all duration-300 hover:-translate-y-1">
-                <img src="assets/favicon.png" alt="Logo Dra. Kerly Helena"
+                <img src="assets/favicon.png" alt="Logo Dra. Kerly Helena" width="192" height="192"
                     class="w-8 h-8 md:w-10 md:h-10 object-contain transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
                 <span class="nav-brand"><span
                     class="nav-brand__text text-2xl md:text-3xl font-serif text-charcoal font-semibold tracking-wide group-hover:text-blush-500 transition-colors duration-300">
@@ -490,7 +492,7 @@
                         <figure class="lg:col-span-5 relative max-w-sm mx-auto lg:mx-0 w-full">
                             <div class="relative aspect-[4/5] w-full overflow-hidden organic-blob-1 shadow-xl">
                                 <img src="assets/_DSC4964.webp" alt="Clínica Dra. Kerly Helena — espaço de escuta e avaliação ortomolecular"
-                                    width="1200" height="1800" loading="lazy"
+                                    width="1200" height="1800" loading="lazy" decoding="async"
                                     class="w-full h-full object-cover">
                             </div>
                             <!-- Caption editorial (desktop only) -->
@@ -599,7 +601,7 @@
                             <img src="assets/_DSC2944.webp" alt="Dra. Kerly Helena Cuidado Integrativo em São Luís"
                                 srcset="assets/_DSC2944-640.webp 640w, assets/_DSC2944-960.webp 960w, assets/_DSC2944-1280.webp 1280w, assets/_DSC2944.webp 1200w"
                                 sizes="(min-width: 1024px) 456px, (min-width: 768px) calc(50vw - 3.5rem), calc(100vw - 3rem)"
-                                loading="lazy" width="1200" height="1200" class="w-full h-full object-cover">
+                                loading="lazy" decoding="async" width="1200" height="1200" class="w-full h-full object-cover">
                         </div>
                     </div>
                 </div>
@@ -805,6 +807,7 @@
                                 width="1600"
                                 height="686"
                                 loading="lazy"
+                                decoding="async"
                                 class="w-full h-full object-cover">
                         </div>
                     </figure>
@@ -987,7 +990,7 @@
                 <!-- Replacing with actual clinic photos (no text overlays) -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div class="h-96 rounded-3xl overflow-hidden gs-reveal shadow-lg group">
-                        <img src="assets/_DSC4964.webp" alt="Fachada da Clínica Dra. Kerly Helena" loading="lazy"
+                        <img src="assets/_DSC4964.webp" alt="Fachada da Clínica Dra. Kerly Helena" loading="lazy" decoding="async"
                             width="1200" height="1800"
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                     </div>
@@ -995,17 +998,17 @@
                         <img src="assets/_DSC4966.webp" alt="Interior da Clínica Dra. Kerly Helena em São Luís"
                             srcset="assets/_DSC4966-640.webp 640w, assets/_DSC4966-960.webp 960w, assets/_DSC4966.webp 1200w"
                             sizes="(min-width: 1152px) 536px, (min-width: 768px) calc(50vw - 2.5rem), calc(100vw - 3rem)"
-                            loading="lazy" width="1200" height="800"
+                            loading="lazy" decoding="async" width="1200" height="800"
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                     </div>
                     <div
                         class="h-96 rounded-bl-[4rem] rounded-tr-[4rem] overflow-hidden gs-reveal shadow-lg group bg-nude-300">
                         <img src="assets/_DSC4972.webp" alt="Detalhe do Consultório de Medicina Integrativa"
-                            loading="lazy" width="1200" height="800"
+                            loading="lazy" decoding="async" width="1200" height="800"
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                     </div>
                     <div class="h-96 rounded-3xl overflow-hidden gs-reveal shadow-lg group">
-                        <img src="assets/_DSC4968.webp" alt="Ambiente acolhedor Clínica Ginecologia" loading="lazy"
+                        <img src="assets/_DSC4968.webp" alt="Ambiente acolhedor Clínica Ginecologia" loading="lazy" decoding="async"
                             srcset="assets/_DSC4968-640.webp 640w, assets/_DSC4968-960.webp 960w, assets/_DSC4968.webp 1200w"
                             sizes="(min-width: 1152px) 536px, (min-width: 768px) calc(50vw - 2.5rem), calc(100vw - 3rem)"
                             width="1200" height="800"
