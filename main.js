@@ -230,6 +230,19 @@ document.addEventListener("DOMContentLoaded", (event) => {
         });
     }
 
+    // Menu do botão flutuante (<details>): fecha com Escape, clique fora e ao escolher uma opção.
+    const fab = document.querySelector('.wa-fab');
+    if (fab) {
+        const fecharFab = () => { fab.open = false; };
+        fab.querySelectorAll('.wa-fab__option').forEach(opcao => opcao.addEventListener('click', fecharFab));
+        document.addEventListener('click', (e) => { if (fab.open && !fab.contains(e.target)) fecharFab(); });
+        document.addEventListener('keydown', (e) => {
+            if (e.key !== 'Escape' || !fab.open) return;
+            fecharFab();
+            fab.querySelector('summary').focus();
+        });
+    }
+
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]:not(.skip-link)').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
