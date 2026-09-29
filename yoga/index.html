@@ -101,8 +101,8 @@
         .bg-yoga-light { background-color: #FDFBF7; }
         .bg-yoga-dark { background-color: #F4EBE1; }
         .text-yoga-gold { color: #C5A028; }
-        .text-yoga-gold-dark { color: #8A6D12; }
-        .text-yoga-gold-deep { color: #8A6D12; }
+        .text-yoga-gold-dark { color: #7A5F0F; }
+        .text-yoga-gold-deep { color: #7A5F0F; }
         .bg-yoga-gold { background-color: #8A6D12; }
         .bg-yoga-gold:hover { background-color: #7A5F0F; }
         .text-yoga-dark { color: #4A3F35; }
@@ -737,7 +737,11 @@
                     iniciar();
                 }
             });
-            window.addEventListener('pagehide', parar);
+            window.addEventListener('pagehide', () => {
+                if (!timerRelogio) return;
+                parar();
+                botao.textContent = 'Continuar';
+            });
         })();
 
         // O botão flutuante de WhatsApp é fixo via CSS — sem lógica de scroll.
