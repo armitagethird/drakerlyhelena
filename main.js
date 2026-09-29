@@ -261,6 +261,7 @@ let userData = { name: '', phone: '', email: '', age: '', phase: '' };
 
 // Elemento que tinha o foco antes de abrir o modal (para devolver ao fechar).
 let modalPreviouslyFocusedEl = null;
+let closeModalTimer;
 
 // Elementos focáveis VISÍVEIS dentro do modal (ignora os que estão dentro de
 // estágios .hidden — offsetParent é null para elementos não renderizados).
@@ -334,6 +335,8 @@ window.openSymptomModal = function (options) {
     if (!modal) { window.location.href = '/#quiz'; return; }   // páginas internas
     const modalContent = document.getElementById('symptom-modal-content');
     modalPreviouslyFocusedEl = document.activeElement;
+    clearTimeout(closeModalTimer);
+    stopAnimationTweens();
     modal.classList.remove('hidden');
     modal.classList.add('flex');
     setTimeout(() => { modal.classList.remove('opacity-0'); modalContent.classList.remove('scale-95'); }, 10);
@@ -345,7 +348,13 @@ window.openSymptomModal = function (options) {
     if (Number.isInteger(options.presetIndex) && quizQuestions[options.presetIndex]) {
         questionOrder = [options.presetIndex].concat(questionOrder.filter(i => i !== options.presetIndex));
     }
-    ['quiz-welcome', 'quiz-questions', 'quiz-animation', 'quiz-results'].forEach(id => document.getElementById(id).classList.add('hidden'));
+    ['quiz-welcome', 'quiz-questions', 'quiz-animation', 'quiz-results'].forEach(id => {
+        const stage = document.getElementById(id);
+        if (typeof gsap !== 'undefined') gsap.killTweensOf(stage);   // transição pendente da sessão anterior
+        stage.classList.add('hidden');
+        stage.style.opacity = '';   // a saída animada deixa opacity 0 e translate inline
+        stage.style.transform = '';
+    });
     const form = document.getElementById('quiz-contact');
     if (form) { form.reset(); document.getElementById('quiz-contact-error').classList.add('hidden'); }
     if (Number.isInteger(options.presetIndex)) { document.getElementById('quiz-questions').classList.remove('hidden'); renderQuestion(); }
@@ -359,7 +368,7 @@ window.closeSymptomModal = function () {
     const modalContent = document.getElementById('symptom-modal-content');
     modal.classList.add('opacity-0');
     modalContent.classList.add('scale-95');
-    setTimeout(() => {
+    closeModalTimer = setTimeout(() => {
         modal.classList.add('hidden');
         modal.classList.remove('flex');
     }, 300);
