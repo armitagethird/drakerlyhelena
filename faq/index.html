@@ -221,18 +221,6 @@
 
     <!-- Tailwind CSS (compiled) -->
     <link rel="stylesheet" href="../output.css">
-    <style>
-        .faq-content-inner {
-            transform: translateY(10px);
-            opacity: 0;
-            transition: all 0.5s ease;
-        }
-
-        .faq-item.active .faq-content-inner {
-            transform: translateY(0);
-            opacity: 1;
-        }
-    </style>
 </head>
 
 <body class="bg-sand-100 text-charcoal font-sans antialiased overflow-x-hidden">
@@ -334,7 +322,7 @@
         </div>
 
         <div class="container mx-auto px-6 max-w-4xl relative z-10">
-            <div class="text-center mb-16 gs-reveal">
+            <div class="text-center mb-16">
                 <span class="text-xs tracking-[0.3em] text-blush-600 uppercase font-bold">Respostas & Orientações</span>
                 <h1 class="text-4xl md:text-5xl font-serif mt-4 text-charcoal">
                     Perguntas <em class="italic font-normal text-blush-500">frequentes.</em>
@@ -342,546 +330,287 @@
                 <div class="w-24 hairline-horizontal mx-auto mt-6"></div>
             </div>
 
-            <!-- FAQ Accordion Container -->
-            <div class="space-y-4 md:space-y-6 gs-reveal" id="faq-accordion">
-
-                <!-- Question Item 1 -->
-                <div
-                    class="faq-item group glass rounded-[1.5rem] md:rounded-[2rem] shadow-sm border border-blush-100/50 overflow-hidden transition-all duration-500 hover:bg-white/60">
-                    <button
-                        class="w-full px-5 py-5 md:px-8 md:py-6 text-left flex items-center justify-between focus:outline-none faq-btn">
-                        <div class="flex items-center space-x-4 md:space-x-5">
-                            <div
-                                class="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 rounded-xl md:rounded-2xl bg-blush-100 flex items-center justify-center text-blush-600 faq-theme-icon transition-all duration-300">
-                                <i data-feather="sun" class="w-5 h-5 md:w-6 md:h-6"></i>
-                            </div>
-                            <span class="font-serif text-base md:text-xl text-charcoal font-semibold leading-tight">O
-                                que é medicina integrativa?</span>
-                        </div>
-                        <div
-                            class="w-8 h-8 md:w-10 md:h-10 flex-shrink-0 rounded-full bg-nude-200 flex items-center justify-center text-blush-600 faq-icon-wrapper transition-all duration-500">
-                            <i data-feather="plus" class="w-4 h-4 md:w-5 md:h-5"></i>
-                        </div>
-                    </button>
-                    <div
-                        class="px-5 md:px-8 faq-content-wrapper overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
-                        <div class="pb-6 md:pb-8 pt-2 border-t border-blush-100/30 faq-content-inner">
-                            <p class="text-charcoal/80 leading-relaxed mb-4 text-base md:text-lg">
-                                A medicina integrativa é uma abordagem médica que une a medicina convencional baseada em
-                                evidências com práticas complementares seguras e reconhecidas, como fitoterapia,
-                                mudanças no estilo de vida, alimentação equilibrada, técnicas de respiração e manejo do
-                                estresse.
-                            </p>
-                            <p class="text-charcoal/80 leading-relaxed text-base md:text-lg">
-                                O objetivo não é tratar apenas o sintoma, mas compreender a pessoa como um todo — corpo,
-                                mente, emoções e hábitos. É uma medicina que busca identificar a causa do desequilíbrio
-                                e promover saúde de forma mais ampla e preventiva.
-                            </p>
-                        </div>
-                    </div>
+            <div class="max-w-3xl mx-auto mb-10">
+                <label for="faq-busca" class="block text-base font-medium text-charcoal mb-2">Buscar nas dúvidas</label>
+                <input type="search" id="faq-busca" placeholder="Ex.: convênio, menopausa, exames" class="w-full rounded-xl border-2 border-blush-300 bg-white px-4 py-3 text-lg text-charcoal focus:border-blush-600" autocomplete="off">
+                <div class="mt-3 flex flex-wrap items-center gap-4 text-base">
+                    <button type="button" id="faq-abrir-todas" class="text-blush-600 underline min-h-[44px]">Abrir todas</button>
+                    <button type="button" id="faq-fechar-todas" class="text-blush-600 underline min-h-[44px]">Fechar todas</button>
+                    <span id="faq-contagem" class="text-charcoal/80" aria-live="polite"></span>
                 </div>
-
-                <!-- Question Item 2 -->
-                <div
-                    class="faq-item group glass rounded-[1.5rem] md:rounded-[2rem] shadow-sm border border-blush-100/50 overflow-hidden transition-all duration-500 hover:bg-white/60">
-                    <button
-                        class="w-full px-5 py-5 md:px-8 md:py-6 text-left flex items-center justify-between focus:outline-none faq-btn">
-                        <div class="flex items-center space-x-4 md:space-x-5">
-                            <div
-                                class="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 rounded-xl md:rounded-2xl bg-blush-100 flex items-center justify-center text-blush-600 faq-theme-icon transition-all duration-300">
-                                <i data-feather="award" class="w-5 h-5 md:w-6 md:h-6"></i>
-                            </div>
-                            <span
-                                class="font-serif text-base md:text-xl text-charcoal font-semibold leading-tight">Medicina
-                                integrativa é reconhecida?</span>
-                        </div>
-                        <div
-                            class="w-8 h-8 md:w-10 md:h-10 flex-shrink-0 rounded-full bg-nude-200 flex items-center justify-center text-blush-600 faq-icon-wrapper transition-all duration-500">
-                            <i data-feather="plus" class="w-4 h-4 md:w-5 md:h-5"></i>
-                        </div>
-                    </button>
-                    <div
-                        class="px-5 md:px-8 faq-content-wrapper overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
-                        <div class="pb-6 md:pb-8 pt-2 border-t border-blush-100/30 faq-content-inner">
-                            <p class="text-charcoal/80 leading-relaxed mb-4 text-base md:text-lg">
-                                Sim. A medicina integrativa é reconhecida como uma abordagem médica que associa
-                                tratamentos convencionais a práticas complementares com respaldo científico.
-                            </p>
-                            <p class="text-charcoal/80 leading-relaxed text-base md:text-lg">
-                                No Brasil, diversas práticas integrativas fazem parte das diretrizes do Ministério da
-                                Saúde dentro da Política Nacional de Práticas Integrativas e Complementares (PNPIC) —
-                                presentes no SUS e aplicadas por profissionais de saúde em todo o país.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Question Item 3 -->
-                <div
-                    class="faq-item group glass rounded-[1.5rem] md:rounded-[2rem] shadow-sm border border-blush-100/50 overflow-hidden transition-all duration-500 hover:bg-white/60">
-                    <button
-                        class="w-full px-5 py-5 md:px-8 md:py-6 text-left flex items-center justify-between focus:outline-none faq-btn">
-                        <div class="flex items-center space-x-4 md:space-x-5">
-                            <div
-                                class="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 rounded-xl md:rounded-2xl bg-blush-100 flex items-center justify-center text-blush-600 faq-theme-icon transition-all duration-300">
-                                <i data-feather="briefcase" class="w-5 h-5 md:w-6 md:h-6"></i>
-                            </div>
-                            <span
-                                class="font-serif text-base md:text-xl text-charcoal font-semibold leading-tight">Medicina
-                                integrativa é especialidade médica?</span>
-                        </div>
-                        <div
-                            class="w-8 h-8 md:w-10 md:h-10 flex-shrink-0 rounded-full bg-nude-200 flex items-center justify-center text-blush-600 faq-icon-wrapper transition-all duration-500">
-                            <i data-feather="plus" class="w-4 h-4 md:w-5 md:h-5"></i>
-                        </div>
-                    </button>
-                    <div
-                        class="px-5 md:px-8 faq-content-wrapper overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
-                        <div class="pb-6 md:pb-8 pt-2 border-t border-blush-100/30 faq-content-inner">
-                            <p class="text-charcoal/80 leading-relaxed mb-4 text-base md:text-lg">
-                                É uma forma ampliada de exercer a medicina, praticada dentro da formação e do registro
-                                do próprio médico. A Dra. Kerly Helena é ginecologista e obstetra (CRM/MA 3130 · RQE
-                                5232) e conduz a consulta integrando a medicina convencional às práticas integrativas —
-                                as duas caminham lado a lado, com o mesmo rigor de avaliação e exames.
-                            </p>
-                            <p class="text-charcoal/80 leading-relaxed text-base md:text-lg">
-                                Ou seja, é o médico quem exerce a medicina integrativa, aplicando uma visão mais ampla e
-                                personalizada no cuidado do paciente.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Question Item 4 -->
-                <div
-                    class="faq-item group glass rounded-[1.5rem] md:rounded-[2rem] shadow-sm border border-blush-100/50 overflow-hidden transition-all duration-500 hover:bg-white/60">
-                    <button
-                        class="w-full px-5 py-5 md:px-8 md:py-6 text-left flex items-center justify-between focus:outline-none faq-btn">
-                        <div class="flex items-center space-x-4 md:space-x-5">
-                            <div
-                                class="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 rounded-xl md:rounded-2xl bg-blush-100 flex items-center justify-center text-blush-600 faq-theme-icon transition-all duration-300">
-                                <i data-feather="activity" class="w-5 h-5 md:w-6 md:h-6"></i>
-                            </div>
-                            <span class="font-serif text-base md:text-xl text-charcoal font-semibold leading-tight">Como
-                                funciona a medicina integrativa?</span>
-                        </div>
-                        <div
-                            class="w-8 h-8 md:w-10 md:h-10 flex-shrink-0 rounded-full bg-nude-200 flex items-center justify-center text-blush-600 faq-icon-wrapper transition-all duration-500">
-                            <i data-feather="plus" class="w-4 h-4 md:w-5 md:h-5"></i>
-                        </div>
-                    </button>
-                    <div
-                        class="px-5 md:px-8 faq-content-wrapper overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
-                        <div class="pb-6 md:pb-8 pt-2 border-t border-blush-100/30 faq-content-inner">
-                            <p class="text-charcoal/80 leading-relaxed mb-4 text-base md:text-lg">
-                                A consulta integrativa costuma ser mais detalhada. O médico avalia não apenas exames e
-                                sintomas, mas também:
-                            </p>
-                            <div class="grid grid-cols-2 gap-3 mb-4">
-                                <div
-                                    class="flex items-center space-x-2 text-charcoal/80 bg-blush-100/40 px-3 py-1.5 rounded-full text-xs md:text-sm">
-                                    <i data-feather="check" class="w-3 h-3 text-blush-500"></i> <span>Alimentação</span>
-                                </div>
-                                <div
-                                    class="flex items-center space-x-2 text-charcoal/80 bg-blush-100/40 px-3 py-1.5 rounded-full text-xs md:text-sm">
-                                    <i data-feather="check" class="w-3 h-3 text-blush-500"></i> <span>Qualidade do
-                                        sono</span>
-                                </div>
-                                <div
-                                    class="flex items-center space-x-2 text-charcoal/80 bg-blush-100/40 px-3 py-1.5 rounded-full text-xs md:text-sm">
-                                    <i data-feather="check" class="w-3 h-3 text-blush-500"></i> <span>Nível de
-                                        estresse</span>
-                                </div>
-                                <div
-                                    class="flex items-center space-x-2 text-charcoal/80 bg-blush-100/40 px-3 py-1.5 rounded-full text-xs md:text-sm">
-                                    <i data-feather="check" class="w-3 h-3 text-blush-500"></i> <span>Saúde
-                                        emocional</span>
-                                </div>
-                                <div
-                                    class="flex items-center space-x-2 text-charcoal/80 bg-blush-100/40 px-3 py-1.5 rounded-full text-xs md:text-sm">
-                                    <i data-feather="check" class="w-3 h-3 text-blush-500"></i> <span>Rotina
-                                        física</span>
-                                </div>
-                                <div
-                                    class="flex items-center space-x-2 text-charcoal/80 bg-blush-100/40 px-3 py-1.5 rounded-full text-xs md:text-sm">
-                                    <i data-feather="check" class="w-3 h-3 text-blush-500"></i> <span>Equilíbrio
-                                        hormonal</span>
-                                </div>
-                            </div>
-                            <p class="text-charcoal/80 leading-relaxed text-base md:text-lg">
-                                A partir disso, é construído um plano terapêutico individualizado.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Question Item 5 -->
-                <div
-                    class="faq-item group glass rounded-[1.5rem] md:rounded-[2rem] shadow-sm border border-blush-100/50 overflow-hidden transition-all duration-500 hover:bg-white/60">
-                    <button
-                        class="w-full px-5 py-5 md:px-8 md:py-6 text-left flex items-center justify-between focus:outline-none faq-btn">
-                        <div class="flex items-center space-x-4 md:space-x-5">
-                            <div
-                                class="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 rounded-xl md:rounded-2xl bg-blush-100 flex items-center justify-center text-blush-600 faq-theme-icon transition-all duration-300">
-                                <i data-feather="heart" class="w-5 h-5 md:w-6 md:h-6"></i>
-                            </div>
-                            <span class="font-serif text-base md:text-xl text-charcoal font-semibold leading-tight">O
-                                que a medicina integrativa trata?</span>
-                        </div>
-                        <div
-                            class="w-8 h-8 md:w-10 md:h-10 flex-shrink-0 rounded-full bg-nude-200 flex items-center justify-center text-blush-600 faq-icon-wrapper transition-all duration-500">
-                            <i data-feather="plus" class="w-4 h-4 md:w-5 md:h-5"></i>
-                        </div>
-                    </button>
-                    <div
-                        class="px-5 md:px-8 faq-content-wrapper overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
-                        <div class="pb-6 md:pb-8 pt-2 border-t border-blush-100/30 faq-content-inner">
-                            <p class="text-charcoal/80 leading-relaxed mb-4 text-base md:text-lg">
-                                Trata e auxilia no acompanhamento de diversas condições:
-                            </p>
-                            <ul
-                                class="grid grid-cols-1 md:grid-cols-2 gap-y-2 mb-4 text-charcoal/80 text-sm md:text-lg">
-                                <li class="flex items-center space-x-2"><i data-feather="check-circle"
-                                        class="w-4 h-4 text-blush-300"></i> <span>Sintomas da menopausa</span></li>
-                                <li class="flex items-center space-x-2"><i data-feather="check-circle"
-                                        class="w-4 h-4 text-blush-300"></i> <span>Ansiedade e estresse</span></li>
-                                <li class="flex items-center space-x-2"><i data-feather="check-circle"
-                                        class="w-4 h-4 text-blush-300"></i> <span>Fadiga crônica</span></li>
-                                <li class="flex items-center space-x-2"><i data-feather="check-circle"
-                                        class="w-4 h-4 text-blush-300"></i> <span>Desequilíbrios hormonais</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-
-                <!-- Question Item 6 -->
-                <div
-                    class="faq-item group glass rounded-[1.5rem] md:rounded-[2rem] shadow-sm border border-blush-100/50 overflow-hidden transition-all duration-500 hover:bg-white/60">
-                    <button
-                        class="w-full px-5 py-5 md:px-8 md:py-6 text-left flex items-center justify-between focus:outline-none faq-btn">
-                        <div class="flex items-center space-x-4 md:space-x-5">
-                            <div
-                                class="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 rounded-xl md:rounded-2xl bg-blush-100 flex items-center justify-center text-blush-600 faq-theme-icon transition-all duration-300">
-                                <i data-feather="layers" class="w-5 h-5 md:w-6 md:h-6"></i>
-                            </div>
-                            <span class="font-serif text-base md:text-xl text-charcoal font-semibold leading-tight">O
-                                que é medicina integrativa funcional?</span>
-                        </div>
-                        <div
-                            class="w-8 h-8 md:w-10 md:h-10 flex-shrink-0 rounded-full bg-nude-200 flex items-center justify-center text-blush-600 faq-icon-wrapper transition-all duration-500">
-                            <i data-feather="plus" class="w-4 h-4 md:w-5 md:h-5"></i>
-                        </div>
-                    </button>
-                    <div
-                        class="px-5 md:px-8 faq-content-wrapper overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
-                        <div class="pb-6 md:pb-8 pt-2 border-t border-blush-100/30 faq-content-inner">
-                            <p class="text-charcoal/80 leading-relaxed text-base md:text-lg">
-                                É uma linha que busca entender as causas dos desequilíbrios. Investiga-se o corpo como
-                                um sistema interligado — intestino, hormônios, inflamação — buscando restaurar o
-                                equilíbrio fisiológico.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 7 -->
-                <div
-                    class="faq-item group glass rounded-[1.5rem] md:rounded-[2rem] shadow-sm border border-blush-100/50 overflow-hidden transition-all duration-500 hover:bg-white/60">
-                    <button
-                        class="w-full px-5 py-5 md:px-8 md:py-6 text-left flex items-center justify-between focus:outline-none faq-btn">
-                        <div class="flex items-center space-x-4 md:space-x-5">
-                            <div
-                                class="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 rounded-xl md:rounded-2xl bg-blush-100 flex items-center justify-center text-blush-600 faq-theme-icon transition-all duration-300">
-                                <i data-feather="shuffle" class="w-5 h-5 md:w-6 md:h-6"></i>
-                            </div>
-                            <span
-                                class="font-serif text-base md:text-xl text-charcoal font-semibold leading-tight">Diferença
-                                entre integrativa e complementar?</span>
-                        </div>
-                        <div
-                            class="w-8 h-8 md:w-10 md:h-10 flex-shrink-0 rounded-full bg-nude-200 flex items-center justify-center text-blush-600 faq-icon-wrapper transition-all duration-500">
-                            <i data-feather="plus" class="w-4 h-4 md:w-5 md:h-5"></i>
-                        </div>
-                    </button>
-                    <div
-                        class="px-5 md:px-8 faq-content-wrapper overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
-                        <div class="pb-6 md:pb-8 pt-2 border-t border-blush-100/30 faq-content-inner">
-                            <p class="text-charcoal/80 leading-relaxed text-base md:text-lg">
-                                <strong class="text-blush-600">Integrativa:</strong> une convencional com complementar
-                                baseada em evidência. <br>
-                                <strong class="text-blush-600">Complementar:</strong> terapias usadas junto ao
-                                tratamento tradicional.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Respiro visual no meio do acordeão -->
-                <figure class="gs-reveal my-10 md:my-14">
-                    <div class="relative aspect-[21/9] w-full overflow-hidden rounded-3xl shadow-lg">
-                        <img
-                            src="../assets/IMG_5004-wide-960.webp"
-                            srcset="../assets/IMG_5004-wide-640.webp 640w, ../assets/IMG_5004-wide-960.webp 960w, ../assets/IMG_5004-wide.webp 1600w"
-                            sizes="(min-width:1024px) 896px, calc(100vw - 3rem)"
-                            alt="Dra. Kerly Helena, médica ginecologista integrativa em São Luís – MA, que responde às dúvidas desta página"
-                            width="1600"
-                            height="686"
-                            loading="lazy"
-                            decoding="async"
-                            class="w-full h-full object-cover">
-                    </div>
-                    <figcaption class="mt-3 text-center text-sm text-charcoal/80">
-                        Dra. Kerly Helena — CRM/MA 3130 · RQE 5232
-                    </figcaption>
-                </figure>
-
-                <!-- Question Item: Ortomolecular -->
-                <div
-                    class="faq-item group glass rounded-[1.5rem] md:rounded-[2rem] shadow-sm border border-blush-100/50 overflow-hidden transition-all duration-500 hover:bg-white/60">
-                    <button
-                        class="w-full px-5 py-5 md:px-8 md:py-6 text-left flex items-center justify-between focus:outline-none faq-btn">
-                        <div class="flex items-center space-x-4 md:space-x-5">
-                            <div
-                                class="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 rounded-xl md:rounded-2xl bg-blush-100 flex items-center justify-center text-blush-600 faq-theme-icon transition-all duration-300">
-                                <i data-feather="droplet" class="w-5 h-5 md:w-6 md:h-6"></i>
-                            </div>
-                            <span class="font-serif text-base md:text-xl text-charcoal font-semibold leading-tight">A
-                                Dra. Kerly Helena trabalha com medicina ortomolecular?</span>
-                        </div>
-                        <div
-                            class="w-8 h-8 md:w-10 md:h-10 flex-shrink-0 rounded-full bg-nude-200 flex items-center justify-center text-blush-600 faq-icon-wrapper transition-all duration-500">
-                            <i data-feather="plus" class="w-4 h-4 md:w-5 md:h-5"></i>
-                        </div>
-                    </button>
-                    <div
-                        class="px-5 md:px-8 faq-content-wrapper overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
-                        <div class="pb-6 md:pb-8 pt-2 border-t border-blush-100/30 faq-content-inner">
-                            <p class="text-charcoal/80 leading-relaxed text-base md:text-lg">
-                                Sim. <a href="/ortomolecular/" class="text-blush-600 underline underline-offset-2">A medicina ortomolecular</a> caminha lado a lado com a consulta ginecológica integrativa da Dra. Kerly Helena, em São Luís (MA), com avaliação individualizada e baseada em exames. Ela entra no mesmo plano de cuidado, quando faz sentido para o seu caso.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Question Item: Ortomolecular x Integrativa -->
-                <div
-                    class="faq-item group glass rounded-[1.5rem] md:rounded-[2rem] shadow-sm border border-blush-100/50 overflow-hidden transition-all duration-500 hover:bg-white/60">
-                    <button
-                        class="w-full px-5 py-5 md:px-8 md:py-6 text-left flex items-center justify-between focus:outline-none faq-btn">
-                        <div class="flex items-center space-x-4 md:space-x-5">
-                            <div
-                                class="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 rounded-xl md:rounded-2xl bg-blush-100 flex items-center justify-center text-blush-600 faq-theme-icon transition-all duration-300">
-                                <i data-feather="compass" class="w-5 h-5 md:w-6 md:h-6"></i>
-                            </div>
-                            <span
-                                class="font-serif text-base md:text-xl text-charcoal font-semibold leading-tight">Qual
-                                a diferença entre medicina ortomolecular e medicina integrativa?</span>
-                        </div>
-                        <div
-                            class="w-8 h-8 md:w-10 md:h-10 flex-shrink-0 rounded-full bg-nude-200 flex items-center justify-center text-blush-600 faq-icon-wrapper transition-all duration-500">
-                            <i data-feather="plus" class="w-4 h-4 md:w-5 md:h-5"></i>
-                        </div>
-                    </button>
-                    <div
-                        class="px-5 md:px-8 faq-content-wrapper overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
-                        <div class="pb-6 md:pb-8 pt-2 border-t border-blush-100/30 faq-content-inner">
-                            <p class="text-charcoal/80 leading-relaxed text-base md:text-lg">
-                                A medicina integrativa é o olhar amplo da consulta — sono, hormônios, alimentação e emoções avaliados em conjunto. A medicina ortomolecular é uma frente mais específica, focada em nutrientes e equilíbrio bioquímico, que entra no plano quando a avaliação indicar. As duas caminham juntas.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 10 (Menopausa) -->
-                <div
-                    class="faq-item group glass rounded-[1.5rem] md:rounded-[2rem] shadow-sm border border-blush-100/50 overflow-hidden transition-all duration-500 hover:bg-white/60">
-                    <button
-                        class="w-full px-5 py-5 md:px-8 md:py-6 text-left flex items-center justify-between focus:outline-none faq-btn">
-                        <div class="flex items-center space-x-4 md:space-x-5">
-                            <div
-                                class="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 rounded-xl md:rounded-2xl bg-blush-100 flex items-center justify-center text-blush-600 faq-theme-icon transition-all duration-300">
-                                <i data-feather="wind" class="w-5 h-5 md:w-6 md:h-6"></i>
-                            </div>
-                            <span
-                                class="font-serif text-base md:text-xl text-charcoal font-semibold leading-tight">Medicina
-                                integrativa ajuda na menopausa?</span>
-                        </div>
-                        <div
-                            class="w-8 h-8 md:w-10 md:h-10 flex-shrink-0 rounded-full bg-nude-200 flex items-center justify-center text-blush-600 faq-icon-wrapper transition-all duration-500">
-                            <i data-feather="plus" class="w-4 h-4 md:w-5 md:h-5"></i>
-                        </div>
-                    </button>
-                    <div
-                        class="px-5 md:px-8 faq-content-wrapper overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
-                        <div class="pb-6 md:pb-8 pt-2 border-t border-blush-100/30 faq-content-inner">
-                            <p class="text-charcoal/80 leading-relaxed mb-4 text-base md:text-lg">
-                                Sim. A abordagem avalia: hormônios, sono, saúde emocional e metabolismo. O tratamento é
-                                individualizado e focado em qualidade de vida.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Question Item 9 -->
-                <div
-                    class="faq-item group glass rounded-[1.5rem] md:rounded-[2rem] shadow-sm border border-blush-100/50 overflow-hidden transition-all duration-500 hover:bg-white/60">
-                    <button
-                        class="w-full px-5 py-5 md:px-8 md:py-6 text-left flex items-center justify-between focus:outline-none faq-btn">
-                        <div class="flex items-center space-x-4 md:space-x-5">
-                            <div
-                                class="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 rounded-xl md:rounded-2xl bg-blush-100 flex items-center justify-center text-blush-600 faq-theme-icon transition-all duration-300">
-                                <i data-feather="credit-card" class="w-5 h-5 md:w-6 md:h-6"></i>
-                            </div>
-                            <span class="font-serif text-base md:text-xl text-charcoal font-semibold leading-tight">A
-                                Dra. Kerly Helena atende por convênio?</span>
-                        </div>
-                        <div
-                            class="w-8 h-8 md:w-10 md:h-10 flex-shrink-0 rounded-full bg-nude-200 flex items-center justify-center text-blush-600 faq-icon-wrapper transition-all duration-500">
-                            <i data-feather="plus" class="w-4 h-4 md:w-5 md:h-5"></i>
-                        </div>
-                    </button>
-                    <div
-                        class="px-5 md:px-8 faq-content-wrapper overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
-                        <div class="pb-6 md:pb-8 pt-2 border-t border-blush-100/30 faq-content-inner">
-                            <p class="text-charcoal/80 leading-relaxed text-base md:text-lg">
-                                Sim — o único convênio aceito é o Convênio APCEF (APCEF Mais Saúde, rede credenciada da
-                                APCEF/MA), disponível para associados e dependentes conforme as regras da associação.
-                                Todos os demais atendimentos são particulares. Veja como usar o convênio na
-                                <a href="/convenio-apcef/" class="text-blush-600 underline underline-offset-2">página dedicada</a>.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Question Item 10 -->
-                <div
-                    class="faq-item group glass rounded-[1.5rem] md:rounded-[2rem] shadow-sm border border-blush-100/50 overflow-hidden transition-all duration-500 hover:bg-white/60">
-                    <button
-                        class="w-full px-5 py-5 md:px-8 md:py-6 text-left flex items-center justify-between focus:outline-none faq-btn">
-                        <div class="flex items-center space-x-4 md:space-x-5">
-                            <div
-                                class="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 rounded-xl md:rounded-2xl bg-blush-100 flex items-center justify-center text-blush-600 faq-theme-icon transition-all duration-300">
-                                <i data-feather="map-pin" class="w-5 h-5 md:w-6 md:h-6"></i>
-                            </div>
-                            <span class="font-serif text-base md:text-xl text-charcoal font-semibold leading-tight">Onde
-                                fica o consultório e como chegar?</span>
-                        </div>
-                        <div
-                            class="w-8 h-8 md:w-10 md:h-10 flex-shrink-0 rounded-full bg-nude-200 flex items-center justify-center text-blush-600 faq-icon-wrapper transition-all duration-500">
-                            <i data-feather="plus" class="w-4 h-4 md:w-5 md:h-5"></i>
-                        </div>
-                    </button>
-                    <div
-                        class="px-5 md:px-8 faq-content-wrapper overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
-                        <div class="pb-6 md:pb-8 pt-2 border-t border-blush-100/30 faq-content-inner">
-                            <p class="text-charcoal/80 leading-relaxed text-base md:text-lg">
-                                O consultório fica no Condomínio Edifício Monumental (Monumental Shopping), Sala 310 —
-                                Av. Coronel Colares Moreira, Jardim Renascença, São Luís – MA. O prédio é de fácil
-                                acesso e conta com estacionamento. Se preferir, abra a localização direto no Google
-                                Maps pelo link do site.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Question Item 11 -->
-                <div
-                    class="faq-item group glass rounded-[1.5rem] md:rounded-[2rem] shadow-sm border border-blush-100/50 overflow-hidden transition-all duration-500 hover:bg-white/60">
-                    <button
-                        class="w-full px-5 py-5 md:px-8 md:py-6 text-left flex items-center justify-between focus:outline-none faq-btn">
-                        <div class="flex items-center space-x-4 md:space-x-5">
-                            <div
-                                class="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 rounded-xl md:rounded-2xl bg-blush-100 flex items-center justify-center text-blush-600 faq-theme-icon transition-all duration-300">
-                                <i data-feather="clock" class="w-5 h-5 md:w-6 md:h-6"></i>
-                            </div>
-                            <span class="font-serif text-base md:text-xl text-charcoal font-semibold leading-tight">Qual
-                                é o horário de atendimento?</span>
-                        </div>
-                        <div
-                            class="w-8 h-8 md:w-10 md:h-10 flex-shrink-0 rounded-full bg-nude-200 flex items-center justify-center text-blush-600 faq-icon-wrapper transition-all duration-500">
-                            <i data-feather="plus" class="w-4 h-4 md:w-5 md:h-5"></i>
-                        </div>
-                    </button>
-                    <div
-                        class="px-5 md:px-8 faq-content-wrapper overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
-                        <div class="pb-6 md:pb-8 pt-2 border-t border-blush-100/30 faq-content-inner">
-                            <p class="text-charcoal/80 leading-relaxed text-base md:text-lg">
-                                De segunda a sexta, das 08h às 18h — exclusivamente com hora marcada. A doutora atende
-                                somente pacientes agendadas; por isso, agende pelo WhatsApp antes de ir ao consultório,
-                                para garantir que você será recebida no seu horário.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Question Item 12 -->
-                <div
-                    class="faq-item group glass rounded-[1.5rem] md:rounded-[2rem] shadow-sm border border-blush-100/50 overflow-hidden transition-all duration-500 hover:bg-white/60">
-                    <button
-                        class="w-full px-5 py-5 md:px-8 md:py-6 text-left flex items-center justify-between focus:outline-none faq-btn">
-                        <div class="flex items-center space-x-4 md:space-x-5">
-                            <div
-                                class="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 rounded-xl md:rounded-2xl bg-blush-100 flex items-center justify-center text-blush-600 faq-theme-icon transition-all duration-300">
-                                <i data-feather="calendar" class="w-5 h-5 md:w-6 md:h-6"></i>
-                            </div>
-                            <span class="font-serif text-base md:text-xl text-charcoal font-semibold leading-tight">Como
-                                funciona a primeira consulta?</span>
-                        </div>
-                        <div
-                            class="w-8 h-8 md:w-10 md:h-10 flex-shrink-0 rounded-full bg-nude-200 flex items-center justify-center text-blush-600 faq-icon-wrapper transition-all duration-500">
-                            <i data-feather="plus" class="w-4 h-4 md:w-5 md:h-5"></i>
-                        </div>
-                    </button>
-                    <div
-                        class="px-5 md:px-8 faq-content-wrapper overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
-                        <div class="pb-6 md:pb-8 pt-2 border-t border-blush-100/30 faq-content-inner">
-                            <p class="text-charcoal/80 leading-relaxed text-base md:text-lg">
-                                Você agenda pelo WhatsApp e é recebida para uma consulta de 60 a 90 minutos, sem pressa.
-                                A Dra. Kerly avalia sua história, exames, sono, hormônios, alimentação e emoções em
-                                conjunto — e você sai com um plano terapêutico individualizado por escrito.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Question Item 13 -->
-                <div
-                    class="faq-item group glass rounded-[1.5rem] md:rounded-[2rem] shadow-sm border border-blush-100/50 overflow-hidden transition-all duration-500 hover:bg-white/60">
-                    <button
-                        class="w-full px-5 py-5 md:px-8 md:py-6 text-left flex items-center justify-between focus:outline-none faq-btn">
-                        <div class="flex items-center space-x-4 md:space-x-5">
-                            <div
-                                class="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 rounded-xl md:rounded-2xl bg-blush-100 flex items-center justify-center text-blush-600 faq-theme-icon transition-all duration-300">
-                                <i data-feather="clipboard" class="w-5 h-5 md:w-6 md:h-6"></i>
-                            </div>
-                            <span class="font-serif text-base md:text-xl text-charcoal font-semibold leading-tight">O
-                                que devo levar para a consulta?</span>
-                        </div>
-                        <div
-                            class="w-8 h-8 md:w-10 md:h-10 flex-shrink-0 rounded-full bg-nude-200 flex items-center justify-center text-blush-600 faq-icon-wrapper transition-all duration-500">
-                            <i data-feather="plus" class="w-4 h-4 md:w-5 md:h-5"></i>
-                        </div>
-                    </button>
-                    <div
-                        class="px-5 md:px-8 faq-content-wrapper overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
-                        <div class="pb-6 md:pb-8 pt-2 border-t border-blush-100/30 faq-content-inner">
-                            <p class="text-charcoal/80 leading-relaxed text-base md:text-lg">
-                                Leve um documento com foto, seus exames anteriores (mesmo os antigos), a lista de
-                                medicamentos e suplementos em uso e suas dúvidas anotadas. Se for atendida pelo
-                                Convênio APCEF, leve também a carteirinha ou comprovante de vínculo com a APCEF/MA.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
+                <p id="faq-vazio" class="hidden mt-6 text-base text-charcoal/80">Nenhuma pergunta com esse termo. Tente outra palavra ou <a href="https://wa.me/5598981532153" target="_blank" rel="noopener noreferrer" class="text-blush-600 underline">pergunte no WhatsApp</a>.</p>
             </div>
 
-            <!-- CTA ... (Same as before but with flex-shrink fix for icons) -->
+            <section class="mt-12">
+                <h2 class="text-2xl md:text-3xl font-serif text-charcoal mb-6">Consulta, agendamento e convênio</h2>
+                <div class="space-y-4">
+
+                    <details id="faq-atende-por-convenio" class="faq-item group glass rounded-2xl border border-blush-100/50 px-6 py-5">
+                        <summary class="cursor-pointer list-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-4 min-h-[44px]">
+                            <span class="flex items-center gap-4">
+                                <span class="w-10 h-10 rounded-xl bg-blush-100 flex items-center justify-center shrink-0"><i data-feather="credit-card" class="w-5 h-5 text-blush-600"></i></span>
+                                <h3 class="font-serif text-lg text-charcoal">A Dra. Kerly Helena atende por convênio?</h3>
+                            </span>
+                            <i data-feather="plus" class="w-6 h-6 text-blush-600 shrink-0 transition-transform group-open:rotate-45"></i>
+                        </summary>
+                        <div class="pt-4 mt-4 border-t border-blush-100/60 space-y-3 text-base text-charcoal/80">
+                            <p>Sim — o único convênio aceito é o Convênio APCEF (APCEF Mais Saúde, rede credenciada da APCEF/MA), disponível para associados e dependentes conforme as regras da associação. Todos os demais atendimentos são particulares. Veja como usar o convênio na <a href="/convenio-apcef/" class="text-blush-600 underline underline-offset-2">página dedicada</a>.</p>
+                            <p class="pt-2"><a href="#faq-atende-por-convenio" class="faq-link text-sm text-blush-600 underline">Copiar link desta pergunta</a></p>
+                        </div>
+                    </details>
+
+                    <details id="faq-onde-fica-o-consultorio" class="faq-item group glass rounded-2xl border border-blush-100/50 px-6 py-5">
+                        <summary class="cursor-pointer list-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-4 min-h-[44px]">
+                            <span class="flex items-center gap-4">
+                                <span class="w-10 h-10 rounded-xl bg-blush-100 flex items-center justify-center shrink-0"><i data-feather="map-pin" class="w-5 h-5 text-blush-600"></i></span>
+                                <h3 class="font-serif text-lg text-charcoal">Onde fica o consultório e como chegar?</h3>
+                            </span>
+                            <i data-feather="plus" class="w-6 h-6 text-blush-600 shrink-0 transition-transform group-open:rotate-45"></i>
+                        </summary>
+                        <div class="pt-4 mt-4 border-t border-blush-100/60 space-y-3 text-base text-charcoal/80">
+                            <p>O consultório fica no Condomínio Edifício Monumental (Monumental Shopping), Sala 310 — Av. Coronel Colares Moreira, Jardim Renascença, São Luís – MA. O prédio é de fácil acesso e conta com estacionamento. Se preferir, abra a localização direto no Google Maps pelo link do site.</p>
+                            <p class="pt-2"><a href="#faq-onde-fica-o-consultorio" class="faq-link text-sm text-blush-600 underline">Copiar link desta pergunta</a></p>
+                        </div>
+                    </details>
+
+                    <details id="faq-horario-de-atendimento" class="faq-item group glass rounded-2xl border border-blush-100/50 px-6 py-5">
+                        <summary class="cursor-pointer list-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-4 min-h-[44px]">
+                            <span class="flex items-center gap-4">
+                                <span class="w-10 h-10 rounded-xl bg-blush-100 flex items-center justify-center shrink-0"><i data-feather="clock" class="w-5 h-5 text-blush-600"></i></span>
+                                <h3 class="font-serif text-lg text-charcoal">Qual é o horário de atendimento?</h3>
+                            </span>
+                            <i data-feather="plus" class="w-6 h-6 text-blush-600 shrink-0 transition-transform group-open:rotate-45"></i>
+                        </summary>
+                        <div class="pt-4 mt-4 border-t border-blush-100/60 space-y-3 text-base text-charcoal/80">
+                            <p>De segunda a sexta, das 08h às 18h — exclusivamente com hora marcada. A doutora atende somente pacientes agendadas; por isso, agende pelo WhatsApp antes de ir ao consultório, para garantir que você será recebida no seu horário.</p>
+                            <p class="pt-2"><a href="#faq-horario-de-atendimento" class="faq-link text-sm text-blush-600 underline">Copiar link desta pergunta</a></p>
+                        </div>
+                    </details>
+
+                    <details id="faq-como-funciona-a-primeira-consulta" class="faq-item group glass rounded-2xl border border-blush-100/50 px-6 py-5">
+                        <summary class="cursor-pointer list-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-4 min-h-[44px]">
+                            <span class="flex items-center gap-4">
+                                <span class="w-10 h-10 rounded-xl bg-blush-100 flex items-center justify-center shrink-0"><i data-feather="calendar" class="w-5 h-5 text-blush-600"></i></span>
+                                <h3 class="font-serif text-lg text-charcoal">Como funciona a primeira consulta?</h3>
+                            </span>
+                            <i data-feather="plus" class="w-6 h-6 text-blush-600 shrink-0 transition-transform group-open:rotate-45"></i>
+                        </summary>
+                        <div class="pt-4 mt-4 border-t border-blush-100/60 space-y-3 text-base text-charcoal/80">
+                            <p>Você agenda pelo WhatsApp e é recebida para uma consulta de 60 a 90 minutos, sem pressa. A Dra. Kerly avalia sua história, exames, sono, hormônios, alimentação e emoções em conjunto — e você sai com um plano terapêutico individualizado por escrito.</p>
+                            <p class="pt-2"><a href="#faq-como-funciona-a-primeira-consulta" class="faq-link text-sm text-blush-600 underline">Copiar link desta pergunta</a></p>
+                        </div>
+                    </details>
+
+                    <details id="faq-o-que-levar-para-a-consulta" class="faq-item group glass rounded-2xl border border-blush-100/50 px-6 py-5">
+                        <summary class="cursor-pointer list-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-4 min-h-[44px]">
+                            <span class="flex items-center gap-4">
+                                <span class="w-10 h-10 rounded-xl bg-blush-100 flex items-center justify-center shrink-0"><i data-feather="clipboard" class="w-5 h-5 text-blush-600"></i></span>
+                                <h3 class="font-serif text-lg text-charcoal">O que devo levar para a consulta?</h3>
+                            </span>
+                            <i data-feather="plus" class="w-6 h-6 text-blush-600 shrink-0 transition-transform group-open:rotate-45"></i>
+                        </summary>
+                        <div class="pt-4 mt-4 border-t border-blush-100/60 space-y-3 text-base text-charcoal/80">
+                            <p>Leve um documento com foto, seus exames anteriores (mesmo os antigos), a lista de medicamentos e suplementos em uso e suas dúvidas anotadas. Se for atendida pelo Convênio APCEF, leve também a carteirinha ou comprovante de vínculo com a APCEF/MA.</p>
+                            <p class="pt-2"><a href="#faq-o-que-levar-para-a-consulta" class="faq-link text-sm text-blush-600 underline">Copiar link desta pergunta</a></p>
+                        </div>
+                    </details>
+                </div>
+            </section>
+
+            <figure class="my-12 md:my-14">
+                <div class="relative aspect-[21/9] w-full overflow-hidden rounded-3xl shadow-lg">
+                    <img
+                        src="../assets/IMG_5004-wide-960.webp"
+                        srcset="../assets/IMG_5004-wide-640.webp 640w, ../assets/IMG_5004-wide-960.webp 960w, ../assets/IMG_5004-wide.webp 1600w"
+                        sizes="(min-width:1024px) 896px, calc(100vw - 3rem)"
+                        alt="Dra. Kerly Helena, médica ginecologista integrativa em São Luís – MA, que responde às dúvidas desta página"
+                        width="1600"
+                        height="686"
+                        loading="lazy"
+                        decoding="async"
+                        class="w-full h-full object-cover">
+                </div>
+                <figcaption class="mt-3 text-center text-sm text-charcoal/80">
+                    Dra. Kerly Helena — CRM/MA 3130 · RQE 5232
+                </figcaption>
+            </figure>
+
+            <section class="mt-12">
+                <h2 class="text-2xl md:text-3xl font-serif text-charcoal mb-6">Medicina integrativa e ortomolecular</h2>
+                <div class="space-y-4">
+
+                    <details id="faq-o-que-e-medicina-integrativa" class="faq-item group glass rounded-2xl border border-blush-100/50 px-6 py-5">
+                        <summary class="cursor-pointer list-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-4 min-h-[44px]">
+                            <span class="flex items-center gap-4">
+                                <span class="w-10 h-10 rounded-xl bg-blush-100 flex items-center justify-center shrink-0"><i data-feather="sun" class="w-5 h-5 text-blush-600"></i></span>
+                                <h3 class="font-serif text-lg text-charcoal">O que é medicina integrativa?</h3>
+                            </span>
+                            <i data-feather="plus" class="w-6 h-6 text-blush-600 shrink-0 transition-transform group-open:rotate-45"></i>
+                        </summary>
+                        <div class="pt-4 mt-4 border-t border-blush-100/60 space-y-3 text-base text-charcoal/80">
+                            <p>A medicina integrativa é uma abordagem médica que une a medicina convencional baseada em evidências com práticas complementares seguras e reconhecidas, como fitoterapia, mudanças no estilo de vida, alimentação equilibrada, técnicas de respiração e manejo do estresse.</p>
+                            <p>O objetivo não é tratar apenas o sintoma, mas compreender a pessoa como um todo — corpo, mente, emoções e hábitos. É uma medicina que busca identificar a causa do desequilíbrio e promover saúde de forma mais ampla e preventiva.</p>
+                            <p class="pt-2"><a href="#faq-o-que-e-medicina-integrativa" class="faq-link text-sm text-blush-600 underline">Copiar link desta pergunta</a></p>
+                        </div>
+                    </details>
+
+                    <details id="faq-medicina-integrativa-e-reconhecida" class="faq-item group glass rounded-2xl border border-blush-100/50 px-6 py-5">
+                        <summary class="cursor-pointer list-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-4 min-h-[44px]">
+                            <span class="flex items-center gap-4">
+                                <span class="w-10 h-10 rounded-xl bg-blush-100 flex items-center justify-center shrink-0"><i data-feather="award" class="w-5 h-5 text-blush-600"></i></span>
+                                <h3 class="font-serif text-lg text-charcoal">Medicina integrativa é reconhecida?</h3>
+                            </span>
+                            <i data-feather="plus" class="w-6 h-6 text-blush-600 shrink-0 transition-transform group-open:rotate-45"></i>
+                        </summary>
+                        <div class="pt-4 mt-4 border-t border-blush-100/60 space-y-3 text-base text-charcoal/80">
+                            <p>Sim. A medicina integrativa é reconhecida como uma abordagem médica que associa tratamentos convencionais a práticas complementares com respaldo científico.</p>
+                            <p>No Brasil, diversas práticas integrativas fazem parte das diretrizes do Ministério da Saúde dentro da Política Nacional de Práticas Integrativas e Complementares (PNPIC) — presentes no SUS e aplicadas por profissionais de saúde em todo o país.</p>
+                            <p class="pt-2"><a href="#faq-medicina-integrativa-e-reconhecida" class="faq-link text-sm text-blush-600 underline">Copiar link desta pergunta</a></p>
+                        </div>
+                    </details>
+
+                    <details id="faq-medicina-integrativa-e-especialidade-medica" class="faq-item group glass rounded-2xl border border-blush-100/50 px-6 py-5">
+                        <summary class="cursor-pointer list-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-4 min-h-[44px]">
+                            <span class="flex items-center gap-4">
+                                <span class="w-10 h-10 rounded-xl bg-blush-100 flex items-center justify-center shrink-0"><i data-feather="briefcase" class="w-5 h-5 text-blush-600"></i></span>
+                                <h3 class="font-serif text-lg text-charcoal">Medicina integrativa é especialidade médica?</h3>
+                            </span>
+                            <i data-feather="plus" class="w-6 h-6 text-blush-600 shrink-0 transition-transform group-open:rotate-45"></i>
+                        </summary>
+                        <div class="pt-4 mt-4 border-t border-blush-100/60 space-y-3 text-base text-charcoal/80">
+                            <p>É uma forma ampliada de exercer a medicina, praticada dentro da formação e do registro do próprio médico. A Dra. Kerly Helena é ginecologista e obstetra (CRM/MA 3130 · RQE 5232) e conduz a consulta integrando a medicina convencional às práticas integrativas — as duas caminham lado a lado, com o mesmo rigor de avaliação e exames.</p>
+                            <p>Ou seja, é o médico quem exerce a medicina integrativa, aplicando uma visão mais ampla e personalizada no cuidado do paciente.</p>
+                            <p class="pt-2"><a href="#faq-medicina-integrativa-e-especialidade-medica" class="faq-link text-sm text-blush-600 underline">Copiar link desta pergunta</a></p>
+                        </div>
+                    </details>
+
+                    <details id="faq-como-funciona-a-medicina-integrativa" class="faq-item group glass rounded-2xl border border-blush-100/50 px-6 py-5">
+                        <summary class="cursor-pointer list-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-4 min-h-[44px]">
+                            <span class="flex items-center gap-4">
+                                <span class="w-10 h-10 rounded-xl bg-blush-100 flex items-center justify-center shrink-0"><i data-feather="activity" class="w-5 h-5 text-blush-600"></i></span>
+                                <h3 class="font-serif text-lg text-charcoal">Como funciona a medicina integrativa?</h3>
+                            </span>
+                            <i data-feather="plus" class="w-6 h-6 text-blush-600 shrink-0 transition-transform group-open:rotate-45"></i>
+                        </summary>
+                        <div class="pt-4 mt-4 border-t border-blush-100/60 space-y-3 text-base text-charcoal/80">
+                            <p>A consulta integrativa costuma ser mais detalhada. O médico avalia não apenas exames e sintomas, mas também:</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <div class="flex items-center gap-2 text-charcoal/80 bg-blush-100/40 px-3 py-1.5 rounded-full text-sm"><i data-feather="check" class="w-4 h-4 text-blush-600"></i> <span>Alimentação</span></div>
+                                <div class="flex items-center gap-2 text-charcoal/80 bg-blush-100/40 px-3 py-1.5 rounded-full text-sm"><i data-feather="check" class="w-4 h-4 text-blush-600"></i> <span>Qualidade do sono</span></div>
+                                <div class="flex items-center gap-2 text-charcoal/80 bg-blush-100/40 px-3 py-1.5 rounded-full text-sm"><i data-feather="check" class="w-4 h-4 text-blush-600"></i> <span>Nível de estresse</span></div>
+                                <div class="flex items-center gap-2 text-charcoal/80 bg-blush-100/40 px-3 py-1.5 rounded-full text-sm"><i data-feather="check" class="w-4 h-4 text-blush-600"></i> <span>Saúde emocional</span></div>
+                                <div class="flex items-center gap-2 text-charcoal/80 bg-blush-100/40 px-3 py-1.5 rounded-full text-sm"><i data-feather="check" class="w-4 h-4 text-blush-600"></i> <span>Rotina física</span></div>
+                                <div class="flex items-center gap-2 text-charcoal/80 bg-blush-100/40 px-3 py-1.5 rounded-full text-sm"><i data-feather="check" class="w-4 h-4 text-blush-600"></i> <span>Equilíbrio hormonal</span></div>
+                            </div>
+                            <p>A partir disso, é construído um plano terapêutico individualizado.</p>
+                            <p class="pt-2"><a href="#faq-como-funciona-a-medicina-integrativa" class="faq-link text-sm text-blush-600 underline">Copiar link desta pergunta</a></p>
+                        </div>
+                    </details>
+
+                    <details id="faq-o-que-e-medicina-integrativa-funcional" class="faq-item group glass rounded-2xl border border-blush-100/50 px-6 py-5">
+                        <summary class="cursor-pointer list-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-4 min-h-[44px]">
+                            <span class="flex items-center gap-4">
+                                <span class="w-10 h-10 rounded-xl bg-blush-100 flex items-center justify-center shrink-0"><i data-feather="layers" class="w-5 h-5 text-blush-600"></i></span>
+                                <h3 class="font-serif text-lg text-charcoal">O que é medicina integrativa funcional?</h3>
+                            </span>
+                            <i data-feather="plus" class="w-6 h-6 text-blush-600 shrink-0 transition-transform group-open:rotate-45"></i>
+                        </summary>
+                        <div class="pt-4 mt-4 border-t border-blush-100/60 space-y-3 text-base text-charcoal/80">
+                            <p>É uma linha que busca entender as causas dos desequilíbrios. Investiga-se o corpo como um sistema interligado — intestino, hormônios, inflamação — buscando restaurar o equilíbrio fisiológico.</p>
+                            <p class="pt-2"><a href="#faq-o-que-e-medicina-integrativa-funcional" class="faq-link text-sm text-blush-600 underline">Copiar link desta pergunta</a></p>
+                        </div>
+                    </details>
+
+                    <details id="faq-diferenca-integrativa-complementar" class="faq-item group glass rounded-2xl border border-blush-100/50 px-6 py-5">
+                        <summary class="cursor-pointer list-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-4 min-h-[44px]">
+                            <span class="flex items-center gap-4">
+                                <span class="w-10 h-10 rounded-xl bg-blush-100 flex items-center justify-center shrink-0"><i data-feather="shuffle" class="w-5 h-5 text-blush-600"></i></span>
+                                <h3 class="font-serif text-lg text-charcoal">Diferença entre integrativa e complementar?</h3>
+                            </span>
+                            <i data-feather="plus" class="w-6 h-6 text-blush-600 shrink-0 transition-transform group-open:rotate-45"></i>
+                        </summary>
+                        <div class="pt-4 mt-4 border-t border-blush-100/60 space-y-3 text-base text-charcoal/80">
+                            <p><strong class="text-blush-600">Integrativa:</strong> une convencional com complementar baseada em evidência. <br>
+                                <strong class="text-blush-600">Complementar:</strong> terapias usadas junto ao tratamento tradicional.</p>
+                            <p class="pt-2"><a href="#faq-diferenca-integrativa-complementar" class="faq-link text-sm text-blush-600 underline">Copiar link desta pergunta</a></p>
+                        </div>
+                    </details>
+
+                    <details id="faq-trabalha-com-medicina-ortomolecular" class="faq-item group glass rounded-2xl border border-blush-100/50 px-6 py-5">
+                        <summary class="cursor-pointer list-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-4 min-h-[44px]">
+                            <span class="flex items-center gap-4">
+                                <span class="w-10 h-10 rounded-xl bg-blush-100 flex items-center justify-center shrink-0"><i data-feather="droplet" class="w-5 h-5 text-blush-600"></i></span>
+                                <h3 class="font-serif text-lg text-charcoal">A Dra. Kerly Helena trabalha com medicina ortomolecular?</h3>
+                            </span>
+                            <i data-feather="plus" class="w-6 h-6 text-blush-600 shrink-0 transition-transform group-open:rotate-45"></i>
+                        </summary>
+                        <div class="pt-4 mt-4 border-t border-blush-100/60 space-y-3 text-base text-charcoal/80">
+                            <p>Sim. <a href="/ortomolecular/" class="text-blush-600 underline underline-offset-2">A medicina ortomolecular</a> caminha lado a lado com a consulta ginecológica integrativa da Dra. Kerly Helena, em São Luís (MA), com avaliação individualizada e baseada em exames. Ela entra no mesmo plano de cuidado, quando faz sentido para o seu caso.</p>
+                            <p class="pt-2"><a href="#faq-trabalha-com-medicina-ortomolecular" class="faq-link text-sm text-blush-600 underline">Copiar link desta pergunta</a></p>
+                        </div>
+                    </details>
+
+                    <details id="faq-diferenca-ortomolecular-integrativa" class="faq-item group glass rounded-2xl border border-blush-100/50 px-6 py-5">
+                        <summary class="cursor-pointer list-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-4 min-h-[44px]">
+                            <span class="flex items-center gap-4">
+                                <span class="w-10 h-10 rounded-xl bg-blush-100 flex items-center justify-center shrink-0"><i data-feather="compass" class="w-5 h-5 text-blush-600"></i></span>
+                                <h3 class="font-serif text-lg text-charcoal">Qual a diferença entre medicina ortomolecular e medicina integrativa?</h3>
+                            </span>
+                            <i data-feather="plus" class="w-6 h-6 text-blush-600 shrink-0 transition-transform group-open:rotate-45"></i>
+                        </summary>
+                        <div class="pt-4 mt-4 border-t border-blush-100/60 space-y-3 text-base text-charcoal/80">
+                            <p>A medicina integrativa é o olhar amplo da consulta — sono, hormônios, alimentação e emoções avaliados em conjunto. A medicina ortomolecular é uma frente mais específica, focada em nutrientes e equilíbrio bioquímico, que entra no plano quando a avaliação indicar. As duas caminham juntas.</p>
+                            <p class="pt-2"><a href="#faq-diferenca-ortomolecular-integrativa" class="faq-link text-sm text-blush-600 underline">Copiar link desta pergunta</a></p>
+                        </div>
+                    </details>
+                </div>
+            </section>
+
+            <section class="mt-12">
+                <h2 class="text-2xl md:text-3xl font-serif text-charcoal mb-6">Menopausa e fases da vida</h2>
+                <div class="space-y-4">
+
+                    <details id="faq-o-que-a-medicina-integrativa-trata" class="faq-item group glass rounded-2xl border border-blush-100/50 px-6 py-5">
+                        <summary class="cursor-pointer list-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-4 min-h-[44px]">
+                            <span class="flex items-center gap-4">
+                                <span class="w-10 h-10 rounded-xl bg-blush-100 flex items-center justify-center shrink-0"><i data-feather="heart" class="w-5 h-5 text-blush-600"></i></span>
+                                <h3 class="font-serif text-lg text-charcoal">O que a medicina integrativa trata?</h3>
+                            </span>
+                            <i data-feather="plus" class="w-6 h-6 text-blush-600 shrink-0 transition-transform group-open:rotate-45"></i>
+                        </summary>
+                        <div class="pt-4 mt-4 border-t border-blush-100/60 space-y-3 text-base text-charcoal/80">
+                            <p>Trata e auxilia no acompanhamento de diversas condições:</p>
+                            <ul class="grid grid-cols-1 md:grid-cols-2 gap-y-2">
+                                <li class="flex items-center gap-2"><i data-feather="check-circle" class="w-4 h-4 text-blush-600 shrink-0"></i> <span>Sintomas da menopausa</span></li>
+                                <li class="flex items-center gap-2"><i data-feather="check-circle" class="w-4 h-4 text-blush-600 shrink-0"></i> <span>Ansiedade e estresse</span></li>
+                                <li class="flex items-center gap-2"><i data-feather="check-circle" class="w-4 h-4 text-blush-600 shrink-0"></i> <span>Fadiga crônica</span></li>
+                                <li class="flex items-center gap-2"><i data-feather="check-circle" class="w-4 h-4 text-blush-600 shrink-0"></i> <span>Desequilíbrios hormonais</span></li>
+                            </ul>
+                            <p class="pt-2"><a href="#faq-o-que-a-medicina-integrativa-trata" class="faq-link text-sm text-blush-600 underline">Copiar link desta pergunta</a></p>
+                        </div>
+                    </details>
+
+                    <details id="faq-ajuda-na-menopausa" class="faq-item group glass rounded-2xl border border-blush-100/50 px-6 py-5">
+                        <summary class="cursor-pointer list-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-4 min-h-[44px]">
+                            <span class="flex items-center gap-4">
+                                <span class="w-10 h-10 rounded-xl bg-blush-100 flex items-center justify-center shrink-0"><i data-feather="wind" class="w-5 h-5 text-blush-600"></i></span>
+                                <h3 class="font-serif text-lg text-charcoal">Medicina integrativa ajuda na menopausa?</h3>
+                            </span>
+                            <i data-feather="plus" class="w-6 h-6 text-blush-600 shrink-0 transition-transform group-open:rotate-45"></i>
+                        </summary>
+                        <div class="pt-4 mt-4 border-t border-blush-100/60 space-y-3 text-base text-charcoal/80">
+                            <p>Sim. A abordagem avalia: hormônios, sono, saúde emocional e metabolismo. O tratamento é individualizado e focado em qualidade de vida.</p>
+                            <p class="pt-2"><a href="#faq-ajuda-na-menopausa" class="faq-link text-sm text-blush-600 underline">Copiar link desta pergunta</a></p>
+                        </div>
+                    </details>
+                </div>
+            </section>
+
+            <!-- CTA -->
             <div
-                class="mt-20 glass p-8 md:p-16 rounded-[2.5rem] md:rounded-[3rem] text-center shadow-xl border border-white/50 gs-reveal relative overflow-hidden">
-                <h3 class="text-2xl md:text-4xl font-serif text-charcoal mb-6 relative z-10 leading-tight">Quer entender
-                    como a medicina integrativa pode ajudar você?</h3>
+                class="mt-20 glass p-8 md:p-16 rounded-[2.5rem] md:rounded-[3rem] text-center shadow-xl border border-white/50 relative overflow-hidden">
+                <h2 class="text-2xl md:text-4xl font-serif text-charcoal mb-6 relative z-10 leading-tight">Quer entender
+                    como a medicina integrativa pode ajudar você?</h2>
                 <a href="https://wa.me/5598981532153" target="_blank" rel="noopener noreferrer"
                     class="inline-flex items-center justify-center space-x-3 bg-blush-600 hover:bg-blush-700 text-white px-8 py-4 rounded-full transition-all font-medium shadow-lg hover:-translate-y-1 transform duration-300 relative z-10">
                     <i data-feather="message-circle" class="w-6 h-6 flex-shrink-0"></i>
@@ -974,8 +703,6 @@
         </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             feather.replace();
@@ -985,121 +712,39 @@
     <script src="../main.js" defer></script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const faqItems = document.querySelectorAll('.faq-item');
-
-            faqItems.forEach(item => {
-                const btn = item.querySelector('.faq-btn');
-                const contentWrapper = item.querySelector('.faq-content-wrapper');
-                const iconWrapper = item.querySelector('.faq-icon-wrapper');
-
-                btn.addEventListener('click', () => {
-                    const isOpen = item.classList.contains('active');
-
-                    // Lógica ACCORDION: Fecha todos os outros primeiro
-                    faqItems.forEach(otherItem => {
-                        if (otherItem !== item && otherItem.classList.contains('active')) {
-                            closeItem(otherItem);
-                        }
-                    });
-
-                    // Abre ou fecha o clicado
-                    if (isOpen) {
-                        closeItem(item);
-                    } else {
-                        openItem(item);
-                    }
-                });
-            });
-
-            function openItem(item) {
-                const contentWrapper = item.querySelector('.faq-content-wrapper');
-                const iconWrapper = item.querySelector('.faq-icon-wrapper');
-                const themeIcon = item.querySelector('.faq-theme-icon');
-                const contentInner = item.querySelector('.faq-content-inner');
-
-                // Toggle de classe/estado: sempre acontece, com ou sem GSAP.
-                item.classList.add('active');
-
-                if (typeof gsap === 'undefined') {
-                    // Fallback sem GSAP: aplica o estado aberto direto (a transição
-                    // CSS do Tailwind em .faq-content-wrapper/.faq-icon-wrapper ainda
-                    // anima suavemente, só não tem a coreografia do GSAP).
-                    contentWrapper.style.maxHeight = '1000px';
-                    iconWrapper.style.transform = 'rotate(45deg)';
-                    iconWrapper.style.backgroundColor = '#A9637B';
-                    iconWrapper.style.color = '#FFFFFF';
-                    themeIcon.style.backgroundColor = '#A9637B';
-                    themeIcon.style.color = '#FFFFFF';
-                    item.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
-                    item.style.boxShadow = '0 10px 25px -5px rgba(169, 99, 123, 0.1)';
-                    return;
-                }
-
-                // Animação PREMIUM com GSAP
-                gsap.to(contentWrapper, {
-                    maxHeight: 1000,
-                    duration: 0.4,
-                    ease: "power3.inOut"
-                });
-
-                gsap.to(contentInner, {
-                    y: 0,
-                    opacity: 1,
-                    duration: 0.25,
-                    delay: 0.1
-                });
-
-                // Rotação do ícone e cores ativos
-                gsap.to(iconWrapper, { rotation: 45, backgroundColor: "#A9637B", color: "#FFFFFF", duration: 0.25 });
-                gsap.to(themeIcon, { backgroundColor: "#A9637B", color: "#FFFFFF", duration: 0.2 });
-                gsap.to(item, { backgroundColor: "rgba(255, 255, 255, 0.95)", boxShadow: "0 10px 25px -5px rgba(169, 99, 123, 0.1)", duration: 0.2 });
-            }
-
-            function closeItem(item) {
-                const contentWrapper = item.querySelector('.faq-content-wrapper');
-                const iconWrapper = item.querySelector('.faq-icon-wrapper');
-                const themeIcon = item.querySelector('.faq-theme-icon');
-                const contentInner = item.querySelector('.faq-content-inner');
-
-                // Toggle de classe/estado: sempre acontece, com ou sem GSAP.
-                item.classList.remove('active');
-
-                if (typeof gsap === 'undefined') {
-                    // Fallback sem GSAP: volta ao estado fechado limpando os inline
-                    // styles — os utilitários Tailwind da classe (max-h-0, bg-nude-200
-                    // etc.) assumem de novo.
-                    contentWrapper.style.maxHeight = '';
-                    iconWrapper.style.transform = '';
-                    iconWrapper.style.backgroundColor = '';
-                    iconWrapper.style.color = '';
-                    themeIcon.style.backgroundColor = '';
-                    themeIcon.style.color = '';
-                    item.style.backgroundColor = '';
-                    item.style.boxShadow = '';
-                    return;
-                }
-
-                gsap.to(contentWrapper, {
-                    maxHeight: 0,
-                    duration: 0.3,
-                    ease: "power3.inOut"
-                });
-
-                gsap.to(contentInner, {
-                    y: 10,
-                    opacity: 0,
-                    duration: 0.15
-                });
-
-                gsap.to(iconWrapper, { rotation: 0, backgroundColor: "#F4E8EA", color: "#C7889D", duration: 0.25 });
-                gsap.to(themeIcon, { backgroundColor: "#F9EAEF", color: "#A9637B", duration: 0.2 });
-                gsap.to(item, { backgroundColor: "rgba(255, 255, 255, 0.4)", boxShadow: "none", duration: 0.2 });
-            }
-
-            // Fallback for feather icons
-            window.addEventListener('load', () => { setTimeout(() => feather.replace(), 200); });
+(function () {
+    var items = Array.prototype.slice.call(document.querySelectorAll('.faq-item'));
+    var sections = Array.prototype.slice.call(document.querySelectorAll('main section'));
+    var input = document.getElementById('faq-busca');
+    var vazio = document.getElementById('faq-vazio');
+    var contagem = document.getElementById('faq-contagem');
+    function normaliza(s) { return (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
+    function filtra() {
+        var termo = normaliza(input.value.trim());
+        var visiveis = 0;
+        items.forEach(function (d) {
+            var ok = !termo || normaliza(d.textContent).indexOf(termo) !== -1;
+            d.hidden = !ok;
+            if (ok) { visiveis++; if (termo) d.open = true; }
         });
+        sections.forEach(function (s) { var alg = s.querySelector('.faq-item:not([hidden])'); if (s.querySelector('.faq-item')) s.hidden = !alg; });
+        vazio.classList.toggle('hidden', visiveis > 0);
+        contagem.textContent = termo ? visiveis + ' de ' + items.length + ' perguntas' : '';
+    }
+    if (input) input.addEventListener('input', filtra);
+    document.getElementById('faq-abrir-todas').addEventListener('click', function () { items.forEach(function (d) { d.open = true; }); });
+    document.getElementById('faq-fechar-todas').addEventListener('click', function () { items.forEach(function (d) { d.open = false; }); });
+    document.querySelectorAll('.faq-link').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+            e.preventDefault();
+            var url = location.origin + location.pathname + a.getAttribute('href');
+            var done = function () { a.textContent = 'Link copiado'; setTimeout(function () { a.textContent = 'Copiar link desta pergunta'; }, 2000); };
+            if (navigator.clipboard) navigator.clipboard.writeText(url).then(done); else { window.prompt('Copie o link:', url); }
+        });
+    });
+    function abrePeloHash() { var alvo = location.hash && document.querySelector(location.hash); if (alvo && alvo.classList.contains('faq-item')) { alvo.open = true; alvo.scrollIntoView({ block: 'start' }); } }
+    window.addEventListener('hashchange', abrePeloHash); abrePeloHash();
+})();
     </script>
 </body>
 
