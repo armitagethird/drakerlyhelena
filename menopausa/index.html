@@ -316,8 +316,48 @@
                 </figure>
             </div>
 
+            <!-- Em que fase estou? -->
+            <section id="fase" class="max-w-3xl mx-auto mt-20 md:mt-24 gs-reveal">
+                <div class="text-center mb-10">
+                    <span class="text-xs tracking-[0.3em] text-blush-600 uppercase font-bold">Para se situar</span>
+                    <h2 class="text-3xl md:text-4xl font-serif mt-4 text-charcoal">Em que fase eu posso estar?</h2>
+                </div>
+                <p class="text-lg text-charcoal/80 leading-relaxed mb-6">Escolha a frase que mais parece com o seu momento. Isso ajuda a se situar; só a consulta confirma.</p>
+                <div class="space-y-5">
+                    <details name="fase" class="group glass rounded-2xl border border-blush-100 px-6 py-5">
+                        <summary class="cursor-pointer font-serif text-lg text-charcoal flex items-center justify-between gap-4">
+                            Meus ciclos ainda são regulares, mas algo mudou (sono, humor, energia)
+                            <i data-feather="chevron-down" class="w-5 h-5 text-blush-500 transition-transform group-open:rotate-180 shrink-0"></i>
+                        </summary>
+                        <p class="text-base text-charcoal/80 leading-relaxed mt-4">Pode ser o início do climatério, a transição como um todo. Vale observar os ciclos por alguns meses e anotar o que muda.</p>
+                        <p class="mt-3 text-base"><a href="#diferenca" class="text-blush-600 underline underline-offset-4 decoration-1 hover:text-blush-700 transition-colors">Ver a diferença entre as fases</a></p>
+                    </details>
+                    <details name="fase" class="group glass rounded-2xl border border-blush-100 px-6 py-5">
+                        <summary class="cursor-pointer font-serif text-lg text-charcoal flex items-center justify-between gap-4">
+                            Meus ciclos mudaram e tenho sintomas (calores, noites ruins, irritabilidade)
+                            <i data-feather="chevron-down" class="w-5 h-5 text-blush-500 transition-transform group-open:rotate-180 shrink-0"></i>
+                        </summary>
+                        <p class="text-base text-charcoal/80 leading-relaxed mt-4">Esse quadro costuma corresponder à perimenopausa, quando os hormônios oscilam. É a fase em que o acompanhamento mais ajuda.</p>
+                        <p class="mt-3 text-base"><a href="#sinais" class="text-blush-600 underline underline-offset-4 decoration-1 hover:text-blush-700 transition-colors">Ver os sinais e levar para a consulta</a></p>
+                    </details>
+                    <details name="fase" class="group glass rounded-2xl border border-blush-100 px-6 py-5">
+                        <summary class="cursor-pointer font-serif text-lg text-charcoal flex items-center justify-between gap-4">
+                            Estou há mais de 12 meses sem menstruar
+                            <i data-feather="chevron-down" class="w-5 h-5 text-blush-500 transition-transform group-open:rotate-180 shrink-0"></i>
+                        </summary>
+                        <p class="text-base text-charcoal/80 leading-relaxed mt-4">Doze meses seguidos sem menstruação é o marco que caracteriza a menopausa; a partir dele começa a pós-menopausa. O cuidado continua, com foco em ossos, coração, sono e bem-estar.</p>
+                        <p class="mt-3 text-base"><a href="#consulta" class="text-blush-600 underline underline-offset-4 decoration-1 hover:text-blush-700 transition-colors">Ver como agendar a consulta</a></p>
+                    </details>
+                </div>
+                <div class="mt-6 glass rounded-2xl border border-blush-100 px-6 py-5">
+                    <label for="ultima-menstruacao" class="block text-base font-medium text-charcoal mb-2">Se quiser, informe a data da sua última menstruação</label>
+                    <input type="date" id="ultima-menstruacao" class="rounded-xl border-2 border-blush-300 bg-white px-4 py-3 text-lg text-charcoal">
+                    <p id="ultima-menstruacao-resultado" class="mt-3 text-base text-charcoal/80" aria-live="polite"></p>
+                </div>
+            </section>
+
             <!-- Climatério, perimenopausa e menopausa -->
-            <section class="max-w-5xl mx-auto gs-reveal">
+            <section id="diferenca" class="max-w-5xl mx-auto gs-reveal">
                 <div class="text-center mb-12">
                     <span class="text-xs tracking-[0.3em] text-blush-600 uppercase font-bold">Para começar</span>
                     <h2 class="text-3xl md:text-4xl font-serif mt-4 text-charcoal">Climatério, perimenopausa e menopausa: qual a diferença</h2>
@@ -342,7 +382,7 @@
             </section>
 
             <!-- Sinais de que vale procurar acompanhamento -->
-            <section class="max-w-3xl mx-auto mt-20 md:mt-24 gs-reveal">
+            <section id="sinais" class="max-w-3xl mx-auto mt-20 md:mt-24 gs-reveal">
                 <div class="text-center mb-10">
                     <span class="text-xs tracking-[0.3em] text-blush-600 uppercase font-bold">Escute seu corpo</span>
                     <h2 class="text-3xl md:text-4xl font-serif mt-4 text-charcoal">Sinais de que vale procurar acompanhamento</h2>
@@ -351,31 +391,50 @@
                     Nenhum destes sinais é motivo de alarme por si só. Mas, se eles estão mudando a sua rotina, vale investigar com calma:
                 </p>
                 <ul class="space-y-0">
-                    <li class="flex gap-4 py-4 border-t border-blush-100">
-                        <span class="text-blush-600 font-serif text-xl leading-none mt-0.5 select-none">—</span>
-                        <span class="text-charcoal/85 text-[15px] leading-relaxed">Fogachos e ondas de calor, de dia ou à noite</span>
+                    <li class="flex items-start gap-4 py-3 border-t border-blush-100/60">
+                        <label class="flex items-start gap-4 cursor-pointer w-full">
+                            <input type="checkbox" class="sinal-check mt-1 w-6 h-6 shrink-0 accent-blush-600" value="Fogachos e ondas de calor, de dia ou à noite">
+                            <span class="text-base text-charcoal/80">Fogachos e ondas de calor, de dia ou à noite</span>
+                        </label>
                     </li>
-                    <li class="flex gap-4 py-4 border-t border-blush-100">
-                        <span class="text-blush-600 font-serif text-xl leading-none mt-0.5 select-none">—</span>
-                        <span class="text-charcoal/85 text-[15px] leading-relaxed">Sono fragmentado, que não restaura</span>
+                    <li class="flex items-start gap-4 py-3 border-t border-blush-100/60">
+                        <label class="flex items-start gap-4 cursor-pointer w-full">
+                            <input type="checkbox" class="sinal-check mt-1 w-6 h-6 shrink-0 accent-blush-600" value="Sono fragmentado, que não restaura">
+                            <span class="text-base text-charcoal/80">Sono fragmentado, que não restaura</span>
+                        </label>
                     </li>
-                    <li class="flex gap-4 py-4 border-t border-blush-100">
-                        <span class="text-blush-600 font-serif text-xl leading-none mt-0.5 select-none">—</span>
-                        <span class="text-charcoal/85 text-[15px] leading-relaxed">Alterações de humor e de memória</span>
+                    <li class="flex items-start gap-4 py-3 border-t border-blush-100/60">
+                        <label class="flex items-start gap-4 cursor-pointer w-full">
+                            <input type="checkbox" class="sinal-check mt-1 w-6 h-6 shrink-0 accent-blush-600" value="Alterações de humor e de memória">
+                            <span class="text-base text-charcoal/80">Alterações de humor e de memória</span>
+                        </label>
                     </li>
-                    <li class="flex gap-4 py-4 border-t border-blush-100">
-                        <span class="text-blush-600 font-serif text-xl leading-none mt-0.5 select-none">—</span>
-                        <span class="text-charcoal/85 text-[15px] leading-relaxed">Mudanças na libido</span>
+                    <li class="flex items-start gap-4 py-3 border-t border-blush-100/60">
+                        <label class="flex items-start gap-4 cursor-pointer w-full">
+                            <input type="checkbox" class="sinal-check mt-1 w-6 h-6 shrink-0 accent-blush-600" value="Mudanças na libido">
+                            <span class="text-base text-charcoal/80">Mudanças na libido</span>
+                        </label>
                     </li>
-                    <li class="flex gap-4 py-4 border-t border-blush-100">
-                        <span class="text-blush-600 font-serif text-xl leading-none mt-0.5 select-none">—</span>
-                        <span class="text-charcoal/85 text-[15px] leading-relaxed">Mudanças de peso e no metabolismo</span>
+                    <li class="flex items-start gap-4 py-3 border-t border-blush-100/60">
+                        <label class="flex items-start gap-4 cursor-pointer w-full">
+                            <input type="checkbox" class="sinal-check mt-1 w-6 h-6 shrink-0 accent-blush-600" value="Mudanças de peso e no metabolismo">
+                            <span class="text-base text-charcoal/80">Mudanças de peso e no metabolismo</span>
+                        </label>
                     </li>
-                    <li class="flex gap-4 py-4 border-t border-b border-blush-100">
-                        <span class="text-blush-600 font-serif text-xl leading-none mt-0.5 select-none">—</span>
-                        <span class="text-charcoal/85 text-[15px] leading-relaxed">Ciclos menstruais irregulares</span>
+                    <li class="flex items-start gap-4 py-3 border-t border-blush-100/60">
+                        <label class="flex items-start gap-4 cursor-pointer w-full">
+                            <input type="checkbox" class="sinal-check mt-1 w-6 h-6 shrink-0 accent-blush-600" value="Ciclos menstruais irregulares">
+                            <span class="text-base text-charcoal/80">Ciclos menstruais irregulares</span>
+                        </label>
                     </li>
                 </ul>
+                <div class="mt-6 flex flex-col sm:flex-row sm:items-center gap-4">
+                    <a id="sinais-whatsapp" href="https://wa.me/5598981532153?text=Ol%C3%A1!%20Vim%20pela%20p%C3%A1gina%20de%20menopausa%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20com%20a%20Dra.%20Kerly%20Helena." target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-blush-600 hover:bg-blush-700 text-white px-6 py-4 rounded-full text-lg font-medium">Levar esses sinais para a consulta</a>
+                    <p id="sinais-status" class="text-base text-charcoal/80">Marque o que você percebe em você. A mensagem do WhatsApp vai pronta com a sua lista.</p>
+                </div>
+                <p class="mt-6 text-base text-charcoal/80 leading-relaxed">
+                    Quer acompanhar por algumas semanas? <a href="/menopausa/diario-de-sintomas/" class="text-blush-600 underline underline-offset-4 decoration-1 hover:text-blush-700 transition-colors">Baixe o diário de sintomas para imprimir</a> e leve para a consulta.
+                </p>
             </section>
 
             <!-- Como é o acompanhamento integrativo da menopausa -->
@@ -403,7 +462,7 @@
             </section>
 
             <!-- Sua consulta em São Luís -->
-            <section class="max-w-3xl mx-auto mt-20 md:mt-24 gs-reveal">
+            <section id="consulta" class="max-w-3xl mx-auto mt-20 md:mt-24 gs-reveal">
                 <div class="text-center mb-10">
                     <span class="text-xs tracking-[0.3em] text-blush-600 uppercase font-bold">Onde e quando</span>
                     <h2 class="text-3xl md:text-4xl font-serif mt-4 text-charcoal">Sua consulta em São Luís</h2>
@@ -626,6 +685,41 @@
     </script>
     <script src="../glass.js" defer></script>
     <script src="../main.js" defer></script>
+    <script>
+        (function () {
+            var checks = document.querySelectorAll('.sinal-check');
+            var link = document.getElementById('sinais-whatsapp');
+            var status = document.getElementById('sinais-status');
+            if (!checks.length || !link) return;
+            var base = 'Olá! Vim pela página de menopausa e gostaria de agendar uma avaliação com a Dra. Kerly Helena.';
+            function update() {
+                var marcados = Array.prototype.filter.call(checks, function (c) { return c.checked; }).map(function (c) { return c.value.toLowerCase(); });
+                var msg = marcados.length ? 'Olá! Vim pela página de menopausa. Os sinais que percebo em mim: ' + marcados.join('; ') + '. Gostaria de agendar uma avaliação com a Dra. Kerly Helena.' : base;
+                link.href = 'https://wa.me/5598981532153?text=' + encodeURIComponent(msg);
+                status.textContent = marcados.length ? marcados.length + ' sinal(is) marcado(s). A mensagem já está pronta.' : 'Marque o que você percebe em você. A mensagem do WhatsApp vai pronta com a sua lista.';
+            }
+            checks.forEach(function (c) { c.addEventListener('change', update); });
+        })();
+
+        (function () {
+            var input = document.getElementById('ultima-menstruacao');
+            var out = document.getElementById('ultima-menstruacao-resultado');
+            if (!input || !out) return;
+            input.addEventListener('change', function () {
+                out.textContent = '';
+                if (!input.value) return;
+                var p = input.value.split('-').map(Number);
+                var hoje = new Date();
+                hoje.setHours(0, 0, 0, 0);
+                if (new Date(p[0], p[1] - 1, p[2]) > hoje) return;
+                var marco = new Date(p[0] + 1, p[1] - 1, p[2]);
+                var texto = marco.toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' });
+                out.textContent = marco > hoje
+                    ? 'Se a menstruação não voltar até ' + texto + ', esse será o marco de 12 meses.'
+                    : 'Você completou 12 meses sem menstruar em ' + texto + '. Esse marco caracteriza a menopausa; a avaliação em consulta continua importante.';
+            });
+        })();
+    </script>
 </body>
 
 </html>
