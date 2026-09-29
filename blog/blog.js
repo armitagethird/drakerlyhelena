@@ -20,7 +20,7 @@
     });
     var botao = document.querySelector('[data-ouvir]');
     if (!botao || !('speechSynthesis' in window) || !window.SpeechSynthesisUtterance) return;
-    botao.classList.remove('hidden');
+    botao.hidden = false;
     var label = botao.querySelector('span');
     var falando = false;
     var LIMITE = 600; // o Chrome corta falas longas; por isso a leitura vai em blocos

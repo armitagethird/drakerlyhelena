@@ -754,7 +754,8 @@
             e.preventDefault();
             var url = location.origin + location.pathname + a.getAttribute('href');
             var done = function () { a.textContent = 'Link copiado'; setTimeout(function () { a.textContent = 'Copiar link desta pergunta'; }, 2000); };
-            if (navigator.clipboard) navigator.clipboard.writeText(url).then(done); else { window.prompt('Copie o link:', url); }
+            var manual = function () { window.prompt('Copie o link:', url); };
+            if (navigator.clipboard) navigator.clipboard.writeText(url).then(done).catch(manual); else manual();
         });
     });
     function abrePeloHash() {
