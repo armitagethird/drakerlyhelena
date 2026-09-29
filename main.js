@@ -65,19 +65,10 @@ function initHeroStagger() {
         .from('#hero [data-stagger="5"]', { opacity: 0, y: 12 }, '-=0.55')
         .from('.gs-hero-photo img', { scale: 1.02, duration: 1.4 }, 0)
         .from('.hero-rail-line', { scaleY: 0, transformOrigin: 'top center', duration: 1 }, 0.2)
-        .from('.gs-hero-card', { opacity: 0, y: 16, duration: 0.8 }, 0.9)
-        .from('.gs-hero-scrollhint', { opacity: 0, duration: 0.6 }, 1.1);
+        .from('.gs-hero-card', { opacity: 0, y: 16, duration: 0.8 }, 0.9);
 
     // Flutuação contínua e suave do card "Pausa e Reconexão" — começa após a entrada do card (~1.7s)
     gsap.to('.gs-hero-card', { y: -10, duration: 3, ease: 'sine.inOut', repeat: -1, yoyo: true, delay: 1.8 });
-
-    const hint = document.querySelector('.gs-hero-scrollhint');
-    if (hint) {
-        hint.style.transition = 'opacity 400ms ease';
-        window.addEventListener('scroll', () => {
-            hint.style.opacity = window.scrollY > 200 ? '0' : '1';
-        }, { passive: true });
-    }
 }
 
 document.addEventListener("DOMContentLoaded", (event) => {
@@ -87,13 +78,50 @@ document.addEventListener("DOMContentLoaded", (event) => {
     const yearEl = document.getElementById('footer-year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // Auto-open quiz when arriving from another page with ?quiz=1
-    try {
-        if (new URLSearchParams(window.location.search).get('quiz') === '1'
-            && typeof window.openSymptomModal === 'function') {
-            setTimeout(() => window.openSymptomModal(), 450);
-        }
-    } catch (e) { /* ignore */ }
+    // Abre o quiz ao chegar com #quiz ou ?quiz=1 (vindo de outra página)
+    const wantsQuiz = location.hash === '#quiz' || new URLSearchParams(location.search).get('quiz') === '1';
+    if (wantsQuiz && typeof window.openSymptomModal === 'function') setTimeout(() => window.openSymptomModal(), 450);
+    window.addEventListener('hashchange', () => { if (location.hash === '#quiz') window.openSymptomModal(); });
+
+    const overlay = document.getElementById('quiz-overlay');
+    if (overlay) overlay.addEventListener('click', () => {
+        if (!document.getElementById('quiz-welcome').classList.contains('hidden')) window.closeSymptomModal();
+    });
+
+    const contactForm = document.getElementById('quiz-contact');
+    if (contactForm) contactForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const name = document.getElementById('quiz-name').value.trim();
+        const digits = document.getElementById('quiz-phone').value.replace(/\D/g, '');
+        const consent = document.getElementById('quiz-consent').checked;
+        const errEl = document.getElementById('quiz-contact-error');
+        let error = '';
+        if (name.length < 2) error = 'Escreva como quer ser chamada.';
+        else if (digits.length < 10 || digits.length > 11) error = 'O WhatsApp precisa ter DDD e número (10 ou 11 dígitos).';
+        else if (!consent) error = 'Marque a caixa de consentimento para enviar seus dados.';
+        if (error) { errEl.textContent = error; errEl.classList.remove('hidden'); return; }
+        errEl.classList.add('hidden');
+        userData.name = name; userData.phone = document.getElementById('quiz-phone').value.trim();
+        submitLead({ scores: lastScores, top: lastTopDimensions });
+        window.bookConsultation();
+    });
+
+    // Endereço: copiar e carregar mapa sob demanda
+    const ADDRESS_TEXT = 'Av. Coronel Colares Moreira, Sala 310, Condomínio Edifício Monumental, Jardim Renascença, São Luís, MA, CEP 65065-720';
+    const copyBtn = document.getElementById('copy-address');
+    if (copyBtn) copyBtn.addEventListener('click', () => {
+        if (!navigator.clipboard) { prompt('Copie o endereço:', ADDRESS_TEXT); return; }
+        navigator.clipboard.writeText(ADDRESS_TEXT).then(() => {
+            const label = copyBtn.textContent;
+            copyBtn.textContent = 'Endereço copiado';
+            setTimeout(() => { copyBtn.textContent = label; }, 2000);
+        }, () => prompt('Copie o endereço:', ADDRESS_TEXT));
+    });
+    const loadMapBtn = document.getElementById('load-map');
+    if (loadMapBtn) loadMapBtn.addEventListener('click', () => {
+        const facade = document.getElementById('map-facade');
+        facade.innerHTML = '<iframe src="https://maps.google.com/maps?q=Dra.+Kerly+Helena+Ginecologia+Integrativa+Maranhão&t=&z=15&ie=UTF8&iwloc=&output=embed" title="Mapa do consultório Dra Kerly Helena em São Luís" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-full h-full min-h-[320px] rounded-3xl border-0"></iframe>';
+    });
 
     // GSAP-dependent enhancements: skip gracefully if the CDN failed/was blocked,
     // so mobile menu, smooth scroll, footer year and analytics below still work.
@@ -107,7 +135,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
         initHeroStagger();
 
         // Reveal Elements on Scroll with advanced, satisfying physics
-        const revealElements = document.querySelectorAll('.gs-reveal');
+        const revealElements = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+            ? []
+            : document.querySelectorAll('.gs-reveal');
 
         revealElements.forEach((elem) => {
             // Find if element has an image to add a subtle scale effect
@@ -117,16 +147,16 @@ document.addEventListener("DOMContentLoaded", (event) => {
                 scrollTrigger: {
                     trigger: elem,
                     start: "top 85%", // Trigger when top of element hits 85% of viewport
-                    toggleActions: "play none none reverse"
+                    toggleActions: "play none none none"
                 }
             });
 
             tl.fromTo(elem,
-                { y: 60, opacity: 0 },
+                { y: 32, opacity: 0 },
                 {
                     y: 0,
                     opacity: 1,
-                    duration: 1.4,
+                    duration: 0.9,
                     ease: "power4.out",
                 }
             );
@@ -136,7 +166,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
                 tl.fromTo(img,
                     { scale: 1.15 },
                     { scale: 1, duration: 1.8, ease: "power2.out" },
-                    "-=1.4" // Start at the same time
+                    "-=0.9" // Start at the same time
                 );
             }
         });
@@ -194,46 +224,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
             }
         });
     });
-
-    // Fluid Letter Hover Animation (Desktop Only)
-    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-        // Target main text elements to add the playful letter interaction
-        const textElements = document.querySelectorAll('main h1, main h2, main h3');
-
-        textElements.forEach(el => {
-            // Check if element has text nodes to split. Avoid already structured or complex interactive elements like cards if they glitch, but standard text is fine.
-            Array.from(el.childNodes).forEach(node => {
-                // Process only raw text nodes that have visible characters
-                if (node.nodeType === Node.TEXT_NODE && node.textContent.trim() !== '') {
-                    const words = node.textContent.split(/(\s+)/);
-                    const fragment = document.createDocumentFragment();
-
-                    words.forEach(word => {
-                        if (word.trim() === '') {
-                            // Keep whitespaces intact
-                            fragment.appendChild(document.createTextNode(word));
-                        } else {
-                            // Wrap words to prevent them from breaking halfway to the next line
-                            const wordSpan = document.createElement('span');
-                            wordSpan.style.display = 'inline-block';
-                            wordSpan.style.whiteSpace = 'nowrap';
-
-                            // Wrap each character individually
-                            for (let i = 0; i < word.length; i++) {
-                                const charSpan = document.createElement('span');
-                                charSpan.className = 'hover-char';
-                                charSpan.textContent = word[i];
-                                wordSpan.appendChild(charSpan);
-                            }
-                            fragment.appendChild(wordSpan);
-                        }
-                    });
-
-                    node.parentNode.replaceChild(fragment, node);
-                }
-            });
-        });
-    }
 });
 
 // --- New Modal Questionnaire Logic (4 Stages) ---
@@ -287,10 +277,6 @@ function wireModalFocusTrap() {
     });
 }
 
-// Intro substep state (5 substeps: name, phone, email, age, consent)
-let introSubstep = 0;
-const INTRO_TOTAL_SUBSTEPS = 5;
-
 // 8 desire-based scale questions + 1 phase-of-life multiple-choice = 9 total.
 // Scale weights: Muito = 3, Um pouco = 1, Nada = 0.
 // Higher score in a dimension = stronger desire to improve there.
@@ -313,44 +299,30 @@ const quizQuestions = [
     ] }
 ];
 
-window.openSymptomModal = function () {
+let questionOrder = quizQuestions.map((_, i) => i);   // ordem de exibição
+
+window.openSymptomModal = function (options) {
+    options = options || {};
     const modal = document.getElementById('symptom-modal');
+    if (!modal) { window.location.href = '/#quiz'; return; }   // páginas internas
     const modalContent = document.getElementById('symptom-modal-content');
-
-    // Acessibilidade: guarda quem tinha o foco para devolver ao fechar.
     modalPreviouslyFocusedEl = document.activeElement;
-
     modal.classList.remove('hidden');
-    setTimeout(() => {
-        modal.classList.remove('opacity-0');
-        modalContent.classList.remove('scale-95');
-    }, 10);
+    setTimeout(() => { modal.classList.remove('opacity-0'); modalContent.classList.remove('scale-95'); }, 10);
     document.body.style.overflow = 'hidden';
     document.getElementById('quiz-sticky-cta').classList.add('hidden');
-
-    currentQuestionIndex = 0;
-    quizAnswers = [];
-
-    document.getElementById('quiz-welcome').classList.remove('hidden');
-    document.getElementById('quiz-intro').classList.add('hidden');
-    document.getElementById('quiz-questions').classList.add('hidden');
-    document.getElementById('quiz-animation').classList.add('hidden');
-    document.getElementById('quiz-results').classList.add('hidden');
-
-    document.getElementById('quiz-name').value = '';
-    document.getElementById('quiz-phone').value = '';
-    document.getElementById('quiz-email').value = '';
-    document.getElementById('quiz-age').value = '';
-    document.getElementById('quiz-consent').checked = false;
-
-    introSubstep = 0;
-    showIntroSubstep(0);
-    clearAllIntroErrors();
-
-    // Acessibilidade: move o foco para dentro do modal (trap de Tab cuida do resto).
+    currentQuestionIndex = 0; quizAnswers = []; userData = { name: '', phone: '', email: '', age: '', phase: '' };
+    questionOrder = quizQuestions.map((_, i) => i);
+    if (Number.isInteger(options.presetIndex) && quizQuestions[options.presetIndex]) {
+        questionOrder = [options.presetIndex].concat(questionOrder.filter(i => i !== options.presetIndex));
+    }
+    ['quiz-welcome', 'quiz-questions', 'quiz-animation', 'quiz-results'].forEach(id => document.getElementById(id).classList.add('hidden'));
+    const form = document.getElementById('quiz-contact');
+    if (form) { form.reset(); document.getElementById('quiz-contact-error').classList.add('hidden'); }
+    if (Number.isInteger(options.presetIndex)) { document.getElementById('quiz-questions').classList.remove('hidden'); renderQuestion(); }
+    else document.getElementById('quiz-welcome').classList.remove('hidden');
     try { modalContent.focus({ preventScroll: true }); } catch (e) { modalContent.focus(); }
-
-    window.trackEvent('quiz_open');
+    window.trackEvent('quiz_open', { preset: options.presetIndex ?? null });
 };
 
 window.closeSymptomModal = function () {
@@ -372,16 +344,6 @@ window.closeSymptomModal = function () {
     modalPreviouslyFocusedEl = null;
 };
 
-// --- Intro Substep Controls ---
-
-const INTRO_FIELD_BY_SUBSTEP = {
-    0: 'quiz-name',
-    1: 'quiz-phone',
-    2: 'quiz-email',
-    3: 'quiz-age',
-    4: 'quiz-consent'
-};
-
 window.formatPhoneInput = function (input) {
     let digits = input.value.replace(/\D/g, '').slice(0, 11);
     let out = digits;
@@ -391,110 +353,6 @@ window.formatPhoneInput = function (input) {
     input.value = out;
 };
 
-function showIntroError(substep, message) {
-    const el = document.querySelector(`[data-error-for="${substep}"]`);
-    if (!el) return;
-    el.textContent = message;
-    el.classList.remove('hidden');
-    const fieldId = INTRO_FIELD_BY_SUBSTEP[substep];
-    const field = document.getElementById(fieldId);
-    if (field && field.type !== 'checkbox') field.classList.add('!border-red-400');
-}
-
-function clearIntroError(substep) {
-    const el = document.querySelector(`[data-error-for="${substep}"]`);
-    if (el) { el.textContent = ''; el.classList.add('hidden'); }
-    const fieldId = INTRO_FIELD_BY_SUBSTEP[substep];
-    const field = document.getElementById(fieldId);
-    if (field) field.classList.remove('!border-red-400');
-}
-
-function clearAllIntroErrors() {
-    for (let i = 0; i < INTRO_TOTAL_SUBSTEPS; i++) clearIntroError(i);
-}
-
-function validateIntroSubstep(i) {
-    if (i === 0) {
-        const v = document.getElementById('quiz-name').value.trim();
-        if (v.length < 2) { showIntroError(0, 'Conta pra mim como você quer ser chamada.'); return false; }
-    } else if (i === 1) {
-        const v = document.getElementById('quiz-phone').value.trim();
-        const digits = v.replace(/\D/g, '');
-        if (digits.length < 10 || digits.length > 11) { showIntroError(1, 'WhatsApp precisa ter DDD + número (10 ou 11 dígitos).'); return false; }
-    } else if (i === 2) {
-        const v = document.getElementById('quiz-email').value.trim();
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { showIntroError(2, 'Esse e-mail não parece válido. Confere?'); return false; }
-    } else if (i === 3) {
-        const v = parseInt(document.getElementById('quiz-age').value, 10);
-        if (!v || v < 18 || v > 99) { showIntroError(3, 'Coloque uma idade entre 18 e 99.'); return false; }
-    } else if (i === 4) {
-        if (!document.getElementById('quiz-consent').checked) { showIntroError(4, 'Precisamos do seu aceite (LGPD) para seguir.'); return false; }
-    }
-    clearIntroError(i);
-    return true;
-}
-
-function showIntroSubstep(i) {
-    document.querySelectorAll('.intro-substep').forEach(el => el.classList.add('hidden'));
-    const target = document.querySelector(`.intro-substep[data-substep="${i}"]`);
-    if (!target) return;
-    target.classList.remove('hidden');
-
-    const progressText = document.getElementById('intro-progress-text');
-    const progressBar = document.getElementById('intro-progress-bar');
-    if (progressText) progressText.textContent = `Passo ${i + 1} de ${INTRO_TOTAL_SUBSTEPS}`;
-    if (progressBar) progressBar.style.width = `${((i + 1) / INTRO_TOTAL_SUBSTEPS) * 100}%`;
-
-    const backBtn = document.getElementById('intro-back-btn');
-    const nextBtn = document.getElementById('intro-next-btn');
-    if (backBtn) {
-        backBtn.classList.remove('hidden');
-        backBtn.textContent = i === 0 ? '← Voltar às perguntas' : '← Voltar';
-    }
-    if (nextBtn) nextBtn.textContent = i === INTRO_TOTAL_SUBSTEPS - 1 ? 'Ver meu resultado' : 'Próximo';
-
-    if (typeof gsap !== 'undefined') {
-        gsap.fromTo(target, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' });
-    }
-
-    const scrollArea = document.getElementById('quiz-scroll-area');
-    if (scrollArea) scrollArea.scrollTop = 0;
-
-    requestAnimationFrame(() => {
-        const fieldId = INTRO_FIELD_BY_SUBSTEP[i];
-        const field = document.getElementById(fieldId);
-        if (field && field.type !== 'checkbox') {
-            try { field.focus({ preventScroll: true }); } catch (e) { field.focus(); }
-        }
-    });
-}
-
-window.nextIntroSubstep = function () {
-    if (!validateIntroSubstep(introSubstep)) return;
-    window.trackEvent('quiz_intro_step', { step_index: introSubstep, field: INTRO_FIELD_BY_SUBSTEP[introSubstep] });
-    if (introSubstep < INTRO_TOTAL_SUBSTEPS - 1) {
-        introSubstep++;
-        showIntroSubstep(introSubstep);
-    } else {
-        finalizeLeadCapture();
-    }
-};
-
-window.prevIntroSubstep = function () {
-    if (introSubstep > 0) {
-        clearIntroError(introSubstep);
-        introSubstep--;
-        showIntroSubstep(introSubstep);
-    } else {
-        // From first data-capture step, go back to last question (phase).
-        clearIntroError(0);
-        transitionQuizStage('quiz-intro', 'quiz-questions', () => {
-            currentQuestionIndex = quizQuestions.length - 1;
-            renderQuestion();
-        });
-    }
-};
-
 window.startQuestions = function () {
     window.trackEvent('quiz_start');
     transitionQuizStage('quiz-welcome', 'quiz-questions', () => {
@@ -502,33 +360,14 @@ window.startQuestions = function () {
     });
 };
 
-function finalizeLeadCapture() {
-    // Defensive: re-validate all substeps; jump to first failing one if any.
-    for (let i = 0; i < INTRO_TOTAL_SUBSTEPS; i++) {
-        if (!validateIntroSubstep(i)) {
-            introSubstep = i;
-            showIntroSubstep(i);
-            return;
-        }
-    }
-    userData.name = document.getElementById('quiz-name').value.trim();
-    userData.phone = document.getElementById('quiz-phone').value.trim();
-    userData.email = document.getElementById('quiz-email').value.trim();
-    userData.age = document.getElementById('quiz-age').value.trim();
-    window.trackEvent('quiz_complete', { phase: userData.phase || 'unspecified' });
-    transitionQuizStage('quiz-intro', 'quiz-animation', () => {
-        runHealthFingerprint();
-    });
-}
-
 function renderQuestion() {
-    const question = quizQuestions[currentQuestionIndex];
+    const question = quizQuestions[questionOrder[currentQuestionIndex]];
     const container = document.getElementById('question-container');
     const progressText = document.getElementById('quiz-progress-text');
     const progressBar = document.getElementById('quiz-progress-bar');
     const progress = ((currentQuestionIndex + 1) / quizQuestions.length) * 100;
     progressBar.style.width = `${progress}%`;
-    progressText.innerText = `Passo ${currentQuestionIndex + 1} de ${quizQuestions.length}`;
+    progressText.innerText = `Pergunta ${currentQuestionIndex + 1} de ${quizQuestions.length}`;
 
     if (question.type === 'choice') {
         const options = question.choices.map(c =>
@@ -536,7 +375,7 @@ function renderQuestion() {
         ).join('');
         container.innerHTML = `
             <div class="space-y-6 slide-up">
-                <h4 class="text-xl md:text-2xl font-medium text-charcoal leading-tight">${question.text}</h4>
+                <p class="text-xl md:text-2xl font-medium text-charcoal leading-tight">${question.text}</p>
                 <div class="space-y-3 pt-4">
                     ${options}
                 </div>
@@ -545,8 +384,8 @@ function renderQuestion() {
     } else {
         container.innerHTML = `
             <div class="space-y-6 slide-up">
-                <p class="text-xs uppercase tracking-widest text-blush-400 font-semibold">Marque o quanto isso ressoa com você hoje</p>
-                <h4 class="text-xl md:text-2xl font-medium text-charcoal leading-tight">${question.text}</h4>
+                <p class="text-xs uppercase tracking-widest text-blush-600 font-semibold">Marque o quanto isso ressoa com você hoje</p>
+                <p class="text-xl md:text-2xl font-medium text-charcoal leading-tight">${question.text}</p>
                 <div class="space-y-3 pt-4">
                     <button onclick="handleAnswer(3)" class="option-btn"><span class="font-medium">Muito, é exatamente o que eu quero</span></button>
                     <button onclick="handleAnswer(1)" class="option-btn"><span class="font-medium">Um pouco, está no meu radar</span></button>
@@ -558,7 +397,7 @@ function renderQuestion() {
 }
 
 window.handleAnswer = function (weight) {
-    quizAnswers.push({ dimension: quizQuestions[currentQuestionIndex].dimension, weight: weight });
+    quizAnswers.push({ dimension: quizQuestions[questionOrder[currentQuestionIndex]].dimension, weight: weight });
     advanceQuiz();
 };
 
@@ -573,11 +412,7 @@ function advanceQuiz() {
         renderQuestion();
     } else {
         window.trackEvent('quiz_questions_complete', { phase: userData.phase || 'unspecified' });
-        introSubstep = 0;
-        transitionQuizStage('quiz-questions', 'quiz-intro', () => {
-            clearAllIntroErrors();
-            showIntroSubstep(0);
-        });
+        transitionQuizStage('quiz-questions', 'quiz-animation', runHealthFingerprint);
     }
 }
 
@@ -684,6 +519,20 @@ function runHealthFingerprint() {
     });
 }
 
+const PHASE_LABELS = { fertil: 'fase fértil', tentando: 'tentando engravidar', pos_parto: 'pós-parto', perimenopausa: 'perimenopausa', menopausa: 'menopausa ou pós-menopausa' };
+const dimensionLabelsShort = { ENERGIA: 'energia e leveza', DESCANSO: 'descanso e sono', PRESENCA: 'presença e paz com o corpo', VITALIDADE: 'vitalidade e prazer' };
+let lastTopDimensions = [];
+let lastScores = {};
+
+function buildWhatsappMessage() {
+    const dims = lastTopDimensions.map(d => dimensionLabelsShort[d]).filter(Boolean).join(' e ');
+    let msg = 'Olá! Fiz o teste de bem-estar no site.';
+    if (dims) msg += ' Meu mapa apontou: ' + dims + '.';
+    if (PHASE_LABELS[userData.phase]) msg += ' Momento de vida: ' + PHASE_LABELS[userData.phase] + '.';
+    if (userData.name) msg += ' Meu nome é ' + userData.name + '.';
+    return msg + ' Gostaria de agendar uma consulta integrativa.';
+}
+
 function showResults() {
     const scores = { ENERGIA: 0, DESCANSO: 0, PRESENCA: 0, VITALIDADE: 0 };
     quizAnswers.forEach(a => {
@@ -691,8 +540,11 @@ function showResults() {
     });
     const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
     const topDimensions = [sorted[0][0], sorted[1][0]];
+    lastScores = scores;
+    lastTopDimensions = topDimensions;
+    window.trackEvent('quiz_complete', { phase: userData.phase || 'unspecified' });
 
-    document.getElementById('result-greeting').innerText = `Olá, ${userData.name}.`;
+    document.getElementById('result-greeting').innerText = 'Aqui está o seu mapa.';
 
     const dimensionLabels = {
         ENERGIA:    'energia e leveza',
@@ -726,27 +578,28 @@ function showResults() {
     paraEl.innerText = paragraphs[topDimensions[0]] + (phaseAdjustment[userData.phase] || '');
 
     const serviceTemplates = {
-        ENERGIA:    { title: "Yoga",                               desc: "Movimento consciente para devolver leveza e energia ao corpo.",          icon: "🧘" },
-        DESCANSO:   { title: "Respiração & Meditação",             desc: "Práticas para acalmar o sistema nervoso e melhorar o sono.",             icon: "🌬️" },
-        PRESENCA:   { title: "Meditação",                          desc: "Para voltar a habitar o presente, com mais conexão e silêncio interno.", icon: "🪷" },
-        VITALIDADE: { title: "Fitoterapia & ajustes integrativos", desc: "Plantas medicinais e ajustes de estilo de vida para equilíbrio hormonal.", icon: "🌿" }
+        ENERGIA:    { title: "Yoga",                               desc: "Movimento consciente para devolver leveza e energia ao corpo.",          icon: "sun" },
+        DESCANSO:   { title: "Respiração & Meditação",             desc: "Práticas para acalmar o sistema nervoso e melhorar o sono.",             icon: "wind" },
+        PRESENCA:   { title: "Meditação",                          desc: "Para voltar a habitar o presente, com mais conexão e silêncio interno.", icon: "moon" },
+        VITALIDADE: { title: "Fitoterapia & ajustes integrativos", desc: "Plantas medicinais e ajustes de estilo de vida para equilíbrio hormonal.", icon: "feather" }
     };
 
     const servicesContainer = document.getElementById('secondary-services');
     servicesContainer.innerHTML = topDimensions.map(dim => {
         const s = serviceTemplates[dim];
+        const tag = dim === 'DESCANSO' ? 'a href="/yoga/#respiracao"' : 'div';
+        const closeTag = dim === 'DESCANSO' ? 'a' : 'div';
         return `
-            <div class="flex items-start gap-4 p-5 bg-white/85 backdrop-blur-sm rounded-2xl border border-blush-100/60 hover:bg-white hover:-translate-y-0.5 transition-all duration-300 shadow-sm hover:shadow-md">
-                <div class="w-11 h-11 bg-blush-100/70 rounded-2xl flex items-center justify-center text-xl shrink-0">${s.icon}</div>
+            <${tag} class="flex items-start gap-4 p-5 bg-white/85 backdrop-blur-sm rounded-2xl border border-blush-100/60 hover:bg-white hover:-translate-y-0.5 transition-all duration-300 shadow-sm hover:shadow-md">
+                <div class="w-11 h-11 bg-blush-100/70 rounded-2xl flex items-center justify-center shrink-0"><i data-feather="${s.icon}" class="w-6 h-6 text-blush-600"></i></div>
                 <div class="flex-1 min-w-0">
-                    <h5 class="font-serif text-charcoal text-base font-semibold mb-1 leading-tight">${s.title}</h5>
-                    <p class="text-sm text-charcoal/65 font-light leading-relaxed">${s.desc}</p>
+                    <p class="font-serif text-charcoal text-base font-semibold mb-1 leading-tight">${s.title}</p>
+                    <p class="text-sm text-charcoal/80 leading-relaxed">${s.desc}</p>
                 </div>
-            </div>
+            </${closeTag}>
         `;
     }).join('');
 
-    submitLead({ scores: scores, top: topDimensions });
     transitionQuizStage('quiz-animation', 'quiz-results', () => {
         const stickyCta = document.getElementById('quiz-sticky-cta');
         stickyCta.classList.remove('hidden');
@@ -757,8 +610,7 @@ function showResults() {
 window.bookConsultation = function() {
     window.trackEvent('book_consultation', { source: 'quiz_result', phase: userData.phase || 'unspecified' });
     notifyWhatsappClick();
-    const message = `Olá! Fiz o questionário de bem-estar e gostaria de agendar uma Consulta Integrativa. Meu nome é ${userData.name}.`;
-    const encodedMessage = encodeURIComponent(message);
+    const encodedMessage = encodeURIComponent(buildWhatsappMessage());
     const targetPhone = "5598981532153";
     window.open(`https://wa.me/${targetPhone}?text=${encodedMessage}`, '_blank');
 };
@@ -784,7 +636,7 @@ function postToEndpoint(payload) {
         keepalive: true,
         headers: { 'Content-Type': 'text/plain' },
         body: body
-    }).catch(function () { /* offline / failed — backup no localStorage */ });
+    }).catch(function () { /* offline: sem retry */ });
 }
 
 function submitLead(extra) {
@@ -801,17 +653,11 @@ function submitLead(extra) {
         page: window.location.href
     };
 
-    // Backup no localStorage
-    try {
-        const existing = JSON.parse(localStorage.getItem('drakerly_leads') || '[]');
-        existing.push(payload);
-        localStorage.setItem('drakerly_leads', JSON.stringify(existing.slice(-50)));
-    } catch (e) { /* ignore quota errors */ }
-
     postToEndpoint(payload);
 }
 
 function notifyWhatsappClick() {
+    if (!userData.phone) return;
     postToEndpoint({
         event: 'whatsapp_click',
         name: userData.name,

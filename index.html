@@ -300,7 +300,7 @@
             </svg>
         </summary>
         <div class="wa-fab__menu">
-            <a class="wa-fab__option wa-fab__option--quiz" href="/?quiz=1"
+            <a class="wa-fab__option wa-fab__option--quiz" href="#quiz"
                 onclick="if(window.openSymptomModal){openSymptomModal();return false;}">
                 <span class="wa-fab__option-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -369,7 +369,7 @@
                         <span class="block" data-stagger="3">sob um <em class="italic font-light text-blush-500">olhar integrativo, em São Luís</em>.</span>
                     </h1>
 
-                    <p class="text-base md:text-lg text-charcoal/75 leading-[1.6] max-w-[38ch]" data-stagger="4">
+                    <p class="text-base md:text-lg text-charcoal/80 leading-[1.6] max-w-[38ch]" data-stagger="4">
                         Cuidado além do convencional com a Dra. Kerly Helena, ginecologista em São Luís — para mulheres que escolhem se sentir revitalizadas, leves e em paz com o próprio corpo.
                     </p>
 
@@ -411,7 +411,7 @@
         <!-- Acessos rápidos: Medicina Integrativa, Menopausa e Convênio APCEF -->
         <section aria-label="Acessos rápidos" class="bg-sand-100 relative">
             <div class="container mx-auto px-6 md:px-10 pb-14 md:pb-16">
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-5xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
                     <a href="/medicina-integrativa/"
                         class="glass group flex items-center gap-4 px-6 py-5 rounded-2xl border border-white/50 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                         <span class="bg-blush-100 p-2.5 rounded-full text-blush-600 shadow-inner flex-shrink-0">
@@ -442,6 +442,17 @@
                         <span class="flex-1 text-left">
                             <span class="block text-charcoal font-medium text-sm">Convênio APCEF</span>
                             <span class="block text-sm text-charcoal/80 mt-0.5">Veja como usar o convênio</span>
+                        </span>
+                        <i data-feather="arrow-right" class="w-4 h-4 text-blush-600 flex-shrink-0 transition-transform group-hover:translate-x-1"></i>
+                    </a>
+                    <a href="#location"
+                        class="glass group flex items-center gap-4 px-6 py-5 rounded-2xl border border-white/50 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                        <span class="bg-blush-100 p-2.5 rounded-full text-blush-600 shadow-inner flex-shrink-0">
+                            <i data-feather="map-pin" class="w-5 h-5"></i>
+                        </span>
+                        <span class="flex-1 text-left">
+                            <span class="block text-charcoal font-medium text-sm">Onde fica e horários</span>
+                            <span class="block text-sm text-charcoal/80 mt-0.5">Edifício Monumental · Seg a sex, 08h às 18h</span>
                         </span>
                         <i data-feather="arrow-right" class="w-4 h-4 text-blush-600 flex-shrink-0 transition-transform group-hover:translate-x-1"></i>
                     </a>
@@ -650,51 +661,51 @@
                 </div>
 
                 <div class="max-w-2xl mx-auto gs-reveal">
+                    <p class="text-sm text-charcoal/80 mb-4">Toque na frase que mais combina com você</p>
                     <ul class="desire-list">
                         <li>
-                            <button type="button" class="desire-item" onclick="window.trackEvent && trackEvent('desire_click', { desire: 'energia' }); openSymptomModal();">
+                            <button type="button" class="desire-item" onclick="window.trackEvent && trackEvent('desire_click', { desire: 'energia' }); openSymptomModal({ presetIndex: 0 });">
                                 <span class="desire-num">01</span>
                                 <span class="desire-text">"Quero acordar com energia e disposição."</span>
                                 <span class="desire-arrow" aria-hidden="true">&rarr;</span>
                             </button>
                         </li>
                         <li>
-                            <button type="button" class="desire-item" onclick="window.trackEvent && trackEvent('desire_click', { desire: 'leveza' }); openSymptomModal();">
+                            <button type="button" class="desire-item" onclick="window.trackEvent && trackEvent('desire_click', { desire: 'leveza' }); openSymptomModal({ presetIndex: 1 });">
                                 <span class="desire-num">02</span>
                                 <span class="desire-text">"Quero me sentir leve no meu corpo."</span>
                                 <span class="desire-arrow" aria-hidden="true">&rarr;</span>
                             </button>
                         </li>
                         <li>
-                            <button type="button" class="desire-item" onclick="window.trackEvent && trackEvent('desire_click', { desire: 'sono' }); openSymptomModal();">
+                            <button type="button" class="desire-item" onclick="window.trackEvent && trackEvent('desire_click', { desire: 'sono' }); openSymptomModal({ presetIndex: 2 });">
                                 <span class="desire-num">03</span>
                                 <span class="desire-text">"Quero dormir profundamente e acordar descansada."</span>
                                 <span class="desire-arrow" aria-hidden="true">&rarr;</span>
                             </button>
                         </li>
                         <li>
-                            <button type="button" class="desire-item" onclick="window.trackEvent && trackEvent('desire_click', { desire: 'autoestima' }); openSymptomModal();">
+                            <button type="button" class="desire-item" onclick="window.trackEvent && trackEvent('desire_click', { desire: 'autoestima' }); openSymptomModal({ presetIndex: 5 });">
                                 <span class="desire-num">04</span>
                                 <span class="desire-text">"Quero me sentir bonita e em paz com meu corpo."</span>
                                 <span class="desire-arrow" aria-hidden="true">&rarr;</span>
                             </button>
                         </li>
                         <li>
-                            <button type="button" class="desire-item" onclick="window.trackEvent && trackEvent('desire_click', { desire: 'presenca' }); openSymptomModal();">
+                            <button type="button" class="desire-item" onclick="window.trackEvent && trackEvent('desire_click', { desire: 'presenca' }); openSymptomModal({ presetIndex: 4 });">
                                 <span class="desire-num">05</span>
                                 <span class="desire-text">"Quero estar presente comigo mesma e nas pequenas coisas."</span>
                                 <span class="desire-arrow" aria-hidden="true">&rarr;</span>
                             </button>
                         </li>
                         <li>
-                            <button type="button" class="desire-item" onclick="window.trackEvent && trackEvent('desire_click', { desire: 'vitalidade' }); openSymptomModal();">
+                            <button type="button" class="desire-item" onclick="window.trackEvent && trackEvent('desire_click', { desire: 'vitalidade' }); openSymptomModal({ presetIndex: 7 });">
                                 <span class="desire-num">06</span>
                                 <span class="desire-text">"Quero redescobrir meu prazer, libido e vitalidade."</span>
                                 <span class="desire-arrow" aria-hidden="true">&rarr;</span>
                             </button>
                         </li>
                     </ul>
-                    <p class="text-center text-xs tracking-[0.18em] uppercase text-charcoal/80 mt-6">Toque na frase que mais ressoa</p>
                 </div>
 
                 <div class="text-center mt-14 gs-reveal">
@@ -814,116 +825,86 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-6">
                         <!-- Saúde Hormonal -->
-                        <div tabindex="0"
-                            class="group relative cursor-pointer glass p-5 rounded-2xl shadow-sm border border-blush-100 hover:bg-white hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blush-200">
+                        <div class="relative glass p-5 rounded-2xl shadow-sm border border-blush-100">
                             <div class="flex items-center space-x-3">
                                 <i data-feather="heart" class="text-blush-500 w-5 h-5 flex-shrink-0"></i>
-                                <span class="text-charcoal font-medium text-lg">Saúde hormonal</span>
+                                <h3 class="text-charcoal font-medium text-lg">Saúde hormonal</h3>
                             </div>
-                            <div
-                                class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] group-focus:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-in-out">
-                                <div class="overflow-hidden">
-                                    <p
-                                        class="text-base text-charcoal/80 pt-3 leading-relaxed border-t border-blush-100/50 mt-3 relative z-10">
+                            <div>
+                                <p class="text-base text-charcoal/80 pt-3 mt-3 border-t border-blush-100/50">
                                         Avaliação detalhada dos eixos feminino, tireoidiano e adrenal. Buscamos o
                                         equilíbrio natural para vitalidade, libido e regulação do ciclo menstrual.
                                     </p>
-                                </div>
                             </div>
                         </div>
 
                         <!-- Qualidade do Sono -->
-                        <div tabindex="0"
-                            class="group relative cursor-pointer glass p-5 rounded-2xl shadow-sm border border-blush-100 hover:bg-white hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blush-200">
+                        <div class="relative glass p-5 rounded-2xl shadow-sm border border-blush-100">
                             <div class="flex items-center space-x-3">
                                 <i data-feather="moon" class="text-blush-500 w-5 h-5 flex-shrink-0"></i>
-                                <span class="text-charcoal font-medium text-lg">Qualidade do sono</span>
+                                <h3 class="text-charcoal font-medium text-lg">Qualidade do sono</h3>
                             </div>
-                            <div
-                                class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] group-focus:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-in-out">
-                                <div class="overflow-hidden">
-                                    <p
-                                        class="text-base text-charcoal/80 pt-3 leading-relaxed border-t border-blush-100/50 mt-3 relative z-10">
+                            <div>
+                                <p class="text-base text-charcoal/80 pt-3 mt-3 border-t border-blush-100/50">
                                         O sono é o pilar da recuperação celular. Investigamos distúrbios e aplicamos
                                         estratégias para um descanso profundo e restaurador.
                                     </p>
-                                </div>
                             </div>
                         </div>
 
                         <!-- Alimentação -->
-                        <div tabindex="0"
-                            class="group relative cursor-pointer glass p-5 rounded-2xl shadow-sm border border-blush-100 hover:bg-white hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blush-200">
+                        <div class="relative glass p-5 rounded-2xl shadow-sm border border-blush-100">
                             <div class="flex items-center space-x-3">
                                 <i data-feather="coffee" class="text-blush-500 w-5 h-5 flex-shrink-0"></i>
-                                <span class="text-charcoal font-medium text-lg">Alimentação</span>
+                                <h3 class="text-charcoal font-medium text-lg">Alimentação</h3>
                             </div>
-                            <div
-                                class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] group-focus:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-in-out">
-                                <div class="overflow-hidden">
-                                    <p
-                                        class="text-base text-charcoal/80 pt-3 leading-relaxed border-t border-blush-100/50 mt-3 relative z-10">
+                            <div>
+                                <p class="text-base text-charcoal/80 pt-3 mt-3 border-t border-blush-100/50">
                                         A nutrição funcional como aliada no tratamento ginecológico. Adequamos a dieta
                                         para nutrir o corpo e reduzir inflamações de forma sustentável.
                                     </p>
-                                </div>
                             </div>
                         </div>
 
                         <!-- Inflamação Metabólica -->
-                        <div tabindex="0"
-                            class="group relative cursor-pointer glass p-5 rounded-2xl shadow-sm border border-blush-100 hover:bg-white hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blush-200">
+                        <div class="relative glass p-5 rounded-2xl shadow-sm border border-blush-100">
                             <div class="flex items-center space-x-3">
                                 <i data-feather="activity" class="text-blush-500 w-5 h-5 flex-shrink-0"></i>
-                                <span class="text-charcoal font-medium text-lg">Inflamação metabólica</span>
+                                <h3 class="text-charcoal font-medium text-lg">Inflamação metabólica</h3>
                             </div>
-                            <div
-                                class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] group-focus:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-in-out">
-                                <div class="overflow-hidden">
-                                    <p
-                                        class="text-base text-charcoal/80 pt-3 leading-relaxed border-t border-blush-100/50 mt-3 relative z-10">
+                            <div>
+                                <p class="text-base text-charcoal/80 pt-3 mt-3 border-t border-blush-100/50">
                                         Muitas vezes silenciosa, afeta todo o seu bem-estar. Tratamos a raiz de
                                         processos inflamatórios, saúde intestinal e prevenção de doenças.
                                     </p>
-                                </div>
                             </div>
                         </div>
 
                         <!-- Saúde Emocional -->
-                        <div tabindex="0"
-                            class="group relative cursor-pointer glass p-5 rounded-2xl shadow-sm border border-blush-100 hover:bg-white hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blush-200">
+                        <div class="relative glass p-5 rounded-2xl shadow-sm border border-blush-100">
                             <div class="flex items-center space-x-3">
                                 <i data-feather="smile" class="text-blush-500 w-5 h-5 flex-shrink-0"></i>
-                                <span class="text-charcoal font-medium text-lg">Saúde emocional</span>
+                                <h3 class="text-charcoal font-medium text-lg">Saúde emocional</h3>
                             </div>
-                            <div
-                                class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] group-focus:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-in-out">
-                                <div class="overflow-hidden">
-                                    <p
-                                        class="text-base text-charcoal/80 pt-3 leading-relaxed border-t border-blush-100/50 mt-3 relative z-10">
+                            <div>
+                                <p class="text-base text-charcoal/80 pt-3 mt-3 border-t border-blush-100/50">
                                         Mente e corpo interligados. Consideramos o impacto do estresse crônico,
                                         ansiedade e emoções na sua fisiologia corporal e ginecológica.
                                     </p>
-                                </div>
                             </div>
                         </div>
 
                         <!-- Hábitos e Rotina -->
-                        <div tabindex="0"
-                            class="group relative cursor-pointer glass p-5 rounded-2xl shadow-sm border border-blush-100 hover:bg-white hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blush-200">
+                        <div class="relative glass p-5 rounded-2xl shadow-sm border border-blush-100">
                             <div class="flex items-center space-x-3">
                                 <i data-feather="compass" class="text-blush-500 w-5 h-5 flex-shrink-0"></i>
-                                <span class="text-charcoal font-medium text-lg">Hábitos e rotina</span>
+                                <h3 class="text-charcoal font-medium text-lg">Hábitos e rotina</h3>
                             </div>
-                            <div
-                                class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] group-focus:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-in-out">
-                                <div class="overflow-hidden">
-                                    <p
-                                        class="text-base text-charcoal/80 pt-3 leading-relaxed border-t border-blush-100/50 mt-3 relative z-10">
+                            <div>
+                                <p class="text-base text-charcoal/80 pt-3 mt-3 border-t border-blush-100/50">
                                         Pequenas ações geram transformações sólidas. Ajudamos a construir uma rotina
                                         prazerosa e equilibrada que respeita seu ritmo biológico.
                                     </p>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -1236,11 +1217,16 @@
                     </article>
                 </div>
 
-                <div class="text-center mt-12">
+                <div class="text-center mt-12 flex flex-wrap justify-center gap-x-8 gap-y-4">
                     <a href="https://share.google/mytP6jGcdTPTe1DJ4" target="_blank" rel="noopener noreferrer"
                         class="inline-flex items-center space-x-2 text-blush-600 font-medium tracking-wide border-b border-blush-500 pb-1 hover:text-blush-600 hover:border-blush-400 transition-colors">
                         <span>Ver mais avaliações no Google</span>
                         <i data-feather="external-link" class="w-4 h-4"></i>
+                    </a>
+                    <a href="https://share.google/mytP6jGcdTPTe1DJ4" target="_blank" rel="noopener noreferrer"
+                        class="inline-flex items-center space-x-2 text-blush-600 font-medium tracking-wide border-b border-blush-500 pb-1 hover:text-blush-600 hover:border-blush-400 transition-colors">
+                        <span>Avaliar no Google</span>
+                        <i data-feather="star" class="w-4 h-4"></i>
                     </a>
                 </div>
             </div>
@@ -1278,8 +1264,9 @@
                             <div class="flex items-start space-x-4">
                                 <i data-feather="phone" class="w-6 h-6 text-blush-500 mt-1 flex-shrink-0"></i>
                                 <p class="text-charcoal/80">
-                                    <strong class="font-medium text-charcoal block mb-1">WhatsApp</strong>
-                                    <a href="tel:+5598981532153" class="hover:text-blush-600 transition-colors">+55 (98) 98153-2153</a>
+                                    <strong class="font-medium text-charcoal block mb-1">Telefone</strong>
+                                    <a href="tel:+5598981532153" class="underline underline-offset-4 hover:text-blush-600 transition-colors">Ligar: (98) 98153-2153</a><br>
+                                    <a href="https://wa.me/5598981532153" target="_blank" rel="noopener noreferrer" class="underline underline-offset-4 hover:text-blush-600 transition-colors">Chamar no WhatsApp</a>
                                 </p>
                             </div>
                             <div class="flex items-start space-x-4">
@@ -1298,35 +1285,46 @@
                             </div>
                         </div>
                         <div class="pt-4 flex flex-col sm:flex-row gap-4">
-                            <button onclick="openSymptomModal()"
+                            <a href="https://wa.me/5598981532153?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Dra.%20Kerly%20Helena." target="_blank" rel="noopener noreferrer"
                                 class="inline-flex items-center space-x-2 bg-blush-600 hover:bg-blush-700 text-white px-8 py-3 rounded-full transition-colors w-full sm:w-auto justify-center shadow-md">
-                                <span>Agendar Consulta</span>
-                            </button>
+                                <span>Agendar pelo WhatsApp</span>
+                            </a>
                             <a href="https://share.google/mytP6jGcdTPTe1DJ4" target="_blank" rel="noopener noreferrer"
                                 class="inline-flex items-center space-x-2 bg-white hover:bg-nude-100 text-charcoal border border-blush-200 px-8 py-3 rounded-full transition-colors w-full sm:w-auto justify-center shadow-sm">
                                 <i data-feather="map" class="w-4 h-4"></i>
                                 <span>Ver no Google Maps</span>
                             </a>
                         </div>
+                        <p><button type="button" onclick="openSymptomModal()" class="underline text-blush-600 min-h-[44px]">Fazer o teste de bem-estar (2 min)</button></p>
                     </div>
 
                     <div
-                        class="w-full md:w-1/2 h-64 md:h-80 rounded-2xl overflow-hidden shadow-inner border border-blush-200">
-                        <a href="https://share.google/mytP6jGcdTPTe1DJ4" target="_blank" rel="noopener noreferrer"
-                            class="block w-full h-full relative group">
-                            <iframe
-                                src="https://maps.google.com/maps?q=Dra.+Kerly+Helena+Ginecologia+Integrativa+Maranhão&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                                title="Mapa do consultório Dra Kerly Helena em São Luís" width="100%" height="100%"
-                                style="border:0; pointer-events: none;" allowfullscreen="" loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade">
-                            </iframe>
-                            <div
-                                class="absolute bottom-4 right-4 z-20 bg-white/90 backdrop-blur px-4 py-2 rounded-lg text-sm font-medium text-charcoal shadow-lg shadow-black/10 flex items-center space-x-2">
-                                <span>Abrir mapa</span>
-                                <i data-feather="external-link" class="w-3 h-3"></i>
+                        class="w-full md:w-1/2 min-h-[20rem] md:h-96 rounded-3xl overflow-hidden">
+                        <div id="map-facade" class="relative h-full min-h-[280px] rounded-3xl bg-nude-200 border border-blush-100 flex flex-col items-center justify-center gap-4 p-6 text-center">
+                            <i data-feather="map-pin" class="text-blush-600 w-8 h-8"></i>
+                            <p class="text-base text-charcoal/80">Edifício Monumental, Sala 310<br>Av. Coronel Colares Moreira, Jardim Renascença</p>
+                            <div class="flex flex-wrap justify-center gap-3">
+                                <a href="https://www.google.com/maps/dir/?api=1&destination=-2.5016951,-44.2886734" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-blush-600 hover:bg-blush-700 text-white px-5 py-3 rounded-full text-base font-medium">Rota no Google Maps</a>
+                                <a href="https://waze.com/ul?ll=-2.5016951,-44.2886734&navigate=yes" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-blush-300 text-charcoal px-5 py-3 rounded-full text-base font-medium">Abrir no Waze</a>
+                                <button type="button" id="copy-address" class="inline-flex items-center gap-2 border border-blush-300 text-charcoal px-5 py-3 rounded-full text-base font-medium">Copiar endereço</button>
                             </div>
-                        </a>
+                            <button type="button" id="load-map" class="text-blush-600 underline text-base min-h-[44px]">Ver mapa aqui</button>
+                        </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="fechamento" class="py-16 md:py-20 bg-nude-200">
+            <div class="container mx-auto px-6 max-w-4xl grid md:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] gap-10 items-center">
+                <figure class="rounded-[2rem] overflow-hidden">
+                    <img src="assets/IMG_4354-wide-960.webp" srcset="assets/IMG_4354-wide-640.webp 640w, assets/IMG_4354-wide-960.webp 960w, assets/IMG_4354-wide.webp 1600w" sizes="(min-width:768px) 40vw, calc(100vw - 3rem)" alt="Dra. Kerly Helena sorrindo em seu consultório em São Luís" width="1600" height="686" loading="lazy" decoding="async" class="w-full h-full object-cover">
+                </figure>
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-serif text-charcoal leading-tight mb-4">Você não precisa atravessar isso sozinha.</h2>
+                    <p class="text-lg text-charcoal/80 mb-8">Conte o que está sentindo. A gente combina o melhor horário e você chega à consulta sabendo o que esperar.</p>
+                    <a href="https://wa.me/5598981532153?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Dra.%20Kerly%20Helena." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-blush-600 hover:bg-blush-700 text-white px-8 py-4 rounded-full text-lg font-medium shadow-lg">Agendar pelo WhatsApp <i data-feather="arrow-right" class="w-5 h-5"></i></a>
+                    <p class="mt-5 text-base"><a href="/blog/" class="text-blush-600 underline">Prefere ler primeiro? Veja o blog</a></p>
                 </div>
             </div>
         </section>
@@ -1422,7 +1420,7 @@
     <div id="symptom-modal" role="dialog" aria-modal="true" aria-labelledby="quiz-welcome-title"
         class="fixed inset-0 z-[100] hidden items-center justify-center opacity-0 transition-opacity duration-300 p-4 sm:p-6">
         <!-- Overlay -->
-        <div class="absolute inset-0 bg-charcoal/40 backdrop-blur-sm" onclick="closeSymptomModal()"></div>
+        <div id="quiz-overlay" class="absolute inset-0 bg-charcoal/40 backdrop-blur-sm"></div>
 
         <!-- Modal Content -->
         <div class="relative bg-sand-100 w-full max-w-2xl overflow-hidden rounded-3xl shadow-2xl transform scale-95 transition-transform duration-300 text-charcoal flex flex-col"
@@ -1442,9 +1440,9 @@
                 <div class="inline-flex items-center justify-center w-16 h-16 bg-nude-300/50 text-blush-600 rounded-full mx-auto mb-4">
                     <i data-feather="sun" class="w-8 h-8 stroke-[1.5]"></i>
                 </div>
-                <h2 id="quiz-welcome-title" class="text-3xl md:text-4xl font-serif text-charcoal leading-tight mb-3">
+                <p id="quiz-welcome-title" class="text-3xl md:text-4xl font-serif text-charcoal leading-tight mb-3">
                     Vamos descobrir<br><span class="text-blush-500 italic">o que seu corpo está pedindo.</span>
-                </h2>
+                </p>
                 <p class="text-charcoal/80 max-w-md mx-auto mb-2">
                     9 perguntas rápidas. Em menos de 2 minutos você recebe um mapa personalizado do que pode te ajudar a se sentir mais leve, presente e vital.
                 </p>
@@ -1458,108 +1456,12 @@
                 </button>
             </div>
 
-            <!-- Stage 1: Lead capture (after 9 questions; 5 substeps) -->
-            <div id="quiz-intro" class="hidden space-y-5 text-center pb-modal-safe">
-
-                <!-- Intro progress -->
-                <div class="flex items-center max-w-sm mx-auto gap-3">
-                    <span id="intro-progress-text" class="text-sm font-medium text-blush-600 whitespace-nowrap">Passo 1 de 5</span>
-                    <div class="flex-1 h-1 bg-blush-100 rounded-full overflow-hidden">
-                        <div id="intro-progress-bar" class="h-full bg-blush-500 w-[20%] transition-all duration-500"></div>
-                    </div>
-                </div>
-
-                <!-- Substep 0: Name (post-questions, lead capture begins) -->
-                <div class="intro-substep" data-substep="0">
-                    <div class="inline-flex items-center justify-center w-14 h-14 bg-nude-300/50 text-blush-600 rounded-full mx-auto mb-4">
-                        <i data-feather="check" class="w-7 h-7 stroke-[1.5]"></i>
-                    </div>
-                    <h2 class="text-2xl md:text-3xl font-serif text-charcoal leading-tight mb-2">
-                        Seu mapa está <span class="text-blush-500 italic">quase pronto.</span>
-                    </h2>
-                    <p class="text-charcoal/80 max-w-md mx-auto mb-6 text-sm">Falta pouco. Como quer ser chamada?</p>
-                    <div class="max-w-sm mx-auto text-left">
-                        <label class="block text-sm text-charcoal/80 mb-2 ml-4" for="quiz-name">Seu nome</label>
-                        <input type="text" id="quiz-name" placeholder="Seu nome" autocomplete="given-name"
-                            onkeydown="if(event.key==='Enter'){event.preventDefault();nextIntroSubstep();}"
-                            class="w-full bg-white/60 border border-blush-100 rounded-full px-6 py-3 focus:outline-none focus:border-blush-400 transition-colors">
-                        <p data-error-for="0" class="text-sm text-red-500 mt-2 ml-4 hidden"></p>
-                    </div>
-                </div>
-
-                <!-- Substep 1: Phone -->
-                <div class="intro-substep hidden" data-substep="1">
-                    <h2 class="text-2xl md:text-3xl font-serif text-charcoal leading-tight mb-2">Qual seu <span class="text-blush-500 italic">WhatsApp?</span></h2>
-                    <p class="text-charcoal/80 max-w-md mx-auto mb-6 text-sm">Pra te enviar o resultado quando estiver pronto.</p>
-                    <div class="max-w-sm mx-auto text-left">
-                        <label class="block text-sm text-charcoal/80 mb-2 ml-4" for="quiz-phone">WhatsApp</label>
-                        <input type="tel" id="quiz-phone" placeholder="(00) 00000-0000" autocomplete="tel" inputmode="tel"
-                            oninput="formatPhoneInput(this)"
-                            onkeydown="if(event.key==='Enter'){event.preventDefault();nextIntroSubstep();}"
-                            class="w-full bg-white/60 border border-blush-100 rounded-full px-6 py-3 focus:outline-none focus:border-blush-400 transition-colors">
-                        <p data-error-for="1" class="text-sm text-red-500 mt-2 ml-4 hidden"></p>
-                    </div>
-                </div>
-
-                <!-- Substep 2: Email -->
-                <div class="intro-substep hidden" data-substep="2">
-                    <h2 class="text-2xl md:text-3xl font-serif text-charcoal leading-tight mb-2">Seu melhor <span class="text-blush-500 italic">e-mail?</span></h2>
-                    <p class="text-charcoal/80 max-w-md mx-auto mb-6 text-sm">Onde você prefere receber o resultado completo.</p>
-                    <div class="max-w-sm mx-auto text-left">
-                        <label class="block text-sm text-charcoal/80 mb-2 ml-4" for="quiz-email">E-mail</label>
-                        <input type="email" id="quiz-email" placeholder="seu@email.com" autocomplete="email" inputmode="email"
-                            onkeydown="if(event.key==='Enter'){event.preventDefault();nextIntroSubstep();}"
-                            class="w-full bg-white/60 border border-blush-100 rounded-full px-6 py-3 focus:outline-none focus:border-blush-400 transition-colors">
-                        <p data-error-for="2" class="text-sm text-red-500 mt-2 ml-4 hidden"></p>
-                    </div>
-                </div>
-
-                <!-- Substep 3: Age -->
-                <div class="intro-substep hidden" data-substep="3">
-                    <h2 class="text-2xl md:text-3xl font-serif text-charcoal leading-tight mb-2">Quantos <span class="text-blush-500 italic">anos</span> você tem?</h2>
-                    <p class="text-charcoal/80 max-w-md mx-auto mb-6 text-sm">Ajuda a personalizar a leitura do resultado.</p>
-                    <div class="max-w-sm mx-auto text-left">
-                        <label class="block text-sm text-charcoal/80 mb-2 ml-4" for="quiz-age">Idade</label>
-                        <input type="number" id="quiz-age" placeholder="Ex: 34" min="18" max="99" inputmode="numeric"
-                            onkeydown="if(event.key==='Enter'){event.preventDefault();nextIntroSubstep();}"
-                            class="w-full bg-white/60 border border-blush-100 rounded-full px-6 py-3 focus:outline-none focus:border-blush-400 transition-colors">
-                        <p data-error-for="3" class="text-sm text-red-500 mt-2 ml-4 hidden"></p>
-                    </div>
-                </div>
-
-                <!-- Substep 4: Consent -->
-                <div class="intro-substep hidden" data-substep="4">
-                    <h2 class="text-2xl md:text-3xl font-serif text-charcoal leading-tight mb-2"><span class="text-blush-500 italic">Quase lá.</span></h2>
-                    <p class="text-charcoal/80 max-w-md mx-auto mb-6 text-sm">Falta só confirmar o uso dos seus dados.</p>
-                    <div class="max-w-sm mx-auto">
-                        <label class="flex items-start gap-3 text-left text-sm text-charcoal/80 leading-relaxed px-2 cursor-pointer">
-                            <input type="checkbox" id="quiz-consent" class="mt-1 w-4 h-4 accent-blush-500 flex-shrink-0">
-                            <span>Concordo em receber contato sobre o resultado e novidades. Seus dados são tratados conforme nossa <a href="/privacy/" target="_blank" class="text-blush-600 underline hover:text-blush-600">Política de Privacidade</a> (LGPD).</span>
-                        </label>
-                        <p data-error-for="4" class="text-sm text-red-500 mt-3 hidden"></p>
-                    </div>
-                </div>
-
-                <!-- Navigation -->
-                <div class="flex items-center max-w-sm mx-auto pt-2 gap-3">
-                    <button id="intro-back-btn" onclick="prevIntroSubstep()" type="button"
-                        class="px-5 py-3 rounded-full text-charcoal/80 hover:text-blush-600 transition-colors font-medium text-sm hidden">
-                        ← Voltar
-                    </button>
-                    <button id="intro-next-btn" onclick="nextIntroSubstep()" type="button"
-                        class="flex-1 bg-blush-600 hover:bg-blush-700 text-white px-8 py-3 rounded-full transition-all duration-300 shadow-lg font-medium">
-                        Próximo
-                    </button>
-                </div>
-            </div>
-
             <!-- Stage 2: Questionnaire -->
             <div id="quiz-questions" class="hidden space-y-8">
-                <div class="flex items-center justify-between border-b border-blush-200/50 pb-4">
-                    <h3 class="text-xl font-serif text-charcoal" id="quiz-question-title">Pergunta</h3>
-                    <div class="flex flex-col items-end">
-                        <span id="quiz-progress-text" class="text-sm font-medium text-blush-600 mb-1">Passo 1 de 9</span>
-                        <div class="w-24 h-1.5 bg-blush-100 rounded-full overflow-hidden">
+                <div class="border-b border-blush-200/50 pb-4 pr-14">
+                    <div class="flex flex-col items-start">
+                        <span id="quiz-progress-text" class="text-sm font-medium text-blush-600 mb-1">Pergunta 1 de 9</span>
+                        <div class="w-32 h-1.5 bg-blush-100 rounded-full overflow-hidden">
                             <div id="quiz-progress-bar" class="h-full bg-blush-500 w-0 transition-all duration-500"></div>
                         </div>
                     </div>
@@ -1662,7 +1564,7 @@
                         <span class="w-1.5 h-1.5 rounded-full bg-blush-500"></span>
                         <span class="text-xs uppercase tracking-[0.2em] text-blush-600 font-bold">Seu mapa de bem-estar</span>
                     </div>
-                    <h2 class="text-3xl md:text-4xl font-serif text-charcoal leading-tight" id="result-greeting">Olá, Nome.</h2>
+                    <p class="text-3xl md:text-4xl font-serif text-charcoal leading-tight" id="result-greeting">Olá, Nome.</p>
                     <div class="space-y-1 pt-1">
                         <p class="text-charcoal/80 text-xs uppercase tracking-[0.2em] font-semibold">Você quer mais</p>
                         <p class="text-2xl md:text-3xl font-serif italic text-blush-500 leading-tight" id="result-dimension">vitalidade</p>
@@ -1670,7 +1572,7 @@
                 </div>
 
                 <!-- Insight paragraph -->
-                <p id="result-paragraph" class="text-charcoal/75 leading-relaxed text-base text-center max-w-md mx-auto px-2">Parágrafo empático baseado nos seus resultados...</p>
+                <p id="result-paragraph" class="text-charcoal/80 leading-relaxed text-base text-center max-w-md mx-auto px-2">Parágrafo empático baseado nos seus resultados...</p>
 
                 <!-- Primary recommendation card -->
                 <div class="relative rounded-[2rem] p-7 md:p-8 border border-blush-200/50 shadow-lg overflow-hidden"
@@ -1681,32 +1583,44 @@
                         <div class="flex items-center justify-between mb-4">
                             <span class="text-xs uppercase tracking-[0.2em] text-blush-600 font-bold">O ponto de partida</span>
                         </div>
-                        <h3 class="text-2xl md:text-3xl font-serif text-charcoal mb-4 leading-tight">
+                        <p class="text-2xl md:text-3xl font-serif text-charcoal mb-4 leading-tight">
                             Consulta integrativa<br/>
-                            <span class="text-blush-500 italic font-light">com a Dra. Kerly Helena</span>
-                        </h3>
-                        <p class="text-charcoal/75 text-sm md:text-base leading-relaxed mb-5">
+                            <span class="text-blush-500 italic">com a Dra. Kerly Helena</span>
+                        </p>
+                        <p class="text-charcoal/80 text-sm md:text-base leading-relaxed mb-5">
                             Uma escuta longa e atenta. A Dra. Kerly entende seu corpo, sua história e seu ritmo — e traça com você um caminho real para o bem-estar que você quer sentir.
                         </p>
                         <ul class="space-y-2.5 mb-7">
-                            <li class="flex items-start gap-3 text-charcoal/75 text-sm">
+                            <li class="flex items-start gap-3 text-charcoal/80 text-sm">
                                 <span class="w-5 h-5 rounded-full bg-blush-500/15 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-feather="check" class="w-3 h-3 text-blush-500"></i></span>
                                 <span>Avaliação ginecológica integrativa completa</span>
                             </li>
-                            <li class="flex items-start gap-3 text-charcoal/75 text-sm">
+                            <li class="flex items-start gap-3 text-charcoal/80 text-sm">
                                 <span class="w-5 h-5 rounded-full bg-blush-500/15 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-feather="check" class="w-3 h-3 text-blush-500"></i></span>
                                 <span>Investigação hormonal, metabólica e emocional</span>
                             </li>
-                            <li class="flex items-start gap-3 text-charcoal/75 text-sm">
+                            <li class="flex items-start gap-3 text-charcoal/80 text-sm">
                                 <span class="w-5 h-5 rounded-full bg-blush-500/15 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-feather="check" class="w-3 h-3 text-blush-500"></i></span>
                                 <span>Plano terapêutico individualizado</span>
                             </li>
                         </ul>
-                        <button onclick="bookConsultation()" class="group w-full bg-blush-600 hover:bg-blush-700 text-white px-6 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 font-medium text-base flex items-center justify-center gap-2.5">
-                            <i data-feather="message-circle" class="w-5 h-5"></i>
-                            <span>Agendar pelo WhatsApp</span>
-                            <i data-feather="arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-0.5"></i>
-                        </button>
+                        <form id="quiz-contact" class="mt-6 space-y-4" novalidate>
+                            <p class="text-base text-charcoal/80">Quer que a equipe da Dra. Kerly veja seu mapa antes da conversa? Deixe seu nome e WhatsApp. É opcional.</p>
+                            <div>
+                                <label for="quiz-name" class="block text-base font-medium text-charcoal mb-1">Seu nome</label>
+                                <input type="text" id="quiz-name" autocomplete="given-name" class="w-full rounded-xl border-2 border-blush-300 bg-white px-4 py-3 text-lg text-charcoal focus:border-blush-600">
+                            </div>
+                            <div>
+                                <label for="quiz-phone" class="block text-base font-medium text-charcoal mb-1">WhatsApp</label>
+                                <input type="tel" id="quiz-phone" inputmode="tel" autocomplete="tel" placeholder="(98) 90000-0000" oninput="formatPhoneInput(this)" class="w-full rounded-xl border-2 border-blush-300 bg-white px-4 py-3 text-lg text-charcoal focus:border-blush-600">
+                            </div>
+                            <label class="flex items-start gap-3 text-base text-charcoal/80 cursor-pointer">
+                                <input type="checkbox" id="quiz-consent" class="mt-0.5 w-6 h-6 shrink-0 accent-blush-600">
+                                <span>Concordo que a equipe entre em contato sobre este resultado. Dados tratados conforme a <a href="/privacy/" target="_blank" rel="noopener noreferrer" class="underline">Política de Privacidade</a>.</span>
+                            </label>
+                            <p id="quiz-contact-error" class="hidden text-base text-red-700"></p>
+                            <button type="submit" class="w-full bg-blush-600 hover:bg-blush-700 text-white px-6 py-4 rounded-full text-lg font-medium">Enviar e abrir o WhatsApp</button>
+                        </form>
                     </div>
                 </div>
 

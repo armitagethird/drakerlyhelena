@@ -182,6 +182,7 @@ body {
 .glass--header .nav-brand__text {
     white-space: nowrap;
 }
+.glass--header .nav-brand { margin-right: 1.5rem; }
 
 /* CTA mantém a fonte; só afina (botão mais baixo) p/ acompanhar a barra. */
 .glass--header .nav-cta {
@@ -641,7 +642,8 @@ body {
     display: flex;
     align-items: baseline;
     gap: 1.1rem;
-    padding: 1.3rem 0.25rem;
+    padding: 1.1rem 1rem;
+    border-radius: 1rem;
     border: 0;
     border-top: 1px solid rgba(224, 174, 190, 0.38); /* blush-300 */
     background: transparent;
@@ -684,18 +686,16 @@ body {
 .desire-arrow {
     color: #A9637B;
     font-size: 1.05rem;
-    opacity: 0;
-    transform: translateX(-8px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 1;
+    transform: none;
     flex-shrink: 0;
 }
 @media (hover: hover) and (pointer: fine) {
     .desire-item:hover { padding-left: 1rem; background: rgba(255, 255, 255, 0.45); }
     .desire-item:hover::before { width: 100%; }
     .desire-item:hover .desire-num { color: #A9637B; }
-    .desire-item:hover .desire-arrow { opacity: 1; transform: none; }
 }
-.desire-item:focus-visible .desire-arrow { opacity: 1; transform: none; }
+.desire-item:active { background: rgba(255, 255, 255, 0.55); }
 
 /* Passos editoriais — "Como funciona" */
 .steps-grid {
