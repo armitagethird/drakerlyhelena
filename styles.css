@@ -119,8 +119,8 @@ body {
     will-change: max-width;
 }
 /* Mobile: mesmo raio do dropdown do burger (rounded-3xl = 24px) — evita o
-   header em "oval" descolado do painel do menu abaixo do breakpoint md. */
-@media (max-width: 767px) {
+   header em "oval" descolado do painel do menu abaixo do breakpoint xl (1280px). */
+@media (max-width: 1279px) {
     .glass--header {
         border-radius: 1.5rem;
     }
@@ -816,7 +816,20 @@ html[data-fonte="maior"] { font-size: 125%; --fonte-escala: 1.25; }
 
 /* Cabeçalho no desktop: com o botão de tamanho da letra, a pílula precisa de mais largura
    para não cortar "Blog" nem quebrar o CTA em duas linhas. */
-@media (min-width: 768px) {
+@media (min-width: 1280px) {
     .glass--header:not(.is-scrolled) { max-width: 78rem; }
     .glass--header .nav-cta { white-space: nowrap; }
+}
+
+/* Entre 1280 e 1535px a navegação completa mal cabe: espaços menores entre os links
+   evitam cortar "Blog" e encostar o nome no primeiro link. */
+@media (min-width: 1280px) and (max-width: 1535px) {
+    .glass--header .nav-links__inner > :not(:last-child) { margin-inline-end: 1.25rem; }
+    .glass--header nav > :not(:last-child) { margin-inline-end: 1rem; }
+    /* Nome um pouco menor: o CTA longo do yoga ("Entrar na lista de espera...") só cabe assim. */
+    .glass--header .nav-brand__text { font-size: calc(1.5rem / var(--fonte-escala, 1)); }
+}
+/* Telas largas: a pílula ganha largura extra (o CTA do yoga é o mais comprido). */
+@media (min-width: 1536px) {
+    .glass--header:not(.is-scrolled) { max-width: 88rem; }
 }
