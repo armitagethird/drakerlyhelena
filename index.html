@@ -1302,26 +1302,22 @@
                                 class="inline-flex items-center space-x-2 bg-blush-600 hover:bg-blush-700 text-white px-8 py-3 rounded-full transition-colors w-full sm:w-auto justify-center shadow-md">
                                 <span>Agendar pelo WhatsApp</span>
                             </a>
-                            <a href="https://share.google/mytP6jGcdTPTe1DJ4" target="_blank" rel="noopener noreferrer"
-                                class="inline-flex items-center space-x-2 bg-white hover:bg-nude-100 text-charcoal border border-blush-200 px-8 py-3 rounded-full transition-colors w-full sm:w-auto justify-center shadow-sm">
-                                <i data-feather="map" class="w-4 h-4"></i>
-                                <span>Ver no Google Maps</span>
-                            </a>
                         </div>
                         <p><button type="button" onclick="openSymptomModal()" class="underline text-blush-600 min-h-[44px]">Fazer o teste de bem-estar (2 min)</button></p>
                     </div>
 
-                    <div
-                        class="w-full md:w-1/2 min-h-[20rem] md:h-96 rounded-3xl overflow-hidden">
-                        <div id="map-facade" class="relative h-full min-h-[280px] rounded-3xl bg-nude-200 border border-blush-100 flex flex-col items-center justify-center gap-4 p-6 text-center">
+                    <div class="w-full md:w-1/2 space-y-4">
+                        <div id="map-facade" class="relative min-h-[280px] rounded-3xl overflow-hidden bg-nude-200 border border-blush-100 flex flex-col items-center justify-center gap-4 p-6 text-center">
                             <i data-feather="map-pin" class="text-blush-600 w-8 h-8"></i>
+                            <button type="button" id="load-map" class="text-blush-600 underline text-base min-h-[44px]">Ver mapa aqui</button>
+                        </div>
+                        <div id="map-actions" class="flex flex-col items-center gap-4 text-center">
                             <p class="text-base text-charcoal/80">Edifício Monumental, Sala 310<br>Av. Coronel Colares Moreira, Jardim Renascença</p>
                             <div class="flex flex-wrap justify-center gap-3">
                                 <a href="https://www.google.com/maps/dir/?api=1&destination=-2.5016951,-44.2886734" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-blush-600 hover:bg-blush-700 text-white px-5 py-3 rounded-full text-base font-medium">Rota no Google Maps</a>
                                 <a href="https://waze.com/ul?ll=-2.5016951,-44.2886734&navigate=yes" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-blush-300 text-charcoal px-5 py-3 rounded-full text-base font-medium">Abrir no Waze</a>
                                 <button type="button" id="copy-address" class="inline-flex items-center gap-2 border border-blush-300 text-charcoal px-5 py-3 rounded-full text-base font-medium">Copiar endereço</button>
                             </div>
-                            <button type="button" id="load-map" class="text-blush-600 underline text-base min-h-[44px]">Ver mapa aqui</button>
                         </div>
                     </div>
                 </div>
@@ -1419,9 +1415,6 @@
                 <p class="text-charcoal/80 text-sm mt-2">
                     "Pausa e Reconexão"
                 </p>
-                <p class="text-charcoal/80 text-sm pt-3">
-                    <a href="/privacy/" class="hover:text-blush-600 underline underline-offset-2 transition-colors">Política de Privacidade</a>
-                </p>
             </div>
         </div>
     </footer>
@@ -1438,7 +1431,7 @@
             id="symptom-modal-content" tabindex="-1">
             <!-- Close Button -->
             <button onclick="closeSymptomModal()" type="button" aria-label="Fechar"
-                class="absolute top-4 right-4 z-[60] text-charcoal/80 hover:text-blush-600 transition-colors bg-white/80 backdrop-blur-md hover:bg-white rounded-full p-2 shadow-sm border border-blush-100/50">
+                class="absolute top-4 right-4 z-[60] text-charcoal/80 hover:text-blush-600 transition-colors bg-white/80 backdrop-blur-md hover:bg-white rounded-full p-2.5 shadow-sm border border-blush-100/50">
                 <i data-feather="x" class="w-6 h-6"></i>
             </button>
 
@@ -1470,7 +1463,7 @@
             <div id="quiz-questions" class="hidden space-y-8">
                 <div class="border-b border-blush-200/50 pb-4 pr-14">
                     <div class="flex flex-col items-start">
-                        <span id="quiz-progress-text" class="text-sm font-medium text-blush-600 mb-1">Pergunta 1 de 9</span>
+                        <span id="quiz-progress-text" aria-live="polite" class="text-sm font-medium text-blush-600 mb-1">Pergunta 1 de 9</span>
                         <div class="w-32 h-1.5 bg-blush-100 rounded-full overflow-hidden">
                             <div id="quiz-progress-bar" class="h-full bg-blush-500 w-0 transition-all duration-500"></div>
                         </div>
@@ -1569,7 +1562,7 @@
             <!-- Stage 4: Result -->
             <div id="quiz-results" class="hidden space-y-7 py-2 pb-modal-safe">
                 <!-- Header: visual continuity with the rose -->
-                <div class="text-center space-y-3">
+                <div class="text-center space-y-3 pr-12">
                     <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-blush-100/60 rounded-full border border-blush-200/60">
                         <span class="w-1.5 h-1.5 rounded-full bg-blush-500"></span>
                         <span class="text-xs uppercase tracking-[0.2em] text-blush-600 font-bold">Seu mapa de bem-estar</span>
@@ -1628,8 +1621,8 @@
                                 <input type="checkbox" id="quiz-consent" class="mt-0.5 w-6 h-6 shrink-0 accent-blush-600">
                                 <span>Concordo que a equipe entre em contato sobre este resultado. Dados tratados conforme a <a href="/privacy/" target="_blank" rel="noopener noreferrer" class="underline">Política de Privacidade</a>.</span>
                             </label>
-                            <p id="quiz-contact-error" class="hidden text-base text-red-700"></p>
-                            <button type="submit" class="w-full bg-blush-600 hover:bg-blush-700 text-white px-6 py-4 rounded-full text-lg font-medium">Enviar e abrir o WhatsApp</button>
+                            <p id="quiz-contact-error" role="alert" class="hidden text-base text-red-700"></p>
+                            <button type="submit" class="w-full bg-blush-600 hover:bg-blush-700 text-white px-6 py-4 rounded-full text-lg font-medium">Salvar meus dados</button>
                         </form>
                     </div>
                 </div>
@@ -1649,7 +1642,7 @@
                 <!-- Footer -->
                 <div class="text-center pt-2 space-y-3">
                     <p class="text-charcoal/80 italic text-sm">Tudo isso você encontra na clínica em São Luís &mdash; MA.</p>
-                    <button onclick="closeSymptomModal()" class="text-charcoal/80 hover:text-charcoal text-xs font-medium uppercase tracking-[0.2em] transition-colors">Fechar</button>
+                    <button onclick="closeSymptomModal()" class="text-charcoal/80 hover:text-charcoal text-sm min-h-[44px] font-medium uppercase tracking-[0.2em] transition-colors">Fechar</button>
                 </div>
             </div>
 

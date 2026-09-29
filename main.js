@@ -52,8 +52,10 @@ function wireAnalytics() {
     }, { passive: true });
 }
 
+const prefersReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 function initHeroStagger() {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (prefersReducedMotion()) return;
     if (typeof gsap === 'undefined') return;
 
     const tl = gsap.timeline({ defaults: { ease: 'power2.out', duration: 0.7 } });
@@ -91,19 +93,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     const contactForm = document.getElementById('quiz-contact');
     if (contactForm) contactForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        const name = document.getElementById('quiz-name').value.trim();
-        const digits = document.getElementById('quiz-phone').value.replace(/\D/g, '');
-        const consent = document.getElementById('quiz-consent').checked;
-        const errEl = document.getElementById('quiz-contact-error');
-        let error = '';
-        if (name.length < 2) error = 'Escreva como quer ser chamada.';
-        else if (digits.length < 10 || digits.length > 11) error = 'O WhatsApp precisa ter DDD e número (10 ou 11 dígitos).';
-        else if (!consent) error = 'Marque a caixa de consentimento para enviar seus dados.';
-        if (error) { errEl.textContent = error; errEl.classList.remove('hidden'); return; }
-        errEl.classList.add('hidden');
-        userData.name = name; userData.phone = document.getElementById('quiz-phone').value.trim();
-        submitLead({ scores: lastScores, top: lastTopDimensions });
-        window.bookConsultation();
+        if (saveContactForm()) showContactMessage('Dados salvos. Toque em Agendar pelo WhatsApp.', true);
     });
 
     // Endereço: copiar e carregar mapa sob demanda
@@ -120,7 +110,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     const loadMapBtn = document.getElementById('load-map');
     if (loadMapBtn) loadMapBtn.addEventListener('click', () => {
         const facade = document.getElementById('map-facade');
-        facade.innerHTML = '<iframe src="https://maps.google.com/maps?q=Dra.+Kerly+Helena+Ginecologia+Integrativa+Maranhão&t=&z=15&ie=UTF8&iwloc=&output=embed" title="Mapa do consultório Dra Kerly Helena em São Luís" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-full h-full min-h-[320px] rounded-3xl border-0"></iframe>';
+        facade.innerHTML = '<iframe src="https://maps.google.com/maps?q=Dra.+Kerly+Helena+Ginecologia+Integrativa+Maranhão&t=&z=15&ie=UTF8&iwloc=&output=embed" title="Mapa do consultório Dra Kerly Helena em São Luís" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="absolute inset-0 w-full h-full rounded-3xl border-0"></iframe>';
     });
 
     // GSAP-dependent enhancements: skip gracefully if the CDN failed/was blocked,
@@ -135,7 +125,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         initHeroStagger();
 
         // Reveal Elements on Scroll with advanced, satisfying physics
-        const revealElements = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        const revealElements = prefersReducedMotion()
             ? []
             : document.querySelectorAll('.gs-reveal');
 
@@ -256,7 +246,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
                 window.scrollTo({
                     top: offsetPosition,
-                    behavior: "smooth"
+                    behavior: prefersReducedMotion() ? 'auto' : 'smooth'
                 });
             }
         });
@@ -345,10 +335,12 @@ window.openSymptomModal = function (options) {
     const modalContent = document.getElementById('symptom-modal-content');
     modalPreviouslyFocusedEl = document.activeElement;
     modal.classList.remove('hidden');
+    modal.classList.add('flex');
     setTimeout(() => { modal.classList.remove('opacity-0'); modalContent.classList.remove('scale-95'); }, 10);
     document.body.style.overflow = 'hidden';
     document.getElementById('quiz-sticky-cta').classList.add('hidden');
     currentQuestionIndex = 0; quizAnswers = []; userData = { name: '', phone: '', email: '', age: '', phase: '' };
+    leadEnviado = false;
     questionOrder = quizQuestions.map((_, i) => i);
     if (Number.isInteger(options.presetIndex) && quizQuestions[options.presetIndex]) {
         questionOrder = [options.presetIndex].concat(questionOrder.filter(i => i !== options.presetIndex));
@@ -369,7 +361,9 @@ window.closeSymptomModal = function () {
     modalContent.classList.add('scale-95');
     setTimeout(() => {
         modal.classList.add('hidden');
+        modal.classList.remove('flex');
     }, 300);
+    if (location.hash === '#quiz') history.replaceState(null, '', location.pathname + location.search);
     document.body.style.overflow = '';
     stopAnimationTweens();
     document.getElementById('quiz-sticky-cta').classList.add('hidden');
@@ -465,7 +459,7 @@ function runHealthFingerprint() {
     if (typeof gsap === 'undefined') { showResults(); return; }
 
     const textEl = document.getElementById('animation-text');
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const reduceMotion = prefersReducedMotion();
 
     stopAnimationTweens();
 
@@ -490,10 +484,10 @@ function runHealthFingerprint() {
         gsap.set('.anim-aura', { opacity: 0.95 });
         gsap.set('.anim-petal-outer path, .anim-petal-inner path', { scale: 1, opacity: 1 });
         gsap.set('.anim-rose-pistil', { opacity: 1, scale: 1 });
-        gsap.delayedCall(2.0, () => {
+        animationTweens.push(gsap.delayedCall(2.0, () => {
             textEl.innerText = phrases.closing;
-            gsap.delayedCall(1.5, showResults);
-        });
+            animationTweens.push(gsap.delayedCall(1.5, showResults));
+        }));
         return;
     }
 
@@ -530,6 +524,7 @@ function runHealthFingerprint() {
 
     // Continuous loops: rose center pulse + aura breathing
     animationTweens.push(
+        tl,
         gsap.to('.anim-rose-pistil', {
             scale: 1.18, duration: 1.6, repeat: -1, yoyo: true,
             ease: 'sine.inOut', delay: 4
@@ -560,6 +555,7 @@ const PHASE_LABELS = { fertil: 'fase fértil', tentando: 'tentando engravidar', 
 const dimensionLabelsShort = { ENERGIA: 'energia e leveza', DESCANSO: 'descanso e sono', PRESENCA: 'presença e paz com o corpo', VITALIDADE: 'vitalidade e prazer' };
 let lastTopDimensions = [];
 let lastScores = {};
+let leadEnviado = false;
 
 function buildWhatsappMessage() {
     const dims = lastTopDimensions.map(d => dimensionLabelsShort[d]).filter(Boolean).join(' e ');
@@ -644,7 +640,43 @@ function showResults() {
     });
 }
 
+// Lê e valida o formulário do resultado. error: null = válido; empty = nada preenchido.
+function readContactForm() {
+    const name = document.getElementById('quiz-name').value.trim();
+    const phone = document.getElementById('quiz-phone').value.trim();
+    const digits = phone.replace(/\D/g, '');
+    const consent = document.getElementById('quiz-consent').checked;
+    let error = null;
+    if (name.length < 2) error = 'Escreva como quer ser chamada.';
+    else if (digits.length < 10 || digits.length > 11) error = 'O WhatsApp precisa ter DDD e número (10 ou 11 dígitos).';
+    else if (!consent) error = 'Marque a caixa de consentimento para enviar seus dados.';
+    return { name, phone, error, empty: !name && !digits && !consent };
+}
+
+function showContactMessage(text, ok) {
+    const el = document.getElementById('quiz-contact-error');
+    el.textContent = text;
+    el.setAttribute('role', ok ? 'status' : 'alert');
+    el.classList.toggle('text-red-700', !ok);
+    el.classList.toggle('text-green-800', ok);
+    el.classList.remove('hidden');
+}
+
+// Valida, guarda os dados em userData e grava o lead uma única vez por sessão do quiz.
+function saveContactForm() {
+    const form = readContactForm();
+    if (form.error) { showContactMessage(form.error, false); return false; }
+    userData.name = form.name;
+    userData.phone = form.phone;
+    if (!leadEnviado) {
+        leadEnviado = true;
+        submitLead({ scores: lastScores, top: lastTopDimensions });
+    }
+    return true;
+}
+
 window.bookConsultation = function() {
+    if (!readContactForm().empty && !saveContactForm()) return;
     window.trackEvent('book_consultation', { source: 'quiz_result', phase: userData.phase || 'unspecified' });
     notifyWhatsappClick();
     const encodedMessage = encodeURIComponent(buildWhatsappMessage());
@@ -708,8 +740,8 @@ function transitionQuizStage(fromId, toId, callback) {
     const toEl = document.getElementById(toId);
     const modalContent = document.getElementById('symptom-modal-content');
 
-    if (typeof gsap === 'undefined') {
-        // No animation library: swap stages instantly instead of breaking the quiz.
+    if (typeof gsap === 'undefined' || prefersReducedMotion()) {
+        // Sem biblioteca de animação ou com movimento reduzido: troca instantânea.
         fromEl.classList.add('hidden');
         toEl.classList.remove('hidden');
         const scrollArea = document.getElementById('quiz-scroll-area');

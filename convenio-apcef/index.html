@@ -159,7 +159,10 @@
     <!-- Tailwind CSS (compiled) -->
     <link rel="stylesheet" href="../output.css">
     <style media="print">
-        #navbar, .wa-fab, footer, .no-print, .blob { display: none !important; }
+        #navbar, header, #mobile-menu, .skip-link, .wa-fab, footer, .no-print, .blob { display: none !important; }
+        main > div:not(.container), main .container > *:not(#levar) { display: none !important; }
+        main { padding: 0 !important; min-height: 0 !important; }
+        #levar { opacity: 1 !important; transform: none !important; margin: 0 !important; }
     </style>
 </head>
 
@@ -317,7 +320,7 @@
             </div>
 
             <!-- Quem pode usar -->
-            <section class="max-w-3xl mx-auto gs-reveal">
+            <section id="levar" class="max-w-3xl mx-auto gs-reveal">
                 <div class="text-center mb-10">
                     <span class="text-xs tracking-[0.3em] text-blush-600 uppercase font-bold">Elegibilidade</span>
                     <h2 class="text-3xl md:text-4xl font-serif mt-4 text-charcoal">Quem pode usar o Convênio APCEF</h2>
