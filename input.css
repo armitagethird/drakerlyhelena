@@ -22,6 +22,8 @@ html {
     --color-blush-300: #E0AEBE;
     --color-blush-400: #C7889D;
     --color-blush-500: #A9637B;
+    --color-blush-600: #8E4F66;   /* texto e botões: ~5,9:1 sobre sand/nude */
+    --color-blush-700: #7A4257;   /* hover de botão */
 
     --color-sand-100: #FDFCFB;
     --color-sand-200: #F5EFEF;
@@ -36,6 +38,7 @@ html {
     --color-yoga-light: #FDFBF7;
     --color-yoga-dark: #4A3F35;
     --color-yoga-gold: #C5A028;
+    --color-yoga-gold-deep: #8A6D12; /* texto e botões da página Yoga: ~4,9:1 sobre branco */
 
     --font-sans: "Lato", sans-serif;
     --font-serif: "Playfair Display", serif;
@@ -100,10 +103,6 @@ html {
 
     .headline-editorial {
         transition: letter-spacing 400ms ease;
-    }
-
-    .headline-editorial:hover {
-        letter-spacing: -0.01em;
     }
 
     .headline-editorial em {

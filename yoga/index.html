@@ -100,9 +100,10 @@
         .bg-yoga-light { background-color: #FDFBF7; }
         .bg-yoga-dark { background-color: #F4EBE1; }
         .text-yoga-gold { color: #C5A028; }
-        .text-yoga-gold-dark { color: #A6851C; }
-        .bg-yoga-gold { background-color: #C5A028; }
-        .bg-yoga-gold:hover { background-color: #A6851C; }
+        .text-yoga-gold-dark { color: #8A6D12; }
+        .text-yoga-gold-deep { color: #8A6D12; }
+        .bg-yoga-gold { background-color: #8A6D12; }
+        .bg-yoga-gold:hover { background-color: #7A5F0F; }
         .text-yoga-dark { color: #4A3F35; }
         .border-yoga-gold { border-color: #D4AF37; }
         .shadow-gold { --tw-shadow-color: rgba(197, 160, 40, 0.2); }
@@ -171,22 +172,22 @@
                 <img src="../assets/favicon.png" alt="Logo Dra. Kerly Helena" width="192" height="192"
                     class="w-8 h-8 md:w-10 md:h-10 object-contain transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
                 <span class="nav-brand"><span
-                    class="nav-brand__text text-2xl md:text-3xl font-serif text-yoga-dark font-semibold tracking-wide group-hover:text-yoga-gold transition-colors duration-300">
+                    class="nav-brand__text text-2xl md:text-3xl font-serif text-yoga-dark font-semibold tracking-wide group-hover:text-yoga-gold-deep transition-colors duration-300">
                     Dra. Kerly Helena
                 </span></span>
             </a>
-            <nav class="hidden md:flex items-center space-x-8 text-sm uppercase tracking-widest text-yoga-dark/70">
+            <nav class="hidden md:flex items-center space-x-8 text-sm uppercase tracking-widest text-yoga-dark/80">
                 <div class="nav-links">
                 <div class="nav-links__inner flex items-center space-x-8">
-                <a href="/" class="hover:text-yoga-gold transition-colors">Voltar ao Início</a>
-                <a href="#detalhes" class="hover:text-yoga-gold transition-colors">O Curso</a>
-                <a href="#professoras" class="hover:text-yoga-gold transition-colors">Professoras</a>
-                <a href="/pacotes/" class="hover:text-yoga-gold transition-colors">Pacotes</a>
-                <a href="/blog/" class="hover:text-yoga-gold transition-colors">Blog</a>
+                <a href="/" class="hover:text-yoga-gold-deep transition-colors">Voltar ao Início</a>
+                <a href="#detalhes" class="hover:text-yoga-gold-deep transition-colors">O Curso</a>
+                <a href="#professoras" class="hover:text-yoga-gold-deep transition-colors">Professoras</a>
+                <a href="/pacotes/" class="hover:text-yoga-gold-deep transition-colors">Pacotes</a>
+                <a href="/blog/" class="hover:text-yoga-gold-deep transition-colors">Blog</a>
                 </div>
                 </div>
                 <button onclick="openYogaModal()"
-                    class="bg-yoga-gold hover:bg-yellow-600 nav-cta text-white px-6 py-2.5 rounded-full transition-colors normal-case tracking-normal shadow-sm font-medium">Quero ser avisada</button>
+                    class="bg-yoga-gold hover:bg-[#7A5F0F] nav-cta text-white px-6 py-2.5 rounded-full transition-colors normal-case tracking-normal shadow-sm font-medium">Quero ser avisada</button>
             </nav>
             <button class="md:hidden text-yoga-dark focus:outline-none" id="mobile-menu-btn"
                 aria-label="Abrir menu de navegação" aria-controls="mobile-menu" aria-expanded="false">
@@ -198,13 +199,13 @@
             class="hidden md:hidden glass rounded-3xl absolute left-0 right-0 top-full mt-2">
             <nav
                 class="flex flex-col space-y-6 px-6 py-8 text-sm uppercase tracking-widest text-yoga-dark/80 text-center">
-                <a href="/" class="hover:text-yoga-gold transition-colors">Voltar ao Início</a>
-                <a href="#detalhes" class="hover:text-yoga-gold transition-colors">O Curso</a>
-                <a href="#professoras" class="hover:text-yoga-gold transition-colors">Professoras</a>
-                <a href="/pacotes/" class="hover:text-yoga-gold transition-colors">Pacotes</a>
-                <a href="/blog/" class="hover:text-yoga-gold transition-colors">Blog</a>
+                <a href="/" class="hover:text-yoga-gold-deep transition-colors">Voltar ao Início</a>
+                <a href="#detalhes" class="hover:text-yoga-gold-deep transition-colors">O Curso</a>
+                <a href="#professoras" class="hover:text-yoga-gold-deep transition-colors">Professoras</a>
+                <a href="/pacotes/" class="hover:text-yoga-gold-deep transition-colors">Pacotes</a>
+                <a href="/blog/" class="hover:text-yoga-gold-deep transition-colors">Blog</a>
                 <div class="pt-4">
-                    <button onclick="openYogaModal()" class="inline-block bg-yoga-gold hover:bg-yellow-600 text-white px-6 py-3 rounded-full transition-colors normal-case tracking-normal shadow-md font-medium w-full">Quero ser avisada</button>
+                    <button onclick="openYogaModal()" class="inline-block bg-yoga-gold hover:bg-[#7A5F0F] text-white px-6 py-3 rounded-full transition-colors normal-case tracking-normal shadow-md font-medium w-full">Quero ser avisada</button>
                 </div>
             </nav>
         </div>
@@ -224,7 +225,7 @@
             <div class="container mx-auto px-6 relative z-10">
                 <div class="flex flex-col items-center text-center max-w-4xl mx-auto gs-reveal">
                     
-                    <span class="text-yoga-gold tracking-[0.2em] uppercase font-semibold text-sm md:text-base mb-4 inline-flex items-center gap-2">
+                    <span class="text-yoga-gold-deep tracking-[0.2em] uppercase font-semibold text-sm md:text-base mb-4 inline-flex items-center gap-2">
                         <i data-feather="wind" class="w-4 h-4"></i>
                         Curso Presencial
                         <i data-feather="wind" class="w-4 h-4"></i>
@@ -235,7 +236,7 @@
                         <span class="text-yoga-gold italic font-light">Íntima Feminina</span>
                     </h1>
                     
-                    <p class="text-xl md:text-2xl text-yoga-dark/80 mb-12 font-light">
+                    <p class="text-xl md:text-2xl text-yoga-dark/80 mb-12">
                         Consciência e fortalecimento do assoalho pélvico.
                     </p>
 
@@ -245,7 +246,7 @@
                                 <i data-feather="calendar"></i>
                             </div>
                             <div class="text-left">
-                                <p class="text-xs uppercase tracking-wider text-yoga-dark/60 font-semibold mb-1">Próximas turmas</p>
+                                <p class="text-xs uppercase tracking-wider text-yoga-dark/80 font-semibold mb-1">Próximas turmas</p>
                                 <p class="text-lg font-medium text-yoga-dark">Em breve</p>
                             </div>
                         </div>
@@ -255,7 +256,7 @@
                                 <i data-feather="map-pin"></i>
                             </div>
                             <div class="text-left">
-                                <p class="text-xs uppercase tracking-wider text-yoga-dark/60 font-semibold mb-1">Local</p>
+                                <p class="text-xs uppercase tracking-wider text-yoga-dark/80 font-semibold mb-1">Local</p>
                                 <p class="text-lg font-medium text-yoga-dark">Clínica Dra. Kerly Helena</p>
                             </div>
                         </div>
@@ -263,13 +264,13 @@
 
                     <div class="flex flex-col sm:flex-row items-center gap-4 md:gap-6 mb-12 w-full justify-center">
                         <button onclick="openYogaModal()"
-                            class="relative inline-flex items-center justify-center space-x-3 bg-yoga-gold hover:bg-yellow-600 text-white px-10 py-5 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl font-medium tracking-wide w-full sm:w-auto overflow-hidden group hover:-translate-y-1">
+                            class="relative inline-flex items-center justify-center space-x-3 bg-yoga-gold hover:bg-[#7A5F0F] text-white px-10 py-5 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl font-medium tracking-wide w-full sm:w-auto overflow-hidden group hover:-translate-y-1">
                             <span class="relative z-10 text-lg">Quero ser avisada</span>
                             <i data-feather="arrow-right" class="w-5 h-5 relative z-10 transition-transform group-hover:translate-x-1"></i>
                         </button>
                         
                         <a href="#detalhes"
-                            class="inline-flex items-center justify-center space-x-2 text-yoga-gold font-medium tracking-wide border-b border-transparent hover:border-yellow-600 pb-1 hover:text-yellow-600 transition-colors w-full sm:w-auto opacity-80 hover:opacity-100">
+                            class="inline-flex items-center justify-center space-x-2 text-yoga-gold-deep font-medium tracking-wide border-b border-transparent hover:border-yellow-600 pb-1 hover:text-yoga-gold-deep transition-colors w-full sm:w-auto opacity-80 hover:opacity-100">
                             <span>Mais Informações</span>
                             <i data-feather="arrow-down" class="w-4 h-4"></i>
                         </a>
@@ -292,11 +293,11 @@
         <section id="detalhes" class="py-24 bg-yoga-dark relative">
             <div class="container mx-auto px-6 max-w-4xl">
                 <div class="text-center mb-16 gs-reveal">
-                    <span class="text-sm tracking-[0.2em] text-yoga-gold uppercase font-semibold">O Propósito</span>
+                    <span class="text-sm tracking-[0.2em] text-yoga-gold-deep uppercase font-semibold">O Propósito</span>
                     <h2 class="text-4xl md:text-5xl font-serif mt-4 text-yoga-dark">Reconecte-se com sua essência</h2>
                 </div>
 
-                <div class="space-y-8 text-center md:text-left text-lg text-yoga-dark/80 font-light leading-relaxed gs-reveal">
+                <div class="space-y-8 text-center md:text-left text-lg text-yoga-dark/80 leading-relaxed gs-reveal">
                     <p>
                         Um encontro único focado em promover o despertar e o <strong class="text-yoga-dark font-medium">fortalecimento do assoalho pélvico</strong> através das técnicas milenares do Yoga. A vitalidade íntima está intrinsecamente ligada à nossa saúde emocional e física como mulheres.
                     </p>
@@ -318,7 +319,7 @@
         <section id="professoras" class="py-24 bg-yoga-light relative">
             <div class="container mx-auto px-6 max-w-5xl">
                 <div class="text-center mb-20 gs-reveal">
-                    <span class="text-sm tracking-[0.2em] text-yoga-gold uppercase font-semibold">Quem vai guiar você</span>
+                    <span class="text-sm tracking-[0.2em] text-yoga-gold-deep uppercase font-semibold">Quem vai guiar você</span>
                     <h2 class="text-4xl md:text-5xl font-serif mt-4 text-yoga-dark">Professoras</h2>
                 </div>
 
@@ -329,8 +330,8 @@
                             <img src="../assets/Kerly.webp" alt="Kerly Santos, médica ginecologista e instrutora de Yoga Sivananda em São Luís" width="800" height="1200" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                         </div>
                         <h3 class="text-2xl font-serif font-semibold text-yoga-dark mb-2">Kerly Santos</h3>
-                        <p class="text-yoga-gold font-medium mb-4">Médica Ginecologista <br> Instrutora de Yoga Sivananda</p>
-                        <p class="text-yoga-dark/70 font-light text-sm leading-relaxed">
+                        <p class="text-yoga-gold-deep font-medium mb-4">Médica Ginecologista <br> Instrutora de Yoga Sivananda</p>
+                        <p class="text-yoga-dark/80 text-base leading-relaxed">
                             Unindo a precisão médica ao conhecimento milenar do Yoga para tratar e entender as emoções e sintomas femininos com sutileza.
                         </p>
                     </div>
@@ -341,8 +342,8 @@
                             <img src="../assets/Marina.webp" alt="Marina Corrêa, terapeuta ocupacional e instrutora de Yoga Sivananda" width="800" height="1063" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                         </div>
                         <h3 class="text-2xl font-serif font-semibold text-yoga-dark mb-2">Marina Corrêa</h3>
-                        <p class="text-yoga-gold font-medium mb-4">Terapeuta Ocupacional <br> Instrutora de Yoga Sivananda</p>
-                        <p class="text-yoga-dark/70 font-light text-sm leading-relaxed">
+                        <p class="text-yoga-gold-deep font-medium mb-4">Terapeuta Ocupacional <br> Instrutora de Yoga Sivananda</p>
+                        <p class="text-yoga-dark/80 text-base leading-relaxed">
                             Ajudando você a habitar seu corpo e suas rotinas com qualidade, através da ocupação e da filosofia do Yoga.
                         </p>
                     </div>
@@ -358,13 +359,13 @@
 
             <div class="container mx-auto px-6 max-w-7xl relative z-10 w-full overflow-hidden">
                 <div class="text-center mb-16 gs-reveal">
-                    <span class="text-sm tracking-[0.2em] text-yoga-gold uppercase font-semibold flex items-center justify-center gap-2 mb-2">
+                    <span class="text-sm tracking-[0.2em] text-yoga-gold-deep uppercase font-semibold flex items-center justify-center gap-2 mb-2">
                         <i data-feather="star" class="w-4 h-4"></i>
                         O Espaço
                         <i data-feather="star" class="w-4 h-4"></i>
                     </span>
                     <h2 class="text-4xl md:text-5xl font-serif text-yoga-dark">Nosso Ambiente</h2>
-                    <p class="mt-4 text-yoga-dark/70 max-w-2xl mx-auto font-light leading-relaxed">
+                    <p class="mt-4 text-yoga-dark/80 max-w-2xl mx-auto leading-relaxed">
                         Um refúgio banhado em luz dourada. Deslize para explorar os detalhes pensados para trazer acolhimento, paz e profunda reconexão.
                     </p>
                 </div>
@@ -467,9 +468,9 @@
         <!-- Bridge: yoga course as part of the clinic's integrative care -->
         <section class="py-20 bg-yoga-light relative border-t border-yellow-600/10">
             <div class="container mx-auto px-6 max-w-3xl text-center">
-                <span class="text-sm tracking-[0.2em] text-yoga-gold uppercase font-semibold">Por trás do curso</span>
+                <span class="text-sm tracking-[0.2em] text-yoga-gold-deep uppercase font-semibold">Por trás do curso</span>
                 <h2 class="text-3xl md:text-4xl font-serif text-yoga-dark mt-4 mb-6">Uma médica que cuida de você por inteiro</h2>
-                <p class="text-yoga-dark/70 font-light leading-relaxed text-lg mb-8">
+                <p class="text-yoga-dark/80 leading-relaxed text-lg mb-8">
                     O Yoga é uma das frentes do cuidado integrativo oferecido pela Dra. Kerly Helena. Para mulheres que buscam tratamento ginecológico com foco em menopausa, equilíbrio hormonal e bem-estar feminino, a consulta integrativa é o ponto de partida.
                 </p>
 
@@ -487,7 +488,7 @@
                             decoding="async"
                             class="w-full h-full object-cover object-[center_45%]">
                     </div>
-                    <figcaption class="mt-4 text-center text-[11px] tracking-[0.15em] uppercase text-yoga-dark/55">
+                    <figcaption class="mt-4 text-center text-xs tracking-[0.15em] uppercase text-yoga-dark/80">
                         Dra. Kerly Helena — instrutora de Yoga Sivananda
                     </figcaption>
                 </figure>
@@ -509,7 +510,7 @@
                     <div>
                         <div class="flex items-start space-x-4 mb-4">
                             <i data-feather="map-pin" class="w-6 h-6 text-yoga-gold mt-1 flex-shrink-0"></i>
-                            <p class="text-yoga-dark/80 font-light text-lg">
+                            <p class="text-yoga-dark/80 text-lg">
                                 <strong class="font-medium text-yoga-dark block mb-1">Clínica Dra. Kerly Helena</strong>
                                 Condomínio Edifício Monumental<br>
                                 Av. Coronel Colares Moreira, Sala 310<br>
@@ -519,7 +520,7 @@
                         </div>
                         <div class="flex items-start space-x-4">
                             <i data-feather="clock" class="w-5 h-5 text-yoga-gold mt-1 flex-shrink-0"></i>
-                            <p class="text-yoga-dark/60 font-light text-sm">
+                            <p class="text-yoga-dark/80 text-base">
                                 Segunda a sexta, das 08h às 18h — exclusivamente com hora marcada. Agende pelo WhatsApp antes de ir: a doutora atende somente pacientes agendadas.
                             </p>
                         </div>
@@ -578,7 +579,7 @@
             id="yoga-modal-content">
             <!-- Close Button -->
             <button onclick="closeYogaModal()" type="button" aria-label="Fechar"
-                class="absolute top-6 right-6 z-[60] text-yoga-dark/50 hover:text-yoga-gold transition-colors bg-white/80 backdrop-blur-md hover:bg-white rounded-full p-2 shadow-sm border border-yellow-600/10">
+                class="absolute top-6 right-6 z-[60] text-yoga-dark/80 hover:text-yoga-gold-deep transition-colors bg-white/80 backdrop-blur-md hover:bg-white rounded-full p-2 shadow-sm border border-yellow-600/10">
                 <i data-feather="x" class="w-6 h-6"></i>
             </button>
 
@@ -592,20 +593,20 @@
             </h2>
 
             <div class="bg-white/60 p-6 rounded-2xl border border-yellow-600/10 mb-8 shadow-sm text-left">
-                <p class="text-lg text-yoga-dark/80 font-light leading-relaxed mb-4 italic">
+                <p class="text-lg text-yoga-dark/80 leading-relaxed mb-4 italic">
                     "Decidir cuidar de si mesma não é um luxo, é a base para sustentar a mulher forte e incrível que você já é."
                 </p>
-                <p class="text-base text-yoga-dark/70 font-light leading-relaxed">
+                <p class="text-base text-yoga-dark/80 leading-relaxed">
                     Em breve abriremos novas turmas. Deixe seu contato pelo WhatsApp e te avisaremos assim que a próxima agenda for confirmada — você estará entre as primeiras a saber.
                 </p>
             </div>
 
             <a href="https://wa.me/5598981532153?text=Olá, gostaria de entrar na lista de espera do Yoga para Vitalidade Íntima Feminina." target="_blank" rel="noopener noreferrer"
-                class="w-full sm:w-auto inline-flex justify-center items-center space-x-3 bg-yoga-gold hover:bg-yellow-600 text-white px-10 py-4 rounded-full transition-all duration-300 shadow-xl font-medium text-lg group hover:-translate-y-1">
+                class="w-full sm:w-auto inline-flex justify-center items-center space-x-3 bg-yoga-gold hover:bg-[#7A5F0F] text-white px-10 py-4 rounded-full transition-all duration-300 shadow-xl font-medium text-lg group hover:-translate-y-1">
                 <span>Continuar para o WhatsApp</span>
                 <i data-feather="external-link" class="w-5 h-5 transition-transform group-hover:translate-x-1 stroke-[2.5]"></i>
             </a>
-            <button onclick="closeYogaModal()" class="mt-4 text-yoga-dark/50 hover:text-yoga-gold text-sm underline transition-colors">Voltar</button>
+            <button onclick="closeYogaModal()" class="mt-4 text-yoga-dark/80 hover:text-yoga-gold-deep text-sm underline transition-colors">Voltar</button>
         </div>
     </div>
 
@@ -614,25 +615,25 @@
             <p class="text-2xl font-serif text-yoga-dark mb-4">"Pausa, Presença e Reconexão"</p>
             
             <a href="https://wa.me/5598981532153" target="_blank" rel="noopener noreferrer"
-                class="inline-flex items-center space-x-3 text-yoga-gold hover:text-yellow-600 font-medium transition-colors">
+                class="inline-flex items-center space-x-3 text-yoga-gold-deep hover:text-yoga-gold-deep font-medium transition-colors">
                 <i data-feather="message-circle"></i>
                 <span>Tirar dúvidas pelo WhatsApp</span>
             </a>
 
             <!-- Rodapé canônico: mapa do site + NAP + horários (idêntico em todas as páginas) -->
-            <nav aria-label="Mapa do site" class="flex flex-wrap justify-center gap-x-3 gap-y-2 text-sm text-yoga-dark/60 pt-2">
-                <a href="/" class="hover:text-yoga-gold transition-colors">Início</a><span class="text-yoga-dark/30">·</span>
-                <a href="/medicina-integrativa/" class="hover:text-yoga-gold transition-colors">Medicina Integrativa em São Luís</a><span class="text-yoga-dark/30">·</span>
-                <a href="/ortomolecular/" class="hover:text-yoga-gold transition-colors">Medicina Ortomolecular</a><span class="text-yoga-dark/30">·</span>
-                <a href="/menopausa/" class="hover:text-yoga-gold transition-colors">Menopausa e Climatério</a><span class="text-yoga-dark/30">·</span>
-                <a href="/convenio-apcef/" class="hover:text-yoga-gold transition-colors">Convênio APCEF</a><span class="text-yoga-dark/30">·</span>
-                <a href="/pacotes/" class="hover:text-yoga-gold transition-colors">Pacotes</a><span class="text-yoga-dark/30">·</span>
-                <a href="/yoga/" class="hover:text-yoga-gold transition-colors">Yoga</a><span class="text-yoga-dark/30">·</span>
-                <a href="/blog/" class="hover:text-yoga-gold transition-colors">Blog</a><span class="text-yoga-dark/30">·</span>
-                <a href="/faq/" class="hover:text-yoga-gold transition-colors">FAQ</a><span class="text-yoga-dark/30">·</span>
-                <a href="/privacy/" class="hover:text-yoga-gold transition-colors">Privacidade</a>
+            <nav aria-label="Mapa do site" class="flex flex-wrap justify-center gap-x-3 gap-y-2 text-sm text-yoga-dark/80 pt-2">
+                <a href="/" class="hover:text-yoga-gold-deep transition-colors">Início</a><span class="text-yoga-dark/30">·</span>
+                <a href="/medicina-integrativa/" class="hover:text-yoga-gold-deep transition-colors">Medicina Integrativa em São Luís</a><span class="text-yoga-dark/30">·</span>
+                <a href="/ortomolecular/" class="hover:text-yoga-gold-deep transition-colors">Medicina Ortomolecular</a><span class="text-yoga-dark/30">·</span>
+                <a href="/menopausa/" class="hover:text-yoga-gold-deep transition-colors">Menopausa e Climatério</a><span class="text-yoga-dark/30">·</span>
+                <a href="/convenio-apcef/" class="hover:text-yoga-gold-deep transition-colors">Convênio APCEF</a><span class="text-yoga-dark/30">·</span>
+                <a href="/pacotes/" class="hover:text-yoga-gold-deep transition-colors">Pacotes</a><span class="text-yoga-dark/30">·</span>
+                <a href="/yoga/" class="hover:text-yoga-gold-deep transition-colors">Yoga</a><span class="text-yoga-dark/30">·</span>
+                <a href="/blog/" class="hover:text-yoga-gold-deep transition-colors">Blog</a><span class="text-yoga-dark/30">·</span>
+                <a href="/faq/" class="hover:text-yoga-gold-deep transition-colors">FAQ</a><span class="text-yoga-dark/30">·</span>
+                <a href="/privacy/" class="hover:text-yoga-gold-deep transition-colors">Privacidade</a>
             </nav>
-            <p class="text-yoga-dark/60 text-xs leading-relaxed">
+            <p class="text-yoga-dark/80 text-sm leading-relaxed">
                 Condomínio Edifício Monumental (Monumental Shopping), Sala 310 — Av. Coronel Colares Moreira, Jardim Renascença, São Luís – MA<br>
                 Seg a sex, 08h–18h · exclusivamente com hora marcada — agende pelo WhatsApp antes de ir · Particular e Convênio APCEF
             </p>
@@ -641,11 +642,11 @@
                 <p class="text-yoga-dark text-sm font-medium">
                     Dra. Kerly Helena &middot; CRM/MA 3130 &middot; RQE 5232 &middot; Ginecologia e Obstetrícia
                 </p>
-                <p class="text-yoga-dark/60 text-sm font-light">
+                <p class="text-yoga-dark/80 text-sm">
                     &copy; 2026 Dra. Kerly Helena - Ginecologia Integrativa. Todos os direitos reservados.
                 </p>
-                <p class="text-charcoal/50 text-xs pt-4">
-                    Site desenvolvido por <a href="https://vibesurfdev.com" target="_blank" rel="noopener" class="font-medium text-charcoal/70 hover:text-blush-500 underline underline-offset-2 transition-colors">VibeSurfDev</a>
+                <p class="text-charcoal/80 text-sm pt-4">
+                    Site desenvolvido por <a href="https://vibesurfdev.com" target="_blank" rel="noopener" class="font-medium text-charcoal/80 hover:text-blush-600 underline underline-offset-2 transition-colors">VibeSurfDev</a>
                 </p>
             </div>
         </div>

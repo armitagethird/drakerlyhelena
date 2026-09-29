@@ -41,24 +41,6 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Fluid Letter Hover Animation */
-@media (hover: hover) and (pointer: fine) {
-    .hover-char {
-        display: inline-block;
-        transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.25s ease, text-shadow 0.25s ease;
-        position: relative;
-    }
-
-    .hover-char:hover {
-        transform: translateY(-4px) scale(1.15) rotate(-3deg);
-        color: #A9637B;
-        /* blush-500 */
-        text-shadow: 0 4px 6px rgba(169, 99, 123, 0.25);
-        z-index: 10;
-        cursor: default;
-    }
-}
-
 /* --- Global Variables --- */
 :root {
     --blush-500: #A9637B;
@@ -212,10 +194,10 @@ body {
 
 /* CTA primário: mantém o blush sólido (contraste do texto branco) + rim de luz. */
 .glass--cta {
-    background: rgba(169, 99, 123, 0.90);
+    background: rgba(142, 79, 102, 0.92);   /* blush-600 */
     border-color: rgba(255, 255, 255, 0.35);
 }
-.glass--cta:hover { background: rgba(199, 136, 157, 0.92); }   /* ~blush-400 */
+.glass--cta:hover { background: rgba(122, 66, 87, 0.94); }   /* blush-700 */
 
 /* Refração SVG — ligada por glass.js só em Chromium compatível. */
 .glass--refract {
