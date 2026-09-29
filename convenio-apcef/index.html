@@ -645,7 +645,7 @@
             if (!checks.length || !link) return;
             var base = "Olá! Sou beneficiária do Convênio APCEF e gostaria de agendar uma consulta com a Dra. Kerly Helena.";
             function update() {
-                var marcados = Array.prototype.filter.call(checks, function (c) { return c.checked; }).map(function (c) { return c.value.toLowerCase(); });
+                var marcados = Array.prototype.filter.call(checks, function (c) { return c.checked; }).map(function (c) { return c.value.charAt(0).toLowerCase() + c.value.slice(1); });
                 var msg = marcados.length ? 'Olá! Sou beneficiária do Convênio APCEF. Vou levar: ' + marcados.join('; ') + '.' : base;
                 link.href = 'https://wa.me/5598981532153?text=' + encodeURIComponent(msg);
             }
