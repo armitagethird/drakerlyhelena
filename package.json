@@ -8,7 +8,8 @@
     "watch:css": "tailwindcss -i ./input.css -o ./output.css --watch",
     "dev": "node scripts/dev-server.js",
     "build": "npm run build:css",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node scripts/verify-site.js",
+    "shot": "node scripts/shot.js"
   },
   "keywords": [],
   "author": "",
