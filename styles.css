@@ -833,3 +833,56 @@ html[data-fonte="maior"] { font-size: 125%; --fonte-escala: 1.25; }
 @media (min-width: 1536px) {
     .glass--header:not(.is-scrolled) { max-width: 88rem; }
 }
+
+/* --- Menu mobile: animacao --- */
+#mobile-menu-btn { position: relative; }
+#mobile-menu-btn .menu-bar {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 22px;
+    height: 2px;
+    margin: -1px 0 0 -11px;
+    border-radius: 2px;
+    background: currentColor;
+    transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1), opacity 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+#mobile-menu-btn .menu-bar:nth-child(1) { transform: translateY(-7px); }
+#mobile-menu-btn .menu-bar:nth-child(3) { transform: translateY(7px); }
+#mobile-menu-btn.is-open .menu-bar { will-change: transform, opacity; }
+#mobile-menu-btn.is-open .menu-bar:nth-child(1) { transform: translateY(0) rotate(45deg); }
+#mobile-menu-btn.is-open .menu-bar:nth-child(2) { transform: scaleX(0); opacity: 0; }
+#mobile-menu-btn.is-open .menu-bar:nth-child(3) { transform: translateY(0) rotate(-45deg); }
+
+#mobile-menu {
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1), transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+#mobile-menu.is-open {
+    opacity: 1;
+    transform: translateY(0);
+    transition-duration: 260ms;
+}
+#mobile-menu nav > * {
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1), transform 200ms cubic-bezier(0.22, 1, 0.36, 1), color 150ms;
+}
+#mobile-menu.is-open nav > * {
+    opacity: 1;
+    transform: translateY(0);
+    transition-duration: 320ms, 320ms, 150ms;
+}
+#mobile-menu.is-open nav > :nth-child(1) { transition-delay: 60ms, 60ms, 0s; }
+#mobile-menu.is-open nav > :nth-child(2) { transition-delay: 95ms, 95ms, 0s; }
+#mobile-menu.is-open nav > :nth-child(3) { transition-delay: 130ms, 130ms, 0s; }
+#mobile-menu.is-open nav > :nth-child(4) { transition-delay: 165ms, 165ms, 0s; }
+#mobile-menu.is-open nav > :nth-child(5) { transition-delay: 200ms, 200ms, 0s; }
+#mobile-menu.is-open nav > :nth-child(6) { transition-delay: 235ms, 235ms, 0s; }
+#mobile-menu.is-open nav > :nth-child(7) { transition-delay: 270ms, 270ms, 0s; }
+@media (prefers-reduced-motion: reduce) {
+    #mobile-menu-btn .menu-bar, #mobile-menu, #mobile-menu nav > *,
+    #mobile-menu.is-open nav > * { transition: none; }
+    #mobile-menu-btn.is-open .menu-bar { will-change: auto; }
+}

@@ -198,16 +198,41 @@ document.addEventListener("DOMContentLoaded", (event) => {
     const mobileMenu = document.getElementById('mobile-menu');
 
     if (mobileBtn && mobileMenu) {
-        const iconeMenu = mobileBtn.querySelector('[data-menu-icon="menu"]');
-        const iconeFechar = mobileBtn.querySelector('[data-menu-icon="close"]');
-        const definirMenu = (aberto) => {
-            mobileMenu.classList.toggle('hidden', !aberto);
-            iconeMenu.classList.toggle('hidden', aberto);
-            iconeFechar.classList.toggle('hidden', !aberto);
-            mobileBtn.setAttribute('aria-expanded', String(aberto));
+        const cabecalho = mobileMenu.closest('header') || mobileBtn.parentElement;
+        let fechando;
+        const esconder = () => {
+            clearTimeout(fechando);
+            mobileMenu.removeEventListener('transitionend', aoTerminarTransicao);
+            mobileMenu.classList.add('hidden');
         };
+        const aoTerminarTransicao = (e) => { if (e.target === mobileMenu) esconder(); };
+        const definirMenu = (aberto) => {
+            clearTimeout(fechando);
+            mobileMenu.removeEventListener('transitionend', aoTerminarTransicao);
+            mobileBtn.setAttribute('aria-expanded', String(aberto));
+            mobileBtn.classList.toggle('is-open', aberto);
+            if (aberto) {
+                mobileMenu.classList.remove('hidden');
+                void mobileMenu.offsetWidth; // reflow: a transição parte do estado fechado
+                mobileMenu.classList.add('is-open');
+                return;
+            }
+            mobileMenu.classList.remove('is-open');
+            mobileMenu.addEventListener('transitionend', aoTerminarTransicao);
+            fechando = setTimeout(esconder, 260); // reserva: movimento reduzido não dispara transitionend
+        };
+        const estaAberto = () => mobileBtn.getAttribute('aria-expanded') === 'true';
 
-        mobileBtn.addEventListener('click', () => definirMenu(mobileMenu.classList.contains('hidden')));
+        mobileBtn.addEventListener('click', () => definirMenu(!estaAberto()));
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key !== 'Escape' || !estaAberto()) return;
+            definirMenu(false);
+            mobileBtn.focus();
+        });
+        document.addEventListener('click', (e) => {
+            if (estaAberto() && !cabecalho.contains(e.target)) definirMenu(false);
+        });
 
         // Close menu on link click
         mobileMenu.querySelectorAll('a').forEach(link => {
