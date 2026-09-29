@@ -172,39 +172,51 @@ document.addEventListener("DOMContentLoaded", (event) => {
         });
     }
 
+    // Tamanho da letra: '' (normal) -> 'grande' -> 'maior'. O atributo inicial vem do script do <head>.
+    const NIVEIS_FONTE = ['', 'grande', 'maior'];
+    const NOME_FONTE = { '': 'normal', grande: 'grande', maior: 'maior' };
+    const rotularFonte = () => {
+        const nivel = document.documentElement.dataset.fonte || '';
+        document.querySelectorAll('.fonte-toggle').forEach(btn => {
+            btn.setAttribute('aria-label', `Tamanho da letra: ${NOME_FONTE[nivel] || 'normal'}. Toque para mudar.`);
+        });
+    };
+    document.querySelectorAll('.fonte-toggle').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const atual = NIVEIS_FONTE.indexOf(document.documentElement.dataset.fonte || '');
+            const proximo = NIVEIS_FONTE[(atual + 1) % NIVEIS_FONTE.length];
+            if (proximo) document.documentElement.dataset.fonte = proximo;
+            else delete document.documentElement.dataset.fonte;
+            try { localStorage.setItem('drakerly_fonte', proximo); } catch (e) { /* navegação privada: vale só nesta página */ }
+            rotularFonte();
+        });
+    });
+    rotularFonte();
+
     // Mobile Menu Toggle
     const mobileBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
 
     if (mobileBtn && mobileMenu) {
-        mobileBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+        const iconeMenu = mobileBtn.querySelector('[data-menu-icon="menu"]');
+        const iconeFechar = mobileBtn.querySelector('[data-menu-icon="close"]');
+        const definirMenu = (aberto) => {
+            mobileMenu.classList.toggle('hidden', !aberto);
+            iconeMenu.classList.toggle('hidden', aberto);
+            iconeFechar.classList.toggle('hidden', !aberto);
+            mobileBtn.setAttribute('aria-expanded', String(aberto));
+        };
 
-            // Adjust icon
-            if (mobileMenu.classList.contains('hidden')) {
-                mobileBtn.innerHTML = '<i data-feather="menu"></i>';
-                mobileBtn.setAttribute('aria-expanded', 'false');
-            } else {
-                mobileBtn.innerHTML = '<i data-feather="x"></i>';
-                mobileBtn.setAttribute('aria-expanded', 'true');
-            }
-            feather.replace();
-        });
+        mobileBtn.addEventListener('click', () => definirMenu(mobileMenu.classList.contains('hidden')));
 
         // Close menu on link click
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                mobileBtn.innerHTML = '<i data-feather="menu"></i>';
-                mobileBtn.setAttribute('aria-expanded', 'false');
-                feather.replace();
-            });
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => definirMenu(false));
         });
     }
 
     // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    document.querySelectorAll('a[href^="#"]:not(.skip-link)').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');

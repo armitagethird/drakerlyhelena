@@ -40,6 +40,9 @@
         if (window.matchMedia &&
             (matchMedia('(prefers-reduced-transparency: reduce)').matches ||
              matchMedia('(prefers-reduced-motion: reduce)').matches)) return false;
+        // Refração custa caro: só em desktop com ponteiro fino e CPU com 4+ núcleos.
+        if (!matchMedia('(min-width: 768px) and (pointer: fine)').matches ||
+            (navigator.hardwareConcurrency || 4) < 4) return false;
         return CSS.supports('backdrop-filter', 'url(#liquid-glass)') ||
                CSS.supports('-webkit-backdrop-filter', 'url(#liquid-glass)');
     }

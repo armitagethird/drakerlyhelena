@@ -443,12 +443,13 @@ body {
 
 .wa-fab__option--wa .wa-fab__option-icon { background-color: #25D366; }
 .wa-fab__option--quiz .wa-fab__option-icon { background-color: #A9637B; }
+.wa-fab__option--tel .wa-fab__option-icon { background-color: #4A3B40; }
 
 /* Entrada escalonada das opções (a de baixo primeiro) */
 .wa-fab[open] .wa-fab__option {
     animation: wa-opt-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
 }
-.wa-fab[open] .wa-fab__option:nth-child(2) { animation-delay: 0.03s; }
+.wa-fab[open] .wa-fab__option:nth-child(2) { animation-delay: 0.05s; }
 .wa-fab[open] .wa-fab__option:nth-child(1) { animation-delay: 0.1s; }
 
 @keyframes wa-opt-in {
@@ -781,4 +782,41 @@ body {
 @media (prefers-reduced-motion: reduce) {
     .desire-item, .desire-item::before, .desire-arrow,
     .step-item::before, .step-num { transition: none; }
+}
+
+/* === Pular para o conteúdo === */
+.skip-link { position: absolute; left: 1rem; top: -4rem; z-index: 100; background: #4A3B40; color: #fff; padding: .75rem 1rem; border-radius: .75rem; font-size: 1rem; }
+.skip-link:focus { top: 1rem; }
+
+/* === Tamanho da letra (botão no cabeçalho; escolha salva em localStorage) === */
+html[data-fonte="grande"] { font-size: 112.5%; --fonte-escala: 1.125; }
+html[data-fonte="maior"] { font-size: 125%; --fonte-escala: 1.25; }
+
+/* A pílula do cabeçalho não cresce com a letra (estouraria a linha, sobretudo no celular):
+   os tokens de espaço e de texto do Tailwind voltam ao tamanho normal dentro dela. O menu
+   aberto do celular volta a acompanhar a escolha. */
+.glass--header {
+    --spacing: calc(.25rem / var(--fonte-escala, 1));
+    --text-xs: calc(.75rem / var(--fonte-escala, 1));
+    --text-sm: calc(.875rem / var(--fonte-escala, 1));
+    --text-base: calc(1rem / var(--fonte-escala, 1));
+    --text-lg: calc(1.125rem / var(--fonte-escala, 1));
+    --text-2xl: calc(1.5rem / var(--fonte-escala, 1));
+    --text-3xl: calc(1.875rem / var(--fonte-escala, 1));
+}
+.glass--header #mobile-menu {
+    --spacing: .25rem;
+    --text-sm: .875rem;
+}
+
+/* === Vidro mais leve no celular (cards; o header mantém o blur padrão) === */
+@media (max-width: 767px) {
+    .glass:not(.glass--header) { -webkit-backdrop-filter: blur(12px) saturate(140%); backdrop-filter: blur(12px) saturate(140%); }
+}
+
+/* Cabeçalho no desktop: com o botão de tamanho da letra, a pílula precisa de mais largura
+   para não cortar "Blog" nem quebrar o CTA em duas linhas. */
+@media (min-width: 768px) {
+    .glass--header:not(.is-scrolled) { max-width: 78rem; }
+    .glass--header .nav-cta { white-space: nowrap; }
 }

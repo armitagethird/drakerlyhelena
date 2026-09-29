@@ -9,6 +9,7 @@
     -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>try{var f=localStorage.getItem('drakerly_fonte');if(f)document.documentElement.setAttribute('data-fonte',f);}catch(e){}</script>
     <meta name="theme-color" content="#FDFCFB">
 
     <!-- Google Analytics 4 -->
@@ -42,11 +43,13 @@
 </head>
 
 <body class="bg-sand-100 text-charcoal font-sans antialiased min-h-screen flex items-center justify-center px-6 py-16 overflow-x-hidden">
+    <a href="#conteudo" class="skip-link">Pular para o conteúdo</a>
+
     <!-- Halos suaves (eco da home) -->
     <div class="fixed -top-24 -right-24 w-96 h-96 bg-blush-300/10 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
     <div class="fixed bottom-20 -left-20 w-72 h-72 bg-nude-300/15 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
 
-    <main class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative">
+    <main id="conteudo" class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative">
         <div>
             <a href="/" class="inline-flex items-center gap-3 mb-10 group">
                 <img src="/assets/favicon.png" alt="Dra. Kerly Helena" width="192" height="192" class="w-10 h-10 object-contain transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">

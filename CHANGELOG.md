@@ -6,6 +6,26 @@ Registro das atualizações do site (`drakerlyhelena.com.br`). Entradas mais rec
 
 ---
 
+## [2026-09-28] Legibilidade, quiz com resultado antes dos dados, FAQ com busca, checklists e respiração guiada
+
+Rodada para deixar o site mais fácil de ler e de usar, sobretudo no celular e para quem tem mais idade. Nenhuma promessa de resultado, nenhum valor exibido, e o **Apps Script não precisou mudar**: o quiz continua enviando os mesmos campos.
+
+### O que mudou, por área
+- **Site inteiro** — texto com peso 400, contraste mínimo e nada abaixo de 12 px; alvos de toque de 44 px; botão "A A" no cabeçalho para aumentar a letra (normal, grande, maior), lembrado no navegador; link "Pular para o conteúdo"; menu do celular com ícones próprios e botão maior; vidro mais leve no celular para rolar sem engasgar; botão de contato com terceira opção, "Ligar agora"; "Site por VibeSurfDev" na linha do copyright.
+- **Home e quiz** — frases de abertura com convite claro, cards sempre visíveis, endereço com mapa carregado só sob demanda, fechamento da página, resultado do quiz antes de pedir qualquer dado, nome e WhatsApp opcionais e resumo pronto para enviar no WhatsApp. O link `/#quiz` abre o quiz a partir de qualquer página.
+- **Menopausa** — checklist de sinais que vira mensagem de WhatsApp, bloco "em que fase estou" e nova página `/menopausa/diario-de-sintomas/` com diário de 4 semanas para imprimir e levar à consulta.
+- **FAQ** — perguntas em `details` nativo, em três grupos, com busca instantânea, "abrir todas" e link direto para cada pergunta.
+- **Blog** — autor e publisher completos nos dados estruturados, datas marcadas, índice do artigo, botão de ouvir e de compartilhar.
+- **Yoga** — botões com contraste corrigido, carrossel sem rolagem automática, lista de espera por link direto e respiração guiada em `/yoga/#respiracao`.
+- **Convênio APCEF** — "O que levar no dia" virou checklist, com botão para imprimir a lista e outro para enviá-la no WhatsApp.
+- **Privacidade** — texto atualizado: sem Microsoft Clarity nem Meta Pixel, quiz descrito como 9 perguntas sem cadastro (nome e WhatsApp opcionais, só com consentimento), tamanho de letra salvo só no navegador, checklists e diário não armazenados. Data de atualização: 28 de setembro de 2026.
+- **Sitemap** — página do diário de sintomas incluída e `lastmod` atualizado.
+
+### Notas técnicas
+- `output.css` recompilado com `npm run build:css`; `npm test` sem erros nem avisos nas 20 páginas.
+
+---
+
 ## [2026-07-31] Ressalvas sobre o CFM saem do site; ortomolecular e integrativa passam a ser tratadas como prática de igual valor
 
 A pedido da cliente, **toda menção a "o Conselho Federal de Medicina não reconhece…"** e ao enquadramento subordinado ("apenas complementar", "não substitui", "nunca no lugar de") foi **removida do site inteiro** — não só da ortomolecular, mas também da medicina integrativa. As duas passam a ser apresentadas como práticas que **caminham lado a lado com a medicina convencional**, dentro de um mesmo plano de cuidado.
