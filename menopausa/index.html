@@ -443,10 +443,10 @@
                 </ul>
                 <div class="mt-6 flex flex-col sm:flex-row sm:items-center gap-4">
                     <a id="sinais-whatsapp" href="https://wa.me/5598981532153?text=Ol%C3%A1!%20Vim%20pela%20p%C3%A1gina%20de%20menopausa%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20com%20a%20Dra.%20Kerly%20Helena." target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-blush-600 hover:bg-blush-700 text-white px-6 py-4 rounded-full text-lg font-medium">Levar esses sinais para a consulta</a>
-                    <p id="sinais-status" class="text-base text-charcoal/80">Marque o que você percebe em você. A mensagem do WhatsApp vai pronta com a sua lista.</p>
+                    <p id="sinais-status" class="text-base text-charcoal/80" aria-live="polite">Marque o que você percebe em você. A mensagem do WhatsApp vai pronta com a sua lista.</p>
                 </div>
                 <p class="mt-6 text-base text-charcoal/80 leading-relaxed">
-                    Quer acompanhar por algumas semanas? <a href="/menopausa/diario-de-sintomas/" class="text-blush-600 underline underline-offset-4 decoration-1 hover:text-blush-700 transition-colors">Baixe o diário de sintomas para imprimir</a> e leve para a consulta.
+                    Quer acompanhar por algumas semanas? <a href="/menopausa/diario-de-sintomas/" class="text-blush-600 underline underline-offset-4 decoration-1 hover:text-blush-700 transition-colors">Abra o diário de sintomas para imprimir</a> e leve para a consulta.
                 </p>
             </section>
 
@@ -706,7 +706,7 @@
                 var marcados = Array.prototype.filter.call(checks, function (c) { return c.checked; }).map(function (c) { return c.value.toLowerCase(); });
                 var msg = marcados.length ? 'Olá! Vim pela página de menopausa. Os sinais que percebo em mim: ' + marcados.join('; ') + '. Gostaria de agendar uma avaliação com a Dra. Kerly Helena.' : base;
                 link.href = 'https://wa.me/5598981532153?text=' + encodeURIComponent(msg);
-                status.textContent = marcados.length ? marcados.length + ' sinal(is) marcado(s). A mensagem já está pronta.' : 'Marque o que você percebe em você. A mensagem do WhatsApp vai pronta com a sua lista.';
+                status.textContent = marcados.length ? marcados.length + (marcados.length === 1 ? ' sinal marcado' : ' sinais marcados') + '. A mensagem já está pronta.' : 'Marque o que você percebe em você. A mensagem do WhatsApp vai pronta com a sua lista.';
             }
             checks.forEach(function (c) { c.addEventListener('change', update); });
         })();
@@ -723,10 +723,11 @@
                 hoje.setHours(0, 0, 0, 0);
                 if (new Date(p[0], p[1] - 1, p[2]) > hoje) return;
                 var marco = new Date(p[0] + 1, p[1] - 1, p[2]);
+                var aviso = ' Esse cálculo é só uma referência: a leitura depende da sua idade, de gravidez ou amamentação e do uso de métodos hormonais. Converse com a doutora.';
                 var texto = marco.toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' });
                 out.textContent = marco > hoje
-                    ? 'Se a menstruação não voltar até ' + texto + ', esse será o marco de 12 meses.'
-                    : 'Você completou 12 meses sem menstruar em ' + texto + '. Esse marco caracteriza a menopausa; a avaliação em consulta continua importante.';
+                    ? 'Se a menstruação não voltar até ' + texto + ', esse será o marco de 12 meses.' + aviso
+                    : 'Você completou 12 meses sem menstruar em ' + texto + '. Esse marco caracteriza a menopausa; a avaliação em consulta continua importante.' + aviso;
             });
         })();
     </script>

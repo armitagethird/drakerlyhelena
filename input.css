@@ -115,8 +115,7 @@ html {
 
     [data-stagger],
     .gs-hero-photo img,
-    .hero-rail-line,
-    .gs-hero-scrollhint {
+    .hero-rail-line {
         opacity: 1 !important;
         transform: none !important;
     }
