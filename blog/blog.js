@@ -18,6 +18,20 @@
             if (navigator.clipboard) navigator.clipboard.writeText(url).then(done).catch(manual); else manual();
         });
     });
+    document.querySelectorAll('[data-checklist]').forEach(function (bloco) {
+        var checks = bloco.querySelectorAll('input[type="checkbox"]');
+        var link = bloco.querySelector('[data-checklist-whatsapp]');
+        var status = bloco.querySelector('[data-checklist-status]');
+        var instrucao = status.textContent;
+        var abertura = bloco.getAttribute('data-checklist');
+        var fecho = ' Gostaria de agendar uma avaliação com a Dra. Kerly Helena.';
+        bloco.addEventListener('change', function () {
+            var marcados = Array.prototype.filter.call(checks, function (c) { return c.checked; }).map(function (c) { return c.value; });
+            var lista = marcados.length ? ' O que percebo em mim: ' + marcados.join('; ') + '.' : '';
+            link.href = 'https://wa.me/5598981532153?text=' + encodeURIComponent(abertura + lista + fecho);
+            status.textContent = marcados.length ? marcados.length + (marcados.length === 1 ? ' item marcado' : ' itens marcados') + '. A mensagem já está pronta.' : instrucao;
+        });
+    });
     var botao = document.querySelector('[data-ouvir]');
     if (!botao || !('speechSynthesis' in window) || !window.SpeechSynthesisUtterance) return;
     botao.hidden = false;

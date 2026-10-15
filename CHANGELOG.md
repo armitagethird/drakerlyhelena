@@ -6,6 +6,24 @@ Registro das atualizações do site (`drakerlyhelena.com.br`). Entradas mais rec
 
 ---
 
+## [2026-10-15] Blog: três artigos novos, com checklists, mito ou verdade e calculadora do ciclo
+
+O blog passa de 3 para 6 artigos, todos no mesmo esqueleto dos anteriores (índice, ouvir, compartilhar, aviso informativo, "Leia também", `BlogPosting` + `BreadcrumbList`). Os temas cobrem assuntos que o site já citava sem artigo próprio: libido, cansaço sem explicação e regulação do ciclo — o último fala também com um público mais jovem. Sem preços e sem promessa de resultado. **Conteúdo médico a ser revisado pela Doutora antes da publicação.**
+
+### O que mudou
+- **`/blog/libido-secura-intima-menopausa/`** — síndrome geniturinária da menopausa, desejo além dos hormônios, "Mito ou verdade?" em `details` nativo, checklist que vira mensagem de WhatsApp, aviso sobre sangramento após a menopausa e perguntas rápidas. Links para `/yoga/` e `/menopausa/`.
+- **`/blog/cansaco-exames-normais/`** — por que exame normal nem sempre encerra a conversa, pistas por área, checklist agrupada (sono, ciclo, alimentação, emoções) que vira mensagem de WhatsApp, quadro "Quando procurar atendimento sem esperar" (com o CVV 188) e perguntas rápidas. Primeiro artigo que leva à `/ortomolecular/`.
+- **`/blog/tpm-ciclo-irregular/`** — ciclo de referência, calculadora do ciclo (duas datas → duração, sem enviar nem salvar nada), TPM e transtorno disfórico pré-menstrual, cólica que merece investigação, causas de ciclo irregular, checklist para o WhatsApp e perguntas rápidas.
+- **`/blog/`** — 3 cards novos no topo e os artigos no `blogPost` do JSON-LD `Blog`.
+- **`blog/blog.js`** — checklist genérica por atributos (`data-checklist`, `data-checklist-whatsapp`, `data-checklist-status`), usada pelos três artigos.
+- **Imagens** — recortes largos (21:9) e de card (3:2) gerados a partir de fotos já existentes: `_DSC4966-wide*`, `_DSC4966-land*`, `IMG_4323-wide*`, `IMG_4323-land*`. O artigo de cansaço reaproveita `IMG_5004-wide*`.
+- **Sitemap** — 3 URLs novas e `lastmod` do `/blog/` atualizado.
+
+### Notas técnicas
+- `output.css` recompilado com `npm run build:css`; `npm test` sem erros nem avisos nas 23 páginas.
+
+---
+
 ## [2026-09-28] Legibilidade, quiz com resultado antes dos dados, FAQ com busca, checklists e respiração guiada
 
 Rodada para deixar o site mais fácil de ler e de usar, sobretudo no celular e para quem tem mais idade. Nenhuma promessa de resultado, nenhum valor exibido, e o **Apps Script não precisou mudar**: o quiz continua enviando os mesmos campos.
