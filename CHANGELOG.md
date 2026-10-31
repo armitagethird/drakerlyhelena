@@ -6,6 +6,23 @@ Registro das atualizações do site (`drakerlyhelena.com.br`). Entradas mais rec
 
 ---
 
+## [2026-10-31] Site inteiro: cabeçalho no celular, menu e âncoras pelo teclado, pulso do botão flutuante
+
+Correções nos componentes que todas as páginas compartilham, achadas na auditoria da página de yoga e medidas nas 16 páginas com cabeçalho.
+
+### O que mudou
+- **Cabeçalho no celular** — o botão do menu saía da pílula em telas de até ~430 px e, em 320 px (ou zoom de 400%), ficava fora da tela e o menu não abria. A margem entre o nome e a navegação passa a valer só no desktop; até 429 px o nome fica em 18 px e o respiro lateral diminui; abaixo de 360 px o logo some. O botão "A A" continua no cabeçalho.
+- **Cabeçalho rolado no desktop** — em 1536 px ou mais a pílula rolada passa de 38rem para 43,125rem: o nome volta ao tamanho cheio ali, o "Agende sua Consulta" passava 10 px da borda e o fim do nome saía da área clicável do link. No `/yoga/` o botão do cabeçalho vira "Lista de espera" (o leitor de tela ouve "Lista de espera pelo WhatsApp"); o texto longo passava 33 px da pílula em 1280/1440 e 116 px em 1920.
+- **Menu do celular** — fecha quando o foco do teclado sai do cabeçalho, em vez de ficar aberto cobrindo o item focado.
+- **Links âncora** (menu, "Mais Informações", "Ver os sinais") — além da rolagem suave, atualizam o endereço e levam o foco do teclado ao destino (sem contorno, que numa seção de largura total virava uma linha solta); antes o próximo Tab voltava ao topo. Clicar de novo no mesmo link não empilha o histórico. O "Copiar link desta pergunta" do FAQ, que tem handler próprio, deixa de rolar a página ao copiar.
+- **Botão flutuante** — o anel pulsa duas vezes (4,8 s) e para, em vez de pulsar sem fim (WCAG 2.2.2); não recomeça quando o menu do botão fecha e não captura mais toques em volta do botão.
+
+### Notas técnicas
+- `styles.css` e `main.js` apenas; no HTML, só o botão do cabeçalho do `/yoga/`. Sem classes Tailwind novas (o `output.css` não muda).
+- Medido com puppeteer em 16 páginas: 320/360/375/390 px nos três tamanhos de letra, com e sem rolagem, e 1280/1440/1920 px; menu, âncoras (teclado, histórico) e anel do botão flutuante testados em interação real. Revisão independente do diff antes do commit. `npm test` sem erros nem avisos nas 23 páginas.
+
+---
+
 ## [2026-10-31] Yoga: o curso passa a ser conduzido só pela Dra. Kerly Helena
 
 A seção de professoras do Yoga fica com um único card, o da Dra. Kerly Helena, e o site deixa de citar uma segunda instrutora em qualquer página.

@@ -182,7 +182,23 @@ body {
 .glass--header .nav-brand__text {
     white-space: nowrap;
 }
-.glass--header .nav-brand { margin-right: 1.5rem; }
+/* Espaço entre o nome e a navegação do desktop. Abaixo do xl a linha só tem o "A A" e o menu,
+   e essa margem empurrava o botão do menu para fora da pílula no celular. */
+@media (min-width: 1280px) {
+    .glass--header .nav-brand { margin-right: 1.5rem; }
+}
+@media (max-width: 1279px) {
+    .glass--header > div:first-child { column-gap: .5rem; }
+}
+/* Celular: o nome em 24px não cabe ao lado do "A A" e do menu (o botão do menu saía da pílula,
+   e em 320px ficava fora da tela). */
+@media (max-width: 429px) {
+    .glass--header > div:first-child { padding-inline: calc(1rem / var(--fonte-escala, 1)); }
+    .glass--header .nav-brand__text { font-size: calc(1.125rem / var(--fonte-escala, 1)); }
+}
+@media (max-width: 359px) {
+    .glass--header > div:first-child > a:first-child img { display: none; }
+}
 
 /* CTA mantém a fonte; só afina (botão mais baixo) p/ acompanhar a barra. */
 .glass--header .nav-cta {
@@ -288,6 +304,9 @@ body {
     outline-offset: 3px;
     border-radius: 4px;
 }
+/* Destinos de âncora e contêineres recebem foco só por script (tabindex="-1"), para o próximo Tab
+   seguir dali; numa seção de largura total o contorno virava uma linha solta atravessando a página. */
+[tabindex="-1"]:focus { outline: none; }
 
 /* Respeita preferência do usuário por menos movimento */
 @media (prefers-reduced-motion: reduce) {
@@ -381,10 +400,13 @@ body {
     z-index: 0;
     border-radius: 9999px;
     background-color: #25D366;
-    animation: wa-pulse 2.4s ease-out infinite;
+    /* Duas pulsadas (4,8 s) e para: movimento automático acima de 5 s precisa de pausa (WCAG 2.2.2). */
+    animation: wa-pulse 2.4s ease-out 2 forwards;
+    pointer-events: none;   /* decorativo: parado em scale(1.8), roubaria toques em volta do botão */
 }
 
-.wa-fab[open] .wa-fab__ring { opacity: 0; animation: none; }
+/* visibility (e não animation: none) para o pulso não recomeçar a cada vez que o menu fecha. */
+.wa-fab[open] .wa-fab__ring { visibility: hidden; }
 
 @keyframes wa-pulse {
     0%   { transform: scale(1);   opacity: 0.55; }
@@ -826,12 +848,15 @@ html[data-fonte="maior"] { font-size: 125%; --fonte-escala: 1.25; }
 @media (min-width: 1280px) and (max-width: 1535px) {
     .glass--header .nav-links__inner > :not(:last-child) { margin-inline-end: 1.25rem; }
     .glass--header nav > :not(:last-child) { margin-inline-end: 1rem; }
-    /* Nome um pouco menor: o CTA longo do yoga ("Entrar na lista de espera...") só cabe assim. */
+    /* Nome um pouco menor para a navegação completa caber na pílula. */
     .glass--header .nav-brand__text { font-size: calc(1.5rem / var(--fonte-escala, 1)); }
 }
-/* Telas largas: a pílula ganha largura extra (o CTA do yoga é o mais comprido). */
+/* Telas largas: a pílula ganha largura extra. Rolada, ela precisa de mais que os 38rem porque aqui
+   o nome volta ao tamanho cheio (e a nav recolhida ainda guarda a margem do lg:space-x-9): o CTA
+   passava da borda e o fim do nome saía do link. */
 @media (min-width: 1536px) {
     .glass--header:not(.is-scrolled) { max-width: 88rem; }
+    .glass--header.is-scrolled { max-width: 43.125rem; }
 }
 
 /* --- Menu mobile: animacao --- */

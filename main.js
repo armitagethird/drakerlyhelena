@@ -223,6 +223,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
         document.addEventListener('click', (e) => {
             if (estaAberto() && !cabecalho.contains(e.target)) definirMenu(false);
         });
+        // Tab para fora do cabeçalho fecha o menu (senão ele fica aberto cobrindo o item focado).
+        // Sem relatedTarget (toque numa área sem foco) quem decide é o clique acima.
+        cabecalho.addEventListener('focusout', (e) => {
+            if (estaAberto() && e.relatedTarget && !cabecalho.contains(e.relatedTarget)) definirMenu(false);
+        });
 
         // Close menu on link click
         mobileMenu.querySelectorAll('a').forEach(link => {
@@ -246,6 +251,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]:not(.skip-link)').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
+            if (e.defaultPrevented) return; // já tratado por outro handler (ex.: "Copiar link desta pergunta" do FAQ)
             e.preventDefault();
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
@@ -261,6 +267,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
                     top: offsetPosition,
                     behavior: prefersReducedMotion() ? 'auto' : 'smooth'
                 });
+                // O preventDefault tira o que o navegador faria sozinho: atualizar o endereço e
+                // levar o foco do teclado ao destino (senão o próximo Tab volta ao topo).
+                if (location.hash !== targetId) history.pushState(null, '', targetId);
+                if (!targetElement.hasAttribute('tabindex')) targetElement.setAttribute('tabindex', '-1');
+                targetElement.focus({ preventScroll: true });
             }
         });
     });
