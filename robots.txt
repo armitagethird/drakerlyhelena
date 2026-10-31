@@ -6,5 +6,7 @@ Disallow: /CHANGELOG.md
 Disallow: /package.json
 Disallow: /package-lock.json
 Disallow: /input.css
+Disallow: /docs/
+Disallow: /scripts/
 
 Sitemap: https://drakerlyhelena.com.br/sitemap.xml

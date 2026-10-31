@@ -2,7 +2,8 @@
 // Verificacao do site estatico (roda com `npm test`).
 // Checa: JSON-LD valido; perguntas do FAQPage presentes no texto visivel; palavras proibidas
 // pela diretriz da cliente; hierarquia de headings; links e assets internos existentes;
-// title/description/canonical; contraste dos tokens de cor; classes que ferem a legibilidade.
+// title/description/canonical; contraste dos tokens de cor; classes que ferem a legibilidade;
+// llms.txt (diretrizes de texto, links e cobertura do sitemap).
 // Sai com codigo 1 quando ha erro. Avisos nao derrubam o teste.
 
 const fs = require('fs');
@@ -12,7 +13,7 @@ const ROOT = path.resolve(__dirname, '..');
 const SKIP_DIRS = new Set(['node_modules', '.git', '.superpowers', 'audit-screenshots', 'docs', 'scripts', 'shots']);
 
 const FORBIDDEN = [
-  [/R\$/, 'valor em reais (diretriz: nao exibir precos)'],
+  [/R\$/i, 'valor em reais (diretriz: nao exibir precos)'],
   [/\bcura\b/i, 'promessa de cura'],
   [/garantimos|resultados? garantidos?|garantia de resultado/i, 'promessa de resultado'],
   [/elimina(r|mos)? (o|a|os|as|todos|todas)? ?(sintoma|sintomas|dor|dores)/i, 'promessa de eliminar sintomas'],
@@ -196,6 +197,28 @@ function checkTokens() {
   }
 }
 
+// --- llms.txt --------------------------------------------------------------------
+// Mesmas diretrizes de texto das paginas; links so para paginas que existem; URL do sitemap fora do
+// llms.txt vira aviso (pagina nova esquecida).
+function checkLlmsTxt() {
+  const file = 'llms.txt';
+  const full = path.join(ROOT, file);
+  if (!fs.existsSync(full)) return err(file, 'arquivo ausente');
+  const txt = fs.readFileSync(full, 'utf8');
+  checkForbidden(file, txt.replace(/\s+/g, ' '));
+  const linked = new Set();
+  const re = /\]\((https:\/\/drakerlyhelena\.com\.br[^)\s]*)\)/g;
+  let m;
+  while ((m = re.exec(txt))) {
+    const p = new URL(m[1]).pathname;
+    linked.add(p);
+    if (!fs.existsSync(path.join(ROOT, p, p.endsWith('/') ? 'index.html' : ''))) err(file, `link para pagina inexistente: ${m[1]}`);
+  }
+  const locs = /<loc>([^<]+)<\/loc>/g;
+  const sitemap = fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8');
+  while ((m = locs.exec(sitemap))) if (!linked.has(new URL(m[1]).pathname)) warn(file, `URL do sitemap ausente: ${m[1]}`);
+}
+
 // --- Main ----------------------------------------------------------------------
 const files = walk(ROOT, []).sort();
 for (const file of files) {
@@ -210,6 +233,7 @@ for (const file of files) {
   checkClasses(file, html);
 }
 checkTokens();
+checkLlmsTxt();
 
 if (warnings.length) { console.log(`Avisos (${warnings.length}):`); warnings.forEach((w) => console.log('  - ' + w)); }
 if (errors.length) {

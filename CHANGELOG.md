@@ -6,6 +6,21 @@ Registro das atualizações do site (`drakerlyhelena.com.br`). Entradas mais rec
 
 ---
 
+## [2026-10-29] `llms.txt` novo e `robots.txt` sem as pastas de desenvolvimento
+
+O site ganha um `/llms.txt` (formato llmstxt.org): um resumo em Markdown para ferramentas de IA, com quem é a médica, abordagem, endereço, horário, como agendar, convênio e a lista das páginas. Não muda nada no SEO tradicional — o Google não usa o arquivo para ranquear. Cada fato foi conferido contra o HTML das páginas.
+
+### O que mudou
+- **`/llms.txt`** — fatos essenciais no topo; seções "Atendimento", "Convênio, agendamento e dúvidas", "Blog" e "Optional" (ferramentas interativas e privacidade). Ficaram de fora de propósito: valores (só a frase de que o site não os publica, para a IA não inventar preço), depoimentos e nomes de pacientes, a credencial de ortomolecular ainda pendente e qualquer afirmação de que o blog é revisado pela Doutora.
+- **`robots.txt`** — `Disallow` para `/docs/` e `/scripts/`, que o GitHub Pages também publica. Nenhuma página carrega arquivo dessas pastas.
+- **`scripts/verify-site.js`** — o `npm test` passa a checar o `llms.txt`: mesmas palavras proibidas das páginas, links só para páginas que existem, e aviso quando uma URL do `sitemap.xml` não está no arquivo. A regra de `R$` ganhou a flag `i`: o texto das páginas é comparado em minúsculas, então a checagem de preço nunca disparava.
+
+### Notas técnicas
+- Ao criar ou remover uma página, atualizar também o `llms.txt` — o `npm test` avisa quando falta uma URL do sitemap.
+- `npm test` sem erros nem avisos nas 23 páginas.
+
+---
+
 ## [2026-10-15] Blog: três artigos novos, com checklists, mito ou verdade e calculadora do ciclo
 
 O blog passa de 3 para 6 artigos, todos no mesmo esqueleto dos anteriores (índice, ouvir, compartilhar, aviso informativo, "Leia também", `BlogPosting` + `BreadcrumbList`). Os temas cobrem assuntos que o site já citava sem artigo próprio: libido, cansaço sem explicação e regulação do ciclo — o último fala também com um público mais jovem. Sem preços e sem promessa de resultado. **Conteúdo médico a ser revisado pela Doutora antes da publicação.**
