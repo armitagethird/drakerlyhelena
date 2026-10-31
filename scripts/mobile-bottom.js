@@ -65,7 +65,7 @@ const OUT = path.resolve(__dirname, '..', 'audit-screenshots');
   });
   await new Promise(r => setTimeout(r, 1200));
 
-  for (const sel of ['#detalhes', '#professoras', '#ambiente']) {
+  for (const sel of ['#detalhes', '#professora', '#ambiente']) {
     const safe = sel.replace(/[^a-z]/gi, '_');
     await page.evaluate((s) => {
       const el = document.querySelector(s);
