@@ -26,16 +26,33 @@ window.trackEvent = function (name, params) {
     } catch (e) { /* analytics never breaks the page */ }
 };
 
-// Auto-track WhatsApp link clicks + quiz CTAs across the site.
+// Contato por WhatsApp ou telefone. Ficam de fora o "Enviar no WhatsApp" do blog (wa.me sem
+// número, é compartilhamento) e telefones que não são do consultório, como o CVV (tel:188).
+var WHATSAPP_CONTATO = /^https?:\/\/(wa\.me\/\d|api\.whatsapp\.com\/send\/?\?(.*&)?phone=\d)/i;
+var TELEFONE_CONSULTORIO = /^tel:\+?(55)?98981532153$/i;
+
+function contactEventName(href) {
+    if (TELEFONE_CONSULTORIO.test(href.replace(/[\s().-]/g, ''))) return 'phone_click';
+    if (WHATSAPP_CONTATO.test(href)) return 'whatsapp_click';
+    return null;
+}
+
+function linkLocation(a) {
+    var area = a.closest('[data-cta-source], .wa-fab, header, footer, section[id], article');
+    if (!area) return 'corpo';
+    if (area.hasAttribute('data-cta-source')) return area.getAttribute('data-cta-source');
+    if (area.classList.contains('wa-fab')) return 'botao_flutuante';
+    return area.id || area.tagName.toLowerCase();
+}
+
 function wireAnalytics() {
-    document.querySelectorAll('a[href*="wa.me"]').forEach(function (a) {
-        a.addEventListener('click', function () {
-            var section = a.closest('section, header, footer');
-            window.trackEvent('whatsapp_click', {
-                source: (section && section.id) || (section && section.tagName.toLowerCase()) || 'unknown',
-                href: a.getAttribute('href')
-            });
-        });
+    // Um único listener delegado: pega também links cujo href é montado depois do carregamento
+    // (ex.: o checklist dos posts do blog).
+    document.addEventListener('click', function (e) {
+        var a = e.target.closest('a[href]');
+        if (!a) return;
+        var name = contactEventName(a.getAttribute('href'));
+        if (name) window.trackEvent(name, { page_path: location.pathname, link_location: linkLocation(a) });
     });
 
     // Scroll depth (fires once per threshold)
@@ -711,6 +728,8 @@ function saveContactForm() {
 window.bookConsultation = function() {
     if (!readContactForm().empty && !saveContactForm()) return;
     window.trackEvent('book_consultation', { source: 'quiz_result', phase: userData.phase || 'unspecified' });
+    // O botão do resultado abre o WhatsApp por window.open, fora do listener de links.
+    window.trackEvent('whatsapp_click', { page_path: location.pathname, link_location: 'quiz_resultado' });
     notifyWhatsappClick();
     const encodedMessage = encodeURIComponent(buildWhatsappMessage());
     const targetPhone = "5598981532153";
