@@ -6,6 +6,21 @@ Registro das atualizações do site (`drakerlyhelena.com.br`). Entradas mais rec
 
 ---
 
+## [2026-11-13] Correção: rosas pretas na landing e checklist do blog parado após a publicação
+
+Logo depois da publicação, `/checklist/checklist.css` e `/checklist.js` foram pedidos antes de o deploy do GitHub Pages terminar, e o Cloudflare guardou o 404 por 4 horas. Sem o CSS, as rosas da landing apareciam como manchas pretas enormes. Sem o script, os checklists da landing e dos posts do blog deixavam de montar a lista na mensagem do WhatsApp.
+
+### O que mudou
+- **Landing e 6 posts do blog** — passam a pedir `/checklist.js?v=20261113`, e a landing pede `/checklist/checklist.css?v=20261113`. É uma URL nova, fora do 404 em cache.
+- **SVG das rosas** — `fill="none"` e tamanho no próprio HTML: se o CSS falhar de novo, a decoração some em vez de virar mancha.
+- **`docs/checklist-landing.md`** — trocar o `?v=` ao mudar o CSS ou o JS, e só conferir a página publicada depois que o deploy terminar.
+
+### Notas técnicas
+- Reproduzido bloqueando o CSS no puppeteer: 15 SVGs pretos e enormes antes, 0 depois. Com o CSS carregado, a página fica idêntica pixel a pixel (só muda a fase do anel do botão flutuante). Checklist do blog igual ao de antes; roteiro da landing em 375 px e `npm test` sem erros.
+- As URLs sem versão continuam com o 404 em cache até expirar (ou até um purge no Cloudflare), mas nenhuma página as usa mais.
+
+---
+
 ## [2026-11-13] Página de campanha "6 sinais que parecem estresse" e checklist compartilhado
 
 Landing page para o anúncio do carrossel "6 sinais que parecem estresse" no Instagram: a pessoa marca os sinais que fazem parte da rotina dela e leva a lista pronta para o WhatsApp. A página é o modelo para os próximos posts. O checklist do blog passa a ser um script compartilhado.

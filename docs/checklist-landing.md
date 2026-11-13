@@ -19,6 +19,8 @@ São páginas de campanha: ficam fora do Google (`noindex, follow`), do `sitemap
 ## Visual (rosas, cartões e foto)
 
 - O visual vem de `/checklist/checklist.css`, compartilhado por todas as páginas de checklist. Só tem classes `.ck-`; o resto é Tailwind do site. Não copie nem edite esse CSS por página: um ajuste nele vale para todas.
+- As páginas pedem `/checklist/checklist.css?v=AAAAMMDD` e `/checklist.js?v=AAAAMMDD`. O Cloudflare guarda CSS e JS por até 4 horas, inclusive um 404. **Ao mudar um desses arquivos, troque o `?v=` em todas as páginas que o carregam** (o `checklist.js` também está nos 6 posts do blog).
+- Os `<svg>` decorativos têm `fill="none"` e tamanho no próprio HTML: se o CSS não carregar, as rosas somem em vez de virar manchas pretas. Mantenha esses atributos ao copiar.
 - As rosas são desenhadas em traço fino uma única vez, no `<svg class="ck-defs">` do começo do `<main>` (ids `ck-r-veu`, `ck-r-haste`, `ck-r-folhas`, `ck-r-botao`, `ck-r-rosa` e os símbolos `ck-botao`, `ck-folha`, `ck-bud`), e reaproveitadas com `<use>`. Ao copiar a página, mantenha esse bloco inteiro.
 - Onde aparecem: um ramo ao lado do título no celular (some abaixo de 360 px e com a letra ampliada, para não encostar no texto), que no desktop desce para a coluna da esquerda; um botão de rosa no lugar dos travessões da lista da consulta; um botãozinho que se desenha embaixo da caixinha quando a linha é marcada; um fio com botão de rosa antes da assinatura; e um ramo no canto da foto.
 - No fim, a assinatura fica num cartão com a foto da Dra. em arco (`/assets/IMG_4369-2-640.webp` e `-960.webp`, a mesma foto da imagem de compartilhamento), o nome, CRM/RQE e o aviso de privacidade.
@@ -74,4 +76,5 @@ Antes de dizer que está pronto:
 4. Conferir que o checklist de `/blog/cansaco-exames-normais/` continua funcionando igual (mesmo componente).
 5. Ver o compartilhamento: `og:image` abre e o `canonical` aponta para a própria página.
 6. Conferir o movimento: no console do navegador, `document.getAnimations().filter(a => a.effect.getTiming().iterations === Infinity).length` dá `0`; com "reduzir movimento" ligado (DevTools → Rendering → `prefers-reduced-motion: reduce`) nada se mexe; e o ramo do topo não encosta no título em 360, 375 e 414 px.
-7. Conferir a indexação, que o `npm test` não verifica: o `<head>` tem `<meta name="robots" content="noindex, follow">` e `grep -n "checklist/" sitemap.xml llms.txt` não devolve nada.
+7. Depois do push, só abrir a página publicada (ou testar URLs dela com `curl`) **quando o deploy do GitHub Pages terminar** (`gh run watch` ou a aba Actions). Um pedido feito antes disso a um arquivo novo grava um 404 no Cloudflare por horas.
+8. Conferir a indexação, que o `npm test` não verifica: o `<head>` tem `<meta name="robots" content="noindex, follow">` e `grep -n "checklist/" sitemap.xml llms.txt` não devolve nada.
