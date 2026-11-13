@@ -6,6 +6,25 @@ Registro das atualizações do site (`drakerlyhelena.com.br`). Entradas mais rec
 
 ---
 
+## [2026-11-13] Página de campanha "6 sinais que parecem estresse" e checklist compartilhado
+
+Landing page para o anúncio do carrossel "6 sinais que parecem estresse" no Instagram: a pessoa marca os sinais que fazem parte da rotina dela e leva a lista pronta para o WhatsApp. A página é o modelo para os próximos posts. O checklist do blog passa a ser um script compartilhado.
+
+### O que mudou
+- **`/checklist/estresse/`** — página nova, mobile first. Mesmo cabeçalho, rodapé, cores, fontes e botão flutuante das outras páginas. No topo, o mesmo título do carrossel; logo abaixo, as 6 caixinhas. No celular, o botão "Levar para a consulta" fica preso ao pé da tela enquanto a lista está à vista, ao lado do botão flutuante. Depois vêm a nota "Pode ser estresse. Pode ser a perimenopausa. Podem ser os dois.", a consulta (60 a 90 minutos, plano por escrito, presencial em São Luís, particular e Convênio APCEF, só com hora marcada) e um cartão com a foto da Dra. Kerly em arco, a assinatura com CRM e RQE e o aviso de privacidade.
+- **Rosas e movimento** — rosas em traço fino desenhadas no próprio SVG da página: um ramo ao lado do título (no desktop, na coluna da esquerda), botões de rosa na lista da consulta, um botãozinho que se desenha quando a linha é marcada, um fio com botão de rosa antes da assinatura e um ramo no canto da foto. Cartões de cantos bem arredondados e sombras difusas em tom blush; caixinhas com cantos suaves. O ramo do topo se desenha uma vez ao abrir; as seções de baixo sobem de leve ao entrar na tela. Nenhuma animação infinita, nada automático passando de 5 s, título e caixinhas parados, e tudo desligado com "reduzir movimento".
+- **`/checklist/checklist.css`** — o visual das páginas de checklist num arquivo compartilhado (só classes `.ck-`), para os próximos posts herdarem sem copiar CSS.
+- **Indexação** — `noindex, follow`, `canonical` para a própria página e imagem de compartilhamento `og-menopausa.jpg`. Fica fora do `sitemap.xml`, do `llms.txt` e do menu.
+- **`/checklist.js`** — o checklist que vira mensagem de WhatsApp saiu do `blog/blog.js` sem mudar nada no comportamento nem na marcação (`data-checklist`, `data-checklist-whatsapp`, `data-checklist-status`). Os 6 posts do blog carregam o script antes do `blog.js`. A `/menopausa/` continua com a versão própria, por enquanto.
+- **`docs/checklist-landing.md`** — como criar a página de um próximo post, regras de texto (CFM e Meta) e roteiro de verificação.
+
+### Notas técnicas
+- O botão da lista chega ao GA4 como `whatsapp_click` com `link_location = checklist` (`data-cta-source`); a lista de sinais não vai para o GA4. Nada é salvo no navegador.
+- Classes Tailwind novas: `output.css` regenerado.
+- Verificado com puppeteer em 375 px: 2 sinais no link, mensagem padrão ao desmarcar, só teclado (Tab, Espaço, Enter) sem o foco ficar escondido atrás do botão preso. Também em 320 px, com letra ampliada e em 1440 px. Os checklists de 3 posts do blog deram o mesmo resultado antes e depois da extração (link, status, compartilhar, ouvir). Revisão independente antes do commit: entre 640 e 767 px a área invisível ao lado do botão preso bloqueava toques na lista; em alto contraste (forced-colors) o botão ficava sem contorno; o nome acessível não dizia que o botão abre o WhatsApp. Os três foram corrigidos. Visual escolhido entre três direções (traço fino, aquarela, rosa que desabrocha) por dois juízes independentes e refinado com medições em 320 a 1440 px: o traço do ramo fica a 34 px ou mais do título, nenhum ponto da decoração cai sobre a foto, o texto continua com 18 px ou mais e não há rolagem horizontal. A página ficou com ~6 KB a mais de HTML, mais 9 KB de CSS compartilhado; a foto carrega só no fim (`loading="lazy"`). `npm test` sem erros nem avisos nas 24 páginas.
+
+---
+
 ## [2026-10-31] Site inteiro: cabeçalho no celular, menu e âncoras pelo teclado, pulso do botão flutuante
 
 Correções nos componentes que todas as páginas compartilham, achadas na auditoria da página de yoga e medidas nas 16 páginas com cabeçalho.

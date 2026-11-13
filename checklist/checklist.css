@@ -1,0 +1,137 @@
+/* Landing de checklist: rosas em traço fino, cantos suaves e assinatura com foto. Só classes .ck-
+   Breakpoints (360, 640, 768, 1024) espelham os do Tailwind do site: se mudarem lá, mudar aqui. */
+.ck-main {
+    --ck-b100: #F9EAEF; --ck-b300: #E0AEBE; --ck-b400: #C7889D; --ck-b500: #A9637B; --ck-b600: #8E4F66;
+    --ck-carvao: #4A3B40; --ck-texto: rgba(74, 59, 64, 0.8);
+    --ck-tinta: var(--ck-b500); --ck-tinta-leve: var(--ck-b400); --ck-folha: #9DAA92; --ck-veu: var(--ck-b100);
+    --ck-curva: cubic-bezier(0.22, 1, 0.36, 1);
+    --ck-sombra: 0 40px 80px -48px rgba(142, 79, 102, 0.38), 0 14px 30px -24px rgba(142, 79, 102, 0.22);
+    overflow-x: clip;
+}
+
+/* Desenho das rosas: definido uma vez (.ck-defs) e reaproveitado com <use>; nunca recebe toque */
+.ck-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.ck-sprig, .ck-botao { fill: none; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; overflow: visible; }
+.ck-sprig { position: absolute; }
+.ck-t-out { stroke: var(--ck-tinta); stroke-width: 1.1; }
+.ck-t-in { stroke: var(--ck-tinta-leve); stroke-width: 1; }
+.ck-t-haste { stroke: var(--ck-tinta-leve); stroke-width: 1.2; }
+.ck-t-folha { stroke: var(--ck-folha); stroke-width: 1.3; }
+.ck-veu { fill: var(--ck-veu); opacity: 0.95; }
+
+/* Ramo do topo: no celular, à direita de "6 sinais que", acima de "parecem estresse" */
+@media (max-width: 1023.98px) { .ck-top { position: relative; } }
+.ck-sprig--topo { top: -3rem; right: -0.75rem; width: 88px; height: 132px; }
+@media (max-width: 359.98px) { .ck-sprig--topo { display: none; } }
+@media (min-width: 640px) and (max-width: 1023.98px) {
+    .ck-sprig--topo { right: -0.5rem; width: 140px; height: 210px; }
+    .ck-top h1 em { display: block; }
+}
+/* No desktop o ramo desce para a coluna da esquerda (já sticky), abaixo do apoio, longe do cartão */
+@media (min-width: 1024px) { .ck-sprig--topo { position: static; display: block; width: 150px; height: 225px; margin: 2.5rem 0 0 3rem; } }
+/* Com a letra ampliada o título ocupa a largura toda no celular: o ramo sai para não encostar no texto */
+@media (max-width: 1023.98px) { html[data-fonte="grande"] .ck-sprig--topo, html[data-fonte="maior"] .ck-sprig--topo { display: none; } }
+
+/* Cartão da lista */
+.ck-card { box-shadow: var(--ck-sombra); }
+.ck-card > ul { background: linear-gradient(180deg, #fff, #FDFCFB 60%); }
+.ck-card label { position: relative; }
+.ck-check {
+    -webkit-appearance: none; appearance: none; flex: none;
+    border: 1.5px solid var(--ck-b500); border-radius: 0.6rem; background: #fff center / 1.1rem no-repeat;
+    box-shadow: inset 0 1px 2px rgba(142, 79, 102, 0.1);
+}
+.ck-check:checked { background-color: var(--ck-b600); border-color: var(--ck-b600); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5.5 12.5l4.2 4.2L18.5 7.8'/%3E%3C/svg%3E"); }
+.ck-check:focus-visible { outline: 2px solid var(--ck-b600); outline-offset: 3px; }
+/* Botão de rosa que surge no vão abaixo da caixinha marcada, fora da coluna do texto */
+.ck-marca { display: none; position: absolute; left: 1.5625rem; top: 3.5rem; width: 1.125rem; height: 1.5rem; }
+.ck-check:checked ~ .ck-marca { display: block; }
+@media (min-width: 640px) { .ck-marca { left: 2.0625rem; } }
+
+/* "Pode ser estresse": nota em cartão suave */
+.ck-note {
+    border-radius: 2rem; padding: 2rem 1.5rem 2.25rem;
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.75), rgba(249, 234, 239, 0.7));
+    box-shadow: inset 0 0 0 1px rgba(224, 174, 190, 0.4), var(--ck-sombra);
+}
+@media (min-width: 1024px) { .ck-note { padding: 2.5rem 2.25rem 2.75rem; align-self: start; } }
+/* "Como é a consulta": botões de rosa no lugar dos travessões */
+.ck-li-botao { width: 1.125rem; height: 1.5rem; margin-top: 0.15rem; flex: none; }
+
+/* Ornamento: fio fino com um botão de rosa no meio */
+.ck-orn { display: flex; align-items: center; gap: 1rem; margin-top: 4.5rem; }
+.ck-orn__fio { flex: 1; height: 1px; background: linear-gradient(90deg, rgba(224, 174, 190, 0), var(--ck-b300)); }
+.ck-orn__fio:last-child { background: linear-gradient(270deg, rgba(224, 174, 190, 0), var(--ck-b300)); }
+.ck-orn .ck-botao { width: 1.125rem; height: 1.5rem; flex: none; }
+@media (min-width: 768px) { .ck-orn { margin-top: 5.5rem; } }
+
+/* Assinatura com foto em arco e moldura fina afastada */
+.ck-sign {
+    position: relative; margin-top: 2.25rem; padding: 3.5rem 1.5rem 2.5rem; border-radius: 2.25rem; text-align: center;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(251, 245, 247, 0.6));
+    box-shadow: inset 0 0 0 1px rgba(224, 174, 190, 0.42), var(--ck-sombra);
+}
+.ck-sign__fig { position: relative; width: min(17.5rem, 100%); margin: 0 auto; }
+.ck-sign__fig::before {
+    content: ""; position: absolute; inset: -0.6rem; pointer-events: none;
+    border: 1px solid rgba(199, 136, 157, 0.5); border-radius: 50% 50% 2.1rem 2.1rem / 40.6% 40.6% 2.1rem 2.1rem;
+}
+.ck-arch {
+    position: relative; aspect-ratio: 4 / 5; overflow: hidden; isolation: isolate; background: #F4E8EA;
+    border-radius: 50% 50% 1.5rem 1.5rem / 40% 40% 1.5rem 1.5rem;
+    box-shadow: 0 32px 56px -34px rgba(142, 79, 102, 0.5);
+}
+.ck-arch img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+/* A rosa pousa acima do canto do arco, fora do retrato, cruzando no máximo a moldura */
+.ck-sprig--foto { bottom: calc(100% + 0.25rem); right: 3%; width: 24%; aspect-ratio: 2 / 3; }
+.ck-sign__text { margin-top: 2.5rem; }
+.ck-sign__nome { display: block; font-family: 'Playfair Display', Georgia, serif; font-size: 1.875rem; line-height: 1.15; color: var(--ck-carvao); }
+.ck-sign__cred { display: block; margin-top: 0.5rem; font-size: 1.125rem; line-height: 1.6; color: var(--ck-texto); }
+.ck-fio { display: block; width: 3.5rem; height: 1px; margin: 1.5rem auto; background: var(--ck-b300); }
+.ck-privacidade { max-width: 30ch; margin: 0 auto; font-size: 1.125rem; line-height: 1.65; color: var(--ck-texto); text-wrap: pretty; }
+.ck-privacidade svg { display: inline-block; width: 1.15rem; height: 1.15rem; margin-right: 0.35rem; vertical-align: -0.15em; color: var(--ck-b600); pointer-events: none; }
+@media (min-width: 768px) {
+    .ck-sign { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; column-gap: 3.75rem; padding: 3rem 2.75rem; text-align: left; }
+    .ck-sign__fig { width: 15rem; margin: 0 0 0 0.6rem; }
+    .ck-sign__text { margin-top: 0; }
+    .ck-fio { margin-left: 0; }
+    .ck-privacidade { margin: 0; }
+}
+@media (min-width: 1024px) {
+    .ck-sign { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 4rem; padding: 4rem 0; }
+    .ck-sign__fig { grid-column: 1 / span 5; justify-self: center; width: 19rem; margin: 0; }
+    .ck-sign__text { grid-column: 6 / span 7; padding-right: 3.5rem; }
+    .ck-sign__nome { font-size: 2.75rem; }
+    .ck-sign__cred { font-size: 1.25rem; }
+    .ck-fio { margin: 1.75rem 0; width: 4.5rem; }
+    .ck-privacidade { max-width: 44ch; }
+}
+
+/* Movimento: o ramo do topo se desenha uma vez ao carregar (termina em 2,1s); o resto só com interação ou rolagem.
+   Rolagem mexe só em transform; sem suporte a animation-timeline tudo aparece parado no lugar. */
+@keyframes ck-traco { from { stroke-dashoffset: 1.05; } to { stroke-dashoffset: 0; } }
+@keyframes ck-aparece { from { opacity: 0; } }
+@keyframes ck-surge { from { transform: translateY(24px); } }
+@keyframes ck-assenta { from { transform: scale(1.07); } }
+@media (prefers-reduced-motion: no-preference) {
+    .ck-sprig--topo use, .ck-check:checked ~ .ck-marca { stroke-dasharray: 1 2; animation: ck-traco 1.4s var(--ck-curva) both; }
+    .ck-sprig--topo .ck-u-rosa { animation-delay: 0.15s; animation-duration: 1.45s; }
+    .ck-sprig--topo .ck-u-folhas, .ck-sprig--topo .ck-u-botao { animation-delay: 0.4s; animation-duration: 1.2s; }
+    .ck-sprig--topo .ck-u-veu { animation: ck-aparece 1.3s var(--ck-curva) 0.8s both; }
+    .ck-check:checked ~ .ck-marca { animation-duration: 0.6s; }
+    @supports (animation-timeline: view()) {
+        .ck-surge { animation: ck-surge var(--ck-curva) both; animation-timeline: view(); animation-range: entry 0% entry 80%; }
+        .ck-arch img { animation: ck-assenta linear both; animation-timeline: view(); animation-range: entry 0% cover 50%; }
+    }
+}
+/* Nada anima com movimento reduzido, nem as transições das classes do markup (rótulos, botão) */
+@media (prefers-reduced-motion: reduce) { .ck-main *, .ck-main *::before { transition: none !important; } }
+/* Alto contraste: caixinhas nativas; ramos e botão da linha marcada somem; botões da lista e do ornamento ficam neutros */
+@media (forced-colors: active) {
+    .ck-check { -webkit-appearance: auto; appearance: auto; background: none; }
+    .ck-sprig, .ck-marca, .ck-check:checked ~ .ck-marca, .ck-sign__fig::before, .ck-orn__fio { display: none; }
+    .ck-note, .ck-sign, .ck-card { border: 1px solid CanvasText; }
+    .ck-main { --ck-tinta: CanvasText; --ck-tinta-leve: CanvasText; --ck-folha: CanvasText; }
+}
+/* Sem overflow: clip (Safari < 16) os ramos, que passam da borda, saem para não gerar rolagem horizontal */
+@supports not (overflow: clip) { .ck-sprig { display: none; } }
