@@ -13,6 +13,7 @@ Logo depois da publicação, `/checklist/checklist.css` e `/checklist.js` foram 
 ### O que mudou
 - **Landing e 6 posts do blog** — passam a pedir `/checklist.js?v=20261113`, e a landing pede `/checklist/checklist.css?v=20261113`. É uma URL nova, fora do 404 em cache.
 - **SVG das rosas** — `fill="none"` e tamanho no próprio HTML: se o CSS falhar de novo, a decoração some em vez de virar mancha.
+- **Título no celular** — passa a quebrar sempre em "6 sinais que / parecem estresse", como no carrossel. Entre ~430 e 450 px (iPhone Pro Max e Plus) e perto de 580 px, a primeira linha crescia até ficar a 6 px do ramo de rosa; agora a menor folga é 49 px (em 360 px). CSS em `?v=20261113b`.
 - **`docs/checklist-landing.md`** — trocar o `?v=` ao mudar o CSS ou o JS, e só conferir a página publicada depois que o deploy terminar.
 
 ### Notas técnicas

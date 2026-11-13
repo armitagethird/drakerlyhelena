@@ -19,14 +19,13 @@
 .ck-t-folha { stroke: var(--ck-folha); stroke-width: 1.3; }
 .ck-veu { fill: var(--ck-veu); opacity: 0.95; }
 
-/* Ramo do topo: no celular, à direita de "6 sinais que", acima de "parecem estresse" */
-@media (max-width: 1023.98px) { .ck-top { position: relative; } }
+/* Ramo do topo: no celular, à direita de "6 sinais que", acima de "parecem estresse".
+   O título quebra sempre depois da 1ª parte (como no carrossel); sem isso, de ~430 a 450 px e perto
+   de 580 px a 1ª linha crescia até encostar no ramo. */
+@media (max-width: 1023.98px) { .ck-top { position: relative; } .ck-top h1 em { display: block; } }
 .ck-sprig--topo { top: -3rem; right: -0.75rem; width: 88px; height: 132px; }
 @media (max-width: 359.98px) { .ck-sprig--topo { display: none; } }
-@media (min-width: 640px) and (max-width: 1023.98px) {
-    .ck-sprig--topo { right: -0.5rem; width: 140px; height: 210px; }
-    .ck-top h1 em { display: block; }
-}
+@media (min-width: 640px) and (max-width: 1023.98px) { .ck-sprig--topo { right: -0.5rem; width: 140px; height: 210px; } }
 /* No desktop o ramo desce para a coluna da esquerda (já sticky), abaixo do apoio, longe do cartão */
 @media (min-width: 1024px) { .ck-sprig--topo { position: static; display: block; width: 150px; height: 225px; margin: 2.5rem 0 0 3rem; } }
 /* Com a letra ampliada o título ocupa a largura toda no celular: o ramo sai para não encostar no texto */
